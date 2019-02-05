@@ -1,12 +1,24 @@
-import React, { Component } from 'react';
-import App from './App'
+import React, { Component } from 'react'
+import Front from './pages/Front'
+import './App'
 
 class App extends Component {
-  render() {
-    return (
+	state = {
+		age: 18,
+		name: 'Pasha'
+	}
 
-    )
-  }
+	render() {
+		return (
+			<div>
+				<div className="ama">Header</div>
+				<Front />
+				<div className="ama2">Footer</div>
+
+				<style jsx global>{``}</style>
+			</div>
+		)
+	}
 }
 
-export default App;
+export default App
