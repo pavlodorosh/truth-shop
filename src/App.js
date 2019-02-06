@@ -11,7 +11,10 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<div className="ama">Header</div>
+				<div className="ama">Header
+				<span>menu</span>
+				
+				</div>
 				<Front />
 				<div className="test" />
 				<div className="ama2">Footer</div>
