@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Front from './pages/Front'
-import './App'
+import Header from './components/Header'
 
 class App extends Component {
 	state = {
@@ -11,10 +11,7 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<div className="ama">Header
-				<span>menu</span>
-				
-				</div>
+				<Header />
 				<Front />
 				<p>
 					Hello <h1>Tolik</h1>
