@@ -1,39 +1,40 @@
 import React, { Component } from 'react'
-import { Nav, Button, Container, Row, Col } from 'bootstrap-4-react'
+import { Nav, Button, Container, Row, Col, Media, BImg, BDiv } from 'bootstrap-4-react'
+import logo from '../assets/img/logo.png'
 
 class Header extends Component {
 	render() {
 		return (
-			<>
+			<Container fluid={true}>
 				<Container>
 					<Row>
-						<Col col="lg-4">logo</Col>
 						<Col col="lg-4">
-							<Nav>
-								<Nav.Item>
-									<Nav.Link href="#">ABAUT US</Nav.Link>
-								</Nav.Item>
-								<Nav.Item>
-									<Nav.Link href="#">CONTACTS</Nav.Link>
-								</Nav.Item>
-								<Nav.Item>
-									<Nav.Link href="#">SHOP</Nav.Link>
-								</Nav.Item>
+							<Media>
+								<BImg src={logo} />
+							</Media>
+						</Col>
+						<Col alignSelf="center" col="lg-4">
+							<Nav justifyContent="center" alignItems="center">
+								<Nav.ItemLink active href="#">
+									ABAUT US
+								</Nav.ItemLink>
+								<Nav.ItemLink href="#">CONTACTS</Nav.ItemLink>
+								<Nav.ItemLink href="#">SHOP</Nav.ItemLink>
 							</Nav>
 						</Col>
-						<Col col="lg-4">
-							<div>
+						<Col alignSelf="center" col="lg-4">
+							<BDiv display="flex" justifyContent="center">
 								<Button danger as="a" href="#">
 									SING IN
 								</Button>
 								<Button light as="a" href="#">
 									RU
 								</Button>
-							</div>
+							</BDiv>
 						</Col>
 					</Row>
 				</Container>
-			</>
+			</Container>
 		)
 	}
 }
