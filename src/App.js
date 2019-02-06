@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Front from './pages/Front'
 import Header from './components/Header'
+import Footer from './components/Footer'
 
 class App extends Component {
 	state = {
@@ -13,11 +14,7 @@ class App extends Component {
 			<div>
 				<Header />
 				<Front />
-				<p>
-					Hello <h1>Tolik</h1>
-				</p>
-				<div className="ama2">Footer</div>
-
+				<Footer />
 				<style jsx global>{``}</style>
 			</div>
 		)
