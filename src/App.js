@@ -13,7 +13,9 @@ class App extends Component {
 			<div>
 				<div className="ama">Header</div>
 				<Front />
-				<div className="test" />
+				<p>
+					Hello <h1>Tolik</h1>
+				</p>
 				<div className="ama2">Footer</div>
 
 				<style jsx global>{``}</style>
