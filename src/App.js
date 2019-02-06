@@ -13,6 +13,7 @@ class App extends Component {
 			<div>
 				<div className="ama">Header</div>
 				<Front />
+				<div className="test" />
 				<div className="ama2">Footer</div>
 
 				<style jsx global>{``}</style>
