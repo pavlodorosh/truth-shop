@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Nav, Button, Container, Row, Col, BSpan, Media, BImg } from 'bootstrap-4-react'
+import { Container, Row, Col, BSpan, Media, BImg } from 'bootstrap-4-react'
 import women from '../assets/img/women.jpg'
 import accessories from '../assets/img/accessories.jpg'
 import men from '../assets/img/men.jpg'

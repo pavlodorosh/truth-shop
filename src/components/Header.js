@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Nav, Button, Container, Row, Col, Media, BImg, BDiv } from 'bootstrap-4-react'
+import { Link } from 'react-router-dom'
+
 import logo from '../assets/img/logo.png'
 
 class Header extends Component {
@@ -15,11 +17,9 @@ class Header extends Component {
 						</Col>
 						<Col alignSelf="center" col="lg-4">
 							<Nav justifyContent="center" alignItems="center">
-								<Nav.ItemLink active href="#">
-									ABAUT US
-								</Nav.ItemLink>
-								<Nav.ItemLink href="#">CONTACTS</Nav.ItemLink>
-								<Nav.ItemLink href="#">SHOP</Nav.ItemLink>
+								<Link to="/about">ABOUT US</Link>
+								<Link to="/">CONTACTS</Link>
+								<Link to="/catalog">SHOP</Link>
 							</Nav>
 						</Col>
 						<Col alignSelf="center" col="lg-4">
