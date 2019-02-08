@@ -29,7 +29,6 @@ class Front extends Component {
 						</Col>
 					</Row>
 				</Container>
-				<style jsx>{``}</style>
 			</Container>
 		)
 	}

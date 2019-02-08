@@ -12,13 +12,15 @@ class Header extends Component {
 					<Row>
 						<Col col="lg-4">
 							<Media>
-								<BImg src={logo} />
+								<Link to="/">
+									<BImg src={logo} />
+								</Link>
 							</Media>
 						</Col>
 						<Col alignSelf="center" col="lg-4">
 							<Nav justifyContent="center" alignItems="center">
 								<Link to="/about">ABOUT US</Link>
-								<Link to="/">CONTACTS</Link>
+								<Link to="/contacts">CONTACTS</Link>
 								<Link to="/catalog">SHOP</Link>
 							</Nav>
 						</Col>
