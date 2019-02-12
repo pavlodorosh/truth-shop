@@ -1,0 +1,73 @@
+{
+	"products": {
+		"id": {
+			"name": {},
+			"description": {},
+			"price": "",
+			"category": {},
+			"date": "",
+			"sizes": {},
+			"colors": {},
+			"actions": {},
+			"images": {},
+			"care": {},
+			"weather": {},
+			"author": ""
+		}
+	},
+
+	"categories": {
+		"id": {
+			"title": "",
+			"preview": "",
+			"subcategories": {
+				"name": ""
+			}
+		}
+	},
+	"post": {
+		"id": {
+			"title": "",
+			"description": "",
+			"date": "",
+			"typecategory": {
+				"": ""
+			},
+			"image": {}
+		}
+	},
+	"subscribers": {
+		"id": {
+			"name": "",
+			"mail": ""
+		}
+	},
+	"language": {
+		"id": {
+			"name": ""
+		}
+	},
+	"oders": {
+		"id": {
+			"user": "",
+			"products": {},
+			"date": "",
+			"delivery": "",
+			"payment": "",
+			"status": ""
+		}
+	},
+	"users": {
+		"id": {
+			"name": {},
+			"email": "",
+			"password": "",
+			"role": ""
+		}
+	},
+	"roles": {
+		"id": {
+			"name": ""
+		}
+	}
+}
