@@ -1,8 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
+
+//Router
 import { BrowserRouter } from 'react-router-dom'
+//Redux
 import { createStore } from 'redux'
+//Firebase
+import firebase from './firebase'
+
+import App from './App'
 import * as serviceWorker from './serviceWorker'
 import './index.css'
 
