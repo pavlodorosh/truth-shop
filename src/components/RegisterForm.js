@@ -70,41 +70,41 @@ export default class RegisterForm extends Component {
 		const { username, password, passwordConfirmation, email, errors } = this.state
 
 		return (
-			<>
-				<Form onSubmit={this.handleSubmit}>
-					<Form.Group>
-						<label>Username</label>
-						<Form.Input type="text" name="username" placeholder="Username" onChange={this.handleChange} value={username} />
-					</Form.Group>
-					<Form.Group>
-						<label>Email address</label>
-						<Form.Input type="email" name="email" placeholder="Enter email" onChange={this.handleChange} value={email} />
-					</Form.Group>
-					<Form.Group>
-						<label>Password</label>
-						<Form.Input type="password" name="password" placeholder="Password" onChange={this.handleChange} value={password} />
-					</Form.Group>
-					<Form.Group>
-						<label>Password Confirmation</label>
-						<Form.Input type="password" name="passwordConfirmation" placeholder="Password Confirmation" onChange={this.handleChange} value={passwordConfirmation} />
-					</Form.Group>
-					<Button primary type="submit">
-						Sign up
-					</Button>
-					<Button primary type="submit">
-						Sign up
-					</Button>
-				</Form>
-				{errors.length > 0 && (
-					<div>
-						<h3>Error</h3>
-						{this.displayErrors(errors)}
-					</div>
-				)}
-				<p>
-					Already user? <span onClick={this.alreadyUserFunction}>Login</span>
-				</p>
-			</>
+			<div className="form_reg">
+				<div>
+					<Form onSubmit={this.handleSubmit}>
+						<Form.Group>
+							<label>Username</label>
+							<Form.Input type="text" name="username" placeholder="Username" onChange={this.handleChange} value={username} />
+						</Form.Group>
+						<Form.Group>
+							<label>Email address</label>
+							<Form.Input type="email" name="email" placeholder="Enter email" onChange={this.handleChange} value={email} />
+						</Form.Group>
+						<Form.Group>
+							<label>Password</label>
+							<Form.Input type="password" name="password" placeholder="Password" onChange={this.handleChange} value={password} />
+						</Form.Group>
+						<Form.Group>
+							<label>Password Confirmation</label>
+							<Form.Input type="password" name="passwordConfirmation" placeholder="Password Confirmation" onChange={this.handleChange} value={passwordConfirmation} />
+						</Form.Group>
+						<Button primary type="submit">
+							Sign up
+						</Button>
+						<Button primary>Close</Button>
+					</Form>
+					{errors.length > 0 && (
+						<div>
+							<h3>Error</h3>
+							{this.displayErrors(errors)}
+						</div>
+					)}
+					<p>
+						Already user? <span onClick={this.alreadyUserFunction}>Login</span>
+					</p>
+				</div>
+			</div>
 		)
 	}
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { Container, Row, Col, BSpan, Media, BImg, Card } from 'bootstrap-4-react'
 import product from '../assets/img/product_img.png'
 class Catalog extends Component {
@@ -10,7 +11,9 @@ class Catalog extends Component {
 						<Col className="pl-0 pr-1" col="lg-3">
 							<Card style={{ width: '18rem' }}>
 								<Card.Header>Feature</Card.Header>
-								<Card.Image src={product} />
+								<Link to="/product">
+									<Card.Image src={product} />
+								</Link>
 								<Card.Body>
 									<Card.Title>Card title</Card.Title>
 									<Card.Subtitle mb="2" text="muted">
