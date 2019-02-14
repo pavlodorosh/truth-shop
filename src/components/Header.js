@@ -49,6 +49,7 @@ class Header extends Component {
 								<Button danger as="button" onClick={this.openModal}>
 									SING IN
 								</Button>
+
 								<Button light as="a" href="#">
 									RU
 								</Button>
