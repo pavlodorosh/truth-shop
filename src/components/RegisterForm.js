@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 
 export default class RegisterForm extends Component {
-	state = {}
+	alreadyUserFunction = () => {
+		this.props.updateAuthForm(true)
+	}
 
 	render() {
 		return (
@@ -13,6 +15,9 @@ export default class RegisterForm extends Component {
 					<input type="password" name="passwordConfirmation" placeholder="Password Confirmation" onChange={this.props.handleChange} />
 					<button type="submit">Sign up</button>
 				</form>
+				<p>
+					Already user? <span onClick={this.alreadyUserFunction}>Login</span>
+				</p>
 			</>
 		)
 	}
