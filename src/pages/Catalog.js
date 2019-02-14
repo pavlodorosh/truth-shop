@@ -4,7 +4,7 @@ class Catalog extends Component {
 	render() {
 		return (
 			<div>
-				<ul className="list" />
+				<ul />
 			</div>
 		)
 	}

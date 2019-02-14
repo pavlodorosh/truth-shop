@@ -2,9 +2,29 @@ import React, { Component } from 'react'
 import { Nav, Button, Container, Row, Col, Media, BImg, BDiv } from 'bootstrap-4-react'
 import { Link } from 'react-router-dom'
 
+import AuthModal from './AuthModal'
+
 import logo from '../assets/img/logo.png'
 
 class Header extends Component {
+	constructor() {
+		super()
+
+		this.state = {
+			modalIsOpen: false
+		}
+		this.openModal = this.openModal.bind(this)
+		this.closeModal = this.closeModal.bind(this)
+	}
+
+	openModal() {
+		this.setState({ modalIsOpen: true })
+	}
+
+	closeModal() {
+		this.setState({ modalIsOpen: false })
+	}
+
 	render() {
 		return (
 			<Container fluid={true}>
@@ -26,7 +46,7 @@ class Header extends Component {
 						</Col>
 						<Col alignSelf="center" col="lg-4">
 							<BDiv display="flex" justifyContent="center">
-								<Button danger as="a" href="#">
+								<Button danger as="button" onClick={this.openModal}>
 									SING IN
 								</Button>
 								<Button light as="a" href="#">
@@ -34,6 +54,7 @@ class Header extends Component {
 								</Button>
 							</BDiv>
 						</Col>
+						<AuthModal modalIsOpen={this.state.modalIsOpen} />
 					</Row>
 				</Container>
 			</Container>
