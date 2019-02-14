@@ -1,3 +1,9 @@
 body {
     background: #000;
 }
+
+.user-modal {
+    width: 320px;
+    float: right;
+    background: #fff;
+}
