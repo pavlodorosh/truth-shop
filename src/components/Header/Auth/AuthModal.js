@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Modal from 'react-modal'
 
-import '../css/Auth.css'
+import './Auth.css'
 
 import LoginForm from './LoginForm'
 import RegisterForm from './RegisterForm'

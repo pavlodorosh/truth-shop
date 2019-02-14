@@ -42,9 +42,7 @@ export default class LoginForm extends Component {
 						<Button primary type="submit">
 							Sign in
 						</Button>
-						<Button primary type="">
-							Close
-						</Button>
+						<Button primary>Close</Button>
 					</Form>
 
 					<p>

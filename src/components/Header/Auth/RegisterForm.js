@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Form, Button } from 'bootstrap-4-react'
-import { auth, database } from '../firebase'
+import { auth, database } from '../../../firebase'
 
 export default class RegisterForm extends Component {
 	state = {

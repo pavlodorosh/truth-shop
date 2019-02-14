@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { Nav, Button, Container, Row, Col, Media, BImg, BDiv } from 'bootstrap-4-react'
 import { Link } from 'react-router-dom'
 
-import AuthModal from './AuthModal'
+import AuthModal from './Auth/AuthModal'
 
-import logo from '../assets/img/logo.png'
+import logo from '../../assets/img/logo.png'
 
 class Header extends Component {
 	constructor() {
@@ -17,11 +17,11 @@ class Header extends Component {
 		this.closeModal = this.closeModal.bind(this)
 	}
 
-	openModal() {
+	openModal = () => {
 		this.setState({ modalIsOpen: true })
 	}
 
-	closeModal() {
+	closeModal = () => {
 		this.setState({ modalIsOpen: false })
 	}
 

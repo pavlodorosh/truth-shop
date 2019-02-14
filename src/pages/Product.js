@@ -3,6 +3,7 @@ import { Container, Row, Col, Button, Media, BImg, Modal } from 'bootstrap-4-rea
 import product from '../assets/img/product_img.png'
 import size_men from '../assets/img/size_men.png'
 import size_women from '../assets/img/size_women.png'
+
 class Product extends Component {
 	render() {
 		return (
@@ -80,38 +81,38 @@ class Product extends Component {
 								<Button primary>ADD TO CART</Button>
 							</div>
 							<div className="product_description">
-								<ul class="nav nav-tabs" role="tablist">
-									<li class="nav-item">
-										<a class="nav-link active" data-toggle="tab" href="#home" role="tab">
+								<ul className="nav nav-tabs" role="tablist">
+									<li className="nav-item">
+										<span className="nav-link active" data-toggle="tab" href="#home" role="tab">
 											DETAILS
-										</a>
+										</span>
 									</li>
-									<li class="nav-item">
-										<a class="nav-link" data-toggle="tab" href="#profile" role="tab">
+									<li className="nav-item">
+										<span className="nav-link" data-toggle="tab" href="#profile" role="tab">
 											CARE
-										</a>
+										</span>
 									</li>
-									<li class="nav-item">
-										<a class="nav-link" data-toggle="tab" href="#messages" role="tab">
+									<li className="nav-item">
+										<span className="nav-link" data-toggle="tab" href="#messages" role="tab">
 											RETURN
-										</a>
+										</span>
 									</li>
-									<li class="nav-item">
+									<li className="nav-item">
 										{/* Button trigger Modal */}
-										<a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+										<span className="nav-link" data-toggle="modal" data-target="#exampleModal">
 											SIZE GUIDE
-										</a>
+										</span>
 									</li>
 								</ul>
 
-								<div class="tab-content">
-									<div class="tab-pane active" id="home" role="tabpanel">
+								<div className="tab-content">
+									<div className="tab-pane active" id="home" role="tabpanel">
 										Red t-shirt in sports casual style
 									</div>
-									<div class="tab-pane" id="profile" role="tabpanel">
+									<div className="tab-pane" id="profile" role="tabpanel">
 										Care
 									</div>
-									<div class="tab-pane" id="messages" role="tabpanel">
+									<div className="tab-pane" id="messages" role="tabpanel">
 										Retutn
 									</div>
 								</div>
