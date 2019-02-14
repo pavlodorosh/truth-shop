@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Row, Col, BSpan, Media, BImg, Card } from 'bootstrap-4-react'
+import { Container, Row, Col, Card } from 'bootstrap-4-react'
 import product from '../assets/img/product_img.png'
+
 class Catalog extends Component {
 	render() {
 		return (

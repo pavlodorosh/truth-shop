@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Form, Button } from 'bootstrap-4-react'
-import { auth } from '../firebase'
+import { auth, database } from '../firebase'
 
 export default class RegisterForm extends Component {
 	state = {
@@ -8,7 +8,8 @@ export default class RegisterForm extends Component {
 		password: '',
 		passwordConfirmation: '',
 		email: '',
-		errors: []
+		errors: [],
+		usersRef: database.ref('users')
 	}
 
 	isFormValid = () => {
@@ -56,14 +57,36 @@ export default class RegisterForm extends Component {
 	handleSubmit = event => {
 		event.preventDefault()
 		if (this.isFormValid()) {
+			this.setState({ errors: [] })
 			auth.createUserWithEmailAndPassword(this.state.email, this.state.password)
 				.then(createdUser => {
 					console.log(createdUser)
+					createdUser.user
+						.updateProfile({
+							displayName: this.state.username
+						})
+						.then(() => {
+							this.saveUser(createdUser).then(() => {
+								console.log(' пользователь сохранен')
+							})
+						})
+						.catch(err => {
+							console.log(err)
+							this.setState({ errors: this.state.errors.concat(err) })
+						})
 				})
 				.catch(err => {
 					console.log(err)
+					this.setState({ errors: this.state.errors.concat(err) })
 				})
 		}
+	}
+
+	saveUser = createdUser => {
+		return this.state.usersRef.child(createdUser.user.uid).set({
+			name: createdUser.user.displayName,
+			email: createdUser.user.email
+		})
 	}
 
 	render() {

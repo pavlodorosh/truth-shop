@@ -1,11 +1,31 @@
 import React, { Component } from 'react'
 import { Form, Button } from 'bootstrap-4-react'
 export default class LoginForm extends Component {
+	state = {
+		password: '',
+		email: '',
+		errors: []
+	}
 	alreadyUserFunction = () => {
 		this.props.updateAuthForm(false)
 	}
 
+	displayErrors = errors => errors.map((error, i) => <p key={i}>{error.message}</p>)
+
+	handleChange = event => {
+		this.setState({ [event.target.name]: event.target.value })
+	}
+
+	handleSubmit = event => {
+		event.preventDefault()
+		if (this.isFormValid()) {
+			this.setState({ errors: [] })
+		}
+	}
+
 	render() {
+		// const { password, email, errors } = this.state
+
 		return (
 			<div className="form_log">
 				<div>
