@@ -8,7 +8,6 @@ export default class LoginForm extends Component {
 	render() {
 		return (
 			<>
-<<<<<<< HEAD
 				<Form>
 					<Form.Group>
 						<label>Email address</label>
@@ -22,13 +21,6 @@ export default class LoginForm extends Component {
 						Sign in
 					</Button>
 				</Form>
-=======
-				<form>
-					<input type="email" placeholder="Email" />
-					<input type="password" placeholder="Password" />
-					<button type="submit">Sign in</button>
-				</form>
->>>>>>> ffbc818e96b58d3b30ebb20aa440b70d43126666
 
 				<p>
 					Haven't account? <span onClick={this.alreadyUserFunction}>Register</span>

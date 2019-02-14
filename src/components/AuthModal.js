@@ -29,21 +29,13 @@ export default class AuthModal extends Component {
 		})
 	}
 
-	handleChange = () => {}
-
 	render() {
+		const { isUser } = this.state
+
 		return (
 			<>
-<<<<<<< HEAD
 				<Modal isOpen={this.props.modalIsOpen} className="user-modal" parentSelector={this.getParent} appElement={elementForModal} style={customStyles}>
-=======
-				<Modal isOpen={this.props.modalIsOpen} className="user-modal" parentSelector={this.getParent} appElement={elementForModal}>
->>>>>>> ffbc818e96b58d3b30ebb20aa440b70d43126666
-					{this.state.isUser ? (
-						<LoginForm handleChange={this.handleChange} updateAuthForm={this.updateAuthForm} />
-					) : (
-						<RegisterForm handleChange={this.handleChange} updateAuthForm={this.updateAuthForm} />
-					)}
+					{isUser ? <LoginForm updateAuthForm={this.updateAuthForm} /> : <RegisterForm updateAuthForm={this.updateAuthForm} />}
 				</Modal>
 			</>
 		)
