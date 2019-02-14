@@ -41,7 +41,7 @@ class Header extends Component {
 							<Nav justifyContent="center" alignItems="center">
 								<Link to="/about">ABOUT US</Link>
 								<Link to="/contacts">CONTACTS</Link>
-								<Link to="/catalog">SHOP</Link>
+								<Link to="/category">SHOP</Link>
 							</Nav>
 						</Col>
 						<Col alignSelf="center" col="lg-4">

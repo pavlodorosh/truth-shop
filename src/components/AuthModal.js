@@ -10,7 +10,10 @@ const elementForModal = document.createElement('div')
 
 const customStyles = {
 	overlay: {
-		background: 'transparent'
+		background: 'transparent',
+		position: 'absolute',
+		top: '68px',
+		right: '40px'
 	}
 }
 
@@ -34,11 +37,7 @@ export default class AuthModal extends Component {
 	render() {
 		return (
 			<>
-<<<<<<< HEAD
 				<Modal isOpen={this.props.modalIsOpen} className="user-modal" parentSelector={this.getParent} appElement={elementForModal} style={customStyles}>
-=======
-				<Modal isOpen={this.props.modalIsOpen} className="user-modal" parentSelector={this.getParent} appElement={elementForModal}>
->>>>>>> ffbc818e96b58d3b30ebb20aa440b70d43126666
 					{this.state.isUser ? (
 						<LoginForm handleChange={this.handleChange} updateAuthForm={this.updateAuthForm} />
 					) : (
