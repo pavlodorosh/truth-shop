@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { Form, Button } from 'bootstrap-4-react'
 import { auth, database } from '../../../firebase'
+import { connect } from 'react-redux'
+import { openAuthModal, changeAuthForm } from '../../../redux/actions'
 
-export default class RegisterForm extends Component {
+class RegisterForm extends Component {
 	state = {
 		username: '',
 		password: '',
@@ -89,6 +91,13 @@ export default class RegisterForm extends Component {
 		})
 	}
 
+	static mapDispatchToProps = dispatch => {
+		return {
+			openAuthModal: () => dispatch(openAuthModal()),
+			changeAuthForm: () => dispatch(changeAuthForm())
+		}
+	}
+
 	render() {
 		const { username, password, passwordConfirmation, email, errors } = this.state
 
@@ -115,7 +124,9 @@ export default class RegisterForm extends Component {
 						<Button primary type="submit">
 							Sign up
 						</Button>
-						<Button primary>Close</Button>
+						<Button primary type="button" onClick={this.props.openAuthModal}>
+							Close
+						</Button>
 					</Form>
 					{errors.length > 0 && (
 						<div>
@@ -124,10 +135,15 @@ export default class RegisterForm extends Component {
 						</div>
 					)}
 					<p>
-						Already user? <span onClick={this.alreadyUserFunction}>Login</span>
+						Already user? <span onClick={this.props.changeAuthForm}>Login</span>
 					</p>
 				</div>
 			</div>
 		)
 	}
 }
+
+export default connect(
+	null,
+	RegisterForm.mapDispatchToProps
+)(RegisterForm)

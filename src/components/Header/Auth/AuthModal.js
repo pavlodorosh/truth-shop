@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Modal from 'react-modal'
-
+import { connect } from 'react-redux'
+import { openAuthModal } from '../../../redux/actions'
 import './Auth.css'
-
 import LoginForm from './LoginForm'
 import RegisterForm from './RegisterForm'
 
@@ -17,34 +17,34 @@ const customStyles = {
 	}
 }
 
-export default class AuthModal extends Component {
-	state = {
-		isUser: true
-	}
+const getParent = () => {
+	return document.querySelector('#root')
+}
 
-	getParent() {
-		return document.querySelector('#root')
-	}
+const AuthModal = ({ isAuthModalOpen, isUserExist }) => {
+	return (
+		<>
+			<Modal isOpen={isAuthModalOpen} className="user-modal" parentSelector={getParent} appElement={elementForModal} style={customStyles}>
+				{isUserExist ? <LoginForm /> : <RegisterForm />}
+			</Modal>
+		</>
+	)
+}
 
-	updateAuthForm = value => {
-		this.setState({
-			isUser: value
-		})
-	}
-
-	render() {
-		const { isUser } = this.state
-
-		return (
-			<>
-				<Modal isOpen={this.props.modalIsOpen} className="user-modal" parentSelector={this.getParent} appElement={elementForModal} style={customStyles}>
-					{isUser ? (
-						<LoginForm handleChange={this.handleChange} updateAuthForm={this.updateAuthForm} />
-					) : (
-						<RegisterForm handleChange={this.handleChange} updateAuthForm={this.updateAuthForm} />
-					)}
-				</Modal>
-			</>
-		)
+const mapStateToProps = state => {
+	return {
+		isAuthModalOpen: state.authModal,
+		isUserExist: state.authModalUserFormSwitch
 	}
 }
+
+const mapDispatchToProps = dispatch => {
+	return {
+		openAuthModal: () => dispatch(openAuthModal())
+	}
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(AuthModal)
