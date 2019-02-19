@@ -14,7 +14,7 @@ import Product from './pages/Product'
 class App extends Component {
 	render() {
 		return (
-			<div>
+			<>
 				<Header />
 
 				<Switch>
@@ -28,7 +28,7 @@ class App extends Component {
 				</Switch>
 
 				<Footer />
-			</div>
+			</>
 		)
 	}
 }
