@@ -12,7 +12,7 @@ class Footer extends Component {
 								<List unstyled>
 									<List.Item>© 2018 TRUTH TRAINING</List.Item>
 									<List.Item>Ukraine. Kyiv 04060</List.Item>
-									<List.Item>Schuseva st.27\4 office 11</List.Item>
+									<List.Item>Schuseva st.27 4 office 11</List.Item>
 									<List.Item>Tel: +38(097)9113502</List.Item>
 								</List>
 							</Col>

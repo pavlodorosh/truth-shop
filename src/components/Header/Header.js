@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Nav, Button, Container, Row, Col, Media, BImg, BDiv, Dropdown } from 'bootstrap-4-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { openAuthModal, setUserInfo } from '../../redux/actions'
+import { openAuthModal, setUserInfo, clearUserInfo } from '../../redux/actions'
 import { auth } from '../../firebase'
 
 import AuthModal from './Auth/AuthModal'
@@ -16,6 +16,17 @@ class Header extends Component {
 				this.props.setUserInfo(userSign)
 			}
 		})
+	}
+
+	signOut = () => {
+		auth.signOut()
+			.then(() => {
+				console.log('Вроде как вышли')
+				this.props.clearUserInfo()
+			})
+			.catch(err => {
+				console.log(err)
+			})
 	}
 
 	render() {
@@ -40,21 +51,22 @@ class Header extends Component {
 							</Col>
 							<Col alignSelf="center" col="lg-4">
 								<BDiv display="flex" justifyContent="center">
-									<Button className="LoginButton" as="button" onClick={this.props.openAuthModal}>
-										SIGH IN
-									</Button>
-									<Dropdown>
-										<Dropdown.Button secondary id="dropdownMenuButton">
-											Dropdown button
-										</Dropdown.Button>
-										<Dropdown.Menu aria-labelledby="dropdownMenuButton">
-											<Dropdown.Item href="#" active>
-												Action
-											</Dropdown.Item>
-											<Dropdown.Item disabled>Another action</Dropdown.Item>
-											<Dropdown.Item>Something else here</Dropdown.Item>
-										</Dropdown.Menu>
-									</Dropdown>
+									{this.props.user !== null ? (
+										<Dropdown>
+											<Dropdown.Button secondary id="dropdownMenuButton">
+												{this.props.user.displayName}
+											</Dropdown.Button>
+											<Dropdown.Menu aria-labelledby="dropdownMenuButton">
+												<Dropdown.Item active>My Profile</Dropdown.Item>
+												<Dropdown.Item onClick={this.signOut}>Sign Out</Dropdown.Item>
+											</Dropdown.Menu>
+										</Dropdown>
+									) : (
+										<Button className="LoginButton" as="button" onClick={this.props.openAuthModal}>
+											SIGH IN
+										</Button>
+									)}
+
 									<Button light as="a" href="#">
 										RU
 									</Button>
@@ -77,7 +89,8 @@ class Header extends Component {
 	static mapDispatchToProps = dispatch => {
 		return {
 			openAuthModal: () => dispatch(openAuthModal()),
-			setUserInfo: data => dispatch(setUserInfo(data))
+			setUserInfo: data => dispatch(setUserInfo(data)),
+			clearUserInfo: () => dispatch(clearUserInfo())
 		}
 	}
 }

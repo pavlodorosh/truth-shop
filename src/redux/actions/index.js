@@ -10,6 +10,12 @@ export const checkUserLogin = () => {
 	}
 }
 
+export const clearUserInfo = () => {
+	return {
+		type: 'CLEAR_USER_INFO'
+	}
+}
+
 export const openAuthModal = () => {
 	return {
 		type: 'OPEN_AUTH_MODAL'
