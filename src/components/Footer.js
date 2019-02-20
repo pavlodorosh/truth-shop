@@ -37,7 +37,7 @@ class Footer extends Component {
 								<BDiv>
 									<Button danger as="a" href="#">
 										fa
-										<i class="fab fa-facebook" />
+										<i className="fab fa-facebook" />
 									</Button>
 									<Button danger as="a" href="#">
 										G+

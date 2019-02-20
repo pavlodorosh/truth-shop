@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Nav, Button, Container, Row, Col, Media, BImg, BDiv } from 'bootstrap-4-react'
+import { Nav, Button, Container, Row, Col, Media, BImg, BDiv, Dropdown } from 'bootstrap-4-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { openAuthModal, setUserInfo } from '../../redux/actions'
