@@ -1,10 +1,9 @@
 const initialState = {
 	authModal: {
 		isAuthModalOpen: false,
-		isUser: {
-			userExist: true
-		}
-	}
+		isUser: true
+	},
+	userInfo: null
 }
 
 export default initialState

@@ -69,8 +69,9 @@ class RegisterForm extends Component {
 						})
 						.then(() => {
 							this.saveUser(createdUser).then(() => {
-								console.log(' пользователь сохранен')
+								console.log(`пользователь сохранен`)
 							})
+							this.props.openAuthModal()
 						})
 						.catch(err => {
 							console.log(err)

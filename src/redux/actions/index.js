@@ -1,11 +1,26 @@
+export const changeAuthForm = () => {
+	return {
+		type: 'CHANGE_AUTH_FORM'
+	}
+}
+
+export const checkUserLogin = () => {
+	return {
+		type: 'CHECK_USER_LOGIN'
+	}
+}
+
 export const openAuthModal = () => {
 	return {
 		type: 'OPEN_AUTH_MODAL'
 	}
 }
 
-export const changeAuthForm = () => {
+export const setUserInfo = user => {
 	return {
-		type: 'CHANGE_AUTH_FORM'
+		type: 'SET_USER_INFO',
+		payload: {
+			currentUser: user
+		}
 	}
 }
