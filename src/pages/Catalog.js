@@ -59,8 +59,7 @@ class Catalog extends Component {
 								</Card.Footer>
 							</Card>
 						</Col>
-					</Row>
-					<Row className="no-gutter">
+
 						<Col className="" col="lg-3">
 							<Card>
 								<Card.Image src={product} />
@@ -109,8 +108,7 @@ class Catalog extends Component {
 								</Card.Footer>
 							</Card>
 						</Col>
-					</Row>
-					<Row className="no-gutter">
+
 						<Col className="" col="lg-3">
 							<Card>
 								<Card.Image src={product} />

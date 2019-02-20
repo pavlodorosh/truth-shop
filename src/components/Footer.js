@@ -4,16 +4,16 @@ import { Nav, Button, Container, Row, Col, List, BDiv, BSpan } from 'bootstrap-4
 class Footer extends Component {
 	render() {
 		return (
-			<>
+			<footer>
 				<Container fluid={true}>
 					<Container>
 						<Row>
-							<Col col="lg-3">
+							<Col col="lg-3" className="info pl-0">
 								<List unstyled>
-									<List.Item>2018 TRUTH TRAINING</List.Item>
+									<List.Item>© 2018 TRUTH TRAINING</List.Item>
 									<List.Item>Ukraine. Kyiv 04060</List.Item>
-									<List.Item>Schuseva st.27/4 office 11</List.Item>
-									<List.Item>Tel: +380(097)9113502</List.Item>
+									<List.Item>Schuseva st.27\4 office 11</List.Item>
+									<List.Item>Tel: +38(097)9113502</List.Item>
 								</List>
 							</Col>
 							<Col col="lg-3">
@@ -32,12 +32,12 @@ class Footer extends Component {
 									</Nav.ItemLink>
 								</Nav>
 							</Col>
-							<Col col="lg-3">
-								<BSpan> SOCIAL MEDIA</BSpan>
+							<Col col="lg-3 ">
+								<BSpan className="column-title"> SOCIAL MEDIA</BSpan>
 								<BDiv>
 									<Button danger as="a" href="#">
 										fa
-										<i className="fa fa-facebook" aria-hidden="true" />
+										<i class="fab fa-facebook" />
 									</Button>
 									<Button danger as="a" href="#">
 										G+
@@ -48,15 +48,15 @@ class Footer extends Component {
 								</BDiv>
 							</Col>
 							<Col col="lg-3">
-								BE IN TOUCH WITH US
-								<Button danger as="a" href="#">
+								<BSpan className="column-title"> BE IN TOUCH WITH US</BSpan>
+								<Button className="subscribe" as="button" href="#">
 									SUBSCRIBE NOW
 								</Button>
 							</Col>
 						</Row>
 					</Container>
 				</Container>
-			</>
+			</footer>
 		)
 	}
 }
