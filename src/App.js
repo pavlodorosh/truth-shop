@@ -10,12 +10,16 @@ import Footer from './components/Footer'
 import Category from './pages/Category'
 import SubCategory from './pages/SubCategory'
 import Product from './pages/Product'
+import User from '../src/admin/pages/User'
+import UserList from '../src/admin/pages/UserList'
+import CategoryList from '../src/admin/pages/CategoryList'
+import ProductAdd from '../src/admin/pages/ProductAdd'
 
 class App extends Component {
 	render() {
 		return (
 			<>
-				<Header />
+				{/* <Header />
 
 				<Switch>
 					<Route exact path="/" component={Front} />
@@ -25,9 +29,11 @@ class App extends Component {
 					<Route exact path="/category" component={Category} />
 					<Route exact path="/subcategory" component={SubCategory} />
 					<Route exact path="/product" component={Product} />
+					<Route exact path="/user" component={User} />
 				</Switch>
 
-				<Footer />
+				<Footer /> */}
+				<User />
 			</>
 		)
 	}

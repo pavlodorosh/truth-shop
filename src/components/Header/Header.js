@@ -43,7 +43,7 @@ class Header extends Component {
 								</Media>
 							</Col>
 							<Col alignSelf="center" col="lg-4">
-								<Nav justifyContent="center" alignItems="center">
+								<Nav justifyContent="between" alignItems="center">
 									<Link to="/about">ABOUT US </Link>
 									<Link to="/contacts">CONTACTS</Link>
 									<Link to="/category">SHOP</Link>
