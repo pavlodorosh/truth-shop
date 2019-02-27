@@ -16,7 +16,7 @@ export default class Navbar extends Component {
 			<div className="main-menu menu-fixed ">
 				<div className="main-menu-content">
 					<ul className="navigation navigation-main">
-						<li className="nav-item" onClick={this.setActiveNavLink}>
+						<li className="nav-item active" onClick={this.setActiveNavLink}>
 							<Link to="/user/dashboard">
 								<FaHome />
 								<span className="menu-title">eCommerce Dashboard</span>

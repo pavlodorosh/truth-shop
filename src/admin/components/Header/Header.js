@@ -26,9 +26,6 @@ class Header extends Component {
 											<Link to="/" className="dropdown-item">
 												View Shop
 											</Link>
-											<Link to="/user/profile" className="dropdown-item">
-												Edit Profile
-											</Link>
 
 											<Link to="#" className="dropdown-item">
 												Task

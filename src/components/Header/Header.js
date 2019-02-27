@@ -60,9 +60,6 @@ class Header extends Component {
 												<Dropdown.Item>
 													<Link to="/user/dashboard">Admin Panel</Link>
 												</Dropdown.Item>
-												<Dropdown.Item>
-													<Link to="/user/profile">My Profile</Link>
-												</Dropdown.Item>
 												<Dropdown.Item onClick={this.signOut}>Sign Out</Dropdown.Item>
 											</Dropdown.Menu>
 										</Dropdown>
