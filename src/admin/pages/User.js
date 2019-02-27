@@ -1,14 +1,9 @@
 import React, { Component } from 'react'
-import Header from '../components/Header/Header'
-import Navbar from '../components/Navbar/Navbar'
-import Footer from '../components/Footer/Footer'
 
 class User extends Component {
 	render() {
 		return (
 			<div className="user">
-				<Header />
-				<Navbar />
 				<div className="app-content content">
 					<div className="content-wrapper">
 						<div className="content-body">
@@ -110,16 +105,16 @@ class User extends Component {
 														<div className="block block-two" />
 														<div className="block block-three" />
 														<div className="block block-four" />
-														<a href="javascript:void(0)">
+														<button>
 															{/* <img className="avatar" src="../assets/img/emilyz.jpg" alt="..."> */}
 															<h5 className="title">Mike Andrew</h5>
-														</a>
+														</button>
 														<p className="description">Ceo/Co-Founder</p>
 													</div>
 													<p />
 													<div className="card-description">
-														Do not be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’
-														bed design but the back is...
+														Do not be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick
+														Owens’ bed design but the back is...
 													</div>
 												</div>
 											</div>
@@ -130,7 +125,6 @@ class User extends Component {
 						</div>
 					</div>
 				</div>
-				<Footer />
 			</div>
 		)
 	}

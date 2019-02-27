@@ -31,9 +31,9 @@ class Header extends Component {
 
 	render() {
 		return (
-			<header>
+			<>
 				<Container fluid>
-					<Container>
+					<Container className="not-admin">
 						<Row>
 							<Col col="lg-4">
 								<Media>
@@ -57,7 +57,12 @@ class Header extends Component {
 												{this.props.user.displayName}
 											</Dropdown.Button>
 											<Dropdown.Menu aria-labelledby="dropdownMenuButton">
-												<Dropdown.Item active>My Profile</Dropdown.Item>
+												<Dropdown.Item>
+													<Link to="/user/dashboard">Admin Panel</Link>
+												</Dropdown.Item>
+												<Dropdown.Item>
+													<Link to="/user/profile">My Profile</Link>
+												</Dropdown.Item>
 												<Dropdown.Item onClick={this.signOut}>Sign Out</Dropdown.Item>
 											</Dropdown.Menu>
 										</Dropdown>
@@ -76,7 +81,7 @@ class Header extends Component {
 						</Row>
 					</Container>
 				</Container>
-			</header>
+			</>
 		)
 	}
 

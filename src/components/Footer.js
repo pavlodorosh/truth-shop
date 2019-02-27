@@ -4,7 +4,7 @@ import { Nav, Button, Container, Row, Col, List, BDiv, BSpan } from 'bootstrap-4
 class Footer extends Component {
 	render() {
 		return (
-			<footer>
+			<>
 				<Container fluid={true}>
 					<Container>
 						<Row>
@@ -56,7 +56,7 @@ class Footer extends Component {
 						</Row>
 					</Container>
 				</Container>
-			</footer>
+			</>
 		)
 	}
 }

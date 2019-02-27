@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import { FaFlag } from 'react-icons/fa'
-export default class Header extends Component {
+
+class Header extends Component {
 	render() {
 		return (
-			<header>
+			<>
 				<nav className="header-navbar fixed-top">
 					<div className="navbar-wrapper">
 						<div className="navbar-header expanded">
@@ -16,12 +18,15 @@ export default class Header extends Component {
 									<li className="dropdown dropdown-user nav-item">
 										<Link to="#" className="dropdown-toggle nav-link dropdown-user-link" data-toggle="dropdown">
 											<span className="mr-1">
-												Hello,<span className="user-name ">John Doe</span>
+												Hello, <span className="user-name ">{this.props.user.displayName}</span>
 											</span>
 											<span className="avatar avatar-online" />
 										</Link>
 										<div className="dropdown-menu dropdown-menu-right">
-											<Link to="#" className="dropdown-item">
+											<Link to="/" className="dropdown-item">
+												View Shop
+											</Link>
+											<Link to="/user/profile" className="dropdown-item">
 												Edit Profile
 											</Link>
 
@@ -55,7 +60,18 @@ export default class Header extends Component {
 						</div>
 					</div>
 				</nav>
-			</header>
+			</>
 		)
 	}
+
+	static mapStateToProps = state => {
+		return {
+			user: state.userInfo
+		}
+	}
 }
+
+export default connect(
+	Header.mapStateToProps,
+	null
+)(Header)
