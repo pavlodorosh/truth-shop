@@ -19,6 +19,14 @@ import Admin from './admin/pages/Admin'
 // import ProductAdd from '../src/admin/pages/ProductAdd'
 
 class App extends Component {
+	componentDidUpdate() {
+		if (window.location.href.indexOf('/user') > 0) require('./admin.css')
+		else require('./index.css')
+	}
+	componentDidMount() {
+		if (window.location.href.indexOf('/user') > 0) require('./admin.css')
+		else require('./index.css')
+	}
 	render() {
 		return (
 			<>

@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar/Navbar'
 import { Route } from 'react-router-dom'
 import User from './User'
 import Dashboard from './Dashboard'
-import '../admin.css'
+
 import CategoryList from './CategoryList'
 
 export default class Admin extends Component {
