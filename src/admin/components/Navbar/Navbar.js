@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FaHome, FaUserCircle } from 'react-icons/fa'
+import { FaHome, FaUserCircle, FaAlignJustify } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 export default class Navbar extends Component {
 	setActiveNavLink = e => {
@@ -27,6 +27,13 @@ export default class Navbar extends Component {
 							<Link to="/user/profile">
 								<FaUserCircle />
 								<span className="menu-title">User</span>
+							</Link>
+						</li>
+
+						<li className="nav-item" onClick={this.setActiveNavLink}>
+							<Link to="/user/category">
+								<FaAlignJustify />
+								<span className="menu-title">Category</span>
 							</Link>
 						</li>
 					</ul>

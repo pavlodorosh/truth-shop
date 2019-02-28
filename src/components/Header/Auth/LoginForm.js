@@ -22,7 +22,6 @@ class LoginForm extends Component {
 	}
 
 	handleSubmit = event => {
-		auth.setPersistence(auth.Auth.Persistence.NONE)
 		event.preventDefault()
 		if (this.isFormValid(this.state)) {
 			this.setState({ errors: [] })

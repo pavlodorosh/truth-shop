@@ -3,6 +3,8 @@ import Navbar from '../components/Navbar/Navbar'
 import { Route } from 'react-router-dom'
 import User from './User'
 import Dashboard from './Dashboard'
+import '../admin.css'
+import CategoryList from './CategoryList'
 
 export default class Admin extends Component {
 	render() {
@@ -11,6 +13,7 @@ export default class Admin extends Component {
 				<Navbar />
 				<Route path="/user/dashboard" component={Dashboard} />
 				<Route path="/user/profile" component={User} />
+				<Route path="/user/category" component={CategoryList} />
 			</div>
 		)
 	}
