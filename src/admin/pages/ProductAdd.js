@@ -39,8 +39,8 @@ export default class ProductAdd extends Component {
 													</div>
 												</div>
 											</div>
-											<div class=" text-right">
-												<button type="button" class="btn btn-sm btn-primary btn-create">
+											<div className=" text-right">
+												<button type="button" className="btn btn-sm btn-primary btn-create">
 													Create New
 												</button>
 											</div>

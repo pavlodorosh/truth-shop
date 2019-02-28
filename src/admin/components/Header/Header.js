@@ -1,9 +1,29 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { auth } from '../../../firebase'
+import { setUserInfo, clearUserInfo } from '../../../redux/actions'
 import { FaFlag } from 'react-icons/fa'
 
 class Header extends Component {
+	componentDidMount() {
+		auth.onAuthStateChanged(userSign => {
+			if (userSign) {
+				this.props.setUserInfo(userSign)
+			}
+		})
+	}
+	signOut = () => {
+		auth.signOut()
+			.then(() => {
+				console.log('Вроде как вышли')
+				this.props.clearUserInfo()
+				window.location.href = '/'
+			})
+			.catch(err => {
+				console.log(err)
+			})
+	}
 	render() {
 		return (
 			<>
@@ -18,7 +38,7 @@ class Header extends Component {
 									<li className="dropdown dropdown-user nav-item">
 										<Link to="#" className="dropdown-toggle nav-link dropdown-user-link" data-toggle="dropdown">
 											<span className="mr-1">
-												Hello, <span className="user-name ">{this.props.user.displayName}</span>
+												Hello, <span className="user-name ">{this.props.user !== null ? this.props.user.displayName : ''}</span>
 											</span>
 											<span className="avatar avatar-online" />
 										</Link>
@@ -32,7 +52,7 @@ class Header extends Component {
 											</Link>
 
 											<div className="dropdown-divider" />
-											<Link to="#" className="dropdown-item">
+											<Link to="#" className="dropdown-item" onClick={this.signOut}>
 												Logout
 											</Link>
 										</div>
@@ -66,9 +86,16 @@ class Header extends Component {
 			user: state.userInfo
 		}
 	}
+
+	static mapStateToDispatch = dispatch => {
+		return {
+			setUserInfo: data => dispatch(setUserInfo(data)),
+			clearUserInfo: () => dispatch(clearUserInfo())
+		}
+	}
 }
 
 export default connect(
 	Header.mapStateToProps,
-	null
+	Header.mapStateToDispatch
 )(Header)

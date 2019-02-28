@@ -11,37 +11,37 @@ class Product extends Component {
 				<Container>
 					<Row className="no-gutter">
 						<Col className="pl-0 pr-1" col="lg-6">
-							<div id="carousel-custom" class="carousel slide" data-ride="carousel">
+							<div id="carousel-custom" className="carousel slide" data-ride="carousel">
 								{/* Wrapper for slides */}
-								<div class="carousel-inner">
-									<div class="carousel-item active">
+								<div className="carousel-inner">
+									<div className="carousel-item active">
 										<Media>
 											<BImg className="img-fluid" src={product} />
 										</Media>
 									</div>
-									<div class="carousel-item">
+									<div className="carousel-item">
 										<Media>
 											<BImg className="img-fluid" src={product} />
 										</Media>
 									</div>
-									<div class="carousel-item">
+									<div className="carousel-item">
 										<Media>
 											<BImg className="img-fluid" src={product} />
 										</Media>
 									</div>
 
 									{/* Controls */}
-									<a class="left carousel-control" href="#carousel-custom" data-slide="prev">
-										<i class="fas fa-angle-left" />
+									<a className="left carousel-control" href="#carousel-custom" data-slide="prev">
+										<i className="fas fa-angle-left" />
 									</a>
-									<a class="right carousel-control" href="#carousel-custom" data-slide="next">
-										<span class="glyphicon glyphicon-chevron-right" />
+									<a className="right carousel-control" href="#carousel-custom" data-slide="next">
+										<span className="glyphicon glyphicon-chevron-right" />
 									</a>
 								</div>
 
 								{/* Indicators */}
-								<ol class="carousel-indicators">
-									<li data-target="#carousel-custom" data-slide-to="0" class="active">
+								<ol className="carousel-indicators">
+									<li data-target="#carousel-custom" data-slide-to="0" className="active">
 										<Media>
 											<BImg className="img-fluid" src={product} />
 										</Media>
