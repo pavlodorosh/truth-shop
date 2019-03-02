@@ -140,7 +140,12 @@ code {
 
 /***HEADER***/
 
-header .nav a {
+header nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+header nav a {
   font-family: Geometria;
   font-size: 16px;
   font-weight: bold;
@@ -163,6 +168,7 @@ header .nav a {
   border-radius: 25px;
   background-color: #ff4242;
   padding: 10px 30px;
+  border: none;
 }
 
 /***HEADER***/
@@ -215,8 +221,6 @@ header .nav a {
 /***SubCategoty***/
 
 /***FOOTER***/
-
-footer {}
 
 footer .info {
   font-family: Geometria;

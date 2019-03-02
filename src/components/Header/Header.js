@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Nav, Button, Container, Row, Col, Media, BImg, BDiv, Dropdown } from 'bootstrap-4-react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { openAuthModal, setUserInfo, clearUserInfo } from '../../redux/actions'
@@ -32,52 +31,50 @@ class Header extends Component {
 	render() {
 		return (
 			<>
-				<Container fluid>
-					<Container className="not-admin">
-						<Row>
-							<Col col="lg-4">
-								<Media>
-									<Link to="/">
-										<BImg src={logo} />
-									</Link>
-								</Media>
-							</Col>
-							<Col alignSelf="center" col="lg-4">
-								<Nav justifyContent="between" alignItems="center">
+				<div className="container-fluid">
+					<div className="container not-admin">
+						<div className="row">
+							<div className="col-lg-4">
+								<Link to="/">
+									<img src={logo} alt={logo} />
+								</Link>
+							</div>
+							<div className="col-lg-4">
+								<nav>
 									<Link to="/about">ABOUT US </Link>
 									<Link to="/contacts">CONTACTS</Link>
 									<Link to="/category">SHOP</Link>
-								</Nav>
-							</Col>
-							<Col alignSelf="center" col="lg-4">
-								<BDiv display="flex" justifyContent="center">
-									{this.props.user !== null ? (
-										<Dropdown>
-											<Dropdown.Button secondary id="dropdownMenuButton">
-												{this.props.user.displayName}
-											</Dropdown.Button>
-											<Dropdown.Menu aria-labelledby="dropdownMenuButton">
-												<Dropdown.Item>
-													<Link to="/user/dashboard">Admin Panel</Link>
-												</Dropdown.Item>
-												<Dropdown.Item onClick={this.signOut}>Sign Out</Dropdown.Item>
-											</Dropdown.Menu>
-										</Dropdown>
-									) : (
-										<Button className="LoginButton" as="button" onClick={this.props.openAuthModal}>
-											SIGH IN
-										</Button>
-									)}
+								</nav>
+							</div>
+							<div className="col-lg-4">
+								{this.props.user !== null ? (
+									<div className="dropdown">
+										<button id="dropdownMenuButton" data-toggle="dropdown" className="btn btn-secondary dropdown-toggle" aria-expanded="false">
+											{this.props.user.displayName}
+										</button>
+										<div aria-labelledby="dropdownMenuButton" className="dropdown-menu" x-placement="bottom-start">
+											<Link className="dropdown-item" to="/user/dashboard">
+												Admin Panel
+											</Link>
+											<Link className="dropdown-item" to="/" onClick={this.signOut}>
+												Sign Out
+											</Link>
+										</div>
+									</div>
+								) : (
+									<button className="LoginButton" as="button" onClick={this.props.openAuthModal}>
+										SIGH IN
+									</button>
+								)}
 
-									<Button light as="a" href="#">
-										RU
-									</Button>
-								</BDiv>
-							</Col>
+								<button as="a" href="#">
+									RU
+								</button>
+							</div>
 							<AuthModal />
-						</Row>
-					</Container>
-				</Container>
+						</div>
+					</div>
+				</div>
 			</>
 		)
 	}

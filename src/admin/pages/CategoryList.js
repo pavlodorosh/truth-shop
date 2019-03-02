@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Header from '../components/Header/Header'
+
 import Navbar from '../components/Navbar/Navbar'
-import Footer from '../components/Footer/Footer'
+
 import { Modal } from 'bootstrap-4-react'
 export default class CategoryList extends Component {
 	render() {
