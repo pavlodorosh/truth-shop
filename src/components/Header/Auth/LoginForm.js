@@ -66,7 +66,12 @@ class LoginForm extends Component {
 							Close
 						</Button>
 					</Form>
-
+					{this.state.errors.length > 0 && (
+						<div>
+							<h3>Error</h3>
+							{this.displayErrors(this.state.errors)}
+						</div>
+					)}
 					<p>
 						Haven't account? <span onClick={this.props.changeAuthForm}>Register</span>
 					</p>

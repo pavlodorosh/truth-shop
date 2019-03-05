@@ -13,6 +13,7 @@ class Header extends Component {
 			}
 		})
 	}
+
 	signOut = () => {
 		auth.signOut()
 			.then(() => {

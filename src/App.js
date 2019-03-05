@@ -12,11 +12,7 @@ import Footer from './components/Footer'
 import Category from './pages/Category'
 import SubCategory from './pages/SubCategory'
 import Product from './pages/Product'
-// import User from '../src/admin/pages/User'
 import Admin from './admin/pages/Admin'
-// import UserList from '../src/admin/pages/UserList'
-// import CategoryList from '../src/admin/pages/CategoryList'
-// import ProductAdd from '../src/admin/pages/ProductAdd'
 
 class App extends Component {
 	componentDidUpdate() {

@@ -1,9 +1,42 @@
 import React, { Component } from 'react'
 
 import Navbar from '../components/Navbar/Navbar'
+import AddCategory from '../components/Categories/AddCategory'
+import { database } from '../../firebase'
 
-import { Modal } from 'bootstrap-4-react'
 export default class CategoryList extends Component {
+	state = {
+		categories: {}
+	}
+
+	componentWillUpdate = () => {
+		const ref = database.ref()
+
+		ref.on(
+			'value',
+			function(snapshot) {
+				console.log(snapshot.val().categories)
+			},
+			function(error) {
+				console.log('Error: ' + error.code)
+			}
+		)
+	}
+
+	componentWillMount = () => {
+		const ref = database.ref()
+
+		ref.on(
+			'value',
+			function(snapshot) {
+				console.log(snapshot.val().categories)
+			},
+			function(error) {
+				console.log('Error: ' + error.code)
+			}
+		)
+	}
+
 	render() {
 		return (
 			<div className="user">
@@ -62,40 +95,7 @@ export default class CategoryList extends Component {
 				</div>
 
 				{/* Modal */}
-				<Modal id="exampleModal" fade>
-					<Modal.Dialog>
-						<Modal.Content>
-							<Modal.Header>
-								<Modal.Title>Modal title</Modal.Title>
-								<Modal.Close>
-									<span aria-hidden="true">&times;</span>
-								</Modal.Close>
-							</Modal.Header>
-							<Modal.Body>
-								<form>
-									<div className="form-group">
-										<label>title</label>
-										<input type="text" className="form-control" />
-									</div>
-									<div className="form-group">
-										<label>preview</label>
-										<input type="text" className="form-control" />
-									</div>
-									<div className="form-group">
-										<label>subcategories</label>
-										<input type="text" className="form-control" />
-									</div>
-								</form>
-							</Modal.Body>
-							<Modal.Footer>
-								<button secondary data-dismiss="modal">
-									Close
-								</button>
-								<button primary>Save changes</button>
-							</Modal.Footer>
-						</Modal.Content>
-					</Modal.Dialog>
-				</Modal>
+				<AddCategory />
 			</div>
 		)
 	}
