@@ -30,3 +30,21 @@ export const setUserInfo = user => {
 		}
 	}
 }
+
+export const getCategories = categories => {
+	return {
+		type: 'GET_CATEGORIES',
+		categories
+	}
+}
+
+export function getCategoriesThunk(db) {
+	return dispatch => {
+		let categories = {}
+		db.ref('/categories')
+			.once('value', snap => {
+				categories = snap.val()
+			})
+			.then(() => dispatch(getCategories(categories)))
+	}
+}

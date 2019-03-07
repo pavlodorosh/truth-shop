@@ -8,7 +8,7 @@ import uuid from 'uuid/v1'
 import { Textbox } from 'react-inputs-validation'
 import 'react-inputs-validation/lib/react-inputs-validation.min.css'
 
-export default class AddCategory extends Component {
+class AddCategory extends Component {
 	state = {
 		name_en: '',
 		name_ru: '',
@@ -63,7 +63,6 @@ export default class AddCategory extends Component {
 
 	handleChangeParent = selectedOption => {
 		this.setState({ selectedOption })
-		console.log(`Option selected:`, selectedOption)
 	}
 
 	saveCategory = () => {
@@ -78,9 +77,7 @@ export default class AddCategory extends Component {
 				link: this.state.link,
 				preview: this.state.previewUrl
 			})
-			.then(() => {
-				console.log('category added')
-			})
+			.then(() => {})
 			.catch(err => {
 				console.log(err)
 			})
@@ -229,3 +226,4 @@ export default class AddCategory extends Component {
 		)
 	}
 }
+export default AddCategory

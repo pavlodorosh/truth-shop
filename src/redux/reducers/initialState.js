@@ -3,7 +3,8 @@ const initialState = {
 		isAuthModalOpen: false,
 		isUser: true
 	},
-	userInfo: null
+	userInfo: null,
+	categoriesList: {}
 }
 
 export default initialState

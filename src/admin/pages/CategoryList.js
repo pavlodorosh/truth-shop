@@ -1,43 +1,23 @@
 import React, { Component } from 'react'
+import { database } from '../../firebase'
+import { connect } from 'react-redux'
+import { getCategoriesThunk } from '../../redux/actions'
 
 import Navbar from '../components/Navbar/Navbar'
 import AddCategory from '../components/Categories/AddCategory'
-import { database } from '../../firebase'
 
-export default class CategoryList extends Component {
-	state = {
-		categories: {}
+class CategoryList extends Component {
+	componentWillMount() {
+		this.props.getCategoriesThunk(database)
 	}
 
-	componentWillUpdate = () => {
-		const ref = database.ref()
-
-		ref.on(
-			'value',
-			function(snapshot) {
-				console.log(snapshot.val().categories)
-			},
-			function(error) {
-				console.log('Error: ' + error.code)
-			}
-		)
-	}
-
-	componentWillMount = () => {
-		const ref = database.ref()
-
-		ref.on(
-			'value',
-			function(snapshot) {
-				console.log(snapshot.val().categories)
-			},
-			function(error) {
-				console.log('Error: ' + error.code)
-			}
-		)
+	componentWillUpdate() {
+		this.props.getCategoriesThunk(database)
 	}
 
 	render() {
+		const { categories } = this.props
+
 		return (
 			<div className="user">
 				<Navbar />
@@ -65,16 +45,68 @@ export default class CategoryList extends Component {
 												<thead>
 													<tr>
 														<th>Name</th>
-														<th>Sort</th>
 														<th>
 															<em className="fa fa-cog" />
 														</th>
 													</tr>
 												</thead>
 												<tbody>
-													<tr>
-														<td>T-short</td>
-														<td>1</td>
+													{categories !== null &&
+														categories.accessories &&
+														Object.keys(categories.accessories).map(function(id) {
+															return (
+																<tr key={id}>
+																	<td>Accessories -> {categories.accessories[id].name.en}</td>
+																	<td align="center">
+																		<button className="btn btn-default">
+																			<em className="fa fa-pencil" />
+																		</button>
+																		<button className="btn btn-danger">
+																			<em className="fa fa-trash" />
+																		</button>
+																	</td>
+																</tr>
+															)
+														})}
+
+													{categories !== null &&
+														categories.men &&
+														Object.keys(categories.men).map(function(id) {
+															return (
+																<tr key={id}>
+																	<td>Men -> {categories.men[id].name.en}</td>
+																	<td align="center">
+																		<button className="btn btn-default">
+																			<em className="fa fa-pencil" />
+																		</button>
+																		<button className="btn btn-danger">
+																			<em className="fa fa-trash" />
+																		</button>
+																	</td>
+																</tr>
+															)
+														})}
+
+													{categories !== null &&
+														categories.women &&
+														Object.keys(categories.women).map(function(id) {
+															return (
+																<tr key={id}>
+																	<td>Women -> {categories.women[id].name.en}</td>
+																	<td align="center">
+																		<button className="btn btn-default">
+																			<em className="fa fa-pencil" />
+																		</button>
+																		<button className="btn btn-danger">
+																			<em className="fa fa-trash" />
+																		</button>
+																	</td>
+																</tr>
+															)
+														})}
+
+													{/* <tr key={key}>
+														<td>Accessories -> {accessoriesArray[key].name.en}</td>
 														<td align="center">
 															<button className="btn btn-default">
 																<em className="fa fa-pencil" />
@@ -83,7 +115,7 @@ export default class CategoryList extends Component {
 																<em className="fa fa-trash" />
 															</button>
 														</td>
-													</tr>
+													</tr> */}
 												</tbody>
 											</table>
 										</div>
@@ -99,4 +131,18 @@ export default class CategoryList extends Component {
 			</div>
 		)
 	}
+	static mapStateToProps = state => ({
+		categories: state.getCategories
+	})
+
+	static mapStateToDispatch = dispatch => {
+		return {
+			getCategoriesThunk: db => dispatch(getCategoriesThunk(db))
+		}
+	}
 }
+
+export default connect(
+	CategoryList.mapStateToProps,
+	CategoryList.mapStateToDispatch
+)(CategoryList)
