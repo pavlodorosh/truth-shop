@@ -38,7 +38,9 @@ class App extends Component {
 				<Route path="/about" component={About} />
 				<Route path="/catalog" component={Catalog} />
 				<Route path="/category" component={Category} />
-				<Route path="/subcategory" component={SubCategory} />
+				<Route path="/women" render={props => <SubCategory {...props} subcategory={'Women'} />} />
+				<Route path="/men" render={props => <SubCategory {...props} subcategory={'Men'} />} />
+				<Route path="/accessories" render={props => <SubCategory {...props} subcategory={'Accessories'} />} />
 				<Route path="/product" component={Product} />
 
 				<Route path="/user" component={Admin} />

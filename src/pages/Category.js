@@ -13,7 +13,7 @@ export default class Category extends Component {
 						<Row className="no-gutter">
 							<Col className="pl-0 pr-1" col="lg-4">
 								<Media>
-									<Link to="/subcategory">
+									<Link to="/women">
 										<BImg className="img-fluid" src={women} />
 									</Link>
 								</Media>
@@ -23,7 +23,9 @@ export default class Category extends Component {
 							</Col>
 							<Col className="px-1" col="lg-4">
 								<Media>
-									<BImg className="img-fluid" src={accessories} />
+									<Link to="/accessories">
+										<BImg className="img-fluid" src={accessories} />
+									</Link>
 								</Media>
 								<BSpan className="category_name" align="middle">
 									ACCESSORIES
@@ -31,7 +33,9 @@ export default class Category extends Component {
 							</Col>
 							<Col className="pr-0 pl-1" col="lg-4">
 								<Media>
-									<BImg className="img-fluid" src={men} />
+									<Link to="/men">
+										<BImg className="img-fluid" src={men} />
+									</Link>
 								</Media>
 								<BSpan className="category_name" align="middle">
 									MEN

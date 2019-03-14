@@ -1,23 +1,58 @@
 import React, { Component } from 'react'
 import { database } from '../../firebase'
-import { connect } from 'react-redux'
-import { getCategoriesThunk } from '../../redux/actions'
 
 import Navbar from '../components/Navbar/Navbar'
 import AddCategory from '../components/Categories/AddCategory'
 
 class CategoryList extends Component {
-	componentWillMount() {
-		this.props.getCategoriesThunk(database)
+	constructor(props) {
+		super(props)
+		this.state = {
+			categories: {}
+		}
+		this.removeCategoryFromDatabase = this.removeCategoryFromDatabase.bind(this)
 	}
 
-	componentWillUpdate() {
-		this.props.getCategoriesThunk(database)
+	removeCategoryFromDatabase = id => {
+		database
+			.ref('/categories')
+			.child(id)
+			.remove()
+	}
+
+	getCategoriesFromDatabase = () => {
+		database.ref('/categories').on('value', snapshot => {
+			this.setState({
+				categories: snapshot.val()
+			})
+		})
+	}
+
+	componentWillMount = () => {
+		this.getCategoriesFromDatabase()
+	}
+
+	renderCategories = () => {
+		if (this.state.categories !== null) {
+			return Object.keys(this.state.categories).map((id, index) => (
+				<tr key={id}>
+					<td>
+						{this.state.categories[id].parentCategory} -> {this.state.categories[id].name.en}
+					</td>
+					<td align="center">
+						<button className="btn btn-default">
+							<em className="fa fa-pencil" />
+						</button>
+						<button className="btn btn-danger" onClick={() => this.removeCategoryFromDatabase(id)}>
+							<em className="fa fa-trash" />
+						</button>
+					</td>
+				</tr>
+			))
+		}
 	}
 
 	render() {
-		const { categories } = this.props
-
 		return (
 			<div className="user">
 				<Navbar />
@@ -50,73 +85,7 @@ class CategoryList extends Component {
 														</th>
 													</tr>
 												</thead>
-												<tbody>
-													{categories !== null &&
-														categories.accessories &&
-														Object.keys(categories.accessories).map(function(id) {
-															return (
-																<tr key={id}>
-																	<td>Accessories -> {categories.accessories[id].name.en}</td>
-																	<td align="center">
-																		<button className="btn btn-default">
-																			<em className="fa fa-pencil" />
-																		</button>
-																		<button className="btn btn-danger">
-																			<em className="fa fa-trash" />
-																		</button>
-																	</td>
-																</tr>
-															)
-														})}
-
-													{categories !== null &&
-														categories.men &&
-														Object.keys(categories.men).map(function(id) {
-															return (
-																<tr key={id}>
-																	<td>Men -> {categories.men[id].name.en}</td>
-																	<td align="center">
-																		<button className="btn btn-default">
-																			<em className="fa fa-pencil" />
-																		</button>
-																		<button className="btn btn-danger">
-																			<em className="fa fa-trash" />
-																		</button>
-																	</td>
-																</tr>
-															)
-														})}
-
-													{categories !== null &&
-														categories.women &&
-														Object.keys(categories.women).map(function(id) {
-															return (
-																<tr key={id}>
-																	<td>Women -> {categories.women[id].name.en}</td>
-																	<td align="center">
-																		<button className="btn btn-default">
-																			<em className="fa fa-pencil" />
-																		</button>
-																		<button className="btn btn-danger">
-																			<em className="fa fa-trash" />
-																		</button>
-																	</td>
-																</tr>
-															)
-														})}
-
-													{/* <tr key={key}>
-														<td>Accessories -> {accessoriesArray[key].name.en}</td>
-														<td align="center">
-															<button className="btn btn-default">
-																<em className="fa fa-pencil" />
-															</button>
-															<button className="btn btn-danger">
-																<em className="fa fa-trash" />
-															</button>
-														</td>
-													</tr> */}
-												</tbody>
+												<tbody>{this.renderCategories()}</tbody>
 											</table>
 										</div>
 									</div>
@@ -131,18 +100,6 @@ class CategoryList extends Component {
 			</div>
 		)
 	}
-	static mapStateToProps = state => ({
-		categories: state.getCategories
-	})
-
-	static mapStateToDispatch = dispatch => {
-		return {
-			getCategoriesThunk: db => dispatch(getCategoriesThunk(db))
-		}
-	}
 }
 
-export default connect(
-	CategoryList.mapStateToProps,
-	CategoryList.mapStateToDispatch
-)(CategoryList)
+export default CategoryList

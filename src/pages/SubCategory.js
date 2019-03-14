@@ -1,11 +1,66 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col, BSpan, Media, BImg, Breadcrumb } from 'bootstrap-4-react'
-import outerwear from '../assets/img/women_1.jpg'
-import shirts from '../assets/img/women_2.jpg'
-import sportswearen from '../assets/img/women_3.jpg'
-import casual from '../assets/img/women_4.jpg'
+import { database } from '../firebase'
+
 class SubCategory extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			categories: {}
+		}
+	}
+	getCategoriesFromDatabase = () => {
+		database.ref('/categories').on('value', snapshot => {
+			this.setState({
+				categories: snapshot.val()
+			})
+		})
+	}
+
+	componentWillMount = () => {
+		this.getCategoriesFromDatabase()
+	}
+
+	filterCategories = item => {
+		return this.state.categories[item].parentCategory === this.props.subcategory
+	}
+
+	filteredAndReducedCategories = () => {
+		if (this.state.categories !== null) {
+			const filtered = Object.keys(this.state.categories)
+				.filter(item => this.state.categories[item].parentCategory === this.props.subcategory)
+				.reduce((obj, key) => {
+					return {
+						...obj,
+						[key]: this.state.categories[key]
+					}
+				}, {})
+
+			return filtered
+		}
+		return null
+	}
+
+	renderCategories = () => {
+		let array = this.filteredAndReducedCategories()
+		console.log(array)
+
+		return Object.keys(array).map((item, id) => (
+			<Col className="px-0 " col="lg-6" key={id}>
+				<Media>
+					<Link to="/catalog">
+						<BImg className="img-fluid" src={array[item].preview} />
+
+						<BSpan className="subcategory_name" align="middle">
+							{array[item].name.en}
+						</BSpan>
+					</Link>
+				</Media>
+			</Col>
+		))
+	}
+
 	render() {
 		return (
 			<div className="SubCategoty">
@@ -23,44 +78,7 @@ class SubCategory extends Component {
 								</Breadcrumb>
 							</nav>
 						</Row>
-						<Row className="no-gutter">
-							<Col className="px-0 " col="lg-6">
-								<Media>
-									<Link to="/catalog">
-										<BImg className="img-fluid" src={outerwear} />
-
-										<BSpan className="subcategory_name" align="middle">
-											Ouretwear
-										</BSpan>
-									</Link>
-								</Media>
-							</Col>
-							<Col className="px-0" col="lg-6">
-								<Media>
-									<BImg className="img-fluid" src={shirts} />
-									<BSpan className="subcategory_name" align="middle">
-										T-shirts
-									</BSpan>
-								</Media>
-							</Col>
-
-							<Col className="px-0 " col="lg-6">
-								<Media>
-									<BImg className="img-fluid" src={sportswearen} />
-									<BSpan className="subcategory_name" align="middle">
-										Sportswear
-									</BSpan>
-								</Media>
-							</Col>
-							<Col className="px-0" col="lg-6">
-								<Media>
-									<BImg className="img-fluid" src={casual} />
-									<BSpan className="subcategory_name" align="middle">
-										Casual wear
-									</BSpan>
-								</Media>
-							</Col>
-						</Row>
+						<Row className="no-gutter">{this.renderCategories()}</Row>
 					</Container>
 				</Container>
 			</div>

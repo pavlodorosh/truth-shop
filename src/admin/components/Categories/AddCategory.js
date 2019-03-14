@@ -16,15 +16,15 @@ class AddCategory extends Component {
 		selectedOption: null,
 		options: [
 			{
-				value: 'accessories',
+				value: 'Accessories',
 				label: 'Accessories'
 			},
 			{
-				value: 'men',
+				value: 'Men',
 				label: 'Men'
 			},
 			{
-				value: 'women',
+				value: 'Women',
 				label: 'Women'
 			}
 		],
@@ -67,22 +67,33 @@ class AddCategory extends Component {
 
 	saveCategory = () => {
 		return this.state.categoriesRef
-			.child(this.state.selectedOption.value)
-			.child(uuid())
+			.child(this.state.selectedOption.value + this.state.name_en + '-' + uuid())
 			.set({
 				name: {
 					en: this.state.name_en,
 					ru: this.state.name_ru
 				},
 				link: this.state.link,
-				preview: this.state.previewUrl
+				preview: this.state.previewUrl,
+				parentCategory: this.state.selectedOption.value
 			})
 			.then(() => {
 				document.getElementById('exampleModal').click('hide')
+				this.clearInputs()
 			})
 			.catch(err => {
 				console.log(err)
 			})
+	}
+
+	clearInputs = () => {
+		this.setState({
+			name_en: '',
+			name_ru: '',
+			link: '',
+			selectedOption: null,
+			previewUrl: ''
+		})
 	}
 
 	toggleValidating(validate) {
