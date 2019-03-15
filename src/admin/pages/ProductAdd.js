@@ -1,14 +1,9 @@
 import React, { Component } from 'react'
-import Header from '../components/Header/Header'
-import Navbar from '../components/Navbar/Navbar'
-import Footer from '../components/Footer/Footer'
 
 export default class ProductAdd extends Component {
 	render() {
 		return (
 			<div>
-				<Header />
-				<Navbar />
 				<div className="app-content content">
 					<div className="content-wrapper">
 						<div className="content-body">
@@ -51,7 +46,6 @@ export default class ProductAdd extends Component {
 						</div>
 					</div>
 				</div>
-				<Footer />
 			</div>
 		)
 	}

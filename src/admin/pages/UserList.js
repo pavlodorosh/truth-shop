@@ -1,14 +1,9 @@
 import React, { Component } from 'react'
-import Header from '../components/Header/Header'
-import Navbar from '../components/Navbar/Navbar'
-import Footer from '../components/Footer/Footer'
 
 class List extends Component {
 	render() {
 		return (
 			<div className="userlist">
-				<Header />
-				<Navbar />
 				<div className="app-content content">
 					<div className="content-wrapper">
 						<div className="content-body">
@@ -56,7 +51,6 @@ class List extends Component {
 						</div>
 					</div>
 				</div>
-				<Footer />
 			</div>
 		)
 	}

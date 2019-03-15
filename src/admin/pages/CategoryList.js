@@ -3,6 +3,7 @@ import { database } from '../../firebase'
 
 import Navbar from '../components/Navbar/Navbar'
 import AddCategory from '../components/Categories/AddCategory'
+import EditCategory from '../components/Categories/EditCategory'
 
 class CategoryList extends Component {
 	constructor(props) {
@@ -40,7 +41,7 @@ class CategoryList extends Component {
 						{this.state.categories[id].parentCategory} -> {this.state.categories[id].name.en}
 					</td>
 					<td align="center">
-						<button className="btn btn-default">
+						<button className="btn btn-default" data-toggle="modal" data-target="#EditCategory">
 							<em className="fa fa-pencil" />
 						</button>
 						<button className="btn btn-danger" onClick={() => this.removeCategoryFromDatabase(id)}>
@@ -95,8 +96,8 @@ class CategoryList extends Component {
 					</div>
 				</div>
 
-				{/* Modal */}
 				<AddCategory />
+				<EditCategory />
 			</div>
 		)
 	}

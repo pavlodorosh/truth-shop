@@ -1,14 +1,10 @@
 import React, { Component } from 'react'
-import Header from '../components/Header/Header'
-import Navbar from '../components/Navbar/Navbar'
-import Footer from '../components/Footer/Footer'
-
+import AddProduct from '../components/Product/AddProduct'
+import EditProduct from '../components/Product/EditProduct'
 class ProductList extends Component {
 	render() {
 		return (
 			<div className="ProductList">
-				<Header />
-				<Navbar />
 				<div className="app-content content">
 					<div className="content-wrapper">
 						<div className="content-body">
@@ -21,7 +17,7 @@ class ProductList extends Component {
 													<h3 className="panel-title">Panel Heading</h3>
 												</div>
 												<div className="col col-xs-6 text-right">
-													<button type="button" className="btn btn-sm btn-primary btn-create">
+													<button type="button" className="btn btn-sm btn-primary btn-create" data-toggle="modal" data-target="#AddProduct">
 														Create New
 													</button>
 												</div>
@@ -51,7 +47,7 @@ class ProductList extends Component {
 														<td>999</td>
 														<td>on</td>
 														<td align="center">
-															<button className="btn btn-default">
+															<button className="btn btn-default" data-toggle="modal" data-target="#EditProduct">
 																<em className="fa fa-pencil" />
 															</button>
 															<button className="btn btn-danger">
@@ -68,7 +64,8 @@ class ProductList extends Component {
 						</div>
 					</div>
 				</div>
-				<Footer />
+				<AddProduct />
+				<EditProduct />
 			</div>
 		)
 	}
