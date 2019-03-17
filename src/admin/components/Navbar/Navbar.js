@@ -31,29 +31,23 @@ export default class Navbar extends Component {
 						</li>
 
 						<li className="nav-item" onClick={this.setActiveNavLink}>
-							<Link to="/user/userlist">
+							<Link to="/user/users">
 								<FaUserCircle />
 								<span className="menu-title">User list</span>
 							</Link>
 						</li>
 
 						<li className="nav-item" onClick={this.setActiveNavLink}>
-							<Link to="/user/category">
+							<Link to="/user/categories">
 								<FaAlignJustify />
 								<span className="menu-title">Category</span>
 							</Link>
 						</li>
 
 						<li className="nav-item" onClick={this.setActiveNavLink}>
-							<Link to="/user/productlist">
+							<Link to="/user/products">
 								<FaAlignJustify />
-								<span className="menu-title">Product list</span>
-							</Link>
-						</li>
-						<li className="nav-item" onClick={this.setActiveNavLink}>
-							<Link to="/user/productadd">
-								<FaAlignJustify />
-								<span className="menu-title">Product add</span>
+								<span className="menu-title">Products</span>
 							</Link>
 						</li>
 					</ul>

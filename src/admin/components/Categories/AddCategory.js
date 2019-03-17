@@ -75,7 +75,8 @@ class AddCategory extends Component {
 				},
 				link: this.state.link,
 				preview: this.state.previewUrl,
-				parentCategory: this.state.selectedOption.value
+				parentCategory: this.state.selectedOption.value,
+				previewName: this.state.imagePreview
 			})
 			.then(() => {
 				document.getElementById('exampleModal').click('hide')

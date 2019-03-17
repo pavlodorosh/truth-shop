@@ -14,10 +14,10 @@ class ProductList extends Component {
 										<div className="panel-heading">
 											<div className="row">
 												<div className="col col-xs-6">
-													<h3 className="panel-title">Panel Heading</h3>
+													<h3 className="panel-title">Product List</h3>
 												</div>
 												<div className="col col-xs-6 text-right">
-													<button type="button" className="btn btn-sm btn-primary btn-create" data-toggle="modal" data-target="#AddProduct">
+													<button type="button" className="btn btn-sm btn-primary btn-create" data-toggle="modal" data-target="#productModal">
 														Create New
 													</button>
 												</div>

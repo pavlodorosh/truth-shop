@@ -6,7 +6,6 @@ import UserList from './UserList'
 import Dashboard from './Dashboard'
 import CategoryList from './CategoryList'
 import ProductList from './ProductList'
-import ProductAdd from './ProductAdd'
 
 export default class Admin extends Component {
 	render() {
@@ -15,10 +14,9 @@ export default class Admin extends Component {
 				<Navbar />
 				<Route path="/user/dashboard" component={Dashboard} />
 				<Route path="/user/profile" component={User} />
-				<Route path="/user/userlist" component={UserList} />
-				<Route path="/user/category" component={CategoryList} />
-				<Route path="/user/productlist" component={ProductList} />
-				<Route path="/user/productadd" component={ProductAdd} />
+				<Route path="/user/users" component={UserList} />
+				<Route path="/user/categories" component={CategoryList} />
+				<Route path="/user/products" component={ProductList} />
 			</div>
 		)
 	}

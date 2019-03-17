@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { database } from '../../firebase'
+import { database, storage } from '../../firebase'
 
 import Navbar from '../components/Navbar/Navbar'
 import AddCategory from '../components/Categories/AddCategory'
@@ -14,11 +14,27 @@ class CategoryList extends Component {
 		this.removeCategoryFromDatabase = this.removeCategoryFromDatabase.bind(this)
 	}
 
-	removeCategoryFromDatabase = id => {
+	removeCategoryFromDatabase = (id, preview) => {
 		database
 			.ref('/categories')
 			.child(id)
 			.remove()
+		this.removePreviewImageFromStorage(preview)
+	}
+
+	removePreviewImageFromStorage = preview => {
+		console.log('images/' + preview)
+
+		storage
+			.ref('images/')
+			.child(preview)
+			.delete()
+			.then(() => {
+				console.log('preview deleted')
+			})
+			.catch(err => {
+				console.log(err)
+			})
 	}
 
 	getCategoriesFromDatabase = () => {
@@ -44,7 +60,7 @@ class CategoryList extends Component {
 						<button className="btn btn-default" data-toggle="modal" data-target="#EditCategory">
 							<em className="fa fa-pencil" />
 						</button>
-						<button className="btn btn-danger" onClick={() => this.removeCategoryFromDatabase(id)}>
+						<button className="btn btn-danger" onClick={() => this.removeCategoryFromDatabase(id, this.state.categories[id].previewName)}>
 							<em className="fa fa-trash" />
 						</button>
 					</td>
@@ -67,7 +83,7 @@ class CategoryList extends Component {
 										<div className="panel-heading">
 											<div className="row">
 												<div className="col col-xs-6">
-													<h3 className="panel-title">Panel Heading</h3>
+													<h3 className="panel-title">Category List</h3>
 												</div>
 												<div className="col col-xs-6 text-right">
 													<button type="button" data-toggle="modal" data-target="#exampleModal" className="btn btn-sm btn-primary btn-create">
