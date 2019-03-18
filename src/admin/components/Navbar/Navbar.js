@@ -26,21 +26,21 @@ export default class Navbar extends Component {
 						<li className="nav-item" onClick={this.setActiveNavLink}>
 							<Link to="/user/profile">
 								<FaUserCircle />
-								<span className="menu-title">User</span>
+								<span className="menu-title">My Profile</span>
 							</Link>
 						</li>
 
 						<li className="nav-item" onClick={this.setActiveNavLink}>
 							<Link to="/user/users">
 								<FaUserCircle />
-								<span className="menu-title">User list</span>
+								<span className="menu-title">Users</span>
 							</Link>
 						</li>
 
 						<li className="nav-item" onClick={this.setActiveNavLink}>
 							<Link to="/user/categories">
 								<FaAlignJustify />
-								<span className="menu-title">Category</span>
+								<span className="menu-title">Categories</span>
 							</Link>
 						</li>
 

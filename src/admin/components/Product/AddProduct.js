@@ -10,6 +10,10 @@ import 'react-inputs-validation/lib/react-inputs-validation.min.css'
 
 class AddCategory extends Component {
 	state = {
+		description_en: '',
+		description_ru: '',
+		price: 0,
+		date: '',
 		name_en: '',
 		name_ru: '',
 		link: '',
@@ -169,6 +173,32 @@ class AddCategory extends Component {
 													validate={this.state.validate}
 												/>
 											</div>
+											<div className="form-group">
+												<label>Description [en]</label>
+												<Textbox
+													type="text"
+													className="form-control"
+													name="description_en"
+													onChange={(val, e) => {
+														this.setState({ [e.target.name]: val })
+													}}
+													onBlur={() => {}}
+													validationOption={{
+														name: 'Description',
+														check: true,
+														required: true,
+														showMsg: true
+													}}
+													validationCallback={res => {
+														this.setState({
+															error_name_en: res,
+															validate: false
+														})
+													}}
+													value={this.state.description_en}
+													validate={this.state.validate}
+												/>
+											</div>
 										</div>
 										<div className="tab-pane" id="profile" role="tabpanel">
 											<div className="form-group">
@@ -197,8 +227,63 @@ class AddCategory extends Component {
 													validate={this.state.validate}
 												/>
 											</div>
+											<div className="form-group">
+												<label>Description [ru]</label>
+												<Textbox
+													type="text"
+													className="form-control"
+													name="description_ru"
+													onChange={(val, e) => {
+														this.setState({ [e.target.name]: val })
+													}}
+													onBlur={() => {}}
+													validationOption={{
+														name: 'Description',
+														check: true,
+														required: true,
+														showMsg: true
+													}}
+													validationCallback={res => {
+														this.setState({
+															error_name_en: res,
+															validate: false
+														})
+													}}
+													value={this.state.description_ru}
+													validate={this.state.validate}
+												/>
+											</div>
 										</div>
+
 										<div className="tab-pane" id="messages" role="tabpanel">
+											<div className="form-group">
+												<label>Price</label>
+												<Textbox
+													type="text"
+													className="form-control"
+													name="price"
+													onChange={(val, e) => {
+														this.setState({ [e.target.name]: val })
+													}}
+													onBlur={() => {}}
+													validationOption={{
+														name: 'Price',
+														type: 'number',
+														check: true,
+														required: true,
+														showMsg: true,
+														min: 1
+													}}
+													validationCallback={res => {
+														this.setState({
+															error_link: res,
+															validate: false
+														})
+													}}
+													value={this.state.price}
+													validate={this.state.validate}
+												/>
+											</div>
 											<div className="form-group">
 												<label>Link</label>
 												<Textbox
@@ -248,7 +333,7 @@ class AddCategory extends Component {
 												</CustomUploadButton>
 											</div>
 											<div className="form-group">
-												<label>Select category</label>
+												<label>Category</label>
 												<Select value={this.state.selectedOption} onChange={this.handleChangeParent} options={this.state.options} />
 											</div>
 										</div>

@@ -254,7 +254,9 @@ class AddCategory extends Component {
 										</div>
 									</div>
 
-									<button data-dismiss="modal">Close</button>
+									<button data-dismiss="modal" onClick={this.clearInputs}>
+										Close
+									</button>
 									<button type="submit" primary="true" onClick={this.validateForm}>
 										Save
 									</button>
