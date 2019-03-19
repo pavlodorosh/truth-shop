@@ -7,17 +7,17 @@ import { Line } from 'rc-progress'
 import uuid from 'uuid/v1'
 import { Textbox } from 'react-inputs-validation'
 import 'react-inputs-validation/lib/react-inputs-validation.min.css'
+import { connect } from 'react-redux'
 
-class AddCategory extends Component {
+class AddProduct extends Component {
 	state = {
 		description_en: '',
 		description_ru: '',
-		price: 0,
+		price: '',
 		date: '',
 		name_en: '',
 		name_ru: '',
-		link: '',
-		selectedOption: null,
+		selectedCategory: null,
 		options: [
 			{
 				value: 'Accessories',
@@ -34,9 +34,9 @@ class AddCategory extends Component {
 		],
 		isUploading: false,
 		progress: 0,
-		imagePreview: '',
-		previewUrl: '',
-		categoriesRef: database.ref('categories'),
+		mainImageUrl: '',
+		mainImageName: '',
+		productsRef: database.ref('/products'),
 		validate: false,
 		error_name_en: true,
 		error_name_ru: true,
@@ -57,30 +57,30 @@ class AddCategory extends Component {
 	}
 
 	handleUploadSuccess = filename => {
-		this.setState({ imagePreview: filename, progress: 100, isUploading: false })
+		this.setState({ mainImageName: filename, progress: 100, isUploading: false })
 		storage
 			.ref('images')
 			.child(filename)
 			.getDownloadURL()
-			.then(url => this.setState({ previewUrl: url }))
+			.then(url => this.setState({ mainImageUrl: url }))
 	}
 
-	handleChangeParent = selectedOption => {
-		this.setState({ selectedOption })
-	}
-
-	saveCategory = () => {
-		return this.state.categoriesRef
-			.child(this.state.selectedOption.value + this.state.name_en + '-' + uuid())
+	saveProduct = () => {
+		return this.state.productsRef
+			.child(this.state.name_en + '-' + uuid())
 			.set({
 				name: {
 					en: this.state.name_en,
 					ru: this.state.name_ru
 				},
-				link: this.state.link,
-				preview: this.state.previewUrl,
-				parentCategory: this.state.selectedOption.value,
-				previewName: this.state.imagePreview
+				description: {
+					en: this.state.description_en,
+					ru: this.state.description_ru
+				},
+				mainImageName: this.state.mainImageName,
+				mainImageUrl: this.state.mainImageUrl,
+				price: this.state.price,
+				author: this.props.user.displayName
 			})
 			.then(() => {
 				document.getElementById('productModal').click('hide')
@@ -95,9 +95,10 @@ class AddCategory extends Component {
 		this.setState({
 			name_en: '',
 			name_ru: '',
-			link: '',
-			selectedOption: null,
-			previewUrl: ''
+			description_en: '',
+			description_ru: '',
+			selectedCategory: null,
+			mainImage: ''
 		})
 	}
 
@@ -108,8 +109,8 @@ class AddCategory extends Component {
 	validateForm = e => {
 		e.preventDefault()
 		this.toggleValidating(true)
-		if (!this.state.error_name_en && !this.state.error_name_ru && !this.state.error_link && this.state.previewUrl.length && this.state.selectedOption) {
-			this.saveCategory()
+		if (!this.state.error_name_en && !this.state.error_name_ru && this.state.mainImageName.length && this.state.price > 0) {
+			this.saveProduct()
 		}
 	}
 
@@ -262,6 +263,7 @@ class AddCategory extends Component {
 													type="text"
 													className="form-control"
 													name="price"
+													placeholder="0"
 													onChange={(val, e) => {
 														this.setState({ [e.target.name]: val })
 													}}
@@ -285,39 +287,13 @@ class AddCategory extends Component {
 												/>
 											</div>
 											<div className="form-group">
-												<label>Link</label>
-												<Textbox
-													type="text"
-													className="form-control"
-													name="link"
-													onChange={(val, e) => {
-														this.setState({ [e.target.name]: val })
-													}}
-													onBlur={() => {}}
-													validationOption={{
-														name: 'Link',
-														check: true,
-														required: true,
-														showMsg: true
-													}}
-													validationCallback={res => {
-														this.setState({
-															error_link: res,
-															validate: false
-														})
-													}}
-													value={this.state.link}
-													validate={this.state.validate}
-												/>
-											</div>
-											<div className="form-group">
-												<label style={{ width: '100%' }}>Select preview image</label>
+												<label style={{ width: '100%' }}>Select main image</label>
 												{this.state.isUploading && (
 													<p>
 														Progress: <Line percent={this.state.progress} strokeWidth="2" strokeColor="#4682b4" />
 													</p>
 												)}
-												{this.state.previewUrl && <img src={this.state.previewUrl} alt="preview" />}
+												{this.state.mainImageUrl && <img src={this.state.mainImageUrl} alt="preview" />}
 
 												<CustomUploadButton
 													accept="image/*"
@@ -332,10 +308,10 @@ class AddCategory extends Component {
 													Upload
 												</CustomUploadButton>
 											</div>
-											<div className="form-group">
+											{/* <div className="form-group">
 												<label>Category</label>
-												<Select value={this.state.selectedOption} onChange={this.handleChangeParent} options={this.state.options} />
-											</div>
+												<Select value={this.state.selectedCategory} onChange={this.handleChangeParent} options={this.state.options} />
+											</div> */}
 										</div>
 									</div>
 
@@ -351,5 +327,14 @@ class AddCategory extends Component {
 			</>
 		)
 	}
+
+	static mapStateToProps = state => {
+		return {
+			user: state.userInfo
+		}
+	}
 }
-export default AddCategory
+export default connect(
+	AddProduct.mapStateToProps,
+	null
+)(AddProduct)
