@@ -18,29 +18,46 @@ class AddProduct extends Component {
 		name_en: '',
 		name_ru: '',
 		selectedCategory: null,
-		options: [
-			{
-				value: 'Accessories',
-				label: 'Accessories'
-			},
-			{
-				value: 'Men',
-				label: 'Men'
-			},
-			{
-				value: 'Women',
-				label: 'Women'
-			}
-		],
+		optionsListCategories: [],
 		isUploading: false,
 		progress: 0,
 		mainImageUrl: '',
 		mainImageName: '',
+		model: '',
 		productsRef: database.ref('/products'),
 		validate: false,
 		error_name_en: true,
 		error_name_ru: true,
-		error_link: true
+		error_description_en: true,
+		error_description_ru: true,
+		error_link: true,
+		error_model: true,
+		categories: {}
+	}
+
+	getListCategories = () => {
+		database.ref('/categories').on('value', snapshot => {
+			this.setState({
+				categories: snapshot.val()
+			})
+			this.pushCategoriesToSelect(snapshot.val())
+		})
+	}
+
+	pushCategoriesToSelect = data => {
+		return Object.keys(data).map(id => {
+			let category = {
+				value: data[id].name.en,
+				label: data[id].parentCategory + ' > ' + data[id].name.en
+			}
+			this.setState({
+				optionsListCategories: [...this.state.optionsListCategories, category]
+			})
+		})
+	}
+
+	componentWillMount = () => {
+		this.getListCategories()
 	}
 
 	handleUploadStart = () => {
@@ -80,7 +97,17 @@ class AddProduct extends Component {
 				mainImageName: this.state.mainImageName,
 				mainImageUrl: this.state.mainImageUrl,
 				price: this.state.price,
-				author: this.props.user.displayName
+				author: this.props.user.displayName,
+				model: this.state.model,
+				category: '',
+				sizes: '',
+				colors: '',
+				additionalImages: '',
+				actions: '',
+				weather: '',
+				active: false,
+				care: '',
+				quantity: 0
 			})
 			.then(() => {
 				document.getElementById('productModal').click('hide')
@@ -192,7 +219,7 @@ class AddProduct extends Component {
 													}}
 													validationCallback={res => {
 														this.setState({
-															error_name_en: res,
+															error_description_en: res,
 															validate: false
 														})
 													}}
@@ -246,7 +273,7 @@ class AddProduct extends Component {
 													}}
 													validationCallback={res => {
 														this.setState({
-															error_name_en: res,
+															error_description_ru: res,
 															validate: false
 														})
 													}}
@@ -257,6 +284,32 @@ class AddProduct extends Component {
 										</div>
 
 										<div className="tab-pane" id="messages" role="tabpanel">
+											<div className="form-group">
+												<label>Model</label>
+												<Textbox
+													type="text"
+													className="form-control"
+													name="model"
+													onChange={(val, e) => {
+														this.setState({ [e.target.name]: val })
+													}}
+													onBlur={() => {}}
+													validationOption={{
+														name: 'Model',
+														check: true,
+														required: true,
+														showMsg: true
+													}}
+													validationCallback={res => {
+														this.setState({
+															error_model: res,
+															validate: false
+														})
+													}}
+													value={this.state.model}
+													validate={this.state.validate}
+												/>
+											</div>
 											<div className="form-group">
 												<label>Price</label>
 												<Textbox
@@ -308,10 +361,10 @@ class AddProduct extends Component {
 													Upload
 												</CustomUploadButton>
 											</div>
-											{/* <div className="form-group">
+											<div className="form-group">
 												<label>Category</label>
-												<Select value={this.state.selectedCategory} onChange={this.handleChangeParent} options={this.state.options} />
-											</div> */}
+												<Select value={this.state.selectedCategory} onChange={this.handleChangeParent} options={this.state.optionsListCategories} />
+											</div>
 										</div>
 									</div>
 
