@@ -48,12 +48,17 @@ class AddProduct extends Component {
 		return Object.keys(data).map(id => {
 			let category = {
 				value: data[id].name.en,
+				parent: data[id].parentCategory,
 				label: data[id].parentCategory + ' > ' + data[id].name.en
 			}
 			this.setState({
 				optionsListCategories: [...this.state.optionsListCategories, category]
 			})
 		})
+	}
+
+	handleChangeParent = selectedOption => {
+		this.setState({ selectedOption })
 	}
 
 	componentWillMount = () => {
@@ -99,7 +104,8 @@ class AddProduct extends Component {
 				price: this.state.price,
 				author: this.props.user.displayName,
 				model: this.state.model,
-				category: '',
+				category: this.state.selectedOption.value,
+				parentCategory: this.state.selectedOption.parent,
 				sizes: '',
 				colors: '',
 				additionalImages: '',
@@ -123,9 +129,12 @@ class AddProduct extends Component {
 			name_en: '',
 			name_ru: '',
 			description_en: '',
+			model: '',
 			description_ru: '',
 			selectedCategory: null,
-			mainImage: ''
+			mainImageName: '',
+			mainImageUrl: '',
+			price: 0
 		})
 	}
 

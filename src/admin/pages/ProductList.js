@@ -52,7 +52,7 @@ class ProductList extends Component {
 			return Object.keys(this.state.products).map((id, index) => (
 				<tr key={id}>
 					<td>
-						<img src={this.state.products[id].mainImageUrl} alt="" />
+						<img style={{width: '50px'}} src={this.state.products[id].mainImageUrl} alt="" />
 					</td>
 					<td>{this.state.products[id].name.en}</td>
 					<td>{this.state.products[id].model}</td>

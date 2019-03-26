@@ -42,14 +42,17 @@ class SubCategory extends Component {
 		return null
 	}
 
+	toLowerCaseString = data => {
+		return data.toLowerCase()
+	}
+
 	renderCategories = () => {
 		let array = this.filteredAndReducedCategories()
-		console.log(array)
 
 		return Object.keys(array).map((item, id) => (
 			<Col className="px-0 " col="lg-6" key={id}>
 				<Media>
-					<Link to="/catalog">
+					<Link to={`/catalog/${this.toLowerCaseString(array[item].parentCategory)}/${this.toLowerCaseString(array[item].name.en)}`}>
 						<BImg className="img-fluid" src={array[item].preview} />
 
 						<BSpan className="subcategory_name" align="middle">

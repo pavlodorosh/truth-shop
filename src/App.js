@@ -28,7 +28,7 @@ class App extends Component {
 			<>
 				<header>
 					<Route exact path="/" component={Header} />
-					<Route path="/(contacts|about|catalog|category|subcategory|product)/" component={Header} />
+					<Route path="/(contacts|about|catalog|category|subcategory|product|women|men|accessories)/" component={Header} />
 
 					<Route path="/user" component={HeaderAdmin} />
 				</header>
@@ -36,7 +36,7 @@ class App extends Component {
 				<Route exact path="/" component={Front} />
 				<Route path="/contacts" component={Contacts} />
 				<Route path="/about" component={About} />
-				<Route path="/catalog" component={Catalog} />
+				<Route path="/catalog/:parentCat/:cat" component={Catalog} />
 				<Route path="/category" component={Category} />
 				<Route path="/women" render={props => <SubCategory {...props} subcategory={'Women'} />} />
 				<Route path="/men" render={props => <SubCategory {...props} subcategory={'Men'} />} />
@@ -47,7 +47,7 @@ class App extends Component {
 
 				<footer>
 					<Route exact path="/" component={Footer} />
-					<Route path="/(contacts|about|catalog|category|subcategory|product)/" component={Footer} />
+					<Route path="/(contacts|about|catalog|category|subcategory|product|women|men|accessories)/" component={Footer} />
 
 					<Route path="/user" component={FooterAdmin} />
 				</footer>
