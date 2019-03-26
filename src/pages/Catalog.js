@@ -54,7 +54,7 @@ class Catalog extends Component {
 			return Object.keys(array).map((id, index) => (
 				<Col className="" col="lg-3" key={id}>
 					<Card>
-						<Link to="/product">
+						<Link to={`/product/${this.toLowerCaseString(this.state.products[id].parentCategory)}/${this.state.products[id].category}/${this.state.products[id].name.en}`}>
 							<Card.Image src={this.state.products[id].mainImageUrl} />
 						</Link>
 						<Card.Body>

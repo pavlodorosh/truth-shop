@@ -41,7 +41,7 @@ class App extends Component {
 				<Route path="/women" render={props => <SubCategory {...props} subcategory={'Women'} />} />
 				<Route path="/men" render={props => <SubCategory {...props} subcategory={'Men'} />} />
 				<Route path="/accessories" render={props => <SubCategory {...props} subcategory={'Accessories'} />} />
-				<Route path="/product" component={Product} />
+				<Route path="/product/:parentCat/:cat/:name" component={Product} />
 
 				<Route path="/user" component={Admin} />
 
