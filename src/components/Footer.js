@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Nav } from 'bootstrap-4-react'
+import ReactSVG from 'react-svg'
 
 import facebook from '../assets/img/icons/facebook-f.svg'
 import google from '../assets/img/icons/google-plus-g.svg'
@@ -39,13 +40,13 @@ class Footer extends Component {
 							<span className="column-title"> SOCIAL MEDIA</span>
 							<ul className="d-flex list-unstyled social_footer  m-0 align-self-center">
 								<li>
-									<img className="" src={facebook} alt={facebook} />
+									<ReactSVG src={facebook} />
 								</li>
 								<li>
-									<img className="" src={google} alt={google} />
+									<ReactSVG src={google} />
 								</li>
 								<li>
-									<img className="" src={instagram} alt={instagram} />
+									<ReactSVG src={instagram} />
 								</li>
 							</ul>
 						</div>
