@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Row, Col, Card } from 'bootstrap-4-react'
+import { Row } from 'bootstrap-4-react'
 import { database } from '../firebase'
 
 class Catalog extends Component {
@@ -52,31 +52,28 @@ class Catalog extends Component {
 
 		if (this.state.products !== null) {
 			return Object.keys(array).map((id, index) => (
-				<Col className="" col="lg-3" key={id}>
-					<Card>
+				<div className="col-lg-3 col-md-3 col-sm-6 col-12" key={id}>
+					<div>
 						<Link to={`/product/${this.toLowerCaseString(this.state.products[id].parentCategory)}/${this.state.products[id].category}/${this.state.products[id].name.en}`}>
-							<Card.Image src={this.state.products[id].mainImageUrl} />
+							<img className="card-img" src={this.state.products[id].mainImageUrl} />
 						</Link>
-						<Card.Body>
-							<Card.Title>{this.state.products[id].name.en}</Card.Title>
-						</Card.Body>
-						<Card.Footer>
-							<Card.Link>Card Link</Card.Link>
-							<Card.Link>Another Link</Card.Link>
-						</Card.Footer>
-					</Card>
-				</Col>
+						<div className="caption">
+							<div className="title">{this.state.products[id].name.en}</div>
+							<div className="price" />
+						</div>
+					</div>
+				</div>
 			))
 		}
 	}
 
 	render() {
 		return (
-			<Container fluid={true}>
-				<Container>
-					<Row className="no-gutter">{this.renderProducts()}</Row>
-				</Container>
-			</Container>
+			<div className="container-fluid">
+				<div className="container">
+					<div className="row no-gutter">{this.renderProducts()}</div>
+				</div>
+			</div>
 		)
 	}
 }

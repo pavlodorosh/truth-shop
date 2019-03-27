@@ -1,62 +1,63 @@
 import React, { Component } from 'react'
-import { Nav, Button, Container, Row, Col, List, BDiv, BSpan } from 'bootstrap-4-react'
+import { Nav } from 'bootstrap-4-react'
+
+import facebook from '../assets/img/icons/facebook-f.svg'
+import google from '../assets/img/icons/google-plus-g.svg'
+import instagram from '../assets/img/icons/instagram.svg'
 
 class Footer extends Component {
 	render() {
 		return (
-			<>
-				<Container fluid={true}>
-					<Container>
-						<Row>
-							<Col col="lg-3" className="info pl-0">
-								<List unstyled>
-									<List.Item>© 2018 TRUTH TRAINING</List.Item>
-									<List.Item>Ukraine. Kyiv 04060</List.Item>
-									<List.Item>Schuseva st.27 4 office 11</List.Item>
-									<List.Item>Tel: +38(097)9113502</List.Item>
-								</List>
-							</Col>
-							<Col col="lg-3">
-								<Nav flex="column" justifyContent="center">
-									<Nav.ItemLink href="#" className="p-0">
-										Delivery
-									</Nav.ItemLink>
-									<Nav.ItemLink href="#" className="p-0">
-										Privacy Policy
-									</Nav.ItemLink>
-									<Nav.ItemLink href="#" className="p-0">
-										Q&A
-									</Nav.ItemLink>
-									<Nav.ItemLink href="#" className="p-0">
-										Turms and conditions
-									</Nav.ItemLink>
-								</Nav>
-							</Col>
-							<Col col="lg-3 ">
-								<BSpan className="column-title"> SOCIAL MEDIA</BSpan>
-								<BDiv>
-									<Button danger as="a" href="#">
-										fa
-										<i className="fab fa-facebook" />
-									</Button>
-									<Button danger as="a" href="#">
-										G+
-									</Button>
-									<Button danger as="a" href="#">
-										INST
-									</Button>
-								</BDiv>
-							</Col>
-							<Col col="lg-3">
-								<BSpan className="column-title"> BE IN TOUCH WITH US</BSpan>
-								<Button className="subscribe" as="button" href="#">
-									SUBSCRIBE NOW
-								</Button>
-							</Col>
-						</Row>
-					</Container>
-				</Container>
-			</>
+			<div className="container-fluid">
+				<div className="container">
+					<div className="row">
+						<div className="col-lg-3 info pl-0">
+							<ul className=" list-unstyled  m-0 align-self-center">
+								<li>© 2018 TRUTH TRAINING</li>
+								<li>Ukraine. Kyiv 04060</li>
+								<li>Schuseva st.27 4 office 11</li>
+								<li>Tel: +38(097)9113502</li>
+							</ul>
+						</div>
+						<div className="col-lg-3">
+							<Nav flex="column" justifyContent="center">
+								<Nav.ItemLink href="#" className="p-0">
+									Delivery
+								</Nav.ItemLink>
+								<Nav.ItemLink href="#" className="p-0">
+									Privacy Policy
+								</Nav.ItemLink>
+								<Nav.ItemLink href="#" className="p-0">
+									Q&A
+								</Nav.ItemLink>
+								<Nav.ItemLink href="#" className="p-0">
+									Turms and conditions
+								</Nav.ItemLink>
+							</Nav>
+						</div>
+						<div className="col-lg-3">
+							<span className="column-title"> SOCIAL MEDIA</span>
+							<ul className="d-flex list-unstyled social_footer  m-0 align-self-center">
+								<li>
+									<img className="" src={facebook} alt={facebook} />
+								</li>
+								<li>
+									<img className="" src={google} alt={google} />
+								</li>
+								<li>
+									<img className="" src={instagram} alt={instagram} />
+								</li>
+							</ul>
+						</div>
+						<div className="col-lg-3">
+							<span className="column-title"> BE IN TOUCH WITH US</span>
+							<button className="subscribe" as="button" href="#">
+								SUBSCRIBE NOW
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		)
 	}
 }

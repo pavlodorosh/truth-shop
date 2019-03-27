@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Button, Media, BImg, Modal } from 'bootstrap-4-react'
+import { Modal } from 'bootstrap-4-react'
 import product from '../assets/img/product_img.png'
 import size_men from '../assets/img/size_men.png'
 import size_women from '../assets/img/size_women.png'
@@ -7,27 +7,21 @@ import size_women from '../assets/img/size_women.png'
 class Product extends Component {
 	render() {
 		return (
-			<Container fluid={true}>
-				<Container>
-					<Row className="no-gutter">
-						<Col className="pl-0 pr-1" col="lg-6">
+			<div className="container-fluid">
+				<div className="container">
+					<div className="row no-gutter">
+						<div className="pl-0 pr-1 col-lg-6">
 							<div id="carousel-custom" className="carousel slide" data-ride="carousel">
 								{/* Wrapper for slides */}
 								<div className="carousel-inner">
 									<div className="carousel-item active">
-										<Media>
-											<BImg className="img-fluid" src={product} />
-										</Media>
+										<img className="img-fluid" src={product} />
 									</div>
 									<div className="carousel-item">
-										<Media>
-											<BImg className="img-fluid" src={product} />
-										</Media>
+										<img className="img-fluid" src={product} />
 									</div>
 									<div className="carousel-item">
-										<Media>
-											<BImg className="img-fluid" src={product} />
-										</Media>
+										<img className="img-fluid" src={product} />
 									</div>
 
 									{/* Controls */}
@@ -42,58 +36,58 @@ class Product extends Component {
 								{/* Indicators */}
 								<ol className="carousel-indicators">
 									<li data-target="#carousel-custom" data-slide-to="0" className="active">
-										<Media>
-											<BImg className="img-fluid" src={product} />
-										</Media>
+										<img className="img-fluid" src={product} />
 									</li>
 									<li data-target="#carousel-custom" data-slide-to="1">
-										<Media>
-											<BImg className="img-fluid" src={product} />
-										</Media>
+										<img className="img-fluid" src={product} />
 									</li>
 									<li data-target="#carousel-custom" data-slide-to="2">
-										<Media>
-											<BImg className="img-fluid" src={product} />
-										</Media>
+										<img className="img-fluid" src={product} />
 									</li>
 								</ol>
 							</div>
-						</Col>
+						</div>
 
-						<Col className="pr-0 pl-1" col="lg-6">
-							<div className="product_title">title</div>
-							<div className="price">price</div>
+						<div className="pr-0 pl-1 col-lg-5">
+							<div className="product_title">casual T-shirt</div>
+							<div className="price">$23.90</div>
 							<div className="product_size">
 								<span>Choose your size</span>
-								<Button primary>S</Button>
-								<Button primary>M</Button>
-								<Button primary>L</Button>
-								<Button primary>XL</Button>
+								<ul className="d-flex list-unstyled m-0 align-self-center">
+									<li>S</li>
+									<li>M</li>
+									<li>L</li>
+									<li>XL</li>
+								</ul>
 							</div>
 							<div className="product_color">
 								<span>Choose color</span>
-								<Button primary>S</Button>
-								<Button primary>M</Button>
-								<Button primary>L</Button>
-								<Button primary>XL</Button>
+								<ul className="d-flex list-unstyled m-0 align-self-center">
+									<li className="green" />
+									<li className="blue active" />
+									<li className="red" />
+									<li className="black" />
+								</ul>
 							</div>
 							<div className="add_cart">
-								<Button primary>ADD TO CART</Button>
+								<button type="button"  className="button-cart">
+									ADD TO CART
+								</button>
 							</div>
 							<div className="product_description">
 								<ul className="nav nav-tabs" role="tablist">
 									<li className="nav-item">
-										<span className="nav-link active" data-toggle="tab" href="#home" role="tab">
+										<span className="nav-link active" data-toggle="tab" href="#details" role="tab">
 											DETAILS
 										</span>
 									</li>
 									<li className="nav-item">
-										<span className="nav-link" data-toggle="tab" href="#profile" role="tab">
+										<span className="nav-link" data-toggle="tab" href="#care" role="tab">
 											CARE
 										</span>
 									</li>
 									<li className="nav-item">
-										<span className="nav-link" data-toggle="tab" href="#messages" role="tab">
+										<span className="nav-link" data-toggle="tab" href="#return" role="tab">
 											RETURN
 										</span>
 									</li>
@@ -106,13 +100,14 @@ class Product extends Component {
 								</ul>
 
 								<div className="tab-content">
-									<div className="tab-pane active" id="home" role="tabpanel">
-										Red t-shirt in sports casual style
+									<div className="tab-pane active" id="details" role="tabpanel">
+										Red t-shirt in sport casual style.<br/> 100% environmentally friendly materials. <br/>Classic T-shirt featuring crew neckline, short sleeves.<br/> The print is made by a
+										thermos-transfer method.<br/> Machine Wash. 100% cotton
 									</div>
-									<div className="tab-pane" id="profile" role="tabpanel">
+									<div className="tab-pane" id="care" role="tabpanel">
 										Care
 									</div>
-									<div className="tab-pane" id="messages" role="tabpanel">
+									<div className="tab-pane" id="return" role="tabpanel">
 										Retutn
 									</div>
 								</div>
@@ -131,27 +126,23 @@ class Product extends Component {
 												Use the chart below to determine your size. If you’re on the borderline between two sizes, order the smaller size for a tighter fit or the larger size
 												for a looser fit. If your measurements for chest and waist correspond to two different suggested sizes, order the size indicated by your chest
 												measurement.
-												<Col col="lg-6">
+												<div className="col-lg-6">
 													MALE
-													<Media>
-														<BImg className="img-fluid" src={size_men} />
-													</Media>
-												</Col>
-												<Col col="lg-6">
+													<img className="img-fluid" src={size_men} />
+												</div>
+												<div className="col-lg-6">
 													FEMALE
-													<Media>
-														<BImg className="img-fluid" src={size_women} />
-													</Media>
-												</Col>
+													<img className="img-fluid" src={size_women} />
+												</div>
 											</Modal.Body>
 										</Modal.Content>
 									</Modal.Dialog>
 								</Modal>
 							</div>
-						</Col>
-					</Row>
-				</Container>
-			</Container>
+						</div>
+					</div>
+				</div>
+			</div>
 		)
 	}
 }

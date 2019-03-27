@@ -6,7 +6,11 @@ import { auth } from '../../firebase'
 
 import AuthModal from './Auth/AuthModal'
 
-import logo from '../../assets/img/logo.png'
+import logo from '../../assets/img/logo.svg'
+import search from '../../assets/img/icons/search.svg'
+import user from '../../assets/img/icons/user.svg'
+import heart from '../../assets/img/icons/heart.svg'
+import bag from '../../assets/img/icons/shopping-bag.svg'
 
 class Header extends Component {
 	componentDidMount() {
@@ -31,45 +35,83 @@ class Header extends Component {
 	render() {
 		return (
 			<>
+				<div className="top">
+					<div className="container-fluid">
+						<div className="container not-admin">
+							<div className="row">
+								<div className="col-sm-5 d-flex justify-content-between align-items-center">
+									<div className="mail">info@truth-Store.com </div>
+									<div className="">
+										Free shipping! <span>See Details</span>
+									</div>
+								</div>
+								<div className="col-sm-1" />
+								<div className="col-sm-6 d-flex justify-content-between align-items-center">
+									<div className="phone">+ 38 (097) 9113502</div>
+									<div className="cloc">6AM - 8PM PST</div>
+
+									<ul className="d-flex list-unstyled lang m-0 align-self-center">
+										<li>en</li>
+										<li className="active">ru</li>
+										<li>ua</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div className="container-fluid">
 					<div className="container not-admin">
-						<div className="row">
-							<div className="col-lg-4">
+						<div className="row align-items-center">
+							<div className="col-lg-2">
 								<Link to="/">
 									<img src={logo} alt={logo} />
 								</Link>
 							</div>
-							<div className="col-lg-4">
+							<div className="col-lg-8">
 								<nav>
+									<Link to="/men">MEN </Link>
+									<Link to="/women">WOMEN </Link>
+									<Link to="/accessories">ACCESSORIES </Link>
 									<Link to="/about">ABOUT US </Link>
 									<Link to="/contacts">CONTACTS</Link>
-									<Link to="/category">SHOP</Link>
+									<Link to="/category">BREND</Link>
 								</nav>
 							</div>
-							<div className="col-lg-4">
-								{this.props.user !== null ? (
-									<div className="dropdown">
-										<button id="dropdownMenuButton" data-toggle="dropdown" className="btn btn-secondary dropdown-toggle" aria-expanded="false">
-											{this.props.user.displayName}
-										</button>
-										<div aria-labelledby="dropdownMenuButton" className="dropdown-menu" x-placement="bottom-start">
-											<Link className="dropdown-item" to="/user/dashboard">
-												Admin Panel
-											</Link>
-											<Link className="dropdown-item" to="/" onClick={this.signOut}>
-												Sign Out
-											</Link>
-										</div>
-									</div>
-								) : (
-									<button className="LoginButton" as="button" onClick={this.props.openAuthModal}>
-										SIGH IN
-									</button>
-								)}
-
-								<button as="a" href="#">
-									RU
-								</button>
+							<div className="col-lg-2">
+								<ul className="d-flex list-unstyled top-links m-0 justify-content-end">
+									<li>
+										<img className="" src={search} alt={search} />
+									</li>
+									<li>
+										{this.props.user !== null ? (
+											<div>
+												<img className="" src={user} alt={user} />
+												<div className="dropdown">
+													<button id="dropdownMenuButton" data-toggle="dropdown" className="btn btn-secondary dropdown-toggle" aria-expanded="false">
+														{this.props.user.displayName}
+													</button>
+													<div aria-labelledby="dropdownMenuButton" className="dropdown-menu" x-placement="bottom-start">
+														<Link className="dropdown-item" to="/user/dashboard">
+															Admin Panel
+														</Link>
+														<Link className="dropdown-item" to="/" onClick={this.signOut}>
+															Sign Out
+														</Link>
+													</div>
+												</div>
+											</div>
+										) : (
+											<img className="" src={user} alt={user} onClick={this.props.openAuthModal} />
+										)}
+									</li>
+									<li>
+										<img className="" src={heart} alt={heart} />
+									</li>
+									<li>
+										<img className="" src={bag} alt={bag} />
+									</li>
+								</ul>
 							</div>
 							<AuthModal />
 						</div>
