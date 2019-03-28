@@ -50,12 +50,6 @@ export default class Navbar extends Component {
 								<span className="menu-title">Products</span>
 							</Link>
 						</li>
-						<li className="nav-item" onClick={this.setActiveNavLink}>
-							<Link to="/user/editproducts">
-								<FaAlignJustify />
-								<span className="menu-title">editProducts</span>
-							</Link>
-						</li>
 					</ul>
 				</div>
 			</div>

@@ -18,7 +18,7 @@ export default class Admin extends Component {
 				<Route path="/user/users" component={UserList} />
 				<Route path="/user/categories" component={CategoryList} />
 				<Route path="/user/products" component={ProductList} />
-				<Route path="/user/editproducts" component={EditProduct} />
+				<Route path="/user/edit/product/:id" component={EditProduct} />
 			</div>
 		)
 	}

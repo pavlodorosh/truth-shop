@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { database, storage } from '../../firebase'
+import { Link } from 'react-router-dom'
 
 import AddProduct from '../components/Product/AddProduct'
 import EditProduct from '../components/Product/EditProduct'
@@ -60,9 +61,9 @@ class ProductList extends Component {
 					<td>{this.state.products[id].quantity}</td>
 					<td>status</td>
 					<td align="center">
-						<button className="btn btn-default" data-toggle="modal" data-target="#EditCategory">
+						<Link style={{ backgroundColor: 'blue' }} className="btn btn-default" to={`/user/edit/product/${id}`}>
 							<em className="fa fa-pencil" />
-						</button>
+						</Link>
 						<button className="btn btn-danger" onClick={() => this.removeProductFromDatabase(id, this.state.products[id].mainImageName)}>
 							<em className="fa fa-trash" />
 						</button>
