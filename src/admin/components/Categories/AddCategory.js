@@ -12,6 +12,7 @@ class AddCategory extends Component {
 	state = {
 		name_en: '',
 		name_ru: '',
+		name_ua: '',
 		link: '',
 		selectedOption: null,
 		options: [
@@ -36,6 +37,7 @@ class AddCategory extends Component {
 		validate: false,
 		error_name_en: true,
 		error_name_ru: true,
+		error_name_ua: true,
 		error_link: true
 	}
 
@@ -71,7 +73,8 @@ class AddCategory extends Component {
 			.set({
 				name: {
 					en: this.state.name_en,
-					ru: this.state.name_ru
+					ru: this.state.name_ru,
+					ru: this.state.name_ua
 				},
 				link: this.state.link,
 				preview: this.state.previewUrl,
@@ -104,7 +107,7 @@ class AddCategory extends Component {
 	validateForm = e => {
 		e.preventDefault()
 		this.toggleValidating(true)
-		if (!this.state.error_name_en && !this.state.error_name_ru && !this.state.error_link && this.state.previewUrl.length && this.state.selectedOption) {
+		if (!this.state.error_name_ua && !this.state.error_name_en && !this.state.error_name_ru && !this.state.error_link && this.state.previewUrl.length && this.state.selectedOption) {
 			this.saveCategory()
 		}
 	}
@@ -131,6 +134,11 @@ class AddCategory extends Component {
 										</li>
 										<li className="nav-item">
 											<span className="nav-link" data-toggle="tab" href="#profile" role="tab">
+												CARE
+											</span>
+										</li>
+										<li className="nav-item">
+											<span className="nav-link" data-toggle="tab" href="#profileua" role="tab">
 												CARE
 											</span>
 										</li>
@@ -194,6 +202,34 @@ class AddCategory extends Component {
 														})
 													}}
 													value={this.state.name_ru}
+													validate={this.state.validate}
+												/>
+											</div>
+										</div>
+										<div className="tab-pane" id="profileua" role="tabpanel">
+											<div className="form-group">
+												<label>Name [ua]</label>
+												<Textbox
+													type="text"
+													className="form-control"
+													name="name_ua"
+													onChange={(val, e) => {
+														this.setState({ [e.target.name]: val })
+													}}
+													onBlur={() => {}}
+													validationOption={{
+														name: 'Name',
+														check: true,
+														required: true,
+														showMsg: true
+													}}
+													validationCallback={res => {
+														this.setState({
+															error_name_ua: res,
+															validate: false
+														})
+													}}
+													value={this.state.name_ua}
 													validate={this.state.validate}
 												/>
 											</div>

@@ -13,6 +13,13 @@ class AddProduct extends Component {
 	state = {
 		description_en: '',
 		description_ru: '',
+		description_ua: '',
+		care_en: '',
+		care_ru: '',
+		care_ua: '',
+		return_en: '',
+		return_ru: '',
+		return_ua: '',
 		price: '',
 		date: '',
 		name_en: '',
@@ -28,8 +35,10 @@ class AddProduct extends Component {
 		validate: false,
 		error_name_en: true,
 		error_name_ru: true,
+		error_name_ua: true,
 		error_description_en: true,
 		error_description_ru: true,
+		error_description_ua: true,
 		error_link: true,
 		error_model: true,
 		categories: {}
@@ -93,11 +102,24 @@ class AddProduct extends Component {
 			.set({
 				name: {
 					en: this.state.name_en,
-					ru: this.state.name_ru
+					ru: this.state.name_ru,
+					ua: this.state.name_ua
 				},
 				description: {
 					en: this.state.description_en,
-					ru: this.state.description_ru
+					ru: this.state.description_ru,
+					ua: this.state.description_ua
+				},
+				return: {
+					en: this.state.return_en,
+					ru: this.state.return_ru,
+					ua: this.state.return_ua
+				},
+
+				care: {
+					en: this.state.care_en,
+					ru: this.state.care_ru,
+					ua: this.state.care_ua
 				},
 				mainImageName: this.state.mainImageName,
 				mainImageUrl: this.state.mainImageUrl,
@@ -112,7 +134,6 @@ class AddProduct extends Component {
 				actions: '',
 				weather: '',
 				active: false,
-				care: '',
 				quantity: 0
 			})
 			.then(() => {
@@ -128,9 +149,17 @@ class AddProduct extends Component {
 		this.setState({
 			name_en: '',
 			name_ru: '',
+			name_ua: '',
+			care_en: '',
+			care_ru: '',
+			care_ua: '',
+			return_en: '',
+			return_ru: '',
+			return_ua: '',
 			description_en: '',
 			model: '',
 			description_ru: '',
+			description_ua: '',
 			selectedCategory: null,
 			mainImageName: '',
 			mainImageUrl: '',
@@ -172,6 +201,11 @@ class AddProduct extends Component {
 										</li>
 										<li className="nav-item">
 											<span className="nav-link" data-toggle="tab" href="#profile" role="tab">
+												CARE
+											</span>
+										</li>
+										<li className="nav-item">
+											<span className="nav-link" data-toggle="tab" href="#profileua" role="tab">
 												CARE
 											</span>
 										</li>
@@ -236,6 +270,30 @@ class AddProduct extends Component {
 													validate={this.state.validate}
 												/>
 											</div>
+											<div className="form-group">
+												<label>Return [en]</label>
+												<Textbox
+													type="text"
+													className="form-control"
+													name="return_en"
+													onChange={(val, e) => {
+														this.setState({ [e.target.name]: val })
+													}}
+													value={this.state.return_en}
+												/>
+											</div>
+											<div className="form-group">
+												<label>Care [en]</label>
+												<Textbox
+													type="text"
+													className="form-control"
+													name="care_en"
+													onChange={(val, e) => {
+														this.setState({ [e.target.name]: val })
+													}}
+													value={this.state.care_en}
+												/>
+											</div>
 										</div>
 										<div className="tab-pane" id="profile" role="tabpanel">
 											<div className="form-group">
@@ -288,6 +346,109 @@ class AddProduct extends Component {
 													}}
 													value={this.state.description_ru}
 													validate={this.state.validate}
+												/>
+											</div>
+											<div className="form-group">
+												<label>Return [ru]</label>
+												<Textbox
+													type="text"
+													className="form-control"
+													name="return_ru"
+													onChange={(val, e) => {
+														this.setState({ [e.target.name]: val })
+													}}
+													value={this.state.return_ru}
+												/>
+											</div>
+											<div className="form-group">
+												<label>Care [ru]</label>
+												<Textbox
+													type="text"
+													className="form-control"
+													name="care_ru"
+													onChange={(val, e) => {
+														this.setState({ [e.target.name]: val })
+													}}
+													value={this.state.care_ru}
+												/>
+											</div>
+										</div>
+
+										<div className="tab-pane" id="profileua" role="tabpanel">
+											<div className="form-group">
+												<label>Name [ua]</label>
+												<Textbox
+													type="text"
+													className="form-control"
+													name="name_ua"
+													onChange={(val, e) => {
+														this.setState({ [e.target.name]: val })
+													}}
+													onBlur={() => {}}
+													validationOption={{
+														name: 'Name',
+														check: true,
+														required: true,
+														showMsg: true
+													}}
+													validationCallback={res => {
+														this.setState({
+															error_name_ua: res,
+															validate: false
+														})
+													}}
+													value={this.state.name_ua}
+													validate={this.state.validate}
+												/>
+											</div>
+											<div className="form-group">
+												<label>Description [ua]</label>
+												<Textbox
+													type="text"
+													className="form-control"
+													name="description_ua"
+													onChange={(val, e) => {
+														this.setState({ [e.target.name]: val })
+													}}
+													onBlur={() => {}}
+													validationOption={{
+														name: 'Description',
+														check: true,
+														required: true,
+														showMsg: true
+													}}
+													validationCallback={res => {
+														this.setState({
+															error_description_ua: res,
+															validate: false
+														})
+													}}
+													value={this.state.description_ua}
+													validate={this.state.validate}
+												/>
+											</div>
+											<div className="form-group">
+												<label>Return [ua]</label>
+												<Textbox
+													type="text"
+													className="form-control"
+													name="return_ua"
+													onChange={(val, e) => {
+														this.setState({ [e.target.name]: val })
+													}}
+													value={this.state.return_ua}
+												/>
+											</div>
+											<div className="form-group">
+												<label>Care [ua]</label>
+												<Textbox
+													type="text"
+													className="form-control"
+													name="care_ua"
+													onChange={(val, e) => {
+														this.setState({ [e.target.name]: val })
+													}}
+													value={this.state.care_ua}
 												/>
 											</div>
 										</div>

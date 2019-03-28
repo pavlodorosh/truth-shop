@@ -165,10 +165,10 @@ class Product extends Component {
 										{product && product[productId].description.en}
 									</div>
 									<div className="tab-pane" id="care" role="tabpanel">
-										{product && product[productId].care}
+										{product && product[productId].care.en}
 									</div>
 									<div className="tab-pane" id="return" role="tabpanel">
-										{product && product[productId].return}
+										{product && product[productId].return.en}
 									</div>
 								</div>
 
