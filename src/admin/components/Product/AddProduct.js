@@ -58,16 +58,16 @@ class AddProduct extends Component {
 	}
 
 	pushCategoriesToSelect = data => {
-		return Object.keys(data).map(id => {
-			let category = {
-				value: data[id].name.en,
-				parent: data[id].parentCategory,
-				label: data[id].parentCategory + ' > ' + data[id].name.en
-			}
-			this.setState({
-				optionsListCategories: [...this.state.optionsListCategories, category]
+			return Object.keys(data).map(id => {
+				let category = {
+					value: data[id].name.en,
+					parent: data[id].parentCategory,
+					label: data[id].parentCategory + ' > ' + data[id].name.en
+				}
+				this.setState({
+					optionsListCategories: [...this.state.optionsListCategories, category]
+				})
 			})
-		})
 	}
 
 	handleChangeParent = selectedOption => {

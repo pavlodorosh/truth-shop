@@ -31,8 +31,11 @@ class Catalog extends Component {
 		const { match } = this.props
 
 		if (this.state.products !== null) {
+			let f = Object.keys(this.state.products)
+			console.log(f)
+
 			const filtered = Object.keys(this.state.products)
-				.filter(item => match.url === `/catalog/${this.toLowerCaseString(this.state.products[item].parentCategory)}/${this.state.products[item].category}`)
+				.filter(item => match.url === `/catalog/${this.toLowerCaseString(this.state.products[item].parentCategory)}/${this.toLowerCaseString(this.state.products[item].category)}`)
 				.reduce((obj, key) => {
 					return {
 						...obj,
