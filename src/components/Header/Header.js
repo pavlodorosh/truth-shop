@@ -5,7 +5,7 @@ import { openAuthModal, setUserInfo, clearUserInfo } from '../../redux/actions'
 import { auth } from '../../firebase'
 
 import AuthModal from './Auth/AuthModal'
-
+import ReactSVG from 'react-svg'
 import logo from '../../assets/img/logo.svg'
 import search from '../../assets/img/icons/search.svg'
 import user from '../../assets/img/icons/user.svg'
@@ -65,7 +65,7 @@ class Header extends Component {
 						<div className="row align-items-center">
 							<div className="col-lg-2">
 								<Link to="/">
-									<img src={logo} alt={logo} />
+									<ReactSVG src={logo} />
 								</Link>
 							</div>
 							<div className="col-lg-8">
@@ -81,7 +81,7 @@ class Header extends Component {
 							<div className="col-lg-2">
 								<ul className="d-flex list-unstyled top-links m-0 justify-content-end">
 									<li>
-										<img className="" src={search} alt={search} />
+										<ReactSVG src={search} />
 									</li>
 									<li>
 										{this.props.user !== null ? (
@@ -102,14 +102,14 @@ class Header extends Component {
 												</div>
 											</div>
 										) : (
-											<img className="" src={user} alt={user} onClick={this.props.openAuthModal} />
+											<ReactSVG src={user} onClick={this.props.openAuthModal} />
 										)}
 									</li>
 									<li>
-										<img className="" src={heart} alt={heart} />
+										<ReactSVG src={heart} />
 									</li>
 									<li>
-										<img className="" src={bag} alt={bag} />
+										<ReactSVG src={bag} />
 									</li>
 								</ul>
 							</div>

@@ -49,25 +49,25 @@ class CategoryList extends Component {
 		this.getCategoriesFromDatabase()
 	}
 
-	// renderCategories = () => {
-	// 	if (this.state.categories !== null) {
-	// 		return Object.keys(this.state.categories).map((id, index) => (
-	// 			<tr key={id}>
-	// 				<td>
-	// 					{this.state.categories[id].parentCategory} -> {this.state.categories[id].name.en}
-	// 				</td>
-	// 				<td align="center">
-	// 					<button className="btn btn-default" data-toggle="modal" data-target="#EditCategory">
-	// 						<em className="fa fa-pencil" />
-	// 					</button>
-	// 					<button className="btn btn-danger" onClick={() => this.removeCategoryFromDatabase(id, this.state.categories[id].previewName)}>
-	// 						<em className="fa fa-trash" />
-	// 					</button>
-	// 				</td>
-	// 			</tr>
-	// 		))
-	// 	}
-	// }
+	renderCategories = () => {
+		if (this.state.categories !== null) {
+			return Object.keys(this.state.categories).map((id, index) => (
+				<tr key={id}>
+					<td>
+						{this.state.categories[id].parentCategory} -> {this.state.categories[id].name.en}
+					</td>
+					<td align="center">
+						<button className="btn btn-default" data-toggle="modal" data-target="#EditCategory">
+							<em className="fa fa-pencil" />
+						</button>
+						<button className="btn btn-danger" onClick={() => this.removeCategoryFromDatabase(id, this.state.categories[id].previewName)}>
+							<em className="fa fa-trash" />
+						</button>
+					</td>
+				</tr>
+			))
+		}
+	}
 
 	render() {
 		return (
@@ -102,7 +102,7 @@ class CategoryList extends Component {
 														</th>
 													</tr>
 												</thead>
-												{/* <tbody>{this.renderCategories()}</tbody> */}
+												<tbody>{this.renderCategories()}</tbody>
 											</table>
 										</div>
 									</div>

@@ -47,30 +47,30 @@ class ProductList extends Component {
 		this.getProductsFromDatabase()
 	}
 
-	// renderProducts = () => {
-	// 	if (this.state.products !== null) {
-	// 		return Object.keys(this.state.products).map((id, index) => (
-	// 			<tr key={id}>
-	// 				<td>
-	// 					<img style={{ width: '50px' }} src={this.state.products[id].mainImageUrl} alt="" />
-	// 				</td>
-	// 				<td>{this.state.products[id].name.en}</td>
-	// 				<td>{this.state.products[id].model}</td>
-	// 				<td>{this.state.products[id].price} $</td>
-	// 				<td>{this.state.products[id].quantity}</td>
-	// 				<td>status</td>
-	// 				<td align="center">
-	// 					<button className="btn btn-default" data-toggle="modal" data-target="#EditCategory">
-	// 						<em className="fa fa-pencil" />
-	// 					</button>
-	// 					<button className="btn btn-danger" onClick={() => this.removeProductFromDatabase(id, this.state.products[id].mainImageName)}>
-	// 						<em className="fa fa-trash" />
-	// 					</button>
-	// 				</td>
-	// 			</tr>
-	// 		))
-	// 	}
-	// }
+	renderProducts = () => {
+		if (this.state.products !== null) {
+			return Object.keys(this.state.products).map((id, index) => (
+				<tr key={id}>
+					<td>
+						<img style={{ width: '50px' }} src={this.state.products[id].mainImageUrl} alt="" />
+					</td>
+					<td>{this.state.products[id].name.en}</td>
+					<td>{this.state.products[id].model}</td>
+					<td>{this.state.products[id].price} $</td>
+					<td>{this.state.products[id].quantity}</td>
+					<td>status</td>
+					<td align="center">
+						<button className="btn btn-default" data-toggle="modal" data-target="#EditCategory">
+							<em className="fa fa-pencil" />
+						</button>
+						<button className="btn btn-danger" onClick={() => this.removeProductFromDatabase(id, this.state.products[id].mainImageName)}>
+							<em className="fa fa-trash" />
+						</button>
+					</td>
+				</tr>
+			))
+		}
+	}
 
 	render() {
 		return (
@@ -108,7 +108,7 @@ class ProductList extends Component {
 														</th>
 													</tr>
 												</thead>
-												{/* <tbody>{this.renderProducts()}</tbody> */}
+												<tbody>{this.renderProducts()}</tbody>
 											</table>
 										</div>
 									</div>

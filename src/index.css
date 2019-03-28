@@ -204,13 +204,9 @@ header .top-links li {
 
 /***HEADER***/
 
-/***CATEGORY***/
+/***Front***/
 
-.CategotyPage {
-  position: relative;
-}
-
-.CategotyPage .category_name {
+.category_name {
   font-family: Geometria;
   font-size: 40px;
   font-weight: 500;
@@ -223,7 +219,7 @@ header .top-links li {
   display: block;
 }
 
-/***CATEGORY***/
+/***Front***/
 
 /***SubCategoty***/
 
