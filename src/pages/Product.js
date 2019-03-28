@@ -1,11 +1,70 @@
 import React, { Component } from 'react'
 import { Modal } from 'bootstrap-4-react'
-import product from '../assets/img/product_img.png'
+import { database } from '../firebase'
+// import product from '../assets/img/product_img.png'
 import size_men from '../assets/img/size_men.png'
 import size_women from '../assets/img/size_women.png'
 
 class Product extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			products: {},
+			product: '',
+			productId: []
+		}
+	}
+
+	getProductsFromDatabase = () => {
+		database.ref('/products').on('value', snapshot => {
+			this.setState(
+				{
+					products: snapshot.val()
+				},
+				() => {
+					this.setState({ product: this.filteredAndReducedProducts() })
+				}
+			)
+		})
+	}
+
+	componentDidMount = () => {
+		this.getProductsFromDatabase()
+	}
+
+	toLowerCaseString = data => {
+		return data.toLowerCase()
+	}
+
+	filteredAndReducedProducts = () => {
+		const { match } = this.props
+
+		if (this.state.products !== null) {
+			const filtered = Object.keys(this.state.products)
+				.filter(
+					item =>
+						match.url ===
+						`/product/${this.toLowerCaseString(this.state.products[item].parentCategory)}/${this.state.products[item].category}/${this.toLowerCaseString(
+							this.state.products[item].name.en
+						)}`
+				)
+				.reduce((obj, key) => {
+					this.setState({ productId: [key] })
+
+					return {
+						...obj,
+						[key]: this.state.products[key]
+					}
+				}, {})
+
+			return filtered
+		}
+		return null
+	}
+
 	render() {
+		const { product, productId } = this.state
+
 		return (
 			<div className="container-fluid">
 				<div className="container">
@@ -15,14 +74,14 @@ class Product extends Component {
 								{/* Wrapper for slides */}
 								<div className="carousel-inner">
 									<div className="carousel-item active">
+										<img className="img-fluid" src={product && product[productId].mainImageUrl} />
+									</div>
+									{/* <div className="carousel-item">
 										<img className="img-fluid" src={product} />
 									</div>
 									<div className="carousel-item">
 										<img className="img-fluid" src={product} />
-									</div>
-									<div className="carousel-item">
-										<img className="img-fluid" src={product} />
-									</div>
+									</div> */}
 
 									{/* Controls */}
 									<a className="left carousel-control" href="#carousel-custom" data-slide="prev">
@@ -36,30 +95,32 @@ class Product extends Component {
 								{/* Indicators */}
 								<ol className="carousel-indicators">
 									<li data-target="#carousel-custom" data-slide-to="0" className="active">
-										<img className="img-fluid" src={product} />
+										<img className="img-fluid" src={product && product[productId].mainImageUrl} />
 									</li>
-									<li data-target="#carousel-custom" data-slide-to="1">
+									{/* <li data-target="#carousel-custom" data-slide-to="1">
 										<img className="img-fluid" src={product} />
 									</li>
 									<li data-target="#carousel-custom" data-slide-to="2">
 										<img className="img-fluid" src={product} />
-									</li>
+									</li> */}
 								</ol>
 							</div>
 						</div>
 
 						<div className="pr-0 pl-1 col-lg-5">
-							<div className="product_title">casual T-shirt</div>
-							<div className="price">$23.90</div>
-							<div className="product_size">
-								<span>Choose your size</span>
-								<ul className="d-flex list-unstyled m-0 align-self-center">
-									<li>S</li>
-									<li>M</li>
-									<li>L</li>
-									<li>XL</li>
-								</ul>
-							</div>
+							<div className="product_title">{product && product[productId].name.en}</div>
+							<div className="price">${product && product[productId].price}</div>
+							{product[productId] && (
+								<div className="product_size">
+									<span>Choose your size</span>
+									<ul className="d-flex list-unstyled m-0 align-self-center">
+										<li>S</li>
+										<li>M</li>
+										<li>L</li>
+										<li>XL</li>
+									</ul>
+								</div>
+							)}
 							<div className="product_color">
 								<span>Choose color</span>
 								<ul className="d-flex list-unstyled m-0 align-self-center">
@@ -70,7 +131,7 @@ class Product extends Component {
 								</ul>
 							</div>
 							<div className="add_cart">
-								<button type="button"  className="button-cart">
+								<button type="button" className="button-cart">
 									ADD TO CART
 								</button>
 							</div>
@@ -101,14 +162,13 @@ class Product extends Component {
 
 								<div className="tab-content">
 									<div className="tab-pane active" id="details" role="tabpanel">
-										Red t-shirt in sport casual style.<br/> 100% environmentally friendly materials. <br/>Classic T-shirt featuring crew neckline, short sleeves.<br/> The print is made by a
-										thermos-transfer method.<br/> Machine Wash. 100% cotton
+										{product && product[productId].description.en}
 									</div>
 									<div className="tab-pane" id="care" role="tabpanel">
-										Care
+										{product && product[productId].care}
 									</div>
 									<div className="tab-pane" id="return" role="tabpanel">
-										Retutn
+										{product && product[productId].return}
 									</div>
 								</div>
 

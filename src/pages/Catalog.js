@@ -54,12 +54,15 @@ class Catalog extends Component {
 			return Object.keys(array).map((id, index) => (
 				<div className="col-lg-3 col-md-3 col-sm-6 col-12" key={id}>
 					<div>
-						<Link to={`/product/${this.toLowerCaseString(this.state.products[id].parentCategory)}/${this.state.products[id].category}/${this.state.products[id].name.en}`}>
+						<Link
+							to={`/product/${this.toLowerCaseString(this.state.products[id].parentCategory)}/${this.state.products[id].category}/${this.toLowerCaseString(
+								this.state.products[id].name.en
+							)}`}>
 							<img className="card-img" src={this.state.products[id].mainImageUrl} />
 						</Link>
 						<div className="caption">
 							<div className="title">{this.state.products[id].name.en}</div>
-							<div className="price" />
+							<div className="price">{this.state.products[id].price}</div>
 						</div>
 					</div>
 				</div>
