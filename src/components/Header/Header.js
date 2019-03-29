@@ -71,7 +71,7 @@ class Header extends Component {
 									<Link to="/accessories">ACCESSORIES </Link>
 									<Link to="/about">ABOUT US </Link>
 									<Link to="/contacts">CONTACTS</Link>
-									<Link to="/category">BREND</Link>
+									<Link to="/">BREND</Link>
 								</nav>
 							</div>
 							<div className="col-lg-2">
