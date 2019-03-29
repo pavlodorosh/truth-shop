@@ -58,16 +58,16 @@ class AddProduct extends Component {
 	}
 
 	pushCategoriesToSelect = data => {
-			return Object.keys(data).map(id => {
-				let category = {
-					value: data[id].name.en,
-					parent: data[id].parentCategory,
-					label: data[id].parentCategory + ' > ' + data[id].name.en
-				}
-				this.setState({
-					optionsListCategories: [...this.state.optionsListCategories, category]
-				})
+		return Object.keys(data).map(id => {
+			let category = {
+				value: data[id].name.en,
+				parent: data[id].parentCategory,
+				label: data[id].parentCategory + ' > ' + data[id].name.en
+			}
+			this.setState({
+				optionsListCategories: [...this.state.optionsListCategories, category]
 			})
+		})
 	}
 
 	handleChangeParent = selectedOption => {
@@ -200,22 +200,22 @@ class AddProduct extends Component {
 									<ul className="nav nav-tabs" role="tablist">
 										<li className="nav-item">
 											<span className="nav-link active" data-toggle="tab" href="#home" role="tab">
-												DETAILS
+												EN
 											</span>
 										</li>
 										<li className="nav-item">
 											<span className="nav-link" data-toggle="tab" href="#profile" role="tab">
-												CARE
+												RU
 											</span>
 										</li>
 										<li className="nav-item">
 											<span className="nav-link" data-toggle="tab" href="#profileua" role="tab">
-												CARE
+												UA
 											</span>
 										</li>
 										<li className="nav-item">
 											<span className="nav-link" data-toggle="tab" href="#messages" role="tab">
-												RETURN
+												DETAILS
 											</span>
 										</li>
 									</ul>
@@ -223,10 +223,10 @@ class AddProduct extends Component {
 									<div className="tab-content">
 										<div className="tab-pane active" id="home" role="tabpanel">
 											<div className="form-group">
-												<label>Name [en]</label>
+												<label className="col-lg-6 p-0">Name [en]</label>
 												<Textbox
 													type="text"
-													className="form-control"
+													className="form-control col-lg-6 p-0"
 													name="name_en"
 													onChange={(val, e) => {
 														this.setState({ [e.target.name]: val })
@@ -249,10 +249,10 @@ class AddProduct extends Component {
 												/>
 											</div>
 											<div className="form-group">
-												<label>Description [en]</label>
+												<label className="col-lg-6 p-0">Description [en]</label>
 												<Textbox
 													type="text"
-													className="form-control"
+													className="form-control col-lg-6 p-0"
 													name="description_en"
 													onChange={(val, e) => {
 														this.setState({ [e.target.name]: val })
@@ -275,10 +275,10 @@ class AddProduct extends Component {
 												/>
 											</div>
 											<div className="form-group">
-												<label>Return [en]</label>
+												<label className="col-lg-6 p-0">Return [en]</label>
 												<Textbox
 													type="text"
-													className="form-control"
+													className="form-control col-lg-6 p-0"
 													name="return_en"
 													onChange={(val, e) => {
 														this.setState({ [e.target.name]: val })
@@ -287,10 +287,10 @@ class AddProduct extends Component {
 												/>
 											</div>
 											<div className="form-group">
-												<label>Care [en]</label>
+												<label className="col-lg-6 p-0">Care [en]</label>
 												<Textbox
 													type="text"
-													className="form-control"
+													className="form-control col-lg-6 p-0"
 													name="care_en"
 													onChange={(val, e) => {
 														this.setState({ [e.target.name]: val })
@@ -301,10 +301,10 @@ class AddProduct extends Component {
 										</div>
 										<div className="tab-pane" id="profile" role="tabpanel">
 											<div className="form-group">
-												<label>Name [ru]</label>
+												<label className="col-lg-6 p-0">Name [ru]</label>
 												<Textbox
 													type="text"
-													className="form-control"
+													className="form-control col-lg-6 p-0"
 													name="name_ru"
 													onChange={(val, e) => {
 														this.setState({ [e.target.name]: val })
@@ -327,10 +327,10 @@ class AddProduct extends Component {
 												/>
 											</div>
 											<div className="form-group">
-												<label>Description [ru]</label>
+												<label className="col-lg-6 p-0">Description [ru]</label>
 												<Textbox
 													type="text"
-													className="form-control"
+													className="form-control col-lg-6 p-0"
 													name="description_ru"
 													onChange={(val, e) => {
 														this.setState({ [e.target.name]: val })
@@ -353,10 +353,10 @@ class AddProduct extends Component {
 												/>
 											</div>
 											<div className="form-group">
-												<label>Return [ru]</label>
+												<label className="col-lg-6 p-0">Return [ru]</label>
 												<Textbox
 													type="text"
-													className="form-control"
+													className="form-control col-lg-6 p-0"
 													name="return_ru"
 													onChange={(val, e) => {
 														this.setState({ [e.target.name]: val })
@@ -365,10 +365,10 @@ class AddProduct extends Component {
 												/>
 											</div>
 											<div className="form-group">
-												<label>Care [ru]</label>
+												<label className="col-lg-6 p-0">Care [ru]</label>
 												<Textbox
 													type="text"
-													className="form-control"
+													className="form-control col-lg-6 p-0"
 													name="care_ru"
 													onChange={(val, e) => {
 														this.setState({ [e.target.name]: val })
@@ -380,10 +380,10 @@ class AddProduct extends Component {
 
 										<div className="tab-pane" id="profileua" role="tabpanel">
 											<div className="form-group">
-												<label>Name [ua]</label>
+												<label className="col-lg-6 p-0">Name [ua]</label>
 												<Textbox
 													type="text"
-													className="form-control"
+													className="form-control col-lg-6 p-0"
 													name="name_ua"
 													onChange={(val, e) => {
 														this.setState({ [e.target.name]: val })
@@ -406,10 +406,10 @@ class AddProduct extends Component {
 												/>
 											</div>
 											<div className="form-group">
-												<label>Description [ua]</label>
+												<label className="col-lg-6 p-0">Description [ua]</label>
 												<Textbox
 													type="text"
-													className="form-control"
+													className="form-control col-lg-6 p-0"
 													name="description_ua"
 													onChange={(val, e) => {
 														this.setState({ [e.target.name]: val })
@@ -432,10 +432,10 @@ class AddProduct extends Component {
 												/>
 											</div>
 											<div className="form-group">
-												<label>Return [ua]</label>
+												<label className="col-lg-6 p-0">Return [ua]</label>
 												<Textbox
 													type="text"
-													className="form-control"
+													className="form-control col-lg-6 p-0"
 													name="return_ua"
 													onChange={(val, e) => {
 														this.setState({ [e.target.name]: val })
@@ -444,10 +444,10 @@ class AddProduct extends Component {
 												/>
 											</div>
 											<div className="form-group">
-												<label>Care [ua]</label>
+												<label className="col-lg-6 p-0">Care [ua]</label>
 												<Textbox
 													type="text"
-													className="form-control"
+													className="form-control col-lg-6 p-0"
 													name="care_ua"
 													onChange={(val, e) => {
 														this.setState({ [e.target.name]: val })
@@ -459,10 +459,10 @@ class AddProduct extends Component {
 
 										<div className="tab-pane" id="messages" role="tabpanel">
 											<div className="form-group">
-												<label>Model</label>
+												<label className="col-lg-6 p-0">Model</label>
 												<Textbox
 													type="text"
-													className="form-control"
+													className="form-control col-lg-6 p-0"
 													name="model"
 													onChange={(val, e) => {
 														this.setState({ [e.target.name]: val })
@@ -485,10 +485,10 @@ class AddProduct extends Component {
 												/>
 											</div>
 											<div className="form-group">
-												<label>Price</label>
+												<label className="col-lg-6 p-0">Price</label>
 												<Textbox
 													type="text"
-													className="form-control"
+													className="form-control col-lg-6 p-0"
 													name="price"
 													placeholder="0"
 													onChange={(val, e) => {
@@ -536,8 +536,8 @@ class AddProduct extends Component {
 												</CustomUploadButton>
 											</div>
 											<div className="form-group">
-												<label>Category</label>
-												<Select value={this.state.selectedCategory} onChange={this.handleChangeParent} options={this.state.optionsListCategories} />
+												<label className="col-lg-6 p-0">Category</label>
+												<Select className="col-lg-6 p-0" value={this.state.selectedCategory} onChange={this.handleChangeParent} options={this.state.optionsListCategories} />
 											</div>
 										</div>
 									</div>

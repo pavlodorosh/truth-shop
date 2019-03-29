@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Nav } from 'bootstrap-4-react'
-// import ReactSVG from 'react-svg'
 
 class Footer extends Component {
 	render() {
@@ -35,15 +34,15 @@ class Footer extends Component {
 						<div className="col-lg-3">
 							<span className="column-title"> SOCIAL MEDIA</span>
 							<ul className="d-flex list-unstyled social_footer  m-0 align-self-center">
-								{/* <li>
-									<ReactSVG src={facebook} />
+								<li className="facebook">
+									<i className="fab fa-facebook-f" />
 								</li>
-								<li>
-									<ReactSVG src={google} />
+								<li className="google">
+									<i className="fab fa-google-plus-g" />
 								</li>
-								<li>
-									<ReactSVG src={instagram} />
-								</li> */}
+								<li className="instagram">
+									<i className="fab fa-instagram" />
+								</li>
 							</ul>
 						</div>
 						<div className="col-lg-3">

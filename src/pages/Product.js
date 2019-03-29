@@ -66,7 +66,7 @@ class Product extends Component {
 		const { product, productId } = this.state
 
 		return (
-			<div className="container-fluid">
+			<div className="container-fluid product">
 				<div className="container">
 					<div className="row no-gutter">
 						<div className="pl-0 pr-1 col-lg-6">
@@ -74,6 +74,12 @@ class Product extends Component {
 								{/* Wrapper for slides */}
 								<div className="carousel-inner">
 									<div className="carousel-item active">
+										<img alt="" className="img-fluid" src={product && product[productId].mainImageUrl} />
+									</div>
+									<div className="carousel-item ">
+										<img alt="" className="img-fluid" src={product && product[productId].mainImageUrl} />
+									</div>
+									<div className="carousel-item ">
 										<img alt="" className="img-fluid" src={product && product[productId].mainImageUrl} />
 									</div>
 									{/* <div className="carousel-item">
@@ -85,16 +91,22 @@ class Product extends Component {
 
 									{/* Controls */}
 									<a className="left carousel-control" href="#carousel-custom" data-slide="prev">
-										<i className="fas fa-angle-left" />
+										<i className="fal fa-angle-left" />
 									</a>
 									<a className="right carousel-control" href="#carousel-custom" data-slide="next">
-										<span className="glyphicon glyphicon-chevron-right" />
+										<i className="fal fa-angle-right" />
 									</a>
 								</div>
 
 								{/* Indicators */}
 								<ol className="carousel-indicators">
 									<li data-target="#carousel-custom" data-slide-to="0" className="active">
+										<img alt="" className="img-fluid" src={product && product[productId].mainImageUrl} />
+									</li>
+									<li data-target="#carousel-custom" data-slide-to="1" className="active">
+										<img alt="" className="img-fluid" src={product && product[productId].mainImageUrl} />
+									</li>
+									<li data-target="#carousel-custom" data-slide-to="2" className="active">
 										<img alt="" className="img-fluid" src={product && product[productId].mainImageUrl} />
 									</li>
 									{/* <li data-target="#carousel-custom" data-slide-to="1">
@@ -154,7 +166,7 @@ class Product extends Component {
 									</li>
 									<li className="nav-item">
 										{/* Button trigger Modal */}
-										<span className="nav-link" data-toggle="modal" data-target="#exampleModal">
+										<span className="nav-link size_guide" data-toggle="modal" data-target="#exampleModal">
 											SIZE GUIDE
 										</span>
 									</li>
@@ -186,13 +198,15 @@ class Product extends Component {
 												Use the chart below to determine your size. If you’re on the borderline between two sizes, order the smaller size for a tighter fit or the larger size
 												for a looser fit. If your measurements for chest and waist correspond to two different suggested sizes, order the size indicated by your chest
 												measurement.
-												<div className="col-lg-6">
-													MALE
-													<img alt="" className="img-fluid" src={size_men} />
-												</div>
-												<div className="col-lg-6">
-													FEMALE
-													<img alt="" className="img-fluid" src={size_women} />
+												<div className="row d-flex">
+													<div className="col-lg-6">
+														MALE
+														<img alt="" className="img-fluid" src={size_men} />
+													</div>
+													<div className="col-lg-6">
+														FEMALE
+														<img alt="" className="img-fluid" src={size_women} />
+													</div>
 												</div>
 											</Modal.Body>
 										</Modal.Content>

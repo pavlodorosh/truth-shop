@@ -97,9 +97,7 @@ class CategoryList extends Component {
 												<thead>
 													<tr>
 														<th>Name</th>
-														<th>
-															<em className="fa fa-cog" />
-														</th>
+														<th />
 													</tr>
 												</thead>
 												<tbody>{this.renderCategories()}</tbody>

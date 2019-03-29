@@ -64,7 +64,7 @@ class Catalog extends Component {
 						</Link>
 						<div className="caption">
 							<div className="title">{this.state.products[id].name.en}</div>
-							<div className="price">{this.state.products[id].price}</div>
+							<div className="price">${this.state.products[id].price}</div>
 						</div>
 					</div>
 				</div>
@@ -74,7 +74,7 @@ class Catalog extends Component {
 
 	render() {
 		return (
-			<div className="container-fluid">
+			<div className="container-fluid catalog">
 				<div className="container">
 					<div className="row no-gutter">{this.renderProducts()}</div>
 				</div>

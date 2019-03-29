@@ -48,9 +48,9 @@ class Header extends Component {
 												View Shop
 											</Link>
 
-											<Link to="#" className="dropdown-item">
+											{/* <Link to="#" className="dropdown-item">
 												Task
-											</Link>
+											</Link> */}
 
 											<div className="dropdown-divider" />
 											<Link to="#" className="dropdown-item" onClick={this.signOut}>
@@ -58,7 +58,7 @@ class Header extends Component {
 											</Link>
 										</div>
 									</li>
-									<li className="dropdown dropdown-language nav-item">
+									{/* <li className="dropdown dropdown-language nav-item">
 										<Link to="#" className="dropdown-toggle nav-link" id="dropdown-flag" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											<FaFlag />
 
@@ -72,7 +72,7 @@ class Header extends Component {
 												French
 											</Link>
 										</div>
-									</li>
+									</li> */}
 								</ul>
 							</div>
 						</div>

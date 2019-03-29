@@ -7,10 +7,6 @@ import { auth } from '../../firebase'
 import AuthModal from './Auth/AuthModal'
 import ReactSVG from 'react-svg'
 import logo from '../../assets/img/logo.svg'
-import search from '../../assets/img/icons/search.svg'
-import user from '../../assets/img/icons/user.svg'
-import heart from '../../assets/img/icons/heart.svg'
-import bag from '../../assets/img/icons/shopping-bag.svg'
 
 class Header extends Component {
 	componentDidMount() {
@@ -81,12 +77,12 @@ class Header extends Component {
 							<div className="col-lg-2">
 								<ul className="d-flex list-unstyled top-links m-0 justify-content-end">
 									<li>
-										<ReactSVG src={search} />
+										<i className="fal fa-search" />
 									</li>
 									<li>
 										{this.props.user !== null ? (
 											<div className="d-flex flex-row">
-												<ReactSVG className="" src={user} />
+												<i className="fal fa-user" />
 												<div className="dropdown">
 													<button id="dropdownMenuButton" data-toggle="dropdown" className="dropdown-toggle" aria-expanded="false">
 														{/* {this.props.user.displayName} */}
@@ -102,16 +98,16 @@ class Header extends Component {
 												</div>
 											</div>
 										) : (
-											<ReactSVG src={user} onClick={this.props.openAuthModal} />
+											<span onClick={this.props.openAuthModal}>
+												<i className="fal fa-user" />
+											</span>
 										)}
 									</li>
 									<li>
-										<ReactSVG src={heart} className="img-fluid" />
+										<i className="fal fa-heart" />
 									</li>
 									<li>
-										<i className="fas fa-shopping-bag" />
-
-										<ReactSVG src={bag} />
+										<i className="fal fa-shopping-bag" />
 									</li>
 								</ul>
 							</div>

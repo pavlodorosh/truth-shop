@@ -129,22 +129,22 @@ class AddCategory extends Component {
 									<ul className="nav nav-tabs" role="tablist">
 										<li className="nav-item">
 											<span className="nav-link active" data-toggle="tab" href="#home" role="tab">
-												DETAILS
+												EN
 											</span>
 										</li>
 										<li className="nav-item">
 											<span className="nav-link" data-toggle="tab" href="#profile" role="tab">
-												CARE
+												RU
 											</span>
 										</li>
 										<li className="nav-item">
 											<span className="nav-link" data-toggle="tab" href="#profileua" role="tab">
-												CARE
+												UA
 											</span>
 										</li>
 										<li className="nav-item">
 											<span className="nav-link" data-toggle="tab" href="#messages" role="tab">
-												RETURN
+												DETAIL
 											</span>
 										</li>
 									</ul>
@@ -152,10 +152,10 @@ class AddCategory extends Component {
 									<div className="tab-content">
 										<div className="tab-pane active" id="home" role="tabpanel">
 											<div className="form-group">
-												<label>Name [en]</label>
+												<label className="col-lg-6 p-0">Name [en]</label>
 												<Textbox
 													type="text"
-													className="form-control"
+													className="form-control col-lg-6 p-0"
 													name="name_en"
 													onChange={(val, e) => {
 														this.setState({ [e.target.name]: val })
@@ -180,11 +180,11 @@ class AddCategory extends Component {
 										</div>
 										<div className="tab-pane" id="profile" role="tabpanel">
 											<div className="form-group">
-												<label>Name [ru]</label>
+												<label className="col-lg-6 p-0">Name [ru]</label>
 												<Textbox
 													type="text"
 													className="form-control"
-													name="name_ru"
+													name="name_ru col-lg-6 p-0"
 													onChange={(val, e) => {
 														this.setState({ [e.target.name]: val })
 													}}
@@ -208,10 +208,10 @@ class AddCategory extends Component {
 										</div>
 										<div className="tab-pane" id="profileua" role="tabpanel">
 											<div className="form-group">
-												<label>Name [ua]</label>
+												<label className="col-lg-6 p-0">Name [ua]</label>
 												<Textbox
 													type="text"
-													className="form-control"
+													className="form-control col-lg-6 p-0"
 													name="name_ua"
 													onChange={(val, e) => {
 														this.setState({ [e.target.name]: val })
@@ -236,10 +236,10 @@ class AddCategory extends Component {
 										</div>
 										<div className="tab-pane" id="messages" role="tabpanel">
 											<div className="form-group">
-												<label>Link</label>
+												<label className="col-lg-6 p-0">Link</label>
 												<Textbox
 													type="text"
-													className="form-control"
+													className="form-control col-lg-6 p-0"
 													name="link"
 													onChange={(val, e) => {
 														this.setState({ [e.target.name]: val })
@@ -284,8 +284,8 @@ class AddCategory extends Component {
 												</CustomUploadButton>
 											</div>
 											<div className="form-group">
-												<label>Select category</label>
-												<Select value={this.state.selectedOption} onChange={this.handleChangeParent} options={this.state.options} />
+												<label className="col-lg-6 p-0">Select category</label>
+												<Select className="col-lg-6 p-0" value={this.state.selectedOption} onChange={this.handleChangeParent} options={this.state.options} />
 											</div>
 										</div>
 									</div>

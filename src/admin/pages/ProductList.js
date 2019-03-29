@@ -60,7 +60,7 @@ class ProductList extends Component {
 					<td>{this.state.products[id].quantity}</td>
 					<td>status</td>
 					<td align="center">
-						<Link style={{ backgroundColor: 'blue' }} className="btn btn-default" to={`/user/edit/product/${id}`}>
+						<Link style={{ backgroundColor: '#dddddd' }} className="btn btn-default" to={`/user/edit/product/${id}`}>
 							<em className="fa fa-pencil" />
 						</Link>
 						<button className="btn btn-danger" onClick={() => this.removeProductFromDatabase(id, this.state.products[id].mainImageName)}>
@@ -103,9 +103,7 @@ class ProductList extends Component {
 														<th>price</th>
 														<th>quantity</th>
 														<th>status</th>
-														<th>
-															<em className="fa fa-cog" />
-														</th>
+														<th />
 													</tr>
 												</thead>
 												<tbody>{this.renderProducts()}</tbody>
