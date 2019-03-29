@@ -259,6 +259,24 @@ header .dropdown-toggle::after {
   bottom: 154px;
 }
 
+.category_name a {
+  color: #ffffff;
+  opacity: 1;
+}
+
+.category_name a:hover {
+  text-decoration: none;
+}
+
+.catygory_link a:hover {
+  text-decoration: none;
+}
+
+.catygory_link a {
+  color: #ffffff;
+  opacity: 1;
+}
+
 .catygory_link {
   position: absolute;
   font-size: 20px;
@@ -274,11 +292,11 @@ header .dropdown-toggle::after {
   border: .25rem solid #fff;
 }
 
-.front_block img {
+.front_block a {
   transition: 1s;
 }
 
-.front_block img:hover {
+.front_block a:hover, .front_block img:hover {
   opacity: .6;
 }
 

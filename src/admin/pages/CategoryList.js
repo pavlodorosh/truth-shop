@@ -57,9 +57,9 @@ class CategoryList extends Component {
 						{this.state.categories[id].parentCategory} -> {this.state.categories[id].name.en}
 					</td>
 					<td align="center">
-						<button className="btn btn-default" data-toggle="modal" data-target="#EditCategory">
+						{/* <button className="btn btn-default" data-toggle="modal" data-target="#EditCategory">
 							<em className="fa fa-pencil" />
-						</button>
+						</button> */}
 						<button className="btn btn-danger" onClick={() => this.removeCategoryFromDatabase(id, this.state.categories[id].previewName)}>
 							<em className="fa fa-trash" />
 						</button>

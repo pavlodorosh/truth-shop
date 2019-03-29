@@ -60,9 +60,9 @@ class ProductList extends Component {
 					<td>{this.state.products[id].quantity}</td>
 					<td>status</td>
 					<td align="center">
-						<Link style={{ backgroundColor: '#dddddd' }} className="btn btn-default" to={`/user/edit/product/${id}`}>
+						{/* <Link style={{ backgroundColor: '#dddddd' }} className="btn btn-default" to={`/user/edit/product/${id}`}>
 							<em className="fa fa-pencil" />
-						</Link>
+						</Link> */}
 						<button className="btn btn-danger" onClick={() => this.removeProductFromDatabase(id, this.state.products[id].mainImageName)}>
 							<em className="fa fa-trash" />
 						</button>

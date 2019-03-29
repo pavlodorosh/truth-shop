@@ -16,24 +16,36 @@ class Front extends Component {
 								<img alt="" className="img-fluid" src={women} />
 							</Link>
 
-							<span className="category_name ">WOMEN</span>
-							<span className="catygory_link ">SHOP NOW</span>
+							<span className="category_name ">
+								<Link to="/women">WOMEN</Link>
+							</span>
+							<span className="catygory_link ">
+								<Link to="/women">SHOP NOW</Link>
+							</span>
 						</div>
 						<div className="p-0 front_block col-lg-4 d-flex justify-content-center">
 							<Link to="/accessories">
 								<img alt="" className="img-fluid" src={accessories} />
 							</Link>
 
-							<span className="category_name">ACCESSORIES</span>
-							<span className="catygory_link ">SHOP NOW</span>
+							<span className="category_name">
+								<Link to="/accessories">ACCESSORIES</Link>
+							</span>
+							<span className="catygory_link ">
+								<Link to="/accessories">SHOP NOW</Link>
+							</span>
 						</div>
 						<div className="p-0 front_block col-lg-4 d-flex justify-content-center">
 							<Link to="/men">
 								<img alt="" className="img-fluid" src={men} />
 							</Link>
 
-							<span className="category_name ">MEN</span>
-							<span className="catygory_link ">SHOP NOW</span>
+							<span className="category_name ">
+								<Link to="/men">MEN</Link>
+							</span>
+							<span className="catygory_link ">
+								<Link to="/men">SHOP NOW</Link>
+							</span>
 						</div>
 					</div>
 				</div>
