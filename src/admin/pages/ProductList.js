@@ -3,7 +3,6 @@ import { database, storage } from '../../firebase'
 import { Link } from 'react-router-dom'
 
 import AddProduct from '../components/Product/AddProduct'
-import EditProduct from '../components/Product/EditProduct'
 class ProductList extends Component {
 	constructor(props) {
 		super(props)

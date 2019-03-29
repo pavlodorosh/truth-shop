@@ -74,7 +74,7 @@ class Product extends Component {
 								{/* Wrapper for slides */}
 								<div className="carousel-inner">
 									<div className="carousel-item active">
-										<img className="img-fluid" src={product && product[productId].mainImageUrl} />
+										<img alt="" className="img-fluid" src={product && product[productId].mainImageUrl} />
 									</div>
 									{/* <div className="carousel-item">
 										<img className="img-fluid" src={product} />
@@ -95,7 +95,7 @@ class Product extends Component {
 								{/* Indicators */}
 								<ol className="carousel-indicators">
 									<li data-target="#carousel-custom" data-slide-to="0" className="active">
-										<img className="img-fluid" src={product && product[productId].mainImageUrl} />
+										<img alt="" className="img-fluid" src={product && product[productId].mainImageUrl} />
 									</li>
 									{/* <li data-target="#carousel-custom" data-slide-to="1">
 										<img className="img-fluid" src={product} />
@@ -188,11 +188,11 @@ class Product extends Component {
 												measurement.
 												<div className="col-lg-6">
 													MALE
-													<img className="img-fluid" src={size_men} />
+													<img alt="" className="img-fluid" src={size_men} />
 												</div>
 												<div className="col-lg-6">
 													FEMALE
-													<img className="img-fluid" src={size_women} />
+													<img alt="" className="img-fluid" src={size_women} />
 												</div>
 											</Modal.Body>
 										</Modal.Content>

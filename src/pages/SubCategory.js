@@ -51,7 +51,7 @@ class SubCategory extends Component {
 		return Object.keys(array).map((item, id) => (
 			<div className="px-0 col-lg-6" col="lg-6" key={id}>
 				<Link to={`/catalog/${this.toLowerCaseString(array[item].parentCategory)}/${this.toLowerCaseString(array[item].name.en)}`}>
-					<img className="img-fluid" src={array[item].preview} />
+					<img alt="" className="img-fluid" src={array[item].preview} />
 
 					<span className="subcategory_name" align="middle">
 						{array[item].name.en}

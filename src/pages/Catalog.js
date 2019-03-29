@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Row } from 'bootstrap-4-react'
 import { database } from '../firebase'
 
 class Catalog extends Component {
@@ -61,7 +60,7 @@ class Catalog extends Component {
 							to={`/product/${this.toLowerCaseString(this.state.products[id].parentCategory)}/${this.state.products[id].category}/${this.toLowerCaseString(
 								this.state.products[id].name.en
 							)}`}>
-							<img className="card-img" src={this.state.products[id].mainImageUrl} />
+							<img alt="" className="card-img" src={this.state.products[id].mainImageUrl} />
 						</Link>
 						<div className="caption">
 							<div className="title">{this.state.products[id].name.en}</div>

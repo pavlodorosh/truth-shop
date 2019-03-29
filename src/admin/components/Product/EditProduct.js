@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Button, Media, BImg, Modal } from 'bootstrap-4-react'
 import { database } from '../../../firebase'
 export default class EditProduct extends Component {
 	constructor(props) {
@@ -29,7 +28,6 @@ export default class EditProduct extends Component {
 
 	filteredAndReducedProducts = () => {
 		const { match } = this.props
-
 		if (this.state.products !== null) {
 			const filtered = Object.keys(this.state.products)
 				.filter(item => match.params.id === item)

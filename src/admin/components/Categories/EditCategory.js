@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Button } from 'bootstrap-4-react'
+import { Modal } from 'bootstrap-4-react'
 
 export default class EditCategory extends Component {
 	render() {

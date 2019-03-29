@@ -13,7 +13,7 @@ class Front extends Component {
 					<div className="no-gutter row">
 						<div className="pl-0 pr-1 col-lg-4">
 							<Link to="/women">
-								<img className="img-fluid" src={women} />
+								<img alt="" className="img-fluid" src={women} />
 							</Link>
 
 							<span className="category_name d-flex justify-content-center">WOMEN</span>
@@ -21,14 +21,14 @@ class Front extends Component {
 						</div>
 						<div className="px-1 col-lg-4">
 							<Link to="/accessories">
-								<img className="img-fluid" src={accessories} />
+								<img alt="" className="img-fluid" src={accessories} />
 							</Link>
 
 							<span className="category_name">ACCESSORIES</span>
 						</div>
 						<div className="pr-0 pl-1 col-lg-4">
 							<Link to="/men">
-								<img className="img-fluid" src={men} />
+								<img alt="" className="img-fluid" src={men} />
 							</Link>
 
 							<span className="category_name">MEN</span>

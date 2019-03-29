@@ -74,7 +74,7 @@ class AddCategory extends Component {
 				name: {
 					en: this.state.name_en,
 					ru: this.state.name_ru,
-					ru: this.state.name_ua
+					ua: this.state.name_ua
 				},
 				link: this.state.link,
 				preview: this.state.previewUrl,
