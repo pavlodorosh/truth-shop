@@ -41,7 +41,7 @@ class Header extends Component {
 							<div className="row">
 								<div className="col-sm-5 d-flex justify-content-between align-items-center">
 									<div className="mail">info@truth-Store.com </div>
-									<div className="">
+									<div className="shipping">
 										Free shipping! <span>See Details</span>
 									</div>
 								</div>
@@ -85,11 +85,11 @@ class Header extends Component {
 									</li>
 									<li>
 										{this.props.user !== null ? (
-											<div>
-												<img className="" src={user} alt={user} />
+											<div className="d-flex flex-row">
+												<ReactSVG className="" src={user} />
 												<div className="dropdown">
-													<button id="dropdownMenuButton" data-toggle="dropdown" className="btn btn-secondary dropdown-toggle" aria-expanded="false">
-														{this.props.user.displayName}
+													<button id="dropdownMenuButton" data-toggle="dropdown" className="dropdown-toggle" aria-expanded="false">
+														{/* {this.props.user.displayName} */}
 													</button>
 													<div aria-labelledby="dropdownMenuButton" className="dropdown-menu" x-placement="bottom-start">
 														<Link className="dropdown-item" to="/user/dashboard">
@@ -106,9 +106,11 @@ class Header extends Component {
 										)}
 									</li>
 									<li>
-										<ReactSVG src={heart} />
+										<ReactSVG src={heart} className="img-fluid" />
 									</li>
 									<li>
+										<i className="fas fa-shopping-bag" />
+
 										<ReactSVG src={bag} />
 									</li>
 								</ul>

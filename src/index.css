@@ -135,10 +135,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
 /***HEADER***/
 
 header {
@@ -202,6 +198,33 @@ header .top-links li {
   padding: 0px 10px;
 }
 
+header .mail {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+header .shipping {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  color: #ff4148;
+}
+
+header .shipping span {
+  text-decoration: underline;
+  color: #000;
+  padding-left: 15px;
+}
+
+header .phone {
+  font-weight: bold;
+}
+
+header .cloc {
+  font-weight: bold;
+}
+
 /***HEADER***/
 
 /***Front***/
@@ -210,13 +233,20 @@ header .top-links li {
   font-family: Geometria;
   font-size: 40px;
   font-weight: 500;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.5;
-  letter-spacing: 2.1px;
-  text-align: center;
   color: #ffffff;
-  display: block;
+  position: absolute;
+  bottom: 154px;
+  width: 100%;
+}
+
+.catygory_link {
+  position: absolute;
+  width: 100%;
+  font-size: 20px;
+  bottom: 100px;
+  color: #ffffff;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
 }
 
 /***Front***/
@@ -349,50 +379,30 @@ header .top-links li {
 
 /***FOOTER***/
 
+footer {
+  margin-top: 30px;
+}
+
 footer .info {
-  font-family: Geometria;
   font-size: 12px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
   color: #020202;
-  line-height: 20px;
 }
 
 footer .nav a {
-  font-family: Geometria;
   font-size: 12px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  letter-spacing: normal;
   color: #020202;
-  line-height: 20px;
 }
 
 footer .column-title {
-  font-family: Geometria;
   font-size: 12px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
   color: #020202;
-  line-height: 20px;
 }
 
 footer .subscribe {
   border-radius: 20px;
   background-color: #ff4242;
-  font-family: Geometria;
   font-size: 12px;
   font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
   color: #ffffff;
   padding: 10px 30px;
   border: none;
