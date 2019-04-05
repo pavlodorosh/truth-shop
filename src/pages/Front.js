@@ -11,7 +11,7 @@ class Front extends Component {
 			<div className="container-fluid">
 				<div className="container">
 					<div className="no-gutter row">
-						<div className="p-0 col-lg-4 d-flex justify-content-center front_block">
+						<div className="p-0 col-lg-4 col-md-4  d-flex justify-content-center front_block">
 							<Link to="/women">
 								<img alt="" className="img-fluid" src={women} />
 							</Link>
@@ -23,7 +23,7 @@ class Front extends Component {
 								<Link to="/women">SHOP NOW</Link>
 							</span>
 						</div>
-						<div className="p-0 front_block col-lg-4 d-flex justify-content-center">
+						<div className="p-0 front_block col-lg-4 col-md-4  d-flex justify-content-center">
 							<Link to="/accessories">
 								<img alt="" className="img-fluid" src={accessories} />
 							</Link>
@@ -35,7 +35,7 @@ class Front extends Component {
 								<Link to="/accessories">SHOP NOW</Link>
 							</span>
 						</div>
-						<div className="p-0 front_block col-lg-4 d-flex justify-content-center">
+						<div className="p-0 front_block col-lg-4 col-md-4  d-flex justify-content-center">
 							<Link to="/men">
 								<img alt="" className="img-fluid" src={men} />
 							</Link>

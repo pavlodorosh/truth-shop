@@ -46,19 +46,15 @@ class AddProduct extends Component {
 
 	getListCategories = () => {
 		database.ref('/categories').on('value', snapshot => {
-			this.setState(
-				{
-					categories: snapshot.val()
-				},
-				() => {
-					this.pushCategoriesToSelect(snapshot.val())
-				}
-			)
+			this.setState({
+				categories: snapshot.val()
+			})
+			this.pushCategoriesToSelect(snapshot.val())
 		})
 	}
 
 	pushCategoriesToSelect = data => {
-		return Object.keys(data).map(id => {
+		Object.keys(data).map(id => {
 			let category = {
 				value: data[id].name.en,
 				parent: data[id].parentCategory,

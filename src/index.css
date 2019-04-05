@@ -347,6 +347,12 @@ header .dropdown-toggle::after {
 
 /***product***/
 
+#carousel-custom {
+  margin: 20px auto;
+  max-width: 400px;
+  width: auto;
+}
+
 .product_title {
   font-size: 16px;
   color: #2c2c2c;
@@ -362,6 +368,14 @@ header .dropdown-toggle::after {
 
 .product_size {
   margin-bottom: 30px;
+}
+
+.product_size .size_guide {
+  padding: 0px;
+}
+
+.product_size .size_guide:hover {
+  cursor: pointer;
 }
 
 .product_size li {
@@ -488,6 +502,7 @@ a.right.carousel-control {
 
 footer {
   margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 footer .info {

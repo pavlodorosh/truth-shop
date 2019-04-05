@@ -49,7 +49,7 @@ class SubCategory extends Component {
 		let array = this.filteredAndReducedCategories()
 
 		return Object.keys(array).map((item, id) => (
-			<div className="p-0 col-lg-6 sub" key={id}>
+			<div className="p-0 col-md-6 sub" key={id}>
 				<Link to={`/catalog/${this.toLowerCaseString(array[item].parentCategory)}/${this.toLowerCaseString(array[item].name.en)}`}>
 					<img alt="" className="img-fluid" src={array[item].preview} />
 

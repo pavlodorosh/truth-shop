@@ -69,7 +69,7 @@ class Product extends Component {
 			<div className="container-fluid product">
 				<div className="container">
 					<div className="row no-gutter">
-						<div className="pl-0 pr-1 col-lg-6">
+						<div className="pl-0 pr-1 col-md-6 col-12">
 							<div id="carousel-custom" className="carousel slide" data-ride="carousel">
 								{/* Wrapper for slides */}
 								<div className="carousel-inner">
@@ -119,12 +119,15 @@ class Product extends Component {
 							</div>
 						</div>
 
-						<div className="pr-0 pl-1 col-lg-5">
+						<div className="pr-0 pl-1 col-md-6">
 							<div className="product_title">{product && product[productId].name.en}</div>
 							<div className="price">${product && product[productId].price}</div>
 							{product[productId] && (
 								<div className="product_size">
 									<span>Choose your size</span>
+									<span className="nav-link size_guide d-xl-none" data-toggle="modal" data-target="#exampleModal">
+										SIZE GUIDE
+									</span>
 									<ul className="d-flex list-unstyled m-0 align-self-center">
 										<li>S</li>
 										<li>M</li>
@@ -166,7 +169,7 @@ class Product extends Component {
 									</li>
 									<li className="nav-item">
 										{/* Button trigger Modal */}
-										<span className="nav-link size_guide" data-toggle="modal" data-target="#exampleModal">
+										<span className="nav-link size_guide d-xl-block d-none" data-toggle="modal" data-target="#exampleModal">
 											SIZE GUIDE
 										</span>
 									</li>
