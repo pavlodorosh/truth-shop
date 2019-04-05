@@ -137,8 +137,15 @@ body {
 
 /***HEADER***/
 
+.top {
+  background: #e8e8e8;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
 header {
-  margin: 20px 0px;
+  margin: 0px 0px 20px 0px;
 }
 
 header nav {
@@ -174,7 +181,7 @@ header nav a {
 
 header .top .lang li {
   border-radius: 50px;
-  background: #e8e8e8;
+  border: 1px solid #b4b4b4;
   text-align: center;
   margin: 0px 5px;
   width: 40px;
@@ -202,7 +209,6 @@ header .top-links li svg {
 }
 
 header .mail {
-  text-transform: uppercase;
   font-weight: bold;
   font-size: 14px;
 }
@@ -228,6 +234,26 @@ header .cloc {
   font-weight: bold;
 }
 
+.searchbar {
+  display: flex;
+  position: relative;
+  margin-right: 20px;
+}
+
+.searchbar input {
+  border-radius: 25px!important;
+  border: 1px solid #b4b4b4;
+  padding: 5px 0px 5px 10px;
+}
+
+.searchbar .search_icon {
+  position: absolute;
+  right: 10px;
+  font-size: 22px;
+  top: 2px;
+  color: #b4b4b4;
+}
+
 header .dropdown-toggle {
   border: none;
   background: transparent;
@@ -246,13 +272,41 @@ header .dropdown-toggle::after {
   border-left: .3em solid transparent;
 }
 
+header .navbar-expand-md .navbar-nav {
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .navigation {
+  margin: 10px 0px;
+  position: relative;
+}
+
+.navbar-toggler-icon {
+  background: #000;
+}
+
+@media (max-width:768px) {
+  .icon {
+    position: absolute;
+    top: 10px;
+  }
+  .searchbar {
+    position: absolute;
+    top: 58px;
+    left: -225px;
+    z-index: 3;
+  }
+}
+
 /***HEADER***/
 
 /***Front***/
 
 .category_name {
   font-family: Geometria;
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 500;
   color: #ffffff;
   position: absolute;

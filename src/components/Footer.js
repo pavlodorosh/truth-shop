@@ -15,8 +15,11 @@ class Footer extends Component {
 								<li>Tel: +38(097)9113502</li>
 							</ul>
 						</div>
-						<div className="col-sm-6 col-md-3 pl-0">
+						<div className="col-sm-6 col-md-3 pl-0 ">
 							<Nav flex="column" justifyContent="center">
+								<Nav.ItemLink href="#" className="p-0 d-sm-none d-block">
+									© 2018 TRUTH TRAINING
+								</Nav.ItemLink>
 								<Nav.ItemLink href="#" className="p-0">
 									Delivery
 								</Nav.ItemLink>
