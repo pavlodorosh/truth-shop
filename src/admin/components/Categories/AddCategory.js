@@ -184,7 +184,7 @@ class AddCategory extends Component {
 												<Textbox
 													type="text"
 													className="form-control"
-													name="name_ru col-lg-6 p-0"
+													name="name_ru"
 													onChange={(val, e) => {
 														this.setState({ [e.target.name]: val })
 													}}

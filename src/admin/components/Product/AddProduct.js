@@ -28,8 +28,11 @@ class AddProduct extends Component {
 		optionsListCategories: [],
 		isUploading: false,
 		progress: 0,
-		mainImageUrl: '',
-		mainImageName: '',
+		image: {
+			name: '',
+			url: ''
+		},
+		images: [],
 		model: '',
 		productsRef: database.ref('/products'),
 		validate: false,
@@ -41,19 +44,16 @@ class AddProduct extends Component {
 		error_description_ua: true,
 		error_link: true,
 		error_model: true,
-		categories: {}
+		categories: {},
+		id: ''
 	}
 
 	getListCategories = () => {
 		database.ref('/categories').on('value', snapshot => {
-			this.setState(
-				{
-					categories: snapshot.val()
-				},
-				() => {
-					this.pushCategoriesToSelect(snapshot.val())
-				}
-			)
+			this.setState({
+				categories: snapshot.val()
+			})
+			this.pushCategoriesToSelect(snapshot.val())
 		})
 	}
 
@@ -64,9 +64,10 @@ class AddProduct extends Component {
 				parent: data[id].parentCategory,
 				label: data[id].parentCategory + ' > ' + data[id].name.en
 			}
-			this.setState({
-				optionsListCategories: [...this.state.optionsListCategories, category]
-			})
+
+			this.setState(prevState => ({
+				optionsListCategories: [...prevState.optionsListCategories, category]
+			}))
 		})
 	}
 
@@ -76,6 +77,7 @@ class AddProduct extends Component {
 
 	componentWillMount = () => {
 		this.getListCategories()
+		this.setState({ id: uuid() })
 	}
 
 	handleUploadStart = () => {
@@ -92,18 +94,19 @@ class AddProduct extends Component {
 	}
 
 	handleUploadSuccess = filename => {
-		this.setState({ mainImageName: filename, progress: 100, isUploading: false })
+		this.setState({ image: { ...this.state.image, name: filename }, progress: 100, isUploading: false })
 		storage
 			.ref('images')
 			.child(filename)
 			.getDownloadURL()
-			.then(url => this.setState({ mainImageUrl: url }))
+			.then(url => this.setState({ image: { ...this.state.image, url: url } }))
 	}
 
 	saveProduct = () => {
 		return this.state.productsRef
-			.child(this.state.name_en + '-' + uuid())
+			.child(this.state.id)
 			.set({
+				id: this.state.id,
 				name: {
 					en: this.state.name_en,
 					ru: this.state.name_ru,
@@ -125,8 +128,9 @@ class AddProduct extends Component {
 					ru: this.state.care_ru,
 					ua: this.state.care_ua
 				},
-				mainImageName: this.state.mainImageName,
-				mainImageUrl: this.state.mainImageUrl,
+				mainImageUrl: this.state.image.url,
+				mainImageName: this.state.image.name,
+				images: [this.state.image],
 				price: this.state.price,
 				author: this.props.user.displayName,
 				model: this.state.model,
@@ -134,7 +138,6 @@ class AddProduct extends Component {
 				parentCategory: this.state.selectedOption.parent,
 				sizes: '',
 				colors: '',
-				additionalImages: '',
 				actions: '',
 				weather: '',
 				active: false,
@@ -178,7 +181,7 @@ class AddProduct extends Component {
 	validateForm = e => {
 		e.preventDefault()
 		this.toggleValidating(true)
-		if (!this.state.error_name_en && !this.state.error_name_ru && this.state.mainImageName.length && this.state.price > 0) {
+		if (!this.state.error_name_en && !this.state.error_name_ru && this.state.image.name.length && this.state.price > 0) {
 			this.saveProduct()
 		}
 	}
@@ -520,7 +523,7 @@ class AddProduct extends Component {
 														Progress: <Line percent={this.state.progress} strokeWidth="2" strokeColor="#4682b4" />
 													</p>
 												)}
-												{this.state.mainImageUrl && <img src={this.state.mainImageUrl} alt="preview" />}
+												{this.state.image.url.length > 0 && <img src={this.state.image.url} alt="preview" />}
 
 												<CustomUploadButton
 													accept="image/*"

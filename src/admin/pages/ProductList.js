@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { database, storage } from '../../firebase'
 import { Link } from 'react-router-dom'
+import Switch from 'react-flexible-switch'
 
 import AddProduct from '../components/Product/AddProduct'
 class ProductList extends Component {
@@ -20,15 +21,13 @@ class ProductList extends Component {
 		this.removeMainProductImageFromStorage(preview)
 	}
 
-	removeMainProductImageFromStorage = preview => {
-		console.log('images/' + preview)
-
+	removeMainProductImageFromStorage = images => {
 		storage
 			.ref('images/')
-			.child(preview)
+			.child(images)
 			.delete()
 			.then(() => {
-				console.log('preview deleted')
+				console.log('images deleted')
 			})
 			.catch(err => {
 				console.log(err)
@@ -47,6 +46,10 @@ class ProductList extends Component {
 		this.getProductsFromDatabase()
 	}
 
+	onChange = id => {
+		console.log('dd')
+	}
+
 	renderProducts = () => {
 		if (this.state.products !== null) {
 			return Object.keys(this.state.products).map((id, index) => (
@@ -54,15 +57,24 @@ class ProductList extends Component {
 					<td>
 						<img style={{ width: '50px' }} src={this.state.products[id].mainImageUrl} alt="" />
 					</td>
+					<td>
+						{this.state.products[id].parentCategory} > {this.state.products[id].category}
+					</td>
 					<td>{this.state.products[id].name.en}</td>
 					<td>{this.state.products[id].model}</td>
 					<td>{this.state.products[id].price} $</td>
 					<td>{this.state.products[id].quantity}</td>
-					<td>status</td>
+					<td>
+						<Switch value={this.state.products[id].active} onChange={this.onChange} locked />
+					</td>
 					<td align="center">
-						{/* <Link style={{ backgroundColor: '#dddddd' }} className="btn btn-default" to={`/user/edit/product/${id}`}>
+						<Link
+							style={{ backgroundColor: '#dddddd' }}
+							className="btn btn-default"
+							to={`/user/edit/product/${id}`}
+							to={{ pathname: `/user/edit/product/${id}`, state: { product: this.state.products[id] } }}>
 							<em className="fa fa-pencil" />
-						</Link> */}
+						</Link>
 						<button className="btn btn-danger" onClick={() => this.removeProductFromDatabase(id, this.state.products[id].mainImageName)}>
 							<em className="fa fa-trash" />
 						</button>
@@ -98,6 +110,7 @@ class ProductList extends Component {
 												<thead>
 													<tr>
 														<th>img</th>
+														<th>Category</th>
 														<th>Name</th>
 														<th>model</th>
 														<th>price</th>

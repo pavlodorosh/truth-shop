@@ -9,6 +9,7 @@
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-firebase-file-uploader": "^2.4.2",
+    "react-flexible-switch": "^1.2.1",
     "react-icons": "^3.4.0",
     "react-inputs-validation": "^2.1.9",
     "react-modal": "^3.8.1",
