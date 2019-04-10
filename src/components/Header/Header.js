@@ -109,7 +109,7 @@ class Header extends Component {
 												<Link to="/contacts">CONTACTS</Link>
 											</li>
 											<li className="nav-item">
-												<Link to="/">BRENDS</Link>
+												<Link to="/brends">BRENDS</Link>
 											</li>
 										</ul>
 									</div>

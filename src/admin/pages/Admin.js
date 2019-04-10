@@ -7,6 +7,7 @@ import Dashboard from './Dashboard'
 import CategoryList from './CategoryList'
 import ProductList from './ProductList'
 import EditProduct from '../components/Product/EditProduct'
+import BrendsList from './BrendsList'
 
 export default class Admin extends Component {
 	render() {
@@ -17,6 +18,7 @@ export default class Admin extends Component {
 				<Route path="/user/profile" component={User} />
 				<Route path="/user/users" component={UserList} />
 				<Route path="/user/categories" component={CategoryList} />
+				<Route path="/user/brends" component={BrendsList} />
 				<Route path="/user/products" component={ProductList} />
 				<Route path="/user/edit/product/:id" component={EditProduct} />
 			</div>
