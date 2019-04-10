@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { database } from '../firebase'
 
-class SubCategory extends Component {
+class Brens extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -22,13 +22,13 @@ class SubCategory extends Component {
 	}
 
 	filterCategories = item => {
-		return this.state.categories[item].parentCategory === this.props.subcategory
+		return this.state.categories[item].parentCategory === this.props.Brens
 	}
 
 	filteredAndReducedCategories = () => {
 		if (this.state.categories !== null) {
 			const filtered = Object.keys(this.state.categories)
-				.filter(item => this.state.categories[item].parentCategory === this.props.subcategory)
+				.filter(item => this.state.categories[item].parentCategory === this.props.Brens)
 				.reduce((obj, key) => {
 					return {
 						...obj,
@@ -53,7 +53,7 @@ class SubCategory extends Component {
 				<Link to={`/catalog/${this.toLowerCaseString(array[item].parentCategory)}/${this.toLowerCaseString(array[item].name.en)}`}>
 					<img alt="" className="img-fluid" src={array[item].preview} />
 
-					<span className="subcategory_name" align="middle">
+					<span className="Brens_name" align="middle">
 						{array[item].name.en}
 					</span>
 				</Link>
@@ -74,4 +74,4 @@ class SubCategory extends Component {
 	}
 }
 
-export default SubCategory
+export default Brens

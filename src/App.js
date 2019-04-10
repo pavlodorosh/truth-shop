@@ -12,6 +12,7 @@ import Footer from './components/Footer'
 import Category from './pages/Category'
 import SubCategory from './pages/SubCategory'
 import Product from './pages/Product'
+import Brends from './pages/Brends'
 import Admin from './admin/pages/Admin'
 
 class App extends Component {
@@ -38,6 +39,7 @@ class App extends Component {
 				<Route path="/about" component={About} />
 				<Route path="/catalog/:parentCat/:cat" component={Catalog} />
 				<Route path="/category" component={Category} />
+
 				<Route path="/women" render={props => <SubCategory {...props} subcategory={'Women'} />} />
 				<Route path="/men" render={props => <SubCategory {...props} subcategory={'Men'} />} />
 				<Route path="/accessories" render={props => <SubCategory {...props} subcategory={'Accessories'} />} />

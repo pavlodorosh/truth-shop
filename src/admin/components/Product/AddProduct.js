@@ -58,7 +58,7 @@ class AddProduct extends Component {
 	}
 
 	pushCategoriesToSelect = data => {
-		return Object.keys(data).map(id => {
+		Object.keys(data).map(id => {
 			let category = {
 				value: data[id].name.en,
 				parent: data[id].parentCategory,

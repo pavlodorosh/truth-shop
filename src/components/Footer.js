@@ -7,7 +7,7 @@ class Footer extends Component {
 			<div className="container-fluid">
 				<div className="container">
 					<div className="row">
-						<div className="col-lg-3 info pl-0">
+						<div className="d-none d-sm-block col-sm-6 col-md-3 info pl-0">
 							<ul className=" list-unstyled  m-0 align-self-center">
 								<li>© 2018 TRUTH TRAINING</li>
 								<li>Ukraine. Kyiv 04060</li>
@@ -15,8 +15,11 @@ class Footer extends Component {
 								<li>Tel: +38(097)9113502</li>
 							</ul>
 						</div>
-						<div className="col-lg-3">
+						<div className="col-sm-6 col-md-3 pl-0 ">
 							<Nav flex="column" justifyContent="center">
+								<Nav.ItemLink href="#" className="p-0 d-sm-none d-block">
+									© 2018 TRUTH TRAINING
+								</Nav.ItemLink>
 								<Nav.ItemLink href="#" className="p-0">
 									Delivery
 								</Nav.ItemLink>
@@ -31,7 +34,7 @@ class Footer extends Component {
 								</Nav.ItemLink>
 							</Nav>
 						</div>
-						<div className="col-lg-3">
+						<div className="d-none col-sm-6 col-md-3 d-md-block pl-0">
 							<span className="column-title"> SOCIAL MEDIA</span>
 							<ul className="d-flex list-unstyled social_footer  m-0 align-self-center">
 								<li className="facebook">
@@ -45,7 +48,7 @@ class Footer extends Component {
 								</li>
 							</ul>
 						</div>
-						<div className="col-lg-3">
+						<div className="d-none col-sm-6 col-md-3 d-md-block pl-0">
 							<span className="column-title"> BE IN TOUCH WITH US</span>
 							<button className="subscribe" as="button" href="#">
 								SUBSCRIBE NOW
