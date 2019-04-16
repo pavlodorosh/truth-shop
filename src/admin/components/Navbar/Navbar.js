@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FaHome, FaUserCircle, FaAlignJustify } from 'react-icons/fa'
+import { FaHome, FaAlignJustify } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 export default class Navbar extends Component {
 	setActiveNavLink = e => {

@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { auth } from '../../../firebase'
 import { setUserInfo, clearUserInfo } from '../../../redux/actions'
-import { FaFlag } from 'react-icons/fa'
-
 class Header extends Component {
 	componentDidMount() {
 		auth.onAuthStateChanged(userSign => {

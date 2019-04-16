@@ -46,9 +46,16 @@ class ProductList extends Component {
 		this.getProductsFromDatabase()
 	}
 
-	onChange = id => {
-		console.log('dd')
+	onChange = (id, value) => {
+		return database
+			.ref('/products')
+			.child(id)
+			.update({
+				active: !value
+			})
 	}
+
+	updateDatabase = () => {}
 
 	renderProducts = () => {
 		if (this.state.products !== null) {
@@ -65,14 +72,15 @@ class ProductList extends Component {
 					<td>{this.state.products[id].price} $</td>
 					<td>{this.state.products[id].quantity}</td>
 					<td>
-						<Switch value={this.state.products[id].active} onChange={this.onChange} locked />
+						<Switch
+							value={this.state.products[id].active}
+							onChange={() => {
+								this.onChange(id, this.state.products[id].active)
+							}}
+						/>
 					</td>
 					<td align="center">
-						<Link
-							style={{ backgroundColor: '#dddddd' }}
-							className="btn btn-default"
-							to={`/user/edit/product/${id}`}
-							to={{ pathname: `/user/edit/product/${id}`, state: { product: this.state.products[id] } }}>
+						<Link style={{ backgroundColor: '#dddddd' }} className="btn btn-default" to={{ pathname: `/user/edit/product/${id}`, state: { product: this.state.products[id] } }}>
 							<em className="fa fa-pencil" />
 						</Link>
 						<button className="btn btn-danger" onClick={() => this.removeProductFromDatabase(id, this.state.products[id].mainImageName)}>
