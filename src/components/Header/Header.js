@@ -8,6 +8,10 @@ import AuthModal from './Auth/AuthModal'
 import ReactSVG from 'react-svg'
 import logo from '../../assets/img/logo.svg'
 
+import bags from '../../assets/img/icons/shoppingbag.svg'
+import heart from '../../assets/img/icons/heart.svg'
+import user from '../../assets/img/icons/user.svg'
+
 class Header extends Component {
 	componentDidMount() {
 		auth.onAuthStateChanged(userSign => {
@@ -121,7 +125,7 @@ class Header extends Component {
 									<li>
 										{this.props.user !== null ? (
 											<div className="d-flex flex-row">
-												<i className="fal fa-user" />
+												<ReactSVG src={user} />
 												<div className="dropdown">
 													<button id="dropdownMenuButton" data-toggle="dropdown" className="dropdown-toggle" aria-expanded="false">
 														{/* {this.props.user.displayName} */}
@@ -138,15 +142,15 @@ class Header extends Component {
 											</div>
 										) : (
 											<span onClick={this.props.openAuthModal}>
-												<i className="fal fa-user" />
+												<ReactSVG src={user} />
 											</span>
 										)}
 									</li>
 									<li>
-										<i className="fal fa-heart" />
+										<ReactSVG src={heart} />
 									</li>
 									<li>
-										<i className="fal fa-shopping-bag" />
+										<ReactSVG src={bags} />
 									</li>
 								</ul>
 							</div>
