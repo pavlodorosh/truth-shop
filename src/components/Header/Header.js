@@ -54,7 +54,7 @@ class Header extends Component {
 								<div className="col-lg-5 col-md-3 d-flex justify-content-end align-items-center p-0">
 									<div className="searchbar ">
 										<input className="search_input" type="text" name="" placeholder="Search..." />
-										<a href="#" className="search_icon">
+										<a className="search_icon">
 											<i className="fal fa-search" />
 										</a>
 									</div>

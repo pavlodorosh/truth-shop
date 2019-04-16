@@ -12,7 +12,6 @@ import Footer from './components/Footer'
 import Category from './pages/Category'
 import SubCategory from './pages/SubCategory'
 import Product from './pages/Product'
-import Brends from './pages/Brends'
 import Admin from './admin/pages/Admin'
 
 class App extends Component {

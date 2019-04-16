@@ -31,10 +31,12 @@ class Catalog extends Component {
 
 		if (this.state.products !== null) {
 			let f = Object.keys(this.state.products)
-			console.log(f)
-
 			const filtered = Object.keys(this.state.products)
-				.filter(item => match.url === `/catalog/${this.toLowerCaseString(this.state.products[item].parentCategory)}/${this.toLowerCaseString(this.state.products[item].category)}`)
+				.filter(
+					item =>
+						match.url === `/catalog/${this.toLowerCaseString(this.state.products[item].parentCategory)}/${this.toLowerCaseString(this.state.products[item].category)}` &&
+						this.state.products[item].active
+				)
 				.reduce((obj, key) => {
 					return {
 						...obj,
@@ -49,8 +51,6 @@ class Catalog extends Component {
 
 	renderProducts = () => {
 		let array = this.filteredAndReducedProducts()
-		// console.log(match.path)
-		// console.log(match.url.toString())
 
 		if (this.state.products !== null) {
 			return Object.keys(array).map((id, index) => (
