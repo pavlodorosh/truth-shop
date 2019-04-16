@@ -46,7 +46,7 @@ class ProductList extends Component {
 		this.getProductsFromDatabase()
 	}
 
-	onChange = (id, value) => {
+	onChangeActive = (id, value) => {
 		return database
 			.ref('/products')
 			.child(id)
@@ -75,7 +75,7 @@ class ProductList extends Component {
 						<Switch
 							value={this.state.products[id].active}
 							onChange={() => {
-								this.onChange(id, this.state.products[id].active)
+								this.onChangeActive(id, this.state.products[id].active)
 							}}
 						/>
 					</td>
