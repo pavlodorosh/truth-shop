@@ -443,7 +443,12 @@ export default class EditProduct extends Component {
 												validate={this.state.product.validate}
 											/>
 										</div>
-										<div className="form-group">
+										<div className="detail col-sm-12">
+											<div className="form-group">
+												<label>Brend</label>
+											</div>
+										</div>
+										{/* <div className="form-group">
 											<label>Price </label>
 											<Textbox
 												type="text"
@@ -471,8 +476,8 @@ export default class EditProduct extends Component {
 												value={this.state.price}
 												validate={this.state.product.validate}
 											/>
-										</div>
-										<div className="form-group">
+										</div> */}
+										{/* <div className="form-group">
 											<label>Quantity </label>
 											<input
 												className="form-control"
@@ -482,17 +487,26 @@ export default class EditProduct extends Component {
 													this.setState({ quantity: val })
 												}}
 											/>
-										</div>
+										</div> */}
 										<div className="form-group">
-											<label>Select main image</label>
-											<label className="form-control">Select main image</label>
+											<label>Product grops</label>
+											<button onClick="">add..</button>
 										</div>
-										<div className="form-group">
+										{/* <div className="form-group">
+											<label>Product Size</label>
+											<SizeProduct />
+										</div> */}
+										{/* <div className="form-group">
+											<label>Product Color</label>
+											<ColorProduct />
+										</div> */}
+										{/* <div className="form-group">
 											<label>All images</label>
 											<label className="form-control">Select image</label>
-										</div>
+										</div> */}
 										<div className="form-group">
 											<label>Category </label>
+											<button onClick="">add..</button>
 											<Select
 												placeholder={this.state.parentCategory + ' > ' + this.state.category}
 												className="col-lg-6 p-0"
