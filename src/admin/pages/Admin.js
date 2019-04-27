@@ -6,7 +6,8 @@ import UserList from './UserList'
 import Dashboard from './Dashboard'
 import CategoryList from './CategoryList'
 import ProductList from './ProductList'
-import EditProduct from '../components/Product/EditProduct'
+import EditProduct from './EditProduct'
+import AddProduct from './AddProduct'
 import BrendsList from './BrendsList'
 
 export default class Admin extends Component {
@@ -21,6 +22,7 @@ export default class Admin extends Component {
 				<Route path="/user/brends" component={BrendsList} />
 				<Route path="/user/products" component={ProductList} />
 				<Route path="/user/edit/product/:id" component={EditProduct} />
+				<Route path="/user/add/product" component={AddProduct} />
 			</div>
 		)
 	}

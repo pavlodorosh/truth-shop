@@ -3,7 +3,7 @@ import { database, storage } from '../../firebase'
 import { Link } from 'react-router-dom'
 import Switch from 'react-flexible-switch'
 
-import AddProduct from '../components/Product/AddProduct'
+import AddProduct from './AddProduct'
 class ProductList extends Component {
 	constructor(props) {
 		super(props)
@@ -59,7 +59,7 @@ class ProductList extends Component {
 
 	renderProducts = () => {
 		if (this.state.products !== null) {
-			return Object.keys(this.state.products).map((id, index) => (
+			return Object.keys(this.state.products).map(id => (
 				<tr key={id}>
 					<td>
 						<img style={{ width: '50px' }} src={this.state.products[id].mainImageUrl} alt="" />
@@ -107,9 +107,9 @@ class ProductList extends Component {
 													<h3 className="panel-title">Product List</h3>
 												</div>
 												<div className="col col-xs-6 text-right">
-													<button type="button" className="btn btn-sm btn-primary btn-create" data-toggle="modal" data-target="#productModal">
+													<Link type="button" to="/user/add/product">
 														Create New
-													</button>
+													</Link>
 												</div>
 											</div>
 										</div>
@@ -136,7 +136,6 @@ class ProductList extends Component {
 						</div>
 					</div>
 				</div>
-				<AddProduct />
 			</div>
 		)
 	}

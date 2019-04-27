@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { database } from '../../../firebase'
+import { database } from '../../firebase'
 import { Textbox } from 'react-inputs-validation'
 import { Link } from 'react-router-dom'
 import Select from 'react-select'
