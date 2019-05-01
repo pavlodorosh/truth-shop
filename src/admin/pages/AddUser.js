@@ -8,7 +8,7 @@ import uuid from 'uuid/v1'
 import { Textbox } from 'react-inputs-validation'
 import 'react-inputs-validation/lib/react-inputs-validation.min.css'
 
-class EditUser extends Component {
+class AddUser extends Component {
 	state = {
 		name: '',
 		email: '',
@@ -125,4 +125,4 @@ class EditUser extends Component {
 	}
 }
 
-export default EditUser
+export default AddUser

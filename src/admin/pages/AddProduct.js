@@ -130,352 +130,358 @@ class AddProduct extends Component {
 
 	render() {
 		return (
-			<div>
-				<div className="app-content">
-					<div className="content-wrapper">
-						<div className="content-body">
-							<div className="row">
-								<div className="product_description col-sm-12">
-									<ul className="nav nav-tabs" role="tablist">
-										<li className="nav-item">
-											<span className="nav-link active" data-toggle="tab" href="#home" role="tab">
-												EN
-											</span>
-										</li>
-										<li className="nav-item">
-											<span className="nav-link" data-toggle="tab" href="#profile" role="tab">
-												RU
-											</span>
-										</li>
-										<li className="nav-item">
-											<span className="nav-link" data-toggle="tab" href="#messages" role="tab">
-												UA
-											</span>
-										</li>
-									</ul>
-
-									<div className="tab-content">
-										<div className="tab-pane active" id="home" role="tabpanel">
-											<div className="form-group">
-												<label>Name [en] </label>
-												<Textbox
-													type="text"
-													className="form-control"
-													name="name_en"
-													onChange={(val, e) => {
-														this.setState({ name_en: val })
-													}}
-													onBlur={() => {}}
-													validationOption={{
-														name: 'Name',
-														check: true,
-														required: true,
-														showMsg: true
-													}}
-													validationCallback={res => {
-														this.setState({
-															error_name_en: res,
-															validate: false
-														})
-													}}
-													value={this.state.name_en}
-													validate={this.state.validate}
-												/>
-											</div>
-											<div className="form-group">
-												<label>Description [en]</label>
-												<Textbox
-													type="text"
-													className="form-control"
-													name="description_en"
-													onChange={(val, e) => {
-														this.setState({ description_en: val })
-													}}
-													onBlur={() => {}}
-													validationOption={{
-														name: 'Description',
-														check: true,
-														required: true,
-														showMsg: true
-													}}
-													validationCallback={res => {
-														this.setState({
-															error_description_en: res,
-															validate: false
-														})
-													}}
-													value={this.state.description_en}
-													validate={this.state.validate}
-												/>
-											</div>
-											<div className="form-group">
-												<label>Return [en]</label>
-												<Textbox
-													type="text"
-													className="form-control"
-													name="return_en"
-													onChange={(val, e) => {
-														this.setState({ return_en: val })
-													}}
-													onBlur={() => {}}
-													validationOption={{
-														name: 'Return',
-														check: false,
-														required: true,
-														showMsg: true
-													}}
-													validationCallback={res => {
-														this.setState({
-															return_en: res,
-															validate: false
-														})
-													}}
-													value={this.state.return_en}
-													validate={this.state.validate}
-												/>
-											</div>
-											<div className="form-group">
-												<label>Care [en]</label>
-
-												<Textbox
-													type="text"
-													className="form-control"
-													name="care_en"
-													onChange={(val, e) => {
-														this.setState({ care_en: val })
-													}}
-													onBlur={() => {}}
-													validationOption={{
-														name: 'Care',
-														check: false,
-														required: true,
-														showMsg: true
-													}}
-													validationCallback={res => {
-														this.setState({
-															care_en: res,
-															validate: false
-														})
-													}}
-													value={this.state.care_en}
-													validate={this.state.validate}
-												/>
-											</div>
-										</div>
-										<div className="tab-pane" id="profile" role="tabpanel">
-											<div className="form-group">
-												<label>Name [RU]</label>
-												<Textbox
-													type="text"
-													className="form-control"
-													name="name_ru"
-													onChange={(val, e) => {
-														this.setState({ name_ru: val })
-													}}
-													onBlur={() => {}}
-													validationOption={{
-														name: 'Name',
-														check: true,
-														required: true,
-														showMsg: true
-													}}
-													validationCallback={res => {
-														this.setState({
-															error_name_ru: res,
-															validate: false
-														})
-													}}
-													value={this.state.name_ru}
-													validate={this.state.validate}
-												/>
-											</div>
-											<div className="form-group">
-												<label>Description [RU]</label>
-												<Textbox
-													type="text"
-													className="form-control"
-													name="description_ru"
-													onChange={(val, e) => {
-														this.setState({ description_ru: val })
-													}}
-													onBlur={() => {}}
-													validationOption={{
-														name: 'Description',
-														check: true,
-														required: true,
-														showMsg: true
-													}}
-													validationCallback={res => {
-														this.setState({
-															error_description_ru: res,
-															validate: false
-														})
-													}}
-													value={this.state.description_ru}
-													validate={this.state.validate}
-												/>
-											</div>
-											<div className="form-group">
-												<label>Return [ru]</label>
-												<input
-													name="return_ru"
-													className="form-control"
-													value={this.state.return_ru}
-													onChange={(val, e) => {
-														this.setState({ return_ru: val })
-													}}
-												/>
-											</div>
-											<div className="form-group">
-												<label>Care [ru]</label>
-												<input
-													name="care_ru"
-													className="form-control"
-													value={this.state.care_ru}
-													onChange={(val, e) => {
-														this.setState({ care_ru: val })
-													}}
-												/>
-											</div>
-										</div>
-										<div className="tab-pane" id="messages" role="tabpanel">
-											<div className="form-group">
-												<label>Name [UA]</label>
-												<Textbox
-													type="text"
-													className="form-control"
-													name="name_ua"
-													onChange={(val, e) => {
-														this.setState({ name_ua: val })
-													}}
-													onBlur={() => {}}
-													validationOption={{
-														name: 'Name',
-														check: true,
-														required: true,
-														showMsg: true
-													}}
-													validationCallback={res => {
-														this.setState({
-															error_name_ua: res,
-															validate: false
-														})
-													}}
-													value={this.state.name_ua}
-													validate={this.state.validate}
-												/>
-											</div>
-											<div className="form-group">
-												<label>Description [UA]</label>
-												<Textbox
-													type="text"
-													className="form-control"
-													name="description_ua"
-													onChange={(val, e) => {
-														this.setState({ description_ua: val })
-													}}
-													onBlur={() => {}}
-													validationOption={{
-														name: 'Description',
-														check: true,
-														required: true,
-														showMsg: true
-													}}
-													validationCallback={res => {
-														this.setState({
-															error_description_ua: res,
-															validate: false
-														})
-													}}
-													value={this.state.description_ua}
-													validate={this.state.validate}
-												/>
-											</div>
-											<div className="form-group">
-												<label>Return [ua]</label>
-												<input
-													name="return_ua"
-													className="form-control"
-													value={this.state.return_ua}
-													onChange={(val, e) => {
-														this.setState({ return_ua: val })
-													}}
-												/>
-											</div>
-											<div className="form-group">
-												<label>Care [ua]</label>
-												<input
-													name="care_ua"
-													className="form-control"
-													value={this.state.care_ua}
-													onChange={(val, e) => {
-														this.setState({ care_ua: val })
-													}}
-												/>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="detail col-sm-12">
-									<div className="form-group">
-										<label>Model</label>
-										<Textbox
-											type="text"
-											className="form-control"
-											name="model"
-											onChange={(val, e) => {
-												this.setState({ model: val })
-											}}
-											onBlur={() => {}}
-											validationOption={{
-												name: 'Model',
-												check: true,
-												required: true,
-												showMsg: true
-											}}
-											validationCallback={res => {
-												this.setState({
-													error_model: res,
-													validate: false
-												})
-											}}
-											value={this.state.model}
-											validate={this.state.validate}
-										/>
-									</div>
-									<div className="detail col-sm-12">
-										<div className="form-group">
-											<label>Brend</label>
-										</div>
-									</div>
-									<div className="form-group">
-										<label>Product grops</label>
-										<button>add..</button>
-									</div>
-									<div className="form-group">
-										<label>Category </label>
-										<button>add..</button>
-										<Select
-											placeholder="Select Categories"
-											className="col-lg-6 p-0"
-											value={this.state.selectedCategory}
-											onChange={this.handleChangeParent}
-											options={this.state.optionsListCategories}
-										/>
-									</div>
+			<div className="col-md-9">
+				<div className="row">
+					<div className="content-body">
+						<div className="panel-heading">
+							<div className="col-12">
+								<div className="row">
+									<h3 className="panel-title">Add product</h3>
 								</div>
 							</div>
 						</div>
-						<button>
-							<Link to="/user/products"> Back</Link>
-						</button>
-						<button
-							primary="true"
-							onClick={() => {
-								this.validateForms()
-							}}>
-							Save
-						</button>
+						<div className="panel-body">
+							<div className="product_description col-sm-12">
+								<ul className="nav nav-tabs" role="tablist">
+									<li className="nav-item">
+										<span className="nav-link active" data-toggle="tab" href="#home" role="tab">
+											EN
+										</span>
+									</li>
+									<li className="nav-item">
+										<span className="nav-link" data-toggle="tab" href="#profile" role="tab">
+											RU
+										</span>
+									</li>
+									<li className="nav-item">
+										<span className="nav-link" data-toggle="tab" href="#messages" role="tab">
+											UA
+										</span>
+									</li>
+								</ul>
+
+								<div className="tab-content">
+									<div className="tab-pane active" id="home" role="tabpanel">
+										<div className="form-group">
+											<label>Name [en] </label>
+											<Textbox
+												type="text"
+												className="form-control"
+												name="name_en"
+												onChange={(val, e) => {
+													this.setState({ name_en: val })
+												}}
+												onBlur={() => {}}
+												validationOption={{
+													name: 'Name',
+													check: true,
+													required: true,
+													showMsg: true
+												}}
+												validationCallback={res => {
+													this.setState({
+														error_name_en: res,
+														validate: false
+													})
+												}}
+												value={this.state.name_en}
+												validate={this.state.validate}
+											/>
+										</div>
+										<div className="form-group">
+											<label>Description [en]</label>
+											<Textbox
+												type="text"
+												className="form-control"
+												name="description_en"
+												onChange={(val, e) => {
+													this.setState({ description_en: val })
+												}}
+												onBlur={() => {}}
+												validationOption={{
+													name: 'Description',
+													check: true,
+													required: true,
+													showMsg: true
+												}}
+												validationCallback={res => {
+													this.setState({
+														error_description_en: res,
+														validate: false
+													})
+												}}
+												value={this.state.description_en}
+												validate={this.state.validate}
+											/>
+										</div>
+										<div className="form-group">
+											<label>Return [en]</label>
+											<Textbox
+												type="text"
+												className="form-control"
+												name="return_en"
+												onChange={(val, e) => {
+													this.setState({ return_en: val })
+												}}
+												onBlur={() => {}}
+												validationOption={{
+													name: 'Return',
+													check: false,
+													required: true,
+													showMsg: true
+												}}
+												validationCallback={res => {
+													this.setState({
+														return_en: res,
+														validate: false
+													})
+												}}
+												value={this.state.return_en}
+												validate={this.state.validate}
+											/>
+										</div>
+										<div className="form-group">
+											<label>Care [en]</label>
+
+											<Textbox
+												type="text"
+												className="form-control"
+												name="care_en"
+												onChange={(val, e) => {
+													this.setState({ care_en: val })
+												}}
+												onBlur={() => {}}
+												validationOption={{
+													name: 'Care',
+													check: false,
+													required: true,
+													showMsg: true
+												}}
+												validationCallback={res => {
+													this.setState({
+														care_en: res,
+														validate: false
+													})
+												}}
+												value={this.state.care_en}
+												validate={this.state.validate}
+											/>
+										</div>
+									</div>
+									<div className="tab-pane" id="profile" role="tabpanel">
+										<div className="form-group">
+											<label>Name [RU]</label>
+											<Textbox
+												type="text"
+												className="form-control"
+												name="name_ru"
+												onChange={(val, e) => {
+													this.setState({ name_ru: val })
+												}}
+												onBlur={() => {}}
+												validationOption={{
+													name: 'Name',
+													check: true,
+													required: true,
+													showMsg: true
+												}}
+												validationCallback={res => {
+													this.setState({
+														error_name_ru: res,
+														validate: false
+													})
+												}}
+												value={this.state.name_ru}
+												validate={this.state.validate}
+											/>
+										</div>
+										<div className="form-group">
+											<label>Description [RU]</label>
+											<Textbox
+												type="text"
+												className="form-control"
+												name="description_ru"
+												onChange={(val, e) => {
+													this.setState({ description_ru: val })
+												}}
+												onBlur={() => {}}
+												validationOption={{
+													name: 'Description',
+													check: true,
+													required: true,
+													showMsg: true
+												}}
+												validationCallback={res => {
+													this.setState({
+														error_description_ru: res,
+														validate: false
+													})
+												}}
+												value={this.state.description_ru}
+												validate={this.state.validate}
+											/>
+										</div>
+										<div className="form-group">
+											<label>Return [ru]</label>
+											<input
+												name="return_ru"
+												className="form-control"
+												value={this.state.return_ru}
+												onChange={(val, e) => {
+													this.setState({ return_ru: val })
+												}}
+											/>
+										</div>
+										<div className="form-group">
+											<label>Care [ru]</label>
+											<input
+												name="care_ru"
+												className="form-control"
+												value={this.state.care_ru}
+												onChange={(val, e) => {
+													this.setState({ care_ru: val })
+												}}
+											/>
+										</div>
+									</div>
+									<div className="tab-pane" id="messages" role="tabpanel">
+										<div className="form-group">
+											<label>Name [UA]</label>
+											<Textbox
+												type="text"
+												className="form-control"
+												name="name_ua"
+												onChange={(val, e) => {
+													this.setState({ name_ua: val })
+												}}
+												onBlur={() => {}}
+												validationOption={{
+													name: 'Name',
+													check: true,
+													required: true,
+													showMsg: true
+												}}
+												validationCallback={res => {
+													this.setState({
+														error_name_ua: res,
+														validate: false
+													})
+												}}
+												value={this.state.name_ua}
+												validate={this.state.validate}
+											/>
+										</div>
+										<div className="form-group">
+											<label>Description [UA]</label>
+											<Textbox
+												type="text"
+												className="form-control"
+												name="description_ua"
+												onChange={(val, e) => {
+													this.setState({ description_ua: val })
+												}}
+												onBlur={() => {}}
+												validationOption={{
+													name: 'Description',
+													check: true,
+													required: true,
+													showMsg: true
+												}}
+												validationCallback={res => {
+													this.setState({
+														error_description_ua: res,
+														validate: false
+													})
+												}}
+												value={this.state.description_ua}
+												validate={this.state.validate}
+											/>
+										</div>
+										<div className="form-group">
+											<label>Return [ua]</label>
+											<input
+												name="return_ua"
+												className="form-control"
+												value={this.state.return_ua}
+												onChange={(val, e) => {
+													this.setState({ return_ua: val })
+												}}
+											/>
+										</div>
+										<div className="form-group">
+											<label>Care [ua]</label>
+											<input
+												name="care_ua"
+												className="form-control"
+												value={this.state.care_ua}
+												onChange={(val, e) => {
+													this.setState({ care_ua: val })
+												}}
+											/>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div className="detail col-sm-12">
+								<div className="form-group">
+									<label>Model</label>
+									<Textbox
+										type="text"
+										className="form-control"
+										name="model"
+										onChange={(val, e) => {
+											this.setState({ model: val })
+										}}
+										onBlur={() => {}}
+										validationOption={{
+											name: 'Model',
+											check: true,
+											required: true,
+											showMsg: true
+										}}
+										validationCallback={res => {
+											this.setState({
+												error_model: res,
+												validate: false
+											})
+										}}
+										value={this.state.model}
+										validate={this.state.validate}
+									/>
+								</div>
+								<div className="detail col-sm-12">
+									<div className="form-group">
+										<label>Brend</label>
+									</div>
+								</div>
+								<div className="form-group">
+									<label>Product grops</label>
+									<button>add..</button>
+								</div>
+								<div className="form-group">
+									<label>Category </label>
+									<button>add..</button>
+									<Select
+										placeholder="Select Categories"
+										className="col-lg-6 p-0"
+										value={this.state.selectedCategory}
+										onChange={this.handleChangeParent}
+										options={this.state.optionsListCategories}
+									/>
+								</div>
+							</div>
+
+							<button>
+								<Link to="/user/products"> Back</Link>
+							</button>
+							<button
+								primary="true"
+								onClick={() => {
+									this.validateForms()
+								}}>
+								Save
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>

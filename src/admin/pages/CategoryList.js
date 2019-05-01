@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { database, storage } from '../../firebase'
-
-import Navbar from '../components/Navbar/Navbar'
-import AddCategory from '../components/Categories/AddCategory'
-import EditCategory from '../components/Categories/EditCategory'
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class CategoryList extends Component {
 	constructor(props) {
@@ -58,10 +56,13 @@ class CategoryList extends Component {
 					</td>
 					<td align="center">
 						{/* <button className="btn btn-default" data-toggle="modal" data-target="#EditCategory">
-							<em className="fa fa-pencil" />
+							<FontAwesomeIcon icon="edit" />
 						</button> */}
+						<Link style={{ backgroundColor: '#dddddd' }} className="btn btn-default" to={{ pathname: `/user/edit/category/${id}`, state: { category: this.state.categories[id] } }}>
+							<FontAwesomeIcon icon="edit" />
+						</Link>
 						<button className="btn btn-danger" onClick={() => this.removeCategoryFromDatabase(id, this.state.categories[id].previewName)}>
-							<em className="fa fa-trash" />
+							<FontAwesomeIcon icon="trash-alt" />
 						</button>
 					</td>
 				</tr>
@@ -71,47 +72,38 @@ class CategoryList extends Component {
 
 	render() {
 		return (
-			<div className="user">
-				<Navbar />
-
-				<div className="app-content content">
-					<div className="content-wrapper">
-						<div className="content-body">
-							<div className="row">
-								<div className="col-md-12 ">
-									<div className="panel panel-default panel-table">
-										<div className="panel-heading">
-											<div className="row">
-												<div className="col col-xs-6">
-													<h3 className="panel-title">Category List</h3>
-												</div>
-												<div className="col col-xs-6 text-right">
-													<button type="button" data-toggle="modal" data-target="#exampleModal" className="btn btn-sm btn-primary btn-create">
-														Create New
-													</button>
-												</div>
-											</div>
-										</div>
-										<div className="panel-body">
-											<table className="table table-striped table-bordered table-list">
-												<thead>
-													<tr>
-														<th>Name</th>
-														<th />
-													</tr>
-												</thead>
-												<tbody>{this.renderCategories()}</tbody>
-											</table>
-										</div>
-									</div>
+			<div className="col-md-9">
+				<div className="row">
+					<div className="content-body">
+						<div className="panel-heading">
+							<div className="col-6">
+								<div className="row">
+									<h3 className="panel-title">Category List</h3>
+								</div>
+							</div>
+							<div className="col-6 ">
+								<div className="row">
+									<Link type="button" to="/user/add/category">
+										<FontAwesomeIcon icon="plus" />
+									</Link>
 								</div>
 							</div>
 						</div>
+						<div className="panel-body">
+							<table className="table table-striped table-bordered table-list">
+								<thead>
+									<tr>
+										<th>Name</th>
+										{/* <th>price</th> */}
+										{/* <th>quantity</th> */}
+										<th>Edit / Delete</th>
+									</tr>
+								</thead>
+								<tbody>{this.renderCategories()}</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
-
-				<AddCategory />
-				<EditCategory />
 			</div>
 		)
 	}

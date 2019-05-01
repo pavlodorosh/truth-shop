@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FaHome, FaAlignJustify } from 'react-icons/fa'
+// import { FaHome, FaAlignJustify } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 export default class Navbar extends Component {
 	setActiveNavLink = e => {
@@ -13,51 +13,42 @@ export default class Navbar extends Component {
 
 	render() {
 		return (
-			<div className="main-menu menu-fixed ">
-				<div className="main-menu-content">
-					<ul className="navigation navigation-main">
-						<li className="nav-item active" onClick={this.setActiveNavLink}>
-							<Link to="/user/dashboard">
-								<FaHome />
-								<span className="menu-title">eCommerce Dashboard</span>
-							</Link>
-						</li>
-
-						{/* <li className="nav-item" onClick={this.setActiveNavLink}>
-							<Link to="/user/profile">
-								<FaUserCircle />
-								<span className="menu-title">My Profile</span>
-							</Link>
-						</li> */}
-
-						{/* <li className="nav-item" onClick={this.setActiveNavLink}>
-							<Link to="/user/users">
-								<FaUserCircle />
-								<span className="menu-title">Users</span>
-							</Link>
-						</li> */}
-
-						<li className="nav-item" onClick={this.setActiveNavLink}>
-							<Link to="/user/categories">
-								<FaAlignJustify />
-								<span className="menu-title">Categories</span>
-							</Link>
-						</li>
-
-						<li className="nav-item" onClick={this.setActiveNavLink}>
-							<Link to="/user/products">
-								<FaAlignJustify />
-								<span className="menu-title">Products</span>
-							</Link>
-						</li>
-
-						<li className="nav-item" onClick={this.setActiveNavLink}>
-							<Link to="/user/brends">
-								<FaAlignJustify />
-								<span className="menu-title">Brends</span>
-							</Link>
-						</li>
-					</ul>
+			<div className="col-md-3">
+				<div className="row">
+					<div className="main-menu-content">
+						<ul className="navigation navigation-main">
+							<li className="nav-item active" onClick={this.setActiveNavLink}>
+								<Link to="/user/dashboard">
+									<span className="menu-title">eCommerce Dashboard</span>
+								</Link>
+							</li>
+							<li className="nav-item" onClick={this.setActiveNavLink}>
+								<Link to="/user/categories">
+									<span className="menu-title">Categories</span>
+								</Link>
+							</li>
+							<li className="nav-item" onClick={this.setActiveNavLink}>
+								<Link to="/user/products">
+									<span className="menu-title">Products</span>
+								</Link>
+							</li>
+							<li className="nav-item" onClick={this.setActiveNavLink}>
+								<Link to="/user/brends">
+									<span className="menu-title">Brends</span>
+								</Link>
+							</li>
+							<li className="nav-item" onClick={this.setActiveNavLink}>
+								<Link to="/user/users">
+									<span className="menu-title">Users</span>
+								</Link>
+							</li>
+							<li className="nav-item" onClick={this.setActiveNavLink}>
+								<Link to="/user/profile">
+									<span className="menu-title">My Profile</span>
+								</Link>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		)

@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Modal } from 'bootstrap-4-react'
 import Select from 'react-select'
-import { storage, database } from '../../../firebase'
+import { storage, database } from '../../firebase'
 import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton'
 import { Line } from 'rc-progress'
+import { Link } from 'react-router-dom'
 import uuid from 'uuid/v1'
 import { Textbox } from 'react-inputs-validation'
 import 'react-inputs-validation/lib/react-inputs-validation.min.css'
@@ -82,8 +83,8 @@ class AddCategory extends Component {
 				previewName: this.state.imagePreview
 			})
 			.then(() => {
-				document.getElementById('exampleModal').click('hide')
-				this.clearInputs()
+				//document.getElementById('exampleModal').click('hide')
+				//this.clearInputs()
 			})
 			.catch(err => {
 				console.log(err)
@@ -104,10 +105,18 @@ class AddCategory extends Component {
 		this.setState({ validate })
 	}
 
-	validateForm = e => {
-		e.preventDefault()
+	// validateForms = e => {
+	// 	e.preventDefault()
+	// 	this.toggleValidating(true)
+	// 	if (!this.state.error_name_ua && !this.state.error_name_en && !this.state.error_name_ru && !this.state.error_link && this.state.previewUrl.length && this.state.selectedOption) {
+	// 		this.saveCategory()
+	// 	}
+	// }
+
+	validateForms = () => {
 		this.toggleValidating(true)
 		if (!this.state.error_name_ua && !this.state.error_name_en && !this.state.error_name_ru && !this.state.error_link && this.state.previewUrl.length && this.state.selectedOption) {
+			//this.updateDatabase()
 			this.saveCategory()
 		}
 	}
@@ -115,17 +124,18 @@ class AddCategory extends Component {
 	render() {
 		return (
 			<>
-				<Modal id="exampleModal" fade>
-					<Modal.Dialog>
-						<Modal.Content>
-							<Modal.Header>
-								<Modal.Title>Add new subcategory</Modal.Title>
-								<Modal.Close>
-									<span aria-hidden="true">&times;</span>
-								</Modal.Close>
-							</Modal.Header>
-							<Modal.Body>
-								<form className="add-category-form" onSubmit={this.validateForm}>
+				<div className="col-md-9">
+					<div className="row">
+						<div className="content-body">
+							<div className="panel-heading">
+								<div className="col-12">
+									<div className="row">
+										<h3 className="panel-title">Add category</h3>
+									</div>
+								</div>
+							</div>
+							<div className="panel-body">
+								<div className="product_description col-sm-12">
 									<ul className="nav nav-tabs" role="tablist">
 										<li className="nav-item">
 											<span className="nav-link active" data-toggle="tab" href="#home" role="tab">
@@ -138,13 +148,8 @@ class AddCategory extends Component {
 											</span>
 										</li>
 										<li className="nav-item">
-											<span className="nav-link" data-toggle="tab" href="#profileua" role="tab">
-												UA
-											</span>
-										</li>
-										<li className="nav-item">
 											<span className="nav-link" data-toggle="tab" href="#messages" role="tab">
-												DETAIL
+												UA
 											</span>
 										</li>
 									</ul>
@@ -152,7 +157,7 @@ class AddCategory extends Component {
 									<div className="tab-content">
 										<div className="tab-pane active" id="home" role="tabpanel">
 											<div className="form-group">
-												<label className="col-lg-6 p-0">Name [en]</label>
+												<label>Name [en] </label>
 												<Textbox
 													type="text"
 													className="form-control col-lg-6 p-0"
@@ -180,7 +185,7 @@ class AddCategory extends Component {
 										</div>
 										<div className="tab-pane" id="profile" role="tabpanel">
 											<div className="form-group">
-												<label className="col-lg-6 p-0">Name [ru]</label>
+												<label>Name [RU]</label>
 												<Textbox
 													type="text"
 													className="form-control"
@@ -206,9 +211,9 @@ class AddCategory extends Component {
 												/>
 											</div>
 										</div>
-										<div className="tab-pane" id="profileua" role="tabpanel">
+										<div className="tab-pane" id="messages" role="tabpanel">
 											<div className="form-group">
-												<label className="col-lg-6 p-0">Name [ua]</label>
+												<label>Name [UA]</label>
 												<Textbox
 													type="text"
 													className="form-control col-lg-6 p-0"
@@ -234,73 +239,82 @@ class AddCategory extends Component {
 												/>
 											</div>
 										</div>
-										<div className="tab-pane" id="messages" role="tabpanel">
-											<div className="form-group">
-												<label className="col-lg-6 p-0">Link</label>
-												<Textbox
-													type="text"
-													className="form-control col-lg-6 p-0"
-													name="link"
-													onChange={(val, e) => {
-														this.setState({ [e.target.name]: val })
-													}}
-													onBlur={() => {}}
-													validationOption={{
-														name: 'Link',
-														check: true,
-														required: true,
-														showMsg: true
-													}}
-													validationCallback={res => {
-														this.setState({
-															error_link: res,
-															validate: false
-														})
-													}}
-													value={this.state.link}
-													validate={this.state.validate}
-												/>
-											</div>
-											<div className="form-group">
-												<label style={{ width: '100%' }}>Select preview image</label>
-												{this.state.isUploading && (
-													<p>
-														Progress: <Line percent={this.state.progress} strokeWidth="2" strokeColor="#4682b4" />
-													</p>
-												)}
-												{this.state.previewUrl && <img src={this.state.previewUrl} alt="preview" />}
-
-												<CustomUploadButton
-													accept="image/*"
-													name="avatar"
-													randomizeFilename
-													storageRef={storage.ref('images')}
-													onUploadStart={this.handleUploadStart}
-													onUploadError={this.handleUploadError}
-													onUploadSuccess={this.handleUploadSuccess}
-													onProgress={this.handleProgress}
-													style={{ backgroundColor: 'steelblue', color: 'white', padding: 10, borderRadius: 4, cursor: 'pointer' }}>
-													Upload
-												</CustomUploadButton>
-											</div>
-											<div className="form-group">
-												<label className="col-lg-6 p-0">Select category</label>
-												<Select className="col-lg-6 p-0" value={this.state.selectedOption} onChange={this.handleChangeParent} options={this.state.options} />
-											</div>
+									</div>
+								</div>
+								<div className="detail col-sm-12">
+									<div className="form-group">
+										<label>Link</label>
+										<Textbox
+											type="text"
+											className="form-control col-lg-6 p-0"
+											name="link"
+											onChange={(val, e) => {
+												this.setState({ [e.target.name]: val })
+											}}
+											onBlur={() => {}}
+											validationOption={{
+												name: 'Link',
+												check: true,
+												required: true,
+												showMsg: true
+											}}
+											validationCallback={res => {
+												this.setState({
+													error_link: res,
+													validate: false
+												})
+											}}
+											value={this.state.link}
+											validate={this.state.validate}
+										/>
+									</div>
+									<div className="detail col-sm-12">
+										<div className="form-group">
+											<label>Brend</label>
 										</div>
 									</div>
+									<div className="form-group">
+										<label style={{ width: '100%' }}>Select preview image</label>
+										{this.state.isUploading && (
+											<p>
+												Progress: <Line percent={this.state.progress} strokeWidth="2" strokeColor="#4682b4" />
+											</p>
+										)}
+										{this.state.previewUrl && <img src={this.state.previewUrl} alt="preview" />}
 
-									<button data-dismiss="modal" onClick={this.clearInputs}>
-										Close
-									</button>
-									<button type="submit" primary="true" onClick={this.validateForm}>
-										Save
-									</button>
-								</form>
-							</Modal.Body>
-						</Modal.Content>
-					</Modal.Dialog>
-				</Modal>
+										<CustomUploadButton
+											accept="image/*"
+											name="avatar"
+											randomizeFilename
+											storageRef={storage.ref('images')}
+											onUploadStart={this.handleUploadStart}
+											onUploadError={this.handleUploadError}
+											onUploadSuccess={this.handleUploadSuccess}
+											onProgress={this.handleProgress}
+											style={{ backgroundColor: 'steelblue', color: 'white', padding: 10, borderRadius: 4, cursor: 'pointer' }}>
+											Upload
+										</CustomUploadButton>
+									</div>
+									<div className="form-group">
+										<label className="col-lg-6 p-0">Select category</label>
+										<Select className="col-lg-6 p-0" value={this.state.selectedOption} onChange={this.handleChangeParent} options={this.state.options} />
+									</div>
+								</div>
+
+								<button>
+									<Link to="/user/categories"> Back</Link>
+								</button>
+								<button
+									primary="true"
+									onClick={() => {
+										this.validateForms()
+									}}>
+									Save
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</>
 		)
 	}
