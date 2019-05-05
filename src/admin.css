@@ -5,6 +5,48 @@ body {
     background-color: #F4F5FA;
 }
 
+label {
+    width: 140px;
+}
+
+.form-group input.ama_input_validate, .form-group .ama_input_select{
+    width: 100%;
+    padding: 5px 10px;
+    font-size: 14px;
+    height: 32px;
+    -webkit-transition: border .3s;
+    transition: border .3s;
+    border: 1px solid #f2f4f7;
+    color: #111;
+    background: #fff;
+}
+
+.form-group input{
+    -webkit-transition: border .3s;
+    transition: border .3s;
+}
+
+.form-group input:focus{
+    outline: none;
+    border-color: #2c303b;
+    -webkit-transition: border .3s;
+    transition: border .3s;
+}
+
+.ama_input_container{
+    padding: 0;
+}
+
+.ama_input_wrapper{
+    width: 100%;
+}
+
+.form-group.ama_flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 /**Navbar**/
 
 .header-navbar {
@@ -210,6 +252,25 @@ footer {
     margin-right: 30px;
 }
 
+
 /* CategoryAdd */
 
 /***admintest***/
+
+/* ProductGroup */
+.image_item{
+    width: 80px;
+    height: 80px;
+}
+
+.image_preview_list{
+    display: flex;
+    flex-wrap: wrap;
+}
+.image_item.add_new{
+    cursor: pointer;
+}
+.product_attributes_add{
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,17 +1,28 @@
 import React, { Component } from 'react'
 import { database, auth } from '../../firebase'
-import { Textbox } from 'react-inputs-validation'
+import { Textbox, Select } from 'react-inputs-validation'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import uuid from 'uuid/v4'
 import { setUserInfo } from '../../redux/actions'
-
-import Select from 'react-select'
+import ProductGroup from '../components/Product/ProductGroup'
+import add from '../../assets/img/add.png'
+import { SwatchesPicker } from 'react-color'
 
 class AddProduct extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
+			groups: [
+				{
+					imagesNames: [],
+					imagesUrls: [],
+					color: '',
+					description_en_group: '',
+					description_ru_group: '',
+					description_ua_group: ''
+				}
+			],
 			id: '',
 			name_en: '',
 			name_ru: '',
@@ -52,7 +63,9 @@ class AddProduct extends Component {
 			this.setState({
 				categories: snapshot.val()
 			})
-			this.pushCategoriesToSelect(snapshot.val())
+			if (snapshot.val() !== undefined && snapshot.val() !== null) {
+				this.pushCategoriesToSelect(snapshot.val())
+			}
 		})
 	}
 
@@ -128,7 +141,25 @@ class AddProduct extends Component {
 			})
 	}
 
+	addGroup = e => {
+		this.setState(prevState => ({
+			groups: [
+				...prevState.groups,
+				{
+					imagesNames: [],
+					imagesUrls: [],
+					color: '',
+					description_en_group: '',
+					description_ru_group: '',
+					description_ua_group: ''
+				}
+			]
+		}))
+	}
+
 	render() {
+		let { groups } = this.state
+
 		return (
 			<div className="col-md-9">
 				<div className="row">
@@ -184,6 +215,9 @@ class AddProduct extends Component {
 														validate: false
 													})
 												}}
+												classNameInput="ama_input_validate"
+												classNameContainer="ama_input_container"
+												classNameWrapper="ama_input_wrapper"
 												value={this.state.name_en}
 												validate={this.state.validate}
 											/>
@@ -210,6 +244,9 @@ class AddProduct extends Component {
 														validate: false
 													})
 												}}
+												classNameInput="ama_input_validate"
+												classNameContainer="ama_input_container"
+												classNameWrapper="ama_input_wrapper"
 												value={this.state.description_en}
 												validate={this.state.validate}
 											/>
@@ -236,6 +273,9 @@ class AddProduct extends Component {
 														validate: false
 													})
 												}}
+												classNameInput="ama_input_validate"
+												classNameContainer="ama_input_container"
+												classNameWrapper="ama_input_wrapper"
 												value={this.state.return_en}
 												validate={this.state.validate}
 											/>
@@ -263,6 +303,9 @@ class AddProduct extends Component {
 														validate: false
 													})
 												}}
+												classNameInput="ama_input_validate"
+												classNameContainer="ama_input_container"
+												classNameWrapper="ama_input_wrapper"
 												value={this.state.care_en}
 												validate={this.state.validate}
 											/>
@@ -291,6 +334,9 @@ class AddProduct extends Component {
 														validate: false
 													})
 												}}
+												classNameInput="ama_input_validate"
+												classNameContainer="ama_input_container"
+												classNameWrapper="ama_input_wrapper"
 												value={this.state.name_ru}
 												validate={this.state.validate}
 											/>
@@ -317,30 +363,40 @@ class AddProduct extends Component {
 														validate: false
 													})
 												}}
+												classNameInput="ama_input_validate"
+												classNameContainer="ama_input_container"
+												classNameWrapper="ama_input_wrapper"
 												value={this.state.description_ru}
 												validate={this.state.validate}
 											/>
 										</div>
 										<div className="form-group">
 											<label>Return [ru]</label>
-											<input
-												name="return_ru"
+											<Textbox
+												type="text"
 												className="form-control"
-												value={this.state.return_ru}
+												name="return_ru"
 												onChange={(val, e) => {
 													this.setState({ return_ru: val })
 												}}
+												classNameInput="ama_input_validate"
+												classNameContainer="ama_input_container"
+												classNameWrapper="ama_input_wrapper"
+												value={this.state.return_ru}
 											/>
 										</div>
 										<div className="form-group">
 											<label>Care [ru]</label>
-											<input
+											<Textbox
 												name="care_ru"
 												className="form-control"
 												value={this.state.care_ru}
 												onChange={(val, e) => {
 													this.setState({ care_ru: val })
 												}}
+												classNameInput="ama_input_validate"
+												classNameContainer="ama_input_container"
+												classNameWrapper="ama_input_wrapper"
 											/>
 										</div>
 									</div>
@@ -367,6 +423,9 @@ class AddProduct extends Component {
 														validate: false
 													})
 												}}
+												classNameInput="ama_input_validate"
+												classNameContainer="ama_input_container"
+												classNameWrapper="ama_input_wrapper"
 												value={this.state.name_ua}
 												validate={this.state.validate}
 											/>
@@ -393,37 +452,46 @@ class AddProduct extends Component {
 														validate: false
 													})
 												}}
+												classNameInput="ama_input_validate"
+												classNameContainer="ama_input_container"
+												classNameWrapper="ama_input_wrapper"
 												value={this.state.description_ua}
 												validate={this.state.validate}
 											/>
 										</div>
 										<div className="form-group">
 											<label>Return [ua]</label>
-											<input
+											<Textbox
 												name="return_ua"
 												className="form-control"
 												value={this.state.return_ua}
 												onChange={(val, e) => {
 													this.setState({ return_ua: val })
 												}}
+												classNameInput="ama_input_validate"
+												classNameContainer="ama_input_container"
+												classNameWrapper="ama_input_wrapper"
 											/>
 										</div>
 										<div className="form-group">
 											<label>Care [ua]</label>
-											<input
+											<Textbox
 												name="care_ua"
 												className="form-control"
 												value={this.state.care_ua}
 												onChange={(val, e) => {
 													this.setState({ care_ua: val })
 												}}
+												classNameInput="ama_input_validate"
+												classNameContainer="ama_input_container"
+												classNameWrapper="ama_input_wrapper"
 											/>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div className="detail col-sm-12">
-								<div className="form-group">
+								<div className="form-group ama_flex">
 									<label>Model</label>
 									<Textbox
 										type="text"
@@ -445,30 +513,29 @@ class AddProduct extends Component {
 												validate: false
 											})
 										}}
+										classNameInput="ama_input_validate"
+										classNameContainer="ama_input_container"
+										classNameWrapper="ama_input_wrapper"
 										value={this.state.model}
 										validate={this.state.validate}
 									/>
 								</div>
-								<div className="detail col-sm-12">
-									<div className="form-group">
-										<label>Brend</label>
-									</div>
+							</div>
+							<div className="detail col-sm-12">
+								<div className="form-group ama_flex">
+									<label>Brend</label>
+									<Select classNameSelect="ama_input_select" classNameContainer="ama_input_container" classNameWrapper="ama_input_wrapper" />
 								</div>
 								<div className="form-group">
-									<label>Product grops</label>
-									<button>add..</button>
+									<label>Product groups</label>
+									<ProductGroup groups={groups} />
+									<button onClick={this.addGroup}>add..</button>
 								</div>
 								<div className="form-group">
 									<label>Category </label>
-									<button>add..</button>
-									<Select
-										placeholder="Select Categories"
-										className="col-lg-6 p-0"
-										value={this.state.selectedCategory}
-										onChange={this.handleChangeParent}
-										options={this.state.optionsListCategories}
-									/>
+									<Select classNameSelect="ama_input_select" classNameContainer="ama_input_container" classNameWrapper="ama_input_wrapper" />
 								</div>
+								<button>add..</button>
 							</div>
 
 							<button>

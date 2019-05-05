@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { openAuthModal, setUserInfo, clearUserInfo } from '../../redux/actions'
 import { auth } from '../../firebase'
+import ReactSVG from 'react-svg'
 
 import AuthModal from './Auth/AuthModal'
-import ReactSVG from 'react-svg'
 import logo from '../../assets/img/logo.svg'
 
 import bags from '../../assets/img/icons/shoppingbag.svg'
