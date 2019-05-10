@@ -6,8 +6,6 @@ import { connect } from 'react-redux'
 import uuid from 'uuid/v4'
 import { setUserInfo } from '../../redux/actions'
 import ProductGroup from '../components/Product/ProductGroup'
-import add from '../../assets/img/add.png'
-import { SwatchesPicker } from 'react-color'
 
 class AddProduct extends Component {
 	constructor(props) {
@@ -49,14 +47,14 @@ class AddProduct extends Component {
 		}
 
 		this.validateForms = this.validateForms.bind(this)
+		this.updateState = this.updateState.bind(this)
+		this.handleChildUnmount = this.handleChildUnmount.bind(this)
 	}
 
 	componentDidMount = () => {
 		this.getListCategories()
 		this.setState({ id: uuid() })
 	}
-
-	componentWillMount = () => {}
 
 	getListCategories = () => {
 		database.ref('/categories').on('value', snapshot => {
@@ -157,6 +155,26 @@ class AddProduct extends Component {
 		}))
 	}
 
+	updateState = (index, colorParam, descrEn, descrRu, descrUa) => {
+		this.setState(prevState => {
+			const newArr = [...prevState.groups]
+			newArr[index].color = colorParam
+			newArr[index].description_en_group = descrEn
+			newArr[index].description_ru_group = descrRu
+			newArr[index].description_ua_group = descrUa
+			return { groups: newArr }
+		})
+	}
+
+	handleChildUnmount = index => {
+		console.log(index)
+		this.setState(prevState => {
+			const newArr = [...prevState.groups]
+			newArr.splice(index, 1)
+			return { groups: newArr }
+		})
+	}
+
 	render() {
 		let { groups } = this.state
 
@@ -167,7 +185,7 @@ class AddProduct extends Component {
 						<div className="panel-heading">
 							<div className="col-12">
 								<div className="row">
-									<h3 className="panel-title">Add product</h3>
+									<h3 className="panel-title">Add product </h3>
 								</div>
 							</div>
 						</div>
@@ -528,7 +546,11 @@ class AddProduct extends Component {
 								</div>
 								<div className="form-group">
 									<label>Product groups</label>
-									<ProductGroup groups={groups} />
+
+									{groups.map((val, index) => {
+										return <ProductGroup key={index} index={index} groups={groups} updateState={this.updateState} removeMe={this.handleChildUnmount} />
+									})}
+
 									<button onClick={this.addGroup}>add..</button>
 								</div>
 								<div className="form-group">
