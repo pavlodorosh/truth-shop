@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom'
 import uuid from 'uuid/v1'
 import { Textbox } from 'react-inputs-validation'
 import 'react-inputs-validation/lib/react-inputs-validation.min.css'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
 
 class EditBrend extends Component {
 	constructor(props) {
@@ -210,7 +212,7 @@ class EditBrend extends Component {
 										<div className="tab-pane active" id="home" role="tabpanel">
 											<div className="form-group">
 												<label className="col-lg-6 p-0">Description [en]</label>
-												<Textbox
+												{/* <Textbox
 													type="text"
 													className="form-control col-lg-6 p-0"
 													name="description_en"
@@ -232,13 +234,23 @@ class EditBrend extends Component {
 													}}
 													value={this.state.description_en}
 													validate={this.state.validate}
+												/> */}
+												<ReactQuill
+													id="description_en"
+													modules={EditBrend.modules}
+													formats={EditBrend.formats}
+													value={this.state.description_en}
+													placeholder="Body"
+													onChange={e => {
+														this.setState({ description_en: e })
+													}}
 												/>
 											</div>
 										</div>
 										<div className="tab-pane" id="profile" role="tabpanel">
 											<div className="form-group">
 												<label className="col-lg-6 p-0">Description [ru]</label>
-												<Textbox
+												{/* <Textbox
 													type="text"
 													className="form-control col-lg-6 p-0"
 													name="description_ru"
@@ -260,13 +272,23 @@ class EditBrend extends Component {
 													}}
 													value={this.state.description_ru}
 													validate={this.state.validate}
+												/> */}
+												<ReactQuill
+													id="description_ru"
+													modules={EditBrend.modules}
+													formats={EditBrend.formats}
+													value={this.state.description_ru}
+													placeholder="Body"
+													onChange={e => {
+														this.setState({ description_ru: e })
+													}}
 												/>
 											</div>
 										</div>
 										<div className="tab-pane" id="messages" role="tabpanel">
 											<div className="form-group">
 												<label className="col-lg-6 p-0">Description [ua]</label>
-												<Textbox
+												{/* <Textbox
 													type="text"
 													className="form-control col-lg-6 p-0"
 													name="description_ua"
@@ -288,6 +310,16 @@ class EditBrend extends Component {
 													}}
 													value={this.state.description_ua}
 													validate={this.state.validate}
+												/> */}
+												<ReactQuill
+													id="description_ua"
+													modules={EditBrend.modules}
+													formats={EditBrend.formats}
+													value={this.state.description_ua}
+													placeholder="Body"
+													onChange={e => {
+														this.setState({ description_ua: e })
+													}}
 												/>
 											</div>
 										</div>
@@ -311,4 +343,19 @@ class EditBrend extends Component {
 		)
 	}
 }
+
+EditBrend.modules = {
+	toolbar: [
+		[{ header: '1' }, { header: '2' }, { font: [] }],
+		[{ size: [] }],
+		['bold', 'italic', 'underline', 'strike', 'blockquote'],
+		[{ list: 'ordered' }, { list: 'bullet' }],
+		['link', 'image'],
+		['clean'],
+		['code-block']
+	]
+}
+
+EditBrend.formats = ['header', 'font', 'size', 'bold', 'italic', 'underline', 'strike', 'blockquote', 'list', 'bullet', 'link', 'image', 'video', 'code-block']
+
 export default EditBrend

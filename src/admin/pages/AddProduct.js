@@ -6,7 +6,8 @@ import { connect } from 'react-redux'
 import uuid from 'uuid/v4'
 import { setUserInfo } from '../../redux/actions'
 import ProductGroup from '../components/Product/ProductGroup'
-
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
 class AddProduct extends Component {
 	constructor(props) {
 		super(props)
@@ -316,7 +317,7 @@ class AddProduct extends Component {
 										</div>
 										<div className="form-group">
 											<label>Description [en]</label>
-											<Textbox
+											{/* <Textbox
 												type="text"
 												className="form-control"
 												name="description_en"
@@ -341,11 +342,21 @@ class AddProduct extends Component {
 												classNameWrapper="ama_input_wrapper"
 												value={this.state.description_en}
 												validate={this.state.validate}
+											/> */}
+											<ReactQuill
+												id="description_en"
+												modules={AddProduct.modules}
+												formats={AddProduct.formats}
+												value={this.state.description_en}
+												placeholder="Body"
+												onChange={e => {
+													this.setState({ description_en: e })
+												}}
 											/>
 										</div>
 										<div className="form-group">
 											<label>Return [en]</label>
-											<Textbox
+											{/* <Textbox
 												type="text"
 												className="form-control"
 												name="return_en"
@@ -370,12 +381,22 @@ class AddProduct extends Component {
 												classNameWrapper="ama_input_wrapper"
 												value={this.state.return_en}
 												validate={this.state.validate}
+											/> */}
+											<ReactQuill
+												id="return_en"
+												modules={AddProduct.modules}
+												formats={AddProduct.formats}
+												value={this.state.return_en}
+												placeholder="Body"
+												onChange={e => {
+													this.setState({ return_en: e })
+												}}
 											/>
 										</div>
 										<div className="form-group">
 											<label>Care [en]</label>
 
-											<Textbox
+											{/* <Textbox
 												type="text"
 												className="form-control"
 												name="care_en"
@@ -400,6 +421,16 @@ class AddProduct extends Component {
 												classNameWrapper="ama_input_wrapper"
 												value={this.state.care_en}
 												validate={this.state.validate}
+											/> */}
+											<ReactQuill
+												id="care_en"
+												modules={AddProduct.modules}
+												formats={AddProduct.formats}
+												value={this.state.care_en}
+												placeholder="Body"
+												onChange={e => {
+													this.setState({ care_en: e })
+												}}
 											/>
 										</div>
 									</div>
@@ -435,7 +466,7 @@ class AddProduct extends Component {
 										</div>
 										<div className="form-group">
 											<label>Description [RU]</label>
-											<Textbox
+											{/* <Textbox
 												type="text"
 												className="form-control"
 												name="description_ru"
@@ -460,11 +491,21 @@ class AddProduct extends Component {
 												classNameWrapper="ama_input_wrapper"
 												value={this.state.description_ru}
 												validate={this.state.validate}
+											/> */}
+											<ReactQuill
+												id="description_ru"
+												modules={AddProduct.modules}
+												formats={AddProduct.formats}
+												value={this.state.description_ru}
+												placeholder="Body"
+												onChange={e => {
+													this.setState({ description_ru: e })
+												}}
 											/>
 										</div>
 										<div className="form-group">
 											<label>Return [ru]</label>
-											<Textbox
+											{/* <Textbox
 												type="text"
 												className="form-control"
 												name="return_ru"
@@ -475,11 +516,21 @@ class AddProduct extends Component {
 												classNameContainer="ama_input_container"
 												classNameWrapper="ama_input_wrapper"
 												value={this.state.return_ru}
+											/> */}
+											<ReactQuill
+												id="return_ru"
+												modules={AddProduct.modules}
+												formats={AddProduct.formats}
+												value={this.state.return_ru}
+												placeholder="Body"
+												onChange={e => {
+													this.setState({ return_ru: e })
+												}}
 											/>
 										</div>
 										<div className="form-group">
 											<label>Care [ru]</label>
-											<Textbox
+											{/* <Textbox
 												name="care_ru"
 												className="form-control"
 												value={this.state.care_ru}
@@ -489,6 +540,16 @@ class AddProduct extends Component {
 												classNameInput="ama_input_validate"
 												classNameContainer="ama_input_container"
 												classNameWrapper="ama_input_wrapper"
+											/> */}
+											<ReactQuill
+												id="care_ru"
+												modules={AddProduct.modules}
+												formats={AddProduct.formats}
+												value={this.state.care_ru}
+												placeholder="Body"
+												onChange={e => {
+													this.setState({ care_ru: e })
+												}}
 											/>
 										</div>
 									</div>
@@ -524,7 +585,7 @@ class AddProduct extends Component {
 										</div>
 										<div className="form-group">
 											<label>Description [UA]</label>
-											<Textbox
+											{/* <Textbox
 												type="text"
 												className="form-control"
 												name="description_ua"
@@ -549,11 +610,21 @@ class AddProduct extends Component {
 												classNameWrapper="ama_input_wrapper"
 												value={this.state.description_ua}
 												validate={this.state.validate}
+											/> */}
+											<ReactQuill
+												id="description_ua"
+												modules={AddProduct.modules}
+												formats={AddProduct.formats}
+												value={this.state.description_ua}
+												placeholder="Body"
+												onChange={e => {
+													this.setState({ description_ua: e })
+												}}
 											/>
 										</div>
 										<div className="form-group">
 											<label>Return [ua]</label>
-											<Textbox
+											{/* <Textbox
 												name="return_ua"
 												className="form-control"
 												value={this.state.return_ua}
@@ -563,11 +634,21 @@ class AddProduct extends Component {
 												classNameInput="ama_input_validate"
 												classNameContainer="ama_input_container"
 												classNameWrapper="ama_input_wrapper"
+											/> */}
+											<ReactQuill
+												id="return_ua"
+												modules={AddProduct.modules}
+												formats={AddProduct.formats}
+												value={this.state.return_ua}
+												placeholder="Body"
+												onChange={e => {
+													this.setState({ return_ua: e })
+												}}
 											/>
 										</div>
 										<div className="form-group">
 											<label>Care [ua]</label>
-											<Textbox
+											{/* <Textbox
 												name="care_ua"
 												className="form-control"
 												value={this.state.care_ua}
@@ -577,6 +658,16 @@ class AddProduct extends Component {
 												classNameInput="ama_input_validate"
 												classNameContainer="ama_input_container"
 												classNameWrapper="ama_input_wrapper"
+											/> */}
+											<ReactQuill
+												id="care_ua"
+												modules={AddProduct.modules}
+												formats={AddProduct.formats}
+												value={this.state.care_ua}
+												placeholder="Body"
+												onChange={e => {
+													this.setState({ care_ua: e })
+												}}
 											/>
 										</div>
 									</div>
@@ -684,6 +775,20 @@ class AddProduct extends Component {
 		}
 	}
 }
+
+AddProduct.modules = {
+	toolbar: [
+		[{ header: '1' }, { header: '2' }, { font: [] }],
+		[{ size: [] }],
+		['bold', 'italic', 'underline', 'strike', 'blockquote'],
+		[{ list: 'ordered' }, { list: 'bullet' }],
+		['link', 'image'],
+		['clean'],
+		['code-block']
+	]
+}
+
+AddProduct.formats = ['header', 'font', 'size', 'bold', 'italic', 'underline', 'strike', 'blockquote', 'list', 'bullet', 'link', 'image', 'video', 'code-block']
 
 export default connect(
 	AddProduct.mapStateToProps,

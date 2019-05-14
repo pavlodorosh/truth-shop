@@ -4,6 +4,8 @@ import { database } from '../../../firebase'
 import ProductAttribute from './ProductAttribute'
 import add from '../../../assets/img/add.png'
 import { SwatchesPicker } from 'react-color'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
 
 export default class ProductGroups extends Component {
 	state = {
@@ -80,19 +82,43 @@ export default class ProductGroups extends Component {
 							<div className="tab-pane active" id={`en${index}`} role="tabpanel">
 								<div className="form-group">
 									<label>Description [en]</label>
-									<input className="form-control" value={groups[index].description_en_group} onChange={this.handleChange} name="descrEn" />
+									{/* <input className="form-control" value={groups[index].description_en_group} onChange={this.handleChange} name="descrEn" /> */}
+									<ReactQuill
+										id="descrEn"
+										modules={ProductGroups.modules}
+										formats={ProductGroups.formats}
+										value={groups[index].description_en_group}
+										placeholder="Body"
+										onChange={this.handleChange}
+									/>
 								</div>
 							</div>
 							<div className="tab-pane" id={`ru${index}`} role="tabpanel">
 								<div className="form-group">
 									<label>Description [RU]</label>
-									<input className="form-control" value={groups[index].description_ru_group} onChange={this.handleChange} name="descrRu" />
+									{/* <input className="form-control" value={groups[index].description_ru_group} onChange={this.handleChange} name="descrRu" /> */}
+									<ReactQuill
+										id="descrEn"
+										modules={ProductGroups.modules}
+										formats={ProductGroups.formats}
+										value={groups[index].description_ru_group}
+										placeholder="Body"
+										onChange={this.handleChange}
+									/>
 								</div>
 							</div>
 							<div className="tab-pane" id={`ua${index}`} role="tabpanel">
 								<div className="form-group">
 									<label>Description [UA]</label>
-									<input className="form-control" value={groups[index].description_ua_group} onChange={this.handleChange} name="descrUa" />
+									{/* <input className="form-control" value={groups[index].description_ua_group} onChange={this.handleChange} name="descrUa" /> */}
+									<ReactQuill
+										id="descrUa"
+										modules={ProductGroups.modules}
+										formats={ProductGroups.formats}
+										value={groups[index].description_ua_group}
+										placeholder="Body"
+										onChange={this.handleChange}
+									/>
 								</div>
 							</div>
 						</div>
@@ -141,3 +167,17 @@ export default class ProductGroups extends Component {
 		)
 	}
 }
+
+ProductGroups.modules = {
+	toolbar: [
+		[{ header: '1' }, { header: '2' }, { font: [] }],
+		[{ size: [] }],
+		['bold', 'italic', 'underline', 'strike', 'blockquote'],
+		[{ list: 'ordered' }, { list: 'bullet' }],
+		['link', 'image'],
+		['clean'],
+		['code-block']
+	]
+}
+
+ProductGroups.formats = ['header', 'font', 'size', 'bold', 'italic', 'underline', 'strike', 'blockquote', 'list', 'bullet', 'link', 'image', 'video', 'code-block']

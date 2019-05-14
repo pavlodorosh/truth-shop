@@ -3,6 +3,8 @@ import { database } from '../../firebase'
 import { Textbox } from 'react-inputs-validation'
 import { Link } from 'react-router-dom'
 import Select from 'react-select'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
 
 export default class EditProduct extends Component {
 	constructor(props) {
@@ -213,7 +215,7 @@ export default class EditProduct extends Component {
 										</div>
 										<div className="form-group">
 											<label>Description [en]</label>
-											<Textbox
+											{/* <Textbox
 												type="text"
 												className="form-control"
 												name="description_en"
@@ -235,27 +237,57 @@ export default class EditProduct extends Component {
 												}}
 												value={this.state.description_en}
 												validate={this.state.product.validate}
+											/> */}
+											<ReactQuill
+												id="description_en"
+												modules={EditProduct.modules}
+												formats={EditProduct.formats}
+												value={this.state.description_en}
+												placeholder="Body"
+												onChange={e => {
+													this.setState({ description_en: e })
+												}}
 											/>
 										</div>
 										<div className="form-group">
 											<label>Return [en]</label>
-											<input
+											{/* <input
 												name="return_en"
 												className="form-control"
 												value={this.state.return_en}
 												onChange={(val, e) => {
 													this.setState({ return_en: val })
 												}}
+											/> */}
+											<ReactQuill
+												id="return_en"
+												modules={EditProduct.modules}
+												formats={EditProduct.formats}
+												value={this.state.return_en}
+												placeholder="Body"
+												onChange={e => {
+													this.setState({ return_en: e })
+												}}
 											/>
 										</div>
 										<div className="form-group">
 											<label>Care [en]</label>
-											<input
+											{/* <input
 												name="care_en"
 												className="form-control"
 												value={this.state.care_en}
 												onChange={(val, e) => {
 													this.setState({ care_en: val })
+												}}
+											/> */}
+											<ReactQuill
+												id="care_en"
+												modules={EditProduct.modules}
+												formats={EditProduct.formats}
+												value={this.state.care_en}
+												placeholder="Body"
+												onChange={e => {
+													this.setState({ care_en: e })
 												}}
 											/>
 										</div>
@@ -289,7 +321,7 @@ export default class EditProduct extends Component {
 										</div>
 										<div className="form-group">
 											<label>Description [RU]</label>
-											<Textbox
+											{/* <Textbox
 												type="text"
 												className="form-control"
 												name="description_ru"
@@ -311,27 +343,57 @@ export default class EditProduct extends Component {
 												}}
 												value={this.state.description_ru}
 												validate={this.state.product.validate}
+											/> */}
+											<ReactQuill
+												id="description_ru"
+												modules={EditProduct.modules}
+												formats={EditProduct.formats}
+												value={this.state.description_ru}
+												placeholder="Body"
+												onChange={e => {
+													this.setState({ description_ru: e })
+												}}
 											/>
 										</div>
 										<div className="form-group">
 											<label>Return [ru]</label>
-											<input
+											{/* <input
 												name="return_ru"
 												className="form-control"
 												value={this.state.return_ru}
 												onChange={(val, e) => {
 													this.setState({ return_ru: val })
 												}}
+											/> */}
+											<ReactQuill
+												id="return_ru"
+												modules={EditProduct.modules}
+												formats={EditProduct.formats}
+												value={this.state.return_ru}
+												placeholder="Body"
+												onChange={e => {
+													this.setState({ return_ru: e })
+												}}
 											/>
 										</div>
 										<div className="form-group">
 											<label>Care [ru]</label>
-											<input
+											{/* <input
 												name="care_ru"
 												className="form-control"
 												value={this.state.care_ru}
 												onChange={(val, e) => {
 													this.setState({ care_ru: val })
+												}}
+											/> */}
+											<ReactQuill
+												id="care_ru"
+												modules={EditProduct.modules}
+												formats={EditProduct.formats}
+												value={this.state.care_ru}
+												placeholder="Body"
+												onChange={e => {
+													this.setState({ care_ru: e })
 												}}
 											/>
 										</div>
@@ -365,7 +427,7 @@ export default class EditProduct extends Component {
 										</div>
 										<div className="form-group">
 											<label>Description [UA]</label>
-											<Textbox
+											{/* <Textbox
 												type="text"
 												className="form-control"
 												name="description_ua"
@@ -387,27 +449,57 @@ export default class EditProduct extends Component {
 												}}
 												value={this.state.description_ua}
 												validate={this.state.product.validate}
+											/> */}
+											<ReactQuill
+												id="description_ua"
+												modules={EditProduct.modules}
+												formats={EditProduct.formats}
+												value={this.state.description_ua}
+												placeholder="Body"
+												onChange={e => {
+													this.setState({ description_ua: e })
+												}}
 											/>
 										</div>
 										<div className="form-group">
 											<label>Return [ua]</label>
-											<input
+											{/* <input
 												name="return_ua"
 												className="form-control"
 												value={this.state.return_ua}
 												onChange={(val, e) => {
 													this.setState({ return_ua: val })
 												}}
+											/> */}
+											<ReactQuill
+												id="return_ua"
+												modules={EditProduct.modules}
+												formats={EditProduct.formats}
+												value={this.state.return_ua}
+												placeholder="Body"
+												onChange={e => {
+													this.setState({ return_ua: e })
+												}}
 											/>
 										</div>
 										<div className="form-group">
 											<label>Care [ua]</label>
-											<input
+											{/* <input
 												name="care_ua"
 												className="form-control"
 												value={this.state.care_ua}
 												onChange={(val, e) => {
 													this.setState({ care_ua: val })
+												}}
+											/> */}
+											<ReactQuill
+												id="care_ua"
+												modules={EditProduct.modules}
+												formats={EditProduct.formats}
+												value={this.state.care_ua}
+												placeholder="Body"
+												onChange={e => {
+													this.setState({ care_ua: e })
 												}}
 											/>
 										</div>
@@ -531,3 +623,17 @@ export default class EditProduct extends Component {
 		)
 	}
 }
+
+EditProduct.modules = {
+	toolbar: [
+		[{ header: '1' }, { header: '2' }, { font: [] }],
+		[{ size: [] }],
+		['bold', 'italic', 'underline', 'strike', 'blockquote'],
+		[{ list: 'ordered' }, { list: 'bullet' }],
+		['link', 'image'],
+		['clean'],
+		['code-block']
+	]
+}
+
+EditProduct.formats = ['header', 'font', 'size', 'bold', 'italic', 'underline', 'strike', 'blockquote', 'list', 'bullet', 'link', 'image', 'video', 'code-block']
