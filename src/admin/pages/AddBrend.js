@@ -53,34 +53,25 @@ class AddBrend extends Component {
 	}
 
 	saveBrend = () => {
-		return this.state.brendsRef.child(this.state.name + '-' + uuid()).set({
-			name: this.state.name,
-			description: {
-				en: this.state.description_en,
-				ru: this.state.description_ru,
-				ua: this.state.description_ua
-			},
-			preview: this.state.previewUrl,
-			previewName: this.state.imagePreview
-		})
-		// .then(() => {
-		// 	document.getElementById('exampleModal').click('hide')
-		// 	this.clearInputs()
-		// })
-		// .catch(err => {
-		// 	console.log(err)
-		// })
+		return this.state.brendsRef
+			.child(this.state.name + '-' + uuid())
+			.set({
+				name: this.state.name,
+				description: {
+					en: this.state.description_en,
+					ru: this.state.description_ru,
+					ua: this.state.description_ua
+				},
+				preview: this.state.previewUrl,
+				previewName: this.state.imagePreview
+			})
+			.then(() => {
+				window.location.href = '/user/brends'
+			})
+			.catch(err => {
+				console.log(err)
+			})
 	}
-
-	// clearInputs = () => {
-	// 	this.setState({
-	// 		name: '',
-	// 		previewUrl: '',
-	// 		description_en: '',
-	// 		description_ru: '',
-	// 		description_ua: ''
-	// 	})
-	// }
 
 	toggleValidating(validate) {
 		this.setState({ validate })

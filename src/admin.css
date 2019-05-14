@@ -273,4 +273,5 @@ footer {
 .product_attributes_add{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }

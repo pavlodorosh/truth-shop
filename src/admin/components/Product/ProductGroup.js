@@ -99,17 +99,42 @@ export default class ProductGroups extends Component {
 					</div>
 					<div className="form-group ">
 						<label>Atribyte </label>
-						<div className="atr">{<ProductAttribute />}</div>
+						<div className="atr">
+							<div className="product_attributes_add">
+								<div className="form-group">
+									<label>Price</label>
+								</div>
+								<div className="form-group">
+									<label>Quantity </label>
+								</div>
+								<div className="form-group">
+									<label>Sale</label>
+								</div>
+								<div className="form-group">
+									<label>Size</label>
+								</div>
+							</div>
+
+							{groups[index].attributes.map((val, indexx) => {
+								return <ProductAttribute key={indexx} id={indexx} index={index} groups={groups} updateAttr={this.props.updateAttr} />
+							})}
+
+							<button
+								style={{ width: '100%' }}
+								onClick={() => {
+									this.props.addAttr(index)
+								}}>
+								add..
+							</button>
+						</div>
 					</div>
-					{groups.length > 1 ? (
+					{groups.length > 1 && (
 						<button
 							onClick={() => {
 								this.deleteThisComponent(index)
 							}}>
 							remove..
 						</button>
-					) : (
-						''
 					)}
 				</div>
 			</div>

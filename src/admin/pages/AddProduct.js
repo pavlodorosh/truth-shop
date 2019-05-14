@@ -18,9 +18,18 @@ class AddProduct extends Component {
 					color: '',
 					description_en_group: '',
 					description_ru_group: '',
-					description_ua_group: ''
+					description_ua_group: '',
+					attributes: [
+						{
+							price: '',
+							quantity: 0,
+							sale: '',
+							size: ''
+						}
+					]
 				}
 			],
+			brend_list: [],
 			id: '',
 			name_en: '',
 			name_ru: '',
@@ -53,7 +62,10 @@ class AddProduct extends Component {
 
 	componentDidMount = () => {
 		this.getListCategories()
-		this.setState({ id: uuid() })
+		this.getlistBrends()
+		this.setState({
+			id: uuid()
+		})
 	}
 
 	getListCategories = () => {
@@ -63,6 +75,17 @@ class AddProduct extends Component {
 			})
 			if (snapshot.val() !== undefined && snapshot.val() !== null) {
 				this.pushCategoriesToSelect(snapshot.val())
+			}
+		})
+	}
+
+	getlistBrends = () => {
+		database.ref('/brends').on('value', snapshot => {
+			this.setState({
+				brends: snapshot.val()
+			})
+			if (snapshot.val() !== undefined && snapshot.val() !== null) {
+				this.pushBrendsToSelect(snapshot.val())
 			}
 		})
 	}
@@ -82,6 +105,22 @@ class AddProduct extends Component {
 				optionsListCategories: [...prevState.optionsListCategories, category]
 			}))
 		})
+	}
+
+	pushBrendsToSelect = data => {
+		let brend_list = []
+
+		Object.keys(data).map((id, index) => {
+			let brend = {
+				id: index,
+				name: data[id].name
+			}
+			brend_list.push(brend)
+		})
+
+		this.setState(() => ({
+			brend_list: brend_list
+		}))
 	}
 
 	toggleValidating(validate) {
@@ -139,7 +178,7 @@ class AddProduct extends Component {
 			})
 	}
 
-	addGroup = e => {
+	addGroup = () => {
 		this.setState(prevState => ({
 			groups: [
 				...prevState.groups,
@@ -149,10 +188,35 @@ class AddProduct extends Component {
 					color: '',
 					description_en_group: '',
 					description_ru_group: '',
-					description_ua_group: ''
+					description_ua_group: '',
+					attributes: [
+						{
+							price: '',
+							quantity: 0,
+							sale: '',
+							size: ''
+						}
+					]
 				}
 			]
 		}))
+	}
+
+	addAttributes = index => {
+		this.setState(prevState => {
+			const newArr = [...prevState.groups]
+			const newAttr = {
+				price: '',
+				quantity: 0,
+				sale: '',
+				size: ''
+			}
+			newArr[index].attributes.push(newAttr)
+
+			return {
+				groups: newArr
+			}
+		})
 	}
 
 	updateState = (index, colorParam, descrEn, descrRu, descrUa) => {
@@ -166,8 +230,18 @@ class AddProduct extends Component {
 		})
 	}
 
+	updateAttr = (index, id, pricePar, quantityPar, salePar, sizePar) => {
+		this.setState(prevState => {
+			const newArr = [...prevState.groups]
+			newArr[index].attributes[id].price = pricePar
+			newArr[index].attributes[id].quantity = quantityPar
+			newArr[index].attributes[id].sale = salePar
+			newArr[index].attributes[id].size = sizePar
+			return { groups: newArr }
+		})
+	}
+
 	handleChildUnmount = index => {
-		console.log(index)
 		this.setState(prevState => {
 			const newArr = [...prevState.groups]
 			newArr.splice(index, 1)
@@ -542,13 +616,35 @@ class AddProduct extends Component {
 							<div className="detail col-sm-12">
 								<div className="form-group ama_flex">
 									<label>Brend</label>
-									<Select classNameSelect="ama_input_select" classNameContainer="ama_input_container" classNameWrapper="ama_input_wrapper" />
+									<Select
+										classNameSelect="ama_input_select"
+										classNameContainer="ama_input_container"
+										classNameWrapper="ama_input_wrapper"
+										name="brend"
+										optionList={this.state.brend_list}
+										onChange={(brend, e) => {
+											this.setState({ select_brend: brend })
+										}}
+										onBlur={() => {}}
+										value={this.state.select_brend}
+									/>
 								</div>
 								<div className="form-group">
 									<label>Product groups</label>
 
 									{groups.map((val, index) => {
-										return <ProductGroup key={index} index={index} groups={groups} updateState={this.updateState} removeMe={this.handleChildUnmount} />
+										return (
+											<ProductGroup
+												key={index}
+												index={index}
+												groups={groups}
+												updateState={this.updateState}
+												removeMe={this.handleChildUnmount}
+												removeAttr={this.handleChildAttrUnmount}
+												addAttr={this.addAttributes}
+												updateAttr={this.updateAttr}
+											/>
+										)
 									})}
 
 									<button onClick={this.addGroup}>add..</button>
