@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Textbox } from 'react-inputs-validation'
-import { database } from '../../../firebase'
+import { storage } from '../../../firebase'
 import ProductAttribute from './ProductAttribute'
 import add from '../../../assets/img/add.png'
 import { SwatchesPicker } from 'react-color'
+import 'react-quill/dist/quill.snow.css'
+import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 
@@ -11,9 +12,14 @@ export default class ProductGroups extends Component {
 	state = {
 		color: '#fff',
 		colorPickerActive: false,
-		descrEn: '',
-		descrRu: '',
-		descrUa: ''
+		desEn: '',
+		desRu: '',
+		desUa: '',
+		username: '',
+		imageArr: [],
+		isUploading: false,
+		progress: 0,
+		imageURLArr: []
 	}
 
 	handleChangeColorComplete = color => {
@@ -23,7 +29,7 @@ export default class ProductGroups extends Component {
 				colorPickerActive: false
 			},
 			() => {
-				this.props.updateState(this.props.index, this.state.color)
+				this.props.updateState(this.props.index, this.state.color, this.state.descrEn, this.state.desRu, this.state.desUa, this.state.imageArr, this.state.imageURLArr)
 			}
 		)
 	}
@@ -34,12 +40,67 @@ export default class ProductGroups extends Component {
 
 	handleChange = event => {
 		this.setState({ [event.target.name]: event.target.value }, () => {
-			this.props.updateState(this.props.index, this.state.color, this.state.descrEn, this.state.descrRu, this.state.descrUa)
+			this.props.updateState(this.props.index, this.state.color, this.state.desEn, this.state.desRu, this.state.desUa, this.state.imageArr, this.state.imageURLArr)
+		})
+	}
+
+	handleQuillChange = e => {
+		this.setState({
+			desEn: e
 		})
 	}
 
 	deleteThisComponent = index => {
 		this.props.removeMe(index)
+	}
+
+	handleChangeUsername = event => {
+		this.setState({
+			username: event.target.value
+		})
+	}
+
+	handleUploadStart = () => {
+		this.setState({
+			isUploading: true,
+			progress: 0
+		})
+	}
+	handleProgress = progress => {
+		this.setState({ progress })
+	}
+
+	handleUploadError = error => {
+		this.setState({ isUploading: false })
+		console.error(error)
+	}
+	handleUploadSuccess = filename => {
+		this.setState(prevState => {
+			let newImageArr = [...prevState.imageArr, filename]
+
+			return {
+				imageArr: newImageArr,
+				progress: 100,
+				isUploading: false
+			}
+		})
+		storage
+			.ref('images/products/' + this.props.productId)
+			.child(filename)
+			.getDownloadURL()
+			.then(url =>
+				this.setState(
+					prevState => {
+						let newUrlArr = [...prevState.imageURLArr, url]
+						return {
+							imageURLArr: newUrlArr
+						}
+					},
+					() => {
+						this.props.updateState(this.props.index, this.state.color, this.state.descrEn, this.state.desRu, this.state.desUa, this.state.imageArr, this.state.imageURLArr)
+					}
+				)
+			)
 	}
 
 	render() {
@@ -51,7 +112,20 @@ export default class ProductGroups extends Component {
 					<div className="form-group">
 						<label>All images</label>
 						<div className="allimageproduct image_preview_list">
-							<img className="image_item add_new" src={add} alt="" />
+							{this.state.imageURLArr.map(item => (
+								<img src={item} style={{ width: '100px', height: '100px', marginRight: '10px' }} />
+							))}
+							<CustomUploadButton
+								accept="image/*"
+								name="products"
+								randomizeFilename
+								storageRef={storage.ref('images/products/' + this.props.productId)}
+								onUploadStart={this.handleUploadStart}
+								onUploadError={this.handleUploadError}
+								onUploadSuccess={this.handleUploadSuccess}
+								onProgress={this.handleProgress}
+								style={{ backgroundImage: `url(${add})`, cursor: 'pointer', width: '100px', height: '100px', backgroundSize: '100px 100px' }}
+							/>
 						</div>
 					</div>
 					<div className="form-group">
@@ -82,42 +156,68 @@ export default class ProductGroups extends Component {
 							<div className="tab-pane active" id={`en${index}`} role="tabpanel">
 								<div className="form-group">
 									<label>Description [en]</label>
-									{/* <input className="form-control" value={groups[index].description_en_group} onChange={this.handleChange} name="descrEn" /> */}
 									<ReactQuill
 										id="descrEn"
 										modules={ProductGroups.modules}
 										formats={ProductGroups.formats}
-										value={groups[index].description_en_group}
+										value={this.state.desEn}
 										placeholder="Body"
-										onChange={this.handleChange}
+										onChange={e => {
+											this.setState(
+												{
+													desEn: e
+												},
+												() => {
+													this.props.updateState(this.props.index, this.state.color, this.state.desEn, this.state.desRu, this.state.desUa)
+												}
+											)
+										}}
 									/>
 								</div>
 							</div>
 							<div className="tab-pane" id={`ru${index}`} role="tabpanel">
 								<div className="form-group">
 									<label>Description [RU]</label>
-									{/* <input className="form-control" value={groups[index].description_ru_group} onChange={this.handleChange} name="descrRu" /> */}
 									<ReactQuill
 										id="descrEn"
 										modules={ProductGroups.modules}
 										formats={ProductGroups.formats}
-										value={groups[index].description_ru_group}
+										value={this.state.desRu}
 										placeholder="Body"
-										onChange={this.handleChange}
+										onChange={e => {
+											this.setState(
+												{
+													desRu: e
+												},
+												() => {
+													this.props.updateState(this.props.index, this.state.color, this.state.desEn, this.state.desRu, this.state.desUa)
+												}
+											)
+										}}
 									/>
 								</div>
 							</div>
 							<div className="tab-pane" id={`ua${index}`} role="tabpanel">
 								<div className="form-group">
 									<label>Description [UA]</label>
-									{/* <input className="form-control" value={groups[index].description_ua_group} onChange={this.handleChange} name="descrUa" /> */}
 									<ReactQuill
 										id="descrUa"
 										modules={ProductGroups.modules}
 										formats={ProductGroups.formats}
 										value={groups[index].description_ua_group}
 										placeholder="Body"
-										onChange={this.handleChange}
+										value={this.state.desUa}
+										placeholder="Body"
+										onChange={e => {
+											this.setState(
+												{
+													desUa: e
+												},
+												() => {
+													this.props.updateState(this.props.index, this.state.color, this.state.desEn, this.state.desRu, this.state.desUa)
+												}
+											)
+										}}
 									/>
 								</div>
 							</div>

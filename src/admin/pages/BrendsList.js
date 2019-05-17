@@ -26,7 +26,7 @@ class BrendsList extends Component {
 		console.log('images/' + preview)
 
 		storage
-			.ref('images/')
+			.ref('images/brends')
 			.child(preview)
 			.delete()
 			.then(() => {

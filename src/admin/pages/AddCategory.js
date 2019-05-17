@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Modal } from 'bootstrap-4-react'
 import Select from 'react-select'
 import { storage, database } from '../../firebase'
 import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton'
@@ -14,7 +13,6 @@ class AddCategory extends Component {
 		name_en: '',
 		name_ru: '',
 		name_ua: '',
-		link: '',
 		selectedOption: null,
 		options: [
 			{
@@ -58,7 +56,7 @@ class AddCategory extends Component {
 	handleUploadSuccess = filename => {
 		this.setState({ imagePreview: filename, progress: 100, isUploading: false })
 		storage
-			.ref('images')
+			.ref('images/categories')
 			.child(filename)
 			.getDownloadURL()
 			.then(url => this.setState({ previewUrl: url }))
@@ -77,14 +75,12 @@ class AddCategory extends Component {
 					ru: this.state.name_ru,
 					ua: this.state.name_ua
 				},
-				link: this.state.link,
 				preview: this.state.previewUrl,
 				parentCategory: this.state.selectedOption.value,
 				previewName: this.state.imagePreview
 			})
 			.then(() => {
-				//document.getElementById('exampleModal').click('hide')
-				//this.clearInputs()
+				window.location.href = '/user/categories'
 			})
 			.catch(err => {
 				console.log(err)
@@ -95,7 +91,6 @@ class AddCategory extends Component {
 		this.setState({
 			name_en: '',
 			name_ru: '',
-			link: '',
 			selectedOption: null,
 			previewUrl: ''
 		})
@@ -105,18 +100,9 @@ class AddCategory extends Component {
 		this.setState({ validate })
 	}
 
-	// validateForms = e => {
-	// 	e.preventDefault()
-	// 	this.toggleValidating(true)
-	// 	if (!this.state.error_name_ua && !this.state.error_name_en && !this.state.error_name_ru && !this.state.error_link && this.state.previewUrl.length && this.state.selectedOption) {
-	// 		this.saveCategory()
-	// 	}
-	// }
-
 	validateForms = () => {
 		this.toggleValidating(true)
-		if (!this.state.error_name_ua && !this.state.error_name_en && !this.state.error_name_ru && !this.state.error_link && this.state.previewUrl.length && this.state.selectedOption) {
-			//this.updateDatabase()
+		if (!this.state.error_name_ua && !this.state.error_name_en && !this.state.error_name_ru && this.state.previewUrl.length && this.state.selectedOption) {
 			this.saveCategory()
 		}
 	}
@@ -243,37 +229,6 @@ class AddCategory extends Component {
 								</div>
 								<div className="detail col-sm-12">
 									<div className="form-group">
-										<label>Link</label>
-										<Textbox
-											type="text"
-											className="form-control col-lg-6 p-0"
-											name="link"
-											onChange={(val, e) => {
-												this.setState({ [e.target.name]: val })
-											}}
-											onBlur={() => {}}
-											validationOption={{
-												name: 'Link',
-												check: true,
-												required: true,
-												showMsg: true
-											}}
-											validationCallback={res => {
-												this.setState({
-													error_link: res,
-													validate: false
-												})
-											}}
-											value={this.state.link}
-											validate={this.state.validate}
-										/>
-									</div>
-									<div className="detail col-sm-12">
-										<div className="form-group">
-											<label>Brend</label>
-										</div>
-									</div>
-									<div className="form-group">
 										<label style={{ width: '100%' }}>Select preview image</label>
 										{this.state.isUploading && (
 											<p>
@@ -285,8 +240,7 @@ class AddCategory extends Component {
 										<CustomUploadButton
 											accept="image/*"
 											name="avatar"
-											randomizeFilename
-											storageRef={storage.ref('images')}
+											storageRef={storage.ref('images/categories')}
 											onUploadStart={this.handleUploadStart}
 											onUploadError={this.handleUploadError}
 											onUploadSuccess={this.handleUploadSuccess}

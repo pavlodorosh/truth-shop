@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { database, storage } from '../../firebase'
+import { database } from '../../firebase'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 

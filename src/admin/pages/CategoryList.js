@@ -24,7 +24,7 @@ class CategoryList extends Component {
 		console.log('images/' + preview)
 
 		storage
-			.ref('images/')
+			.ref('images/categories')
 			.child(preview)
 			.delete()
 			.then(() => {

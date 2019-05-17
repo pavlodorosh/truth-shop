@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { database, auth } from '../../firebase'
+import { database } from '../../firebase'
 import { Textbox, Select } from 'react-inputs-validation'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -31,6 +31,7 @@ class AddProduct extends Component {
 				}
 			],
 			brend_list: [],
+			category_list: [],
 			id: '',
 			name_en: '',
 			name_ru: '',
@@ -45,15 +46,12 @@ class AddProduct extends Component {
 			care_ru: '',
 			care_ua: '',
 			model: '',
-			price: 0,
-			quantity: 0,
 			category: '',
 			parentCategory: '',
 			image: {
 				url: '',
 				name: ''
-			},
-			optionsListCategories: []
+			}
 		}
 
 		this.validateForms = this.validateForms.bind(this)
@@ -91,23 +89,6 @@ class AddProduct extends Component {
 		})
 	}
 
-	handleChangeParent = selectedOption => {
-		this.setState({ selectedOption })
-	}
-
-	pushCategoriesToSelect = data => {
-		return Object.keys(data).map(id => {
-			let category = {
-				value: data[id].name.en,
-				parent: data[id].parentCategory,
-				label: data[id].parentCategory + ' > ' + data[id].name.en
-			}
-			this.setState(prevState => ({
-				optionsListCategories: [...prevState.optionsListCategories, category]
-			}))
-		})
-	}
-
 	pushBrendsToSelect = data => {
 		let brend_list = []
 
@@ -124,6 +105,22 @@ class AddProduct extends Component {
 		}))
 	}
 
+	pushCategoriesToSelect = data => {
+		let category_list = []
+
+		Object.keys(data).map((id, index) => {
+			let category = {
+				id: index,
+				name: data[id].name.en + ' -> ' + data[id].parentCategory
+			}
+			category_list.push(category)
+		})
+
+		this.setState(() => ({
+			category_list: category_list
+		}))
+	}
+
 	toggleValidating(validate) {
 		this.setState({ validate })
 	}
@@ -131,8 +128,17 @@ class AddProduct extends Component {
 	validateForms = () => {
 		this.toggleValidating(true)
 		if (!this.state.error_name_en && !this.state.error_name_ru && !this.state.error_name_ua) {
-			this.updateDatabase()
+			this.convertArrayToObject(this.state)
 		}
+	}
+
+	convertArrayToObject = ({ groups }) => {
+		let doneArrayForBase = groups.reduce((obj, item, index) => {
+			obj[index] = item
+			return obj
+		}, {})
+
+		console.log(doneArrayForBase)
 	}
 
 	updateDatabase = () => {
@@ -140,42 +146,24 @@ class AddProduct extends Component {
 			.ref('/products')
 			.child(this.state.id)
 			.set({
+				groups: this.state.groups,
 				id: this.state.id,
-				name: {
-					en: this.state.name_en,
-					ru: this.state.name_ru,
-					ua: this.state.name_ua
-				},
-				description: {
-					en: this.state.description_en,
-					ru: this.state.description_ru,
-					ua: this.state.description_ua
-				},
-				return: {
-					en: this.state.return_en,
-					ru: this.state.return_ru,
-					ua: this.state.return_ua
-				},
-
-				care: {
-					en: this.state.care_en,
-					ru: this.state.care_ru,
-					ua: this.state.care_ua
-				},
-				mainImageUrl: this.state.image.url,
-				mainImageName: this.state.image.name,
-				images: [this.state.image],
-				price: this.state.price,
-				author: this.props.user.displayName,
-				model: this.state.model,
-				category: this.state.selectedOption.value,
-				parentCategory: this.state.selectedOption.parent,
-				sizes: '',
-				colors: '',
-				actions: '',
-				weather: '',
+				brend: this.state.select_brend,
 				active: false,
-				quantity: 0
+				name_en: this.state.name_en,
+				name_ru: this.state.name_ru,
+				name_ua: this.state.name_ua,
+				description_en: this.state.description_en,
+				description_ru: this.state.description_ru,
+				description_ua: this.state.description_ua,
+				return_en: this.state.return_en,
+				return_ru: this.state.return_ru,
+				return_ua: this.state.return_ua,
+				care_en: this.state.care_en,
+				care_ru: this.state.care_ru,
+				care_ua: this.state.care_ua,
+				model: this.state.model,
+				category: this.state.select_category
 			})
 	}
 
@@ -220,13 +208,15 @@ class AddProduct extends Component {
 		})
 	}
 
-	updateState = (index, colorParam, descrEn, descrRu, descrUa) => {
+	updateState = (index, colorParam, descrEn, descrRu, descrUa, imageNames, imageUrls) => {
 		this.setState(prevState => {
 			const newArr = [...prevState.groups]
 			newArr[index].color = colorParam
 			newArr[index].description_en_group = descrEn
 			newArr[index].description_ru_group = descrRu
 			newArr[index].description_ua_group = descrUa
+			newArr[index].imagesNames = imageNames
+			newArr[index].imagesUrls = imageUrls
 			return { groups: newArr }
 		})
 	}
@@ -317,32 +307,6 @@ class AddProduct extends Component {
 										</div>
 										<div className="form-group">
 											<label>Description [en]</label>
-											{/* <Textbox
-												type="text"
-												className="form-control"
-												name="description_en"
-												onChange={(val, e) => {
-													this.setState({ description_en: val })
-												}}
-												onBlur={() => {}}
-												validationOption={{
-													name: 'Description',
-													check: true,
-													required: true,
-													showMsg: true
-												}}
-												validationCallback={res => {
-													this.setState({
-														error_description_en: res,
-														validate: false
-													})
-												}}
-												classNameInput="ama_input_validate"
-												classNameContainer="ama_input_container"
-												classNameWrapper="ama_input_wrapper"
-												value={this.state.description_en}
-												validate={this.state.validate}
-											/> */}
 											<ReactQuill
 												id="description_en"
 												modules={AddProduct.modules}
@@ -356,32 +320,6 @@ class AddProduct extends Component {
 										</div>
 										<div className="form-group">
 											<label>Return [en]</label>
-											{/* <Textbox
-												type="text"
-												className="form-control"
-												name="return_en"
-												onChange={(val, e) => {
-													this.setState({ return_en: val })
-												}}
-												onBlur={() => {}}
-												validationOption={{
-													name: 'Return',
-													check: false,
-													required: true,
-													showMsg: true
-												}}
-												validationCallback={res => {
-													this.setState({
-														return_en: res,
-														validate: false
-													})
-												}}
-												classNameInput="ama_input_validate"
-												classNameContainer="ama_input_container"
-												classNameWrapper="ama_input_wrapper"
-												value={this.state.return_en}
-												validate={this.state.validate}
-											/> */}
 											<ReactQuill
 												id="return_en"
 												modules={AddProduct.modules}
@@ -396,32 +334,6 @@ class AddProduct extends Component {
 										<div className="form-group">
 											<label>Care [en]</label>
 
-											{/* <Textbox
-												type="text"
-												className="form-control"
-												name="care_en"
-												onChange={(val, e) => {
-													this.setState({ care_en: val })
-												}}
-												onBlur={() => {}}
-												validationOption={{
-													name: 'Care',
-													check: false,
-													required: true,
-													showMsg: true
-												}}
-												validationCallback={res => {
-													this.setState({
-														care_en: res,
-														validate: false
-													})
-												}}
-												classNameInput="ama_input_validate"
-												classNameContainer="ama_input_container"
-												classNameWrapper="ama_input_wrapper"
-												value={this.state.care_en}
-												validate={this.state.validate}
-											/> */}
 											<ReactQuill
 												id="care_en"
 												modules={AddProduct.modules}
@@ -466,32 +378,6 @@ class AddProduct extends Component {
 										</div>
 										<div className="form-group">
 											<label>Description [RU]</label>
-											{/* <Textbox
-												type="text"
-												className="form-control"
-												name="description_ru"
-												onChange={(val, e) => {
-													this.setState({ description_ru: val })
-												}}
-												onBlur={() => {}}
-												validationOption={{
-													name: 'Description',
-													check: true,
-													required: true,
-													showMsg: true
-												}}
-												validationCallback={res => {
-													this.setState({
-														error_description_ru: res,
-														validate: false
-													})
-												}}
-												classNameInput="ama_input_validate"
-												classNameContainer="ama_input_container"
-												classNameWrapper="ama_input_wrapper"
-												value={this.state.description_ru}
-												validate={this.state.validate}
-											/> */}
 											<ReactQuill
 												id="description_ru"
 												modules={AddProduct.modules}
@@ -505,18 +391,7 @@ class AddProduct extends Component {
 										</div>
 										<div className="form-group">
 											<label>Return [ru]</label>
-											{/* <Textbox
-												type="text"
-												className="form-control"
-												name="return_ru"
-												onChange={(val, e) => {
-													this.setState({ return_ru: val })
-												}}
-												classNameInput="ama_input_validate"
-												classNameContainer="ama_input_container"
-												classNameWrapper="ama_input_wrapper"
-												value={this.state.return_ru}
-											/> */}
+
 											<ReactQuill
 												id="return_ru"
 												modules={AddProduct.modules}
@@ -530,17 +405,6 @@ class AddProduct extends Component {
 										</div>
 										<div className="form-group">
 											<label>Care [ru]</label>
-											{/* <Textbox
-												name="care_ru"
-												className="form-control"
-												value={this.state.care_ru}
-												onChange={(val, e) => {
-													this.setState({ care_ru: val })
-												}}
-												classNameInput="ama_input_validate"
-												classNameContainer="ama_input_container"
-												classNameWrapper="ama_input_wrapper"
-											/> */}
 											<ReactQuill
 												id="care_ru"
 												modules={AddProduct.modules}
@@ -585,32 +449,6 @@ class AddProduct extends Component {
 										</div>
 										<div className="form-group">
 											<label>Description [UA]</label>
-											{/* <Textbox
-												type="text"
-												className="form-control"
-												name="description_ua"
-												onChange={(val, e) => {
-													this.setState({ description_ua: val })
-												}}
-												onBlur={() => {}}
-												validationOption={{
-													name: 'Description',
-													check: true,
-													required: true,
-													showMsg: true
-												}}
-												validationCallback={res => {
-													this.setState({
-														error_description_ua: res,
-														validate: false
-													})
-												}}
-												classNameInput="ama_input_validate"
-												classNameContainer="ama_input_container"
-												classNameWrapper="ama_input_wrapper"
-												value={this.state.description_ua}
-												validate={this.state.validate}
-											/> */}
 											<ReactQuill
 												id="description_ua"
 												modules={AddProduct.modules}
@@ -624,17 +462,6 @@ class AddProduct extends Component {
 										</div>
 										<div className="form-group">
 											<label>Return [ua]</label>
-											{/* <Textbox
-												name="return_ua"
-												className="form-control"
-												value={this.state.return_ua}
-												onChange={(val, e) => {
-													this.setState({ return_ua: val })
-												}}
-												classNameInput="ama_input_validate"
-												classNameContainer="ama_input_container"
-												classNameWrapper="ama_input_wrapper"
-											/> */}
 											<ReactQuill
 												id="return_ua"
 												modules={AddProduct.modules}
@@ -648,17 +475,6 @@ class AddProduct extends Component {
 										</div>
 										<div className="form-group">
 											<label>Care [ua]</label>
-											{/* <Textbox
-												name="care_ua"
-												className="form-control"
-												value={this.state.care_ua}
-												onChange={(val, e) => {
-													this.setState({ care_ua: val })
-												}}
-												classNameInput="ama_input_validate"
-												classNameContainer="ama_input_container"
-												classNameWrapper="ama_input_wrapper"
-											/> */}
 											<ReactQuill
 												id="care_ua"
 												modules={AddProduct.modules}
@@ -714,7 +530,8 @@ class AddProduct extends Component {
 										name="brend"
 										optionList={this.state.brend_list}
 										onChange={(brend, e) => {
-											this.setState({ select_brend: brend })
+											let brendName = this.state.brend_list[brend].name
+											this.setState({ select_brend: brendName })
 										}}
 										onBlur={() => {}}
 										value={this.state.select_brend}
@@ -734,6 +551,7 @@ class AddProduct extends Component {
 												removeAttr={this.handleChildAttrUnmount}
 												addAttr={this.addAttributes}
 												updateAttr={this.updateAttr}
+												productId={this.state.id}
 											/>
 										)
 									})}
@@ -742,7 +560,19 @@ class AddProduct extends Component {
 								</div>
 								<div className="form-group">
 									<label>Category </label>
-									<Select classNameSelect="ama_input_select" classNameContainer="ama_input_container" classNameWrapper="ama_input_wrapper" />
+									<Select
+										classNameSelect="ama_input_select"
+										classNameContainer="ama_input_container"
+										classNameWrapper="ama_input_wrapper"
+										name="category"
+										optionList={this.state.category_list}
+										onChange={(category, e) => {
+											let categoryName = this.state.category_list[category].name
+											this.setState({ select_category: categoryName })
+										}}
+										onBlur={() => {}}
+										value={this.state.select_category}
+									/>
 								</div>
 								<button>add..</button>
 							</div>

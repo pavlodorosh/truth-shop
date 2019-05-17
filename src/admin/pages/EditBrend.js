@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Modal } from 'bootstrap-4-react'
 import { storage, database } from '../../firebase'
 import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton'
 import { Line } from 'rc-progress'

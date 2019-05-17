@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Modal } from 'bootstrap-4-react'
 import { storage, database } from '../../firebase'
 import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton'
 import { Line } from 'rc-progress'
@@ -44,7 +43,7 @@ class AddBrend extends Component {
 	handleUploadSuccess = filename => {
 		this.setState({ imagePreview: filename, progress: 100, isUploading: false })
 		storage
-			.ref('images')
+			.ref('images/brends')
 			.child(filename)
 			.getDownloadURL()
 			.then(url => this.setState({ previewUrl: url }))
@@ -141,7 +140,7 @@ class AddBrend extends Component {
 											accept="image/*"
 											name="avatar"
 											randomizeFilename
-											storageRef={storage.ref('images')}
+											storageRef={storage.ref('images/brends')}
 											onUploadStart={this.handleUploadStart}
 											onUploadError={this.handleUploadError}
 											onUploadSuccess={this.handleUploadSuccess}
