@@ -128,7 +128,7 @@ class AddProduct extends Component {
 	validateForms = () => {
 		this.toggleValidating(true)
 		if (!this.state.error_name_en && !this.state.error_name_ru && !this.state.error_name_ua) {
-			this.convertArrayToObject(this.state)
+			this.updateDatabase()
 		}
 	}
 
