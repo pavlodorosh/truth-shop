@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { database } from '../../firebase'
+import { database, storage } from '../../firebase'
 import { Textbox, Select } from 'react-inputs-validation'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -51,7 +51,9 @@ class AddProduct extends Component {
 			image: {
 				url: '',
 				name: ''
-			}
+			},
+			select_brend: '',
+			select_category: ''
 		}
 
 		this.validateForms = this.validateForms.bind(this)
@@ -132,13 +134,26 @@ class AddProduct extends Component {
 		}
 	}
 
-	convertArrayToObject = ({ groups }) => {
-		let doneArrayForBase = groups.reduce((obj, item, index) => {
-			obj[index] = item
-			return obj
-		}, {})
+	deleteImage = (index, id) => {
+		let image = this.state.groups[index].imagesNames[id]
 
-		console.log(doneArrayForBase)
+		this.setState(prevState => {
+			const newArr = [...prevState.groups]
+			newArr[index].imagesNames.splice(id, 1)
+			newArr[index].imagesUrls.splice(id, 1)
+			return { groups: newArr }
+		})
+		storage
+			.ref('images/products/')
+			.child(this.state.id)
+			.child(image)
+			.delete()
+			.then(() => {
+				console.log('images deleted')
+			})
+			.catch(err => {
+				console.log(err)
+			})
 	}
 
 	updateDatabase = () => {
@@ -164,6 +179,12 @@ class AddProduct extends Component {
 				care_ua: this.state.care_ua,
 				model: this.state.model,
 				category: this.state.select_category
+			})
+			.then(() => {
+				window.location.href = '/user/products'
+			})
+			.catch(err => {
+				console.log(err)
 			})
 	}
 
@@ -236,6 +257,14 @@ class AddProduct extends Component {
 		this.setState(prevState => {
 			const newArr = [...prevState.groups]
 			newArr.splice(index, 1)
+			return { groups: newArr }
+		})
+	}
+
+	removeAttributes = (index, id) => {
+		this.setState(prevState => {
+			const newArr = [...prevState.groups]
+			newArr[index].attributes.splice(id, 1)
 			return { groups: newArr }
 		})
 	}
@@ -535,6 +564,7 @@ class AddProduct extends Component {
 										}}
 										onBlur={() => {}}
 										value={this.state.select_brend}
+										selectHtml={`${this.state.select_brend}`}
 									/>
 								</div>
 								<div className="form-group">
@@ -548,10 +578,11 @@ class AddProduct extends Component {
 												groups={groups}
 												updateState={this.updateState}
 												removeMe={this.handleChildUnmount}
-												removeAttr={this.handleChildAttrUnmount}
+												removeAttributes={this.removeAttributes}
 												addAttr={this.addAttributes}
 												updateAttr={this.updateAttr}
 												productId={this.state.id}
+												deleteImage={this.deleteImage}
 											/>
 										)
 									})}
@@ -572,9 +603,9 @@ class AddProduct extends Component {
 										}}
 										onBlur={() => {}}
 										value={this.state.select_category}
+										selectHtml={`${this.state.select_category}`}
 									/>
 								</div>
-								<button>add..</button>
 							</div>
 
 							<button>

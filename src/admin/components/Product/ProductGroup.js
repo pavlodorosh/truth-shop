@@ -74,6 +74,10 @@ export default class ProductGroups extends Component {
 		this.setState({ isUploading: false })
 		console.error(error)
 	}
+	removeAttributes = (index, id) => {
+		this.props.removeAttributes(index, id)
+	}
+
 	handleUploadSuccess = filename => {
 		this.setState(prevState => {
 			let newImageArr = [...prevState.imageArr, filename]
@@ -112,8 +116,17 @@ export default class ProductGroups extends Component {
 					<div className="form-group">
 						<label>All images</label>
 						<div className="allimageproduct image_preview_list">
-							{this.state.imageURLArr.map(item => (
-								<img src={item} style={{ width: '100px', height: '100px', marginRight: '10px' }} />
+							{this.state.imageURLArr.map((item, id) => (
+								<div key={id} style={{ position: 'relative' }}>
+									<img src={item} style={{ width: '100px', height: '100px', marginRight: '10px' }} />
+									<p
+										style={{ position: 'absolute', top: '0px', cursor: 'pointer' }}
+										onClick={() => {
+											this.props.deleteImage(index, id)
+										}}>
+										Delete this
+									</p>
+								</div>
 							))}
 							<CustomUploadButton
 								accept="image/*"
@@ -131,7 +144,7 @@ export default class ProductGroups extends Component {
 					<div className="form-group">
 						<label onClick={this.switchColorPicker}>Choose color</label>
 						<span style={{ backgroundColor: this.state.color, width: '30px', height: '30px', display: 'block' }} />
-						{this.state.colorPickerActive ? <SwatchesPicker color={this.state.color} onChangeComplete={this.handleChangeColorComplete} /> : ''}
+						{this.state.colorPickerActive ? <SwatchesPicker color={this.state.color} onChangeComplete={this.handleChangeColorComplete} removeMe={this.removeAttributes} /> : ''}
 					</div>
 					<div className="product_description">
 						<ul className="nav nav-tabs" role="tablist">
@@ -168,7 +181,15 @@ export default class ProductGroups extends Component {
 													desEn: e
 												},
 												() => {
-													this.props.updateState(this.props.index, this.state.color, this.state.desEn, this.state.desRu, this.state.desUa)
+													this.props.updateState(
+														this.props.index,
+														this.state.color,
+														this.state.desEn,
+														this.state.desRu,
+														this.state.desUa,
+														this.state.imageArr,
+														this.state.imageURLArr
+													)
 												}
 											)
 										}}
@@ -190,7 +211,15 @@ export default class ProductGroups extends Component {
 													desRu: e
 												},
 												() => {
-													this.props.updateState(this.props.index, this.state.color, this.state.desEn, this.state.desRu, this.state.desUa)
+													this.props.updateState(
+														this.props.index,
+														this.state.color,
+														this.state.desEn,
+														this.state.desRu,
+														this.state.desUa,
+														this.state.imageArr,
+														this.state.imageURLArr
+													)
 												}
 											)
 										}}
@@ -204,8 +233,6 @@ export default class ProductGroups extends Component {
 										id="descrUa"
 										modules={ProductGroups.modules}
 										formats={ProductGroups.formats}
-										value={groups[index].description_ua_group}
-										placeholder="Body"
 										value={this.state.desUa}
 										placeholder="Body"
 										onChange={e => {
@@ -214,7 +241,15 @@ export default class ProductGroups extends Component {
 													desUa: e
 												},
 												() => {
-													this.props.updateState(this.props.index, this.state.color, this.state.desEn, this.state.desRu, this.state.desUa)
+													this.props.updateState(
+														this.props.index,
+														this.state.color,
+														this.state.desEn,
+														this.state.desRu,
+														this.state.desUa,
+														this.state.imageArr,
+														this.state.imageURLArr
+													)
 												}
 											)
 										}}
@@ -242,7 +277,7 @@ export default class ProductGroups extends Component {
 							</div>
 
 							{groups[index].attributes.map((val, indexx) => {
-								return <ProductAttribute key={indexx} id={indexx} index={index} groups={groups} updateAttr={this.props.updateAttr} />
+								return <ProductAttribute key={indexx} id={indexx} index={index} groups={groups} updateAttr={this.props.updateAttr} removeMe={this.removeAttributes} />
 							})}
 
 							<button

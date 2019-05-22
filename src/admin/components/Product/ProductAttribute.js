@@ -19,6 +19,10 @@ export default class ProductAttribute extends Component {
 		)
 	}
 
+	deleteAttributes = (index, id) => {
+		this.props.removeMe(this.props.index, this.props.id)
+	}
+
 	render() {
 		const { id, groups, index } = this.props
 
@@ -36,6 +40,7 @@ export default class ProductAttribute extends Component {
 				<div className="form-group">
 					<input className="form-control" value={groups[index].attributes[id].size} onChange={this.handleChange} name="size" />
 				</div>
+				{groups[index].attributes.length > 1 && <button onClick={this.deleteAttributes}>remove..</button>}
 			</div>
 		)
 	}
