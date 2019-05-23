@@ -15,25 +15,29 @@ class ProductList extends Component {
 		this.removeProductFromDatabase = this.removeProductFromDatabase.bind(this)
 	}
 
-	removeProductFromDatabase = (id, preview) => {
+	removeProductFromDatabase = id => {
 		database
 			.ref('/products')
 			.child(id)
 			.remove()
-		this.removeMainProductImageFromStorage(preview)
+		this.removeMainProductImageFromStorage(id)
 	}
 
-	removeMainProductImageFromStorage = images => {
-		storage
-			.ref('images/')
-			.child(images)
-			.delete()
-			.then(() => {
-				console.log('images deleted')
+	removeMainProductImageFromStorage = id => {
+		this.state.products[id].groups.map(item => {
+			item.imagesNames.map(image => {
+				storage
+					.ref('images/products/' + id)
+					.child(image)
+					.delete()
+					.then(() => {
+						console.log('images deleted')
+					})
+					.catch(err => {
+						console.log(err)
+					})
 			})
-			.catch(err => {
-				console.log(err)
-			})
+		})
 	}
 
 	getProductsFromDatabase = () => {
@@ -65,14 +69,12 @@ class ProductList extends Component {
 				<tr key={id}>
 					<td>{this.state.products[id].name.en}</td>
 					<td>
-						<img style={{ width: '50px' }} src={this.state.products[id].mainImageUrl} alt="" />
+						<img style={{ width: '50px' }} src={this.state.products[id].groups[0].imagesUrls[0]} alt="" />
 					</td>
 					<td>
-						{this.state.products[id].parentCategory} > {this.state.products[id].category}
+						{this.state.products[id].parentCategory} {this.state.products[id].category}
 					</td>
 					<td>{this.state.products[id].model}</td>
-					{/* <td>{this.state.products[id].price} $</td> */}
-					{/* <td>{this.state.products[id].quantity}</td> */}
 					<td>
 						<Switch
 							value={this.state.products[id].active}
@@ -85,7 +87,7 @@ class ProductList extends Component {
 						<Link style={{ backgroundColor: '#dddddd' }} className="btn btn-default" to={{ pathname: `/user/edit/product/${id}`, state: { product: this.state.products[id] } }}>
 							<FontAwesomeIcon icon="edit" />
 						</Link>
-						<button className="btn btn-danger" onClick={() => this.removeProductFromDatabase(id, this.state.products[id].mainImageName)}>
+						<button className="btn btn-danger" onClick={() => this.removeProductFromDatabase(id)}>
 							<FontAwesomeIcon icon="trash-alt" />
 						</button>
 					</td>

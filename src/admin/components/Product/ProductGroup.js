@@ -10,7 +10,7 @@ import 'react-quill/dist/quill.snow.css'
 
 export default class ProductGroups extends Component {
 	state = {
-		color: '#fff',
+		color: '#eee',
 		colorPickerActive: false,
 		desEn: '',
 		desRu: '',
@@ -22,6 +22,12 @@ export default class ProductGroups extends Component {
 		imageURLArr: []
 	}
 
+	componentWillMount = () => {
+		this.setState({
+			color: this.props.groups[this.props.index].color
+		})
+	}
+
 	handleChangeColorComplete = color => {
 		this.setState(
 			{
@@ -29,7 +35,7 @@ export default class ProductGroups extends Component {
 				colorPickerActive: false
 			},
 			() => {
-				this.props.updateState(this.props.index, this.state.color, this.state.descrEn, this.state.desRu, this.state.desUa, this.state.imageArr, this.state.imageURLArr)
+				this.props.updateState(this.props.index, this.state.color, this.state.desEn, this.state.desRu, this.state.desUa, this.state.imageArr, this.state.imageURLArr)
 			}
 		)
 	}
@@ -79,15 +85,20 @@ export default class ProductGroups extends Component {
 	}
 
 	handleUploadSuccess = filename => {
-		this.setState(prevState => {
-			let newImageArr = [...prevState.imageArr, filename]
+		this.setState(
+			prevState => {
+				let newImageArr = [...prevState.imageArr, filename]
 
-			return {
-				imageArr: newImageArr,
-				progress: 100,
-				isUploading: false
+				return {
+					imageArr: newImageArr,
+					progress: 100,
+					isUploading: false
+				}
+			},
+			() => {
+				this.props.updateState(this.props.index, this.state.color, this.state.desEn, this.state.desRu, this.state.desUa, this.state.imageArr, this.state.imageURLArr)
 			}
-		})
+		)
 		storage
 			.ref('images/products/' + this.props.productId)
 			.child(filename)
@@ -101,7 +112,7 @@ export default class ProductGroups extends Component {
 						}
 					},
 					() => {
-						this.props.updateState(this.props.index, this.state.color, this.state.descrEn, this.state.desRu, this.state.desUa, this.state.imageArr, this.state.imageURLArr)
+						this.props.updateState(this.props.index, this.state.color, this.state.desEn, this.state.desRu, this.state.desUa, this.state.imageArr, this.state.imageURLArr)
 					}
 				)
 			)
@@ -116,18 +127,20 @@ export default class ProductGroups extends Component {
 					<div className="form-group">
 						<label>All images</label>
 						<div className="allimageproduct image_preview_list">
-							{this.state.imageURLArr.map((item, id) => (
-								<div key={id} style={{ position: 'relative' }}>
-									<img src={item} style={{ width: '100px', height: '100px', marginRight: '10px' }} />
-									<p
-										style={{ position: 'absolute', top: '0px', cursor: 'pointer' }}
-										onClick={() => {
-											this.props.deleteImage(index, id)
-										}}>
-										Delete this
-									</p>
-								</div>
-							))}
+							{groups[index].imagesUrls &&
+								groups[index].imagesUrls.map((item, id) => (
+									<div key={id} style={{ position: 'relative' }}>
+										<img src={item} style={{ width: '100px', height: '100px', marginRight: '10px' }} />
+										<p
+											style={{ position: 'absolute', top: '0px', cursor: 'pointer' }}
+											onClick={() => {
+												this.props.deleteImage(index, id)
+											}}>
+											Delete this
+										</p>
+									</div>
+								))
+							}
 							<CustomUploadButton
 								accept="image/*"
 								name="products"

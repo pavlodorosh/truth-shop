@@ -47,13 +47,14 @@ class AddProduct extends Component {
 			care_ua: '',
 			model: '',
 			category: '',
-			parentCategory: '',
 			image: {
 				url: '',
 				name: ''
 			},
 			select_brend: '',
-			select_category: ''
+			select_category: '',
+			mainCategory: '',
+			parentCategory: ''
 		}
 
 		this.validateForms = this.validateForms.bind(this)
@@ -113,7 +114,9 @@ class AddProduct extends Component {
 		Object.keys(data).map((id, index) => {
 			let category = {
 				id: index,
-				name: data[id].name.en + ' -> ' + data[id].parentCategory
+				name: data[id].name.en + ' -> ' + data[id].parentCategory,
+				main: data[id].parentCategory,
+				thisName: data[id].name.en
 			}
 			category_list.push(category)
 		})
@@ -165,20 +168,29 @@ class AddProduct extends Component {
 				id: this.state.id,
 				brend: this.state.select_brend,
 				active: false,
-				name_en: this.state.name_en,
-				name_ru: this.state.name_ru,
-				name_ua: this.state.name_ua,
-				description_en: this.state.description_en,
-				description_ru: this.state.description_ru,
-				description_ua: this.state.description_ua,
-				return_en: this.state.return_en,
-				return_ru: this.state.return_ru,
-				return_ua: this.state.return_ua,
-				care_en: this.state.care_en,
-				care_ru: this.state.care_ru,
-				care_ua: this.state.care_ua,
+				name: {
+					en: this.state.name_en,
+					ru: this.state.name_ru,
+					ua: this.state.name_ua
+				},
+				description: {
+					en: this.state.description_en,
+					ru: this.state.description_ru,
+					ua: this.state.description_ua
+				},
+				return: {
+					en: this.state.return_en,
+					ru: this.state.return_ru,
+					ua: this.state.return_ua
+				},
+				care: {
+					en: this.state.care_en,
+					ru: this.state.care_ru,
+					ua: this.state.care_ua
+				},
 				model: this.state.model,
-				category: this.state.select_category
+				category: this.state.category,
+				parentCategory: this.state.parentCategory
 			})
 			.then(() => {
 				window.location.href = '/user/products'
@@ -598,8 +610,11 @@ class AddProduct extends Component {
 										name="category"
 										optionList={this.state.category_list}
 										onChange={(category, e) => {
-											let categoryName = this.state.category_list[category].name
-											this.setState({ select_category: categoryName })
+											this.setState({
+												select_category: this.state.category_list[category].name,
+												category: this.state.category_list[category].thisName,
+												parentCategory: this.state.category_list[category].main
+											})
 										}}
 										onBlur={() => {}}
 										value={this.state.select_category}

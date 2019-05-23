@@ -32,11 +32,7 @@ class Catalog extends Component {
 		if (this.state.products !== null) {
 			let f = Object.keys(this.state.products)
 			const filtered = Object.keys(f)
-				.filter(
-					item =>
-						match.url === `/catalog/${this.toLowerCaseString(this.state.products[item].parentCategory)}/${this.toLowerCaseString(this.state.products[item].category)}` &&
-						this.state.products[item].active
-				)
+				.filter(item => item.active)
 				.reduce((obj, key) => {
 					return {
 						...obj,
@@ -51,20 +47,18 @@ class Catalog extends Component {
 
 	renderProducts = () => {
 		let array = this.filteredAndReducedProducts()
-
+		console.log(array)
 		if (this.state.products !== null) {
-			return Object.keys(array).map((id, index) => (
-				<div className="col-lg-3 col-md-3 col-sm-6 col-12" key={id}>
+			return Object.keys(array).map((item, index) => (
+				<div className="col-lg-3 col-md-3 col-sm-6 col-12" key={item.id}>
 					<div>
-						<Link
-							to={`/product/${this.toLowerCaseString(this.state.products[id].parentCategory)}/${this.state.products[id].category}/${this.toLowerCaseString(
-								this.state.products[id].name.en
-							)}`}>
-							<img alt="" className="card-img" src={this.state.products[id].mainImageUrl} />
+						{item.imagesNames[0]}
+						<Link to={`/product/${this.toLowerCaseString(item.parentCategory)}/${item.category}/${this.toLowerCaseString(item.name.en)}`}>
+							<img alt="" className="card-img" src={item.imagesUrls[0]} />
 						</Link>
 						<div className="caption">
-							<div className="title">{this.state.products[id].name.en}</div>
-							<div className="price">${this.state.products[id].price}</div>
+							<div className="title">{item.name.en}</div>
+							{/* <div className="price">${this.state.products[id].price}</div> */}
 						</div>
 					</div>
 				</div>
