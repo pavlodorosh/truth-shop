@@ -5,7 +5,15 @@ class Filter extends Component {
 		return (
 			<>
 				<div> Filter </div>
-
+				<div className="price_filter">
+					<span id="val1">0 руб.</span>
+					<div id="slider-range" className="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+						<div className="ui-slider-range ui-corner-all ui-widget-header" style={{ left: '15%', width: '45%' }} />
+						<span tabindex="0" className="ui-slider-handle ui-corner-all ui-state-default" style={{ left: '15%' }} />
+						<span tabindex="0" className="ui-slider-handle ui-corner-all ui-state-default" style={{ left: '60%' }} />
+					</div>
+					<span id="val2">100 руб.</span>
+				</div>
 				<section className="section_filter">
 					<h3 className="filter_name">
 						<button className="filter_button" aria-expanded="true" data-selected-facet-group-name="brandNameFacet">
