@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { database } from '../firebase'
+import Filter from '../components/Filter'
 
 class Catalog extends Component {
 	constructor(props) {
@@ -70,7 +71,12 @@ class Catalog extends Component {
 		return (
 			<div className="container-fluid catalog">
 				<div className="container">
-					<div className="row no-gutter">{this.renderProducts()}</div>
+					<div className="row">
+						<div className="col-lg-3 col-md-3 col-sm-6 col-12">
+							<Filter />
+						</div>
+						<div className="col-lg-9 col-md-9 col-sm-6 col-12">{this.renderProducts()}</div>
+					</div>
 				</div>
 			</div>
 		)

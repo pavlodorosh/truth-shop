@@ -21,6 +21,21 @@ import BrendsList from './BrendsList'
 import AddBrend from './AddBrend'
 import EditBrend from './EditBrend'
 
+import PageList from './PageList'
+import AddPage from './AddPage'
+import EditPage from './EditPage'
+
+import SizeList from './SizeList'
+import EditSize from './EditSize'
+import AddSize from './AddSize'
+
+import EmailList from './EmailList'
+import EditEmail from './EditEmail'
+import AddEmail from './AddEmail'
+
+import OrderList from './OrderList'
+import ViewOrder from './ViewOrder'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faTrashAlt, faEdit, faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -50,6 +65,21 @@ export default class Admin extends Component {
 					<Route path="/user/categories" component={CategoryList} />
 					<Route path="/user/add/category" component={AddCategory} />
 					<Route path="/user/edit/category/:id" component={EditCategory} />
+
+					<Route path="/user/pages" component={PageList} />
+					<Route path="/user/add/pages" component={AddPage} />
+					<Route path="/user/edit/pages/:id" component={EditPage} />
+
+					<Route path="/user/sizes" component={SizeList} />
+					<Route path="/user/add/sizes" component={AddSize} />
+					<Route path="/user/edit/sizes/:id" component={EditSize} />
+
+					<Route path="/user/emails" component={EmailList} />
+					<Route path="/user/add/emails" component={AddEmail} />
+					<Route path="/user/edit/emails/:id" component={EditEmail} />
+
+					<Route path="/user/orders" component={OrderList} />
+					<Route path="/user/view/order/:id" component={ViewOrder} />
 				</div>
 			</div>
 		)

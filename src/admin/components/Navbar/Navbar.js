@@ -38,6 +38,26 @@ export default class Navbar extends Component {
 								</Link>
 							</li>
 							<li className="nav-item" onClick={this.setActiveNavLink}>
+								<Link to="/user/sizes">
+									<span className="menu-title">Sizes</span>
+								</Link>
+							</li>
+							<li className="nav-item" onClick={this.setActiveNavLink}>
+								<Link to="/user/orders">
+									<span className="menu-title">Orders</span>
+								</Link>
+							</li>
+							<li className="nav-item" onClick={this.setActiveNavLink}>
+								<Link to="/user/pages">
+									<span className="menu-title">Pages</span>
+								</Link>
+							</li>
+							<li className="nav-item" onClick={this.setActiveNavLink}>
+								<Link to="/user/emails">
+									<span className="menu-title">E-mails</span>
+								</Link>
+							</li>
+							<li className="nav-item" onClick={this.setActiveNavLink}>
 								<Link to="/user/users">
 									<span className="menu-title">Users</span>
 								</Link>
