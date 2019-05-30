@@ -9,8 +9,8 @@ class Filter extends Component {
 					<span id="val1">0 руб.</span>
 					<div id="slider-range" className="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
 						<div className="ui-slider-range ui-corner-all ui-widget-header" style={{ left: '15%', width: '45%' }} />
-						<span tabindex="0" className="ui-slider-handle ui-corner-all ui-state-default" style={{ left: '15%' }} />
-						<span tabindex="0" className="ui-slider-handle ui-corner-all ui-state-default" style={{ left: '60%' }} />
+						<span className="ui-slider-handle ui-corner-all ui-state-default" style={{ left: '15%' }} />
+						<span className="ui-slider-handle ui-corner-all ui-state-default" style={{ left: '60%' }} />
 					</div>
 					<span id="val2">100 руб.</span>
 				</div>
@@ -31,7 +31,6 @@ class Filter extends Component {
 						<ul>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter 361 Degrees"
 									className="LR"
 									href="/361-degrees-men-sneakers-athletic-shoes/CK_XARC81wFaArAlwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -41,7 +40,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas"
 									className="LR"
 									href="/adidas-men-sneakers-athletic-shoes/CK_XARC81wFaAQHAAQLiAgQBAgsY.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -51,7 +49,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas by Raf Simons"
 									className="LR"
 									href="/adidas-by-raf-simons-men-sneakers-athletic-shoes/CK_XARC81wFaAsohwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -61,7 +58,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Golf"
 									className="LR"
 									href="/adidas-golf-men-sneakers-athletic-shoes/CK_XARC81wFaAoMPwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -71,7 +67,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Originals"
 									className="LR"
 									href="/adidas-originals-men-sneakers-athletic-shoes/CK_XARC81wFaAtIGwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -81,7 +76,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Outdoor"
 									className="LR"
 									href="/adidas-outdoor-men-sneakers-athletic-shoes/CK_XARC81wFaAs0ZwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -91,7 +85,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Running"
 									className="LR"
 									href="/adidas-running-men-sneakers-athletic-shoes/CK_XARC81wFaAuEGwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -101,7 +94,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Skateboarding"
 									className="LR"
 									href="/adidas-skateboarding-men-sneakers-athletic-shoes/CK_XARC81wFaAuwcwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -111,7 +103,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas x Kolor"
 									className="LR"
 									href="/adidas-x-kolor-men-sneakers-athletic-shoes/CK_XARC81wFaAu8kwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -139,7 +130,6 @@ class Filter extends Component {
 						<ul>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter 361 Degrees"
 									className="LR"
 									href="/361-degrees-men-sneakers-athletic-shoes/CK_XARC81wFaArAlwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -149,7 +139,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas"
 									className="LR"
 									href="/adidas-men-sneakers-athletic-shoes/CK_XARC81wFaAQHAAQLiAgQBAgsY.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -159,7 +148,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas by Raf Simons"
 									className="LR"
 									href="/adidas-by-raf-simons-men-sneakers-athletic-shoes/CK_XARC81wFaAsohwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -169,7 +157,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Golf"
 									className="LR"
 									href="/adidas-golf-men-sneakers-athletic-shoes/CK_XARC81wFaAoMPwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -179,7 +166,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Originals"
 									className="LR"
 									href="/adidas-originals-men-sneakers-athletic-shoes/CK_XARC81wFaAtIGwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -189,7 +175,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Outdoor"
 									className="LR"
 									href="/adidas-outdoor-men-sneakers-athletic-shoes/CK_XARC81wFaAs0ZwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -199,7 +184,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Running"
 									className="LR"
 									href="/adidas-running-men-sneakers-athletic-shoes/CK_XARC81wFaAuEGwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -209,7 +193,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Skateboarding"
 									className="LR"
 									href="/adidas-skateboarding-men-sneakers-athletic-shoes/CK_XARC81wFaAuwcwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -219,7 +202,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas x Kolor"
 									className="LR"
 									href="/adidas-x-kolor-men-sneakers-athletic-shoes/CK_XARC81wFaAu8kwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -247,7 +229,6 @@ class Filter extends Component {
 						<ul>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter 361 Degrees"
 									className="LR"
 									href="/361-degrees-men-sneakers-athletic-shoes/CK_XARC81wFaArAlwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -257,7 +238,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas"
 									className="LR"
 									href="/adidas-men-sneakers-athletic-shoes/CK_XARC81wFaAQHAAQLiAgQBAgsY.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -267,7 +247,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas by Raf Simons"
 									className="LR"
 									href="/adidas-by-raf-simons-men-sneakers-athletic-shoes/CK_XARC81wFaAsohwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -277,7 +256,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Golf"
 									className="LR"
 									href="/adidas-golf-men-sneakers-athletic-shoes/CK_XARC81wFaAoMPwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -287,7 +265,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Originals"
 									className="LR"
 									href="/adidas-originals-men-sneakers-athletic-shoes/CK_XARC81wFaAtIGwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -297,7 +274,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Outdoor"
 									className="LR"
 									href="/adidas-outdoor-men-sneakers-athletic-shoes/CK_XARC81wFaAs0ZwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -307,7 +283,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Running"
 									className="LR"
 									href="/adidas-running-men-sneakers-athletic-shoes/CK_XARC81wFaAuEGwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -317,7 +292,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Skateboarding"
 									className="LR"
 									href="/adidas-skateboarding-men-sneakers-athletic-shoes/CK_XARC81wFaAuwcwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -327,7 +301,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas x Kolor"
 									className="LR"
 									href="/adidas-x-kolor-men-sneakers-athletic-shoes/CK_XARC81wFaAu8kwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -355,7 +328,6 @@ class Filter extends Component {
 						<ul>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter 361 Degrees"
 									className="LR"
 									href="/361-degrees-men-sneakers-athletic-shoes/CK_XARC81wFaArAlwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -365,7 +337,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas"
 									className="LR"
 									href="/adidas-men-sneakers-athletic-shoes/CK_XARC81wFaAQHAAQLiAgQBAgsY.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -375,7 +346,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas by Raf Simons"
 									className="LR"
 									href="/adidas-by-raf-simons-men-sneakers-athletic-shoes/CK_XARC81wFaAsohwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -385,7 +355,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Golf"
 									className="LR"
 									href="/adidas-golf-men-sneakers-athletic-shoes/CK_XARC81wFaAoMPwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -395,7 +364,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Originals"
 									className="LR"
 									href="/adidas-originals-men-sneakers-athletic-shoes/CK_XARC81wFaAtIGwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -405,7 +373,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Outdoor"
 									className="LR"
 									href="/adidas-outdoor-men-sneakers-athletic-shoes/CK_XARC81wFaAs0ZwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -415,7 +382,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Running"
 									className="LR"
 									href="/adidas-running-men-sneakers-athletic-shoes/CK_XARC81wFaAuEGwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -425,7 +391,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas Skateboarding"
 									className="LR"
 									href="/adidas-skateboarding-men-sneakers-athletic-shoes/CK_XARC81wFaAuwcwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">
@@ -435,7 +400,6 @@ class Filter extends Component {
 							</li>
 							<li className="">
 								<a
-									tabindex="0"
 									title="Enable filter adidas x Kolor"
 									className="LR"
 									href="/adidas-x-kolor-men-sneakers-athletic-shoes/CK_XARC81wFaAu8kwAEC4gIEAQILGA.zso?s=isNew/desc/goLiveDate/desc/recentSalesStyle/desc/">

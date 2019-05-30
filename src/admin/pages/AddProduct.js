@@ -14,8 +14,8 @@ class AddProduct extends Component {
 		this.state = {
 			groups: [
 				{
-					imagesNames: [],
-					imagesUrls: [],
+					imagesNames: "",
+					imagesUrls: "",
 					color: '',
 					description_en_group: '',
 					description_ru_group: '',
@@ -54,7 +54,12 @@ class AddProduct extends Component {
 			select_brend: '',
 			select_category: '',
 			mainCategory: '',
-			parentCategory: ''
+			parentCategory: '',
+			validate: false,
+			error_name_en: true,
+			error_name_ru: true,
+			error_name_ua: true,
+			error_model: true
 		}
 
 		this.validateForms = this.validateForms.bind(this)
@@ -205,8 +210,8 @@ class AddProduct extends Component {
 			groups: [
 				...prevState.groups,
 				{
-					imagesNames: [],
-					imagesUrls: [],
+					imagesNames: '',
+					imagesUrls: '',
 					color: '',
 					description_en_group: '',
 					description_ru_group: '',

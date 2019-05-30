@@ -34,7 +34,8 @@ export default class EditProduct extends Component {
 				name: ''
 			},
 			select_brend: '',
-			select_category: ''
+			select_category: '',
+			imagesForDelete: []
 		}
 
 		this.validateForms = this.validateForms.bind(this)
@@ -165,6 +166,20 @@ export default class EditProduct extends Component {
 	}
 
 	updateDatabase = () => {
+		for (let i = 0; i < this.state.imagesForDelete.length; i++) {
+			storage
+				.ref('images/products/')
+				.child(this.state.product.id)
+				.child(this.state.imagesForDelete[i])
+				.delete()
+				.then(() => {
+					console.log('images deleted')
+				})
+				.catch(err => {
+					console.log(err)
+				})
+		}
+
 		return database
 			.ref('/products')
 			.child(this.state.id)
@@ -290,22 +305,27 @@ export default class EditProduct extends Component {
 		let image = this.state.groups[index].imagesNames[id]
 
 		this.setState(prevState => {
+			return { imagesForDelete: [...prevState.imagesForDelete, image] }
+		})
+
+		this.setState(prevState => {
 			const newArr = [...prevState.groups]
 			newArr[index].imagesNames.splice(id, 1)
 			newArr[index].imagesUrls.splice(id, 1)
 			return { groups: newArr }
 		})
-		storage
-			.ref('images/products/')
-			.child(this.state.id)
-			.child(image)
-			.delete()
-			.then(() => {
-				console.log('images deleted')
-			})
-			.catch(err => {
-				console.log(err)
-			})
+
+		// storage
+		// 	.ref('images/products/')
+		// 	.child(this.state.id)
+		// 	.child(image)
+		// 	.delete()
+		// 	.then(() => {
+		// 		console.log('images deleted')
+		// 	})
+		// 	.catch(err => {
+		// 		console.log(err)
+		// 	})
 	}
 
 	render() {

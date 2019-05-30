@@ -3,6 +3,7 @@ import { database, storage } from '../../firebase'
 import { Link } from 'react-router-dom'
 import Switch from 'react-flexible-switch'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import noImage from '../../assets/img/no-image-icon-4.png'
 
 import AddProduct from './AddProduct'
 
@@ -64,15 +65,15 @@ class ProductList extends Component {
 	updateDatabase = () => {}
 
 	renderProducts = () => {
-		if (this.state.products !== null) {
+		if (this.state.products) {
 			return Object.keys(this.state.products).map(id => (
 				<tr key={id}>
 					<td>{this.state.products[id].name.en}</td>
 					<td>
-						<img style={{ width: '50px' }} src={this.state.products[id].groups[0].imagesUrls[0]} alt="" />
+						<img style={{ width: '50px' }} src={this.state.products[id].groups[0].imagesUrls ? this.state.products[id].groups[0].imagesUrls[0] : noImage} alt="" />
 					</td>
 					<td>
-						{this.state.products[id].parentCategory} {this.state.products[id].category}
+						{this.state.products[id].parentCategory + ' > '} {this.state.products[id].category}
 					</td>
 					<td>{this.state.products[id].model}</td>
 					<td>

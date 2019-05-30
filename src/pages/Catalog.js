@@ -32,14 +32,15 @@ class Catalog extends Component {
 
 		if (this.state.products !== null) {
 			let f = Object.keys(this.state.products)
+			console.log(f)
 			const filtered = Object.keys(f)
-				.filter(item => item.active)
-				.reduce((obj, key) => {
-					return {
-						...obj,
-						[key]: this.state.products[key]
-					}
-				}, {})
+			// .filter(item => match.params.parentcat === item.parentCategory && match.params.cat === item.category)
+			// .reduce((obj, key) => {
+			// 	return {
+			// 		...obj,
+			// 		[key]: this.state.products[key]
+			// 	}
+			// }, {})
 
 			return filtered
 		}
@@ -47,14 +48,15 @@ class Catalog extends Component {
 	}
 
 	renderProducts = () => {
+		const { match } = this.props
 		let array = this.filteredAndReducedProducts()
 		console.log(array)
-		if (this.state.products !== null) {
+		if (this.state.products.length) {
 			return Object.keys(array).map((item, index) => (
 				<div className="col-lg-3 col-md-3 col-sm-6 col-12" key={item.id}>
 					<div>
-						{item.imagesNames[0]}
-						<Link to={`/product/${this.toLowerCaseString(item.parentCategory)}/${item.category}/${this.toLowerCaseString(item.name.en)}`}>
+						tfthgf
+						<Link to={`/product/${match.params.parentcat}/${match.params.cat}/${item.name.en.toLowerCase()}`}>
 							<img alt="" className="card-img" src={item.imagesUrls[0]} />
 						</Link>
 						<div className="caption">
