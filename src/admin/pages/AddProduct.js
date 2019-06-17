@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { database, storage } from '../../firebase'
-import { Textbox, Select } from 'react-inputs-validation'
+import { Textbox, Select, Radiobox } from 'react-inputs-validation'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import uuid from 'uuid/v4'
@@ -8,14 +8,16 @@ import { setUserInfo } from '../../redux/actions'
 import ProductGroup from '../components/Product/ProductGroup'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
+import Switch from 'react-flexible-switch'
+
 class AddProduct extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			groups: [
 				{
-					imagesNames: "",
-					imagesUrls: "",
+					imagesNames: '',
+					imagesUrls: '',
 					color: '',
 					description_en_group: '',
 					description_ru_group: '',
@@ -59,7 +61,9 @@ class AddProduct extends Component {
 			error_name_en: true,
 			error_name_ru: true,
 			error_name_ua: true,
-			error_model: true
+			error_model: true,
+			active: false,
+			gender: ''
 		}
 
 		this.validateForms = this.validateForms.bind(this)
@@ -172,7 +176,7 @@ class AddProduct extends Component {
 				groups: this.state.groups,
 				id: this.state.id,
 				brend: this.state.select_brend,
-				active: false,
+				active: this.state.active,
 				name: {
 					en: this.state.name_en,
 					ru: this.state.name_ru,
@@ -195,7 +199,8 @@ class AddProduct extends Component {
 				},
 				model: this.state.model,
 				category: this.state.category,
-				parentCategory: this.state.parentCategory
+				parentCategory: this.state.parentCategory,
+				gender: this.state.gender
 			})
 			.then(() => {
 				window.location.href = '/user/products'
@@ -278,6 +283,10 @@ class AddProduct extends Component {
 		})
 	}
 
+	onChangeActive = () => {
+		this.setState({ active: !this.state.active })
+	}
+
 	removeAttributes = (index, id) => {
 		this.setState(prevState => {
 			const newArr = [...prevState.groups]
@@ -300,6 +309,12 @@ class AddProduct extends Component {
 								</div>
 							</div>
 						</div>
+						<Switch
+							value={this.state.active}
+							onChange={() => {
+								this.onChangeActive()
+							}}
+						/>
 						<div className="panel-body">
 							<div className="product_description col-sm-12">
 								<ul className="nav nav-tabs" role="tablist">
@@ -535,6 +550,28 @@ class AddProduct extends Component {
 									</div>
 								</div>
 							</div>
+							<div className="detail col-sm-12">
+								<div className="form-group ama_flex">
+									<label>Gender</label>
+									<Radiobox
+										tabIndex={0}
+										value={this.state.gender}
+										customStyleContainer={{
+											display: 'flex',
+											justifyContent: 'flex-start'
+										}}
+										onChange={(gender, e) => {
+											this.setState({ gender })
+											console.log(e)
+										}}
+										onBlur={e => {
+											console.log(e)
+										}}
+										optionList={[{ id: 'male', name: 'Male' }, { id: 'female', name: 'Female' }, , { id: 'unisex', name: 'Unisex' }]}
+									/>
+								</div>
+							</div>
+
 							<div className="detail col-sm-12">
 								<div className="form-group ama_flex">
 									<label>Model</label>
