@@ -16,7 +16,7 @@ class Filter extends Component {
 					<InputRange
 						maxValue={this.props.price.max}
 						minValue={this.props.price.min}
-						step={10}
+						step={1}
 						onChange={value => this.props.updateDataFilter('price', value)}
 						value={this.props.priceRange}
 					/>

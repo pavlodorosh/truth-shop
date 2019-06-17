@@ -33,10 +33,12 @@ class Catalog extends Component {
 					products: snapshot.val()
 				},
 				() => {
-					this.getAllColors()
-					this.getAllBrands()
-					this.getAllSizes()
-					this.getMinMaxPrice()
+					if (this.state.products != undefined) {
+						this.getAllColors()
+						this.getAllBrands()
+						this.getAllSizes()
+						this.getMinMaxPrice()
+					}
 				}
 			)
 		})
@@ -56,8 +58,8 @@ class Catalog extends Component {
 				}
 			}
 		})
-		let min = Math.min(...prices) + 10
-		let max = Math.max(...prices) + 10
+		let min = Math.min(...prices)
+		let max = Math.max(...prices)
 		let value = {
 			min,
 			max
@@ -138,6 +140,8 @@ class Catalog extends Component {
 				prices.push(product.groups[i].attributes[j].price)
 			}
 		}
+
+		console.log(Math.min(...prices))
 		if (Math.min(...prices) >= this.state.priceRange.min && Math.max(...prices) <= this.state.priceRange.max) {
 			if (!this.state.filterGender.length || product.gender == this.state.filterGender) {
 				return true
