@@ -162,6 +162,16 @@ class Catalog extends Component {
 				return { filterBrand: brands }
 			})
 		}
+
+		if (group === 'reset') {
+			this.setState({
+				filterGender: '',
+				filterSize: [],
+				filterColor: [],
+				filterBrand: []
+			})
+			this.getMinMaxPrice()
+		}
 	}
 
 	toLowerCaseString = data => {

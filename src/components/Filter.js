@@ -108,6 +108,14 @@ class Filter extends Component {
 						</ul>
 					</div>
 				</section>
+
+				<section className="section_filter">
+					<h3 className="filter_name">
+						<button onClick={() => this.props.updateDataFilter('reset')} className="filter_button" aria-expanded="true" data-selected-facet-group-name="brandNameFacet">
+							Reset All
+						</button>
+					</h3>
+				</section>
 			</>
 		)
 	}
