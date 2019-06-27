@@ -6,7 +6,14 @@ class Filter extends Component {
 	state = {
 		colors: [],
 		brands: [],
-		sizes: []
+		sizes: [],
+		inputValue: ''
+	}
+
+	updateInputValue = evt => {
+		this.setState({
+			inputValue: evt.target.value
+		})
 	}
 
 	render() {
@@ -40,6 +47,9 @@ class Filter extends Component {
 							<li className="" onClick={() => this.props.updateDataFilter('gender', 'unisex')}>
 								<span>Unisex</span>
 							</li>
+							<li className="" onClick={() => this.props.updateDataFilter('gender', '')}>
+								<span>All</span>
+							</li>
 						</ul>
 					</div>
 				</section>
@@ -51,7 +61,12 @@ class Filter extends Component {
 						<span className="filter_icon" />
 					</h3>
 					<div className="filter_list" aria-hidden="false" role="group">
-						<ul>{this.props.colors.length && this.props.colors.map((color, index) => <li key={index} style={{ width: '20px', height: '20px', backgroundColor: color }} />)}</ul>
+						<ul>
+							{this.props.colors.length &&
+								this.props.colors.map((color, index) => (
+									<li onClick={() => this.props.updateDataFilter('color', color)} key={index} style={{ width: '20px', height: '20px', backgroundColor: color }} />
+								))}
+						</ul>
 					</div>
 				</section>
 				<section className="section_filter">
@@ -60,8 +75,20 @@ class Filter extends Component {
 							Brand
 						</button>
 					</h3>
+					<input type="text" name="brandAuto" value={this.state.inputValue} onChange={this.updateInputValue} />
 					<div className="filter_list" aria-hidden="false" role="group">
-						<ul>{this.props.brands.length && this.props.brands.map((brand, index) => <li key={index}>{brand}</li>)}</ul>
+						<ul>
+							{this.props.brands.length &&
+								this.props.brands.map((brand, index) => {
+									if (brand.includes(this.state.inputValue)) {
+										return (
+											<li onClick={() => this.props.updateDataFilter('brand', brand)} key={index}>
+												{brand}
+											</li>
+										)
+									}
+								})}
+						</ul>
 					</div>
 				</section>
 				<section className="section_filter">
@@ -71,7 +98,14 @@ class Filter extends Component {
 						</button>
 					</h3>
 					<div className="filter_list" aria-hidden="false" role="group">
-						<ul>{this.props.sizes.length && this.props.sizes.map((size, index) => <li key={index}>{size}</li>)}</ul>
+						<ul>
+							{this.props.sizes.length &&
+								this.props.sizes.map((size, index) => (
+									<li onClick={() => this.props.updateDataFilter('size', size)} key={index}>
+										{size}
+									</li>
+								))}
+						</ul>
 					</div>
 				</section>
 			</>

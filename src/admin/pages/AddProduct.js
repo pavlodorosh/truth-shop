@@ -34,6 +34,7 @@ class AddProduct extends Component {
 			],
 			brend_list: [],
 			category_list: [],
+			size_list: [],
 			id: '',
 			name_en: '',
 			name_ru: '',
@@ -100,6 +101,9 @@ class AddProduct extends Component {
 			}
 		})
 	}
+
+
+
 
 	pushBrendsToSelect = data => {
 		let brend_list = []

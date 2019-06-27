@@ -71,8 +71,8 @@ export default class Admin extends Component {
 					<Route path="/user/edit/pages/:id" component={EditPage} />
 
 					<Route path="/user/sizes" component={SizeList} />
-					<Route path="/user/add/sizes" component={AddSize} />
-					<Route path="/user/edit/sizes/:id" component={EditSize} />
+					<Route path="/user/add/size" component={AddSize} />
+					<Route path="/user/edit/size/:id" component={EditSize} />
 
 					{/* <Route path="/user/emails" component={EmailList} />
 					<Route path="/user/add/emails" component={AddEmail} />

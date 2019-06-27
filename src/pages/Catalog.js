@@ -104,7 +104,6 @@ class Catalog extends Component {
 		array.map((item, index) => {
 			for (let i = 0; i < item.groups.length; i++) {
 				for (let j = 0; j < item.groups[i].attributes.length; j++) {
-					console.log(item.groups[i].attributes[j].size)
 					sizesArr.push(item.groups[i].attributes[j].size)
 				}
 			}
@@ -127,6 +126,42 @@ class Catalog extends Component {
 				filterGender: value
 			})
 		}
+		if (group === 'color') {
+			this.setState(prevState => {
+				let colors = [...prevState.filterColor]
+				if (colors.indexOf(value) == -1) {
+					colors.push(value)
+				} else {
+					let index = colors.indexOf(value)
+					colors.splice(index, 1)
+				}
+				return { filterColor: colors }
+			})
+		}
+		if (group === 'size') {
+			this.setState(prevState => {
+				let sizes = [...prevState.filterSize]
+				if (sizes.indexOf(value) == -1) {
+					sizes.push(value)
+				} else {
+					let index = sizes.indexOf(value)
+					sizes.splice(index, 1)
+				}
+				return { filterSize: sizes }
+			})
+		}
+		if (group === 'brand') {
+			this.setState(prevState => {
+				let brands = [...prevState.filterBrand]
+				if (brands.indexOf(value) == -1) {
+					brands.push(value)
+				} else {
+					let index = brands.indexOf(value)
+					brands.splice(index, 1)
+				}
+				return { filterBrand: brands }
+			})
+		}
 	}
 
 	toLowerCaseString = data => {
@@ -141,10 +176,66 @@ class Catalog extends Component {
 			}
 		}
 
-		console.log(Math.min(...prices))
+		let sizes = []
+		for (let i = 0; i < product.groups.length; i++) {
+			for (let j = 0; j < product.groups[i].attributes.length; j++) {
+				sizes.push(product.groups[i].attributes[j].size)
+			}
+		}
+
+		let colors = []
+		for (let j = 0; j < product.groups.length; j++) {
+			colors.push(product.groups[j].color)
+		}
+
 		if (Math.min(...prices) >= this.state.priceRange.min && Math.max(...prices) <= this.state.priceRange.max) {
 			if (!this.state.filterGender.length || product.gender == this.state.filterGender) {
-				return true
+				if (this.isBrend(product) && this.isColor(colors) && this.isSize(sizes)) {
+					return true
+				}
+			}
+		}
+		return false
+	}
+
+	isBrend = product => {
+		if (!this.state.filterBrand.length) {
+			return true
+		} else {
+			for (let k = 0; k < this.state.filterBrand.length; k++) {
+				if (this.state.filterBrand[k] == product.brend) {
+					return true
+				}
+			}
+		}
+		return false
+	}
+
+	isColor = array => {
+		if (!this.state.filterColor.length) {
+			return true
+		} else {
+			for (let j = 0; j < array.length; j++) {
+				for (let i = 0; i < this.state.filterColor.length; i++) {
+					if (this.state.filterColor[i] === array[j]) {
+						return true
+					}
+				}
+			}
+		}
+		return false
+	}
+
+	isSize = array => {
+		if (!this.state.filterSize.length) {
+			return true
+		} else {
+			for (let j = 0; j < array.length; j++) {
+				for (let i = 0; i < this.state.filterSize.length; i++) {
+					if (this.state.filterSize[i] === array[j]) {
+						return true
+					}
+				}
 			}
 		}
 		return false
