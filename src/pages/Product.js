@@ -71,25 +71,16 @@ class Product extends Component {
 					<div className="row no-gutter">
 						<div className="pl-0 pr-1 col-md-6 col-12">
 							<div id="carousel-custom" className="carousel slide" data-ride="carousel">
-								{/* Wrapper for slides */}
 								<div className="carousel-inner">
 									<div className="carousel-item active">
-										<img alt="" className="img-fluid" src={product && product[productId].mainImageUrl} />
+										<img alt="" className="img-fluid" src={product && product[productId].groups[0].imagesUrl[0]} />
 									</div>
 									<div className="carousel-item ">
-										<img alt="" className="img-fluid" src={product && product[productId].mainImageUrl} />
+										<img alt="" className="img-fluid" src={product && product[productId].groups[0].imagesUrl[0]} />
 									</div>
 									<div className="carousel-item ">
-										<img alt="" className="img-fluid" src={product && product[productId].mainImageUrl} />
+										<img alt="" className="img-fluid" src={product && product[productId].groups[0].imagesUrl[0]} />
 									</div>
-									{/* <div className="carousel-item">
-										<img className="img-fluid" src={product} />
-									</div>
-									<div className="carousel-item">
-										<img className="img-fluid" src={product} />
-									</div> */}
-
-									{/* Controls */}
 									<a className="left carousel-control" href="#carousel-custom" data-slide="prev">
 										<i className="fal fa-angle-left" />
 									</a>
@@ -101,20 +92,14 @@ class Product extends Component {
 								{/* Indicators */}
 								<ol className="carousel-indicators">
 									<li data-target="#carousel-custom" data-slide-to="0" className="active">
-										<img alt="" className="img-fluid" src={product && product[productId].mainImageUrl} />
+										<img alt="" className="img-fluid" src={product && product[productId].groups[0].imagesUrl[0]} />
 									</li>
 									<li data-target="#carousel-custom" data-slide-to="1" className="active">
-										<img alt="" className="img-fluid" src={product && product[productId].mainImageUrl} />
+										<img alt="" className="img-fluid" src={product && product[productId].groups[0].imagesUrl[0]} />
 									</li>
 									<li data-target="#carousel-custom" data-slide-to="2" className="active">
-										<img alt="" className="img-fluid" src={product && product[productId].mainImageUrl} />
+										<img alt="" className="img-fluid" src={product && product[productId].groups[0].imagesUrl[0]} />
 									</li>
-									{/* <li data-target="#carousel-custom" data-slide-to="1">
-										<img className="img-fluid" src={product} />
-									</li>
-									<li data-target="#carousel-custom" data-slide-to="2">
-										<img className="img-fluid" src={product} />
-									</li> */}
 								</ol>
 							</div>
 						</div>
