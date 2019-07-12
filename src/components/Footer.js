@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import { Nav } from 'bootstrap-4-react'
+import { Link } from 'react-router-dom'
+import ReactSVG from 'react-svg'
+import logo from '../assets/img/logo.svg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Footer extends Component {
 	render() {
