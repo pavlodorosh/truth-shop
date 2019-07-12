@@ -14,6 +14,14 @@ import SubCategory from './pages/SubCategory'
 import Product from './pages/Product'
 import Admin from './admin/pages/Admin'
 
+// import './index.css'
+
+// import { library } from '@fortawesome/fontawesome-svg-core'
+// import { fas } from '@fortawesome/free-solid-svg-icons'
+// import { far } from '@fortawesome/free-regular-svg-icons'
+// import { fab } from '@fortawesome/free-brands-svg-icons'
+// library.add(fas, far, fab)
+
 class App extends Component {
 	componentDidUpdate() {
 		if (window.location.href.indexOf('/user') > 0) require('./admin.css')
@@ -52,6 +60,9 @@ class App extends Component {
 
 					<Route path="/user" component={FooterAdmin} />
 				</footer>
+				<div className="scroll-to-top">
+					<span class="lnr lnr-chevron-up" />
+				</div>
 			</>
 		)
 	}
