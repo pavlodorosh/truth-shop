@@ -257,13 +257,30 @@ class Catalog extends Component {
 			let generateArray = Object.values(this.state.products)
 			let array = generateArray.filter(product => product.active && this.checkFilter(product))
 			return array.map((item, index) => (
-				<div className="col-lg-3 col-md-3 col-sm-3 col-3" key={item.id}>
-					<div>
-						<Link to={`/product/${match.params.parentCat}/${match.params.cat}/${item.name.en.toLowerCase()}`}>
-							<img alt="" className="card-img" src={item.groups[0].imagesUrls[0]} />
-						</Link>
+				<div className="product-layout col-xs-12 col-sm-6 col-md-4 col-lg-3" key={item.id}>
+					<div className="product-thumb">
+						<div className="image">
+							<div className="new">Новинка</div>
+							<div className="color_arr">
+								<span className="color" />
+								<span className="color" />
+							</div>
+							<div className="wishlist">
+								<span class="lnr lnr-heart" />
+							</div>
+							<Link to={`/product/${match.params.parentCat}/${match.params.cat}/${item.name.en.toLowerCase()}`}>
+								<img alt={item.name.en} className="one" src={item.groups[0].imagesUrls[0]} />
+								<img alt={item.name.en} className="two" src={item.groups[0].imagesUrls[0]} />
+							</Link>
+						</div>
 						<div className="caption">
-							<div className="title">{item.name.en}</div>
+							<h4>
+								<a href="#">{item.name.en}</a>
+							</h4>
+							<p className="price">
+								<span className="price-old">7 800,00 руб.</span>
+								<span className="price-new">5 800,00 руб.</span>
+							</p>
 						</div>
 					</div>
 				</div>
@@ -286,7 +303,42 @@ class Catalog extends Component {
 								updateDataFilter={this.updateDataFilter}
 							/>
 						</div>
-						<div className="col-lg-9 col-md-9 col-sm-6 col-12">{this.renderProducts()}</div>
+						<div className="col-lg-9 col-md-9 col-sm-6 col-12">
+							<div class="page_title_filter">
+								<h1>Pige title</h1>
+								<div className="filter_navigation">
+									<button class="left">
+										<span class="lnr lnr-chevron-left" />
+									</button>
+									<ul>
+										<li>
+											<a href="">Clothing</a>
+											<span class="lnr lnr-cross-circle" />
+										</li>
+										<li>
+											<a href="">Clothing</a>
+											<span class="lnr lnr-cross-circle" />
+										</li>
+										<li>
+											<a href="">Clothing</a>
+											<span class="lnr lnr-cross-circle" />
+										</li>
+										<li>
+											<a href="">Clothing</a>
+											<span class="lnr lnr-cross-circle" />
+										</li>
+										<li>
+											<a href="">Clothing</a>
+											<span class="lnr lnr-cross-circle" />
+										</li>
+									</ul>
+									<button class="right">
+										<span class="lnr lnr-chevron-right" />
+									</button>
+								</div>
+							</div>
+							<div className="catalog_products">{this.renderProducts()}</div>
+						</div>
 					</div>
 				</div>
 			</div>

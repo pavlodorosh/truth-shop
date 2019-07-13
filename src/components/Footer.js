@@ -47,17 +47,17 @@ class Footer extends Component {
 
 						<div className="col-6 order-3  col-sm-6  order-md-4 col-md-2  order-md-4  footer-link">
 							<Nav>
-								<Nav.ItemLink href="/About" className="p-0">
+								<Nav.ItemLink href="/about" className="p-0">
 									About us
 								</Nav.ItemLink>
-								<Nav.ItemLink href="/Delivery" className="p-0">
+								<Nav.ItemLink href="/delivery" className="p-0">
 									Delivery
 								</Nav.ItemLink>
-								<Nav.ItemLink href="/Privacy Policy" className="p-0">
+								<Nav.ItemLink href="/privacypolicy" className="p-0">
 									Privacy Policy
 								</Nav.ItemLink>
-								<Nav.ItemLink href="#" className="p-0">
-									Q&A
+								<Nav.ItemLink href="/cookies" className="p-0">
+									Cookies
 								</Nav.ItemLink>
 								<Nav.ItemLink href="/Turms and conditions" className="p-0">
 									Turms and conditions

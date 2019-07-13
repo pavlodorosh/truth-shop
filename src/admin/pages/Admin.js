@@ -47,39 +47,39 @@ export default class Admin extends Component {
 			<div className="container-fluid">
 				<div className="row">
 					<Navbar />
-					<Route path="/user/dashboard" component={Dashboard} />
+					<Route path="/admin/dashboard" component={Dashboard} />
 
-					<Route path="/user/profile" component={User} />
-					<Route path="/user/users" component={UserList} />
-					<Route path="/user/edit/user/:id" component={EditUser} />
-					<Route path="/user/add/user" component={AddUser} />
+					<Route path="/admin/profile" component={User} />
+					<Route path="/admin/users" component={UserList} />
+					<Route path="/admin/edit/admin/:id" component={EditUser} />
+					<Route path="/admin/add/user" component={AddUser} />
 
-					<Route path="/user/brends" component={BrendsList} />
-					<Route path="/user/edit/brend/:id" component={EditBrend} />
-					<Route path="/user/add/brend" component={AddBrend} />
+					<Route path="/admin/brends" component={BrendsList} />
+					<Route path="/admin/edit/brend/:id" component={EditBrend} />
+					<Route path="/admin/add/brend" component={AddBrend} />
 
-					<Route path="/user/products" component={ProductList} />
-					<Route path="/user/edit/product/:id" component={EditProduct} />
-					<Route path="/user/add/product" component={AddProduct} />
+					<Route path="/admin/products" component={ProductList} />
+					<Route path="/admin/edit/product/:id" component={EditProduct} />
+					<Route path="/admin/add/product" component={AddProduct} />
 
-					<Route path="/user/categories" component={CategoryList} />
-					<Route path="/user/add/category" component={AddCategory} />
-					<Route path="/user/edit/category/:id" component={EditCategory} />
+					<Route path="/admin/categories" component={CategoryList} />
+					<Route path="/admin/add/category" component={AddCategory} />
+					<Route path="/admin/edit/category/:id" component={EditCategory} />
 
-					<Route path="/user/pages" component={PageList} />
-					<Route path="/user/add/pages" component={AddPage} />
-					<Route path="/user/edit/pages/:id" component={EditPage} />
+					<Route path="/admin/pages" component={PageList} />
+					<Route path="/admin/add/pages" component={AddPage} />
+					<Route path="/admin/edit/pages/:id" component={EditPage} />
 
-					<Route path="/user/sizes" component={SizeList} />
-					<Route path="/user/add/size" component={AddSize} />
-					<Route path="/user/edit/size/:id" component={EditSize} />
+					<Route path="/admin/sizes" component={SizeList} />
+					<Route path="/admin/add/size" component={AddSize} />
+					<Route path="/admin/edit/size/:id" component={EditSize} />
 
-					{/* <Route path="/user/emails" component={EmailList} />
-					<Route path="/user/add/emails" component={AddEmail} />
-					<Route path="/user/edit/emails/:id" component={EditEmail} /> */}
+					{/* <Route path="/admin/emails" component={EmailList} />
+					<Route path="/admin/add/emails" component={AddEmail} />
+					<Route path="/admin/edit/emails/:id" component={EditEmail} /> */}
 
-					<Route path="/user/orders" component={OrderList} />
-					<Route path="/user/view/order/:id" component={ViewOrder} />
+					<Route path="/admin/orders" component={OrderList} />
+					<Route path="/admin/view/order/:id" component={ViewOrder} />
 				</div>
 			</div>
 		)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class About extends Component {
+export default class Cookies extends Component {
 	render() {
 		return (
 			<div className="container-fluid page">
@@ -29,5 +29,3 @@ class About extends Component {
 		)
 	}
 }
-
-export default About

@@ -63,10 +63,14 @@ class Brens extends Component {
 
 	render() {
 		return (
-			<div className="SubCategoty">
-				<div className="container-fluid">
-					<div className="container">
-						<div className="row no-gutter">{this.renderCategories()}</div>
+			<div className="container-fluid brands_page">
+				<div className="container">
+					<div className="row">
+						<div class="title_brands">
+							<h1>Brands</h1>
+						</div>
+
+						<div className="brands_list">{this.renderCategories()}</div>
 					</div>
 				</div>
 			</div>

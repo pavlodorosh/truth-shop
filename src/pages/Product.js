@@ -72,15 +72,9 @@ class Product extends Component {
 						<div className="pl-0 pr-1 col-md-6 col-12">
 							<div id="carousel-custom" className="carousel slide" data-ride="carousel">
 								<div className="carousel-inner">
-									<div className="carousel-item active">
-										<img alt="" className="img-fluid" src={product && product[productId].groups[0].imagesUrl[0]} />
-									</div>
-									<div className="carousel-item ">
-										<img alt="" className="img-fluid" src={product && product[productId].groups[0].imagesUrl[0]} />
-									</div>
-									<div className="carousel-item ">
-										<img alt="" className="img-fluid" src={product && product[productId].groups[0].imagesUrl[0]} />
-									</div>
+									<div className="carousel-item active">{/* <img alt="" className="img-fluid" src={product && product[productId].groups[0].imagesUrl[0]} /> */}</div>
+									<div className="carousel-item ">{/* <img alt="" className="img-fluid" src={product && product[productId].groups[0].imagesUrl[0]} /> */}</div>
+									<div className="carousel-item ">{/* <img alt="" className="img-fluid" src={product && product[productId].groups[0].imagesUrl[0]} /> */}</div>
 									<a className="left carousel-control" href="#carousel-custom" data-slide="prev">
 										<i className="fal fa-angle-left" />
 									</a>
@@ -92,21 +86,21 @@ class Product extends Component {
 								{/* Indicators */}
 								<ol className="carousel-indicators">
 									<li data-target="#carousel-custom" data-slide-to="0" className="active">
-										<img alt="" className="img-fluid" src={product && product[productId].groups[0].imagesUrl[0]} />
+										{/* <img alt="" className="img-fluid" src={product && product[productId].groups[0].imagesUrl[0]} /> */}
 									</li>
 									<li data-target="#carousel-custom" data-slide-to="1" className="active">
-										<img alt="" className="img-fluid" src={product && product[productId].groups[0].imagesUrl[0]} />
+										{/* <img alt="" className="img-fluid" src={product && product[productId].groups[0].imagesUrl[0]} /> */}
 									</li>
 									<li data-target="#carousel-custom" data-slide-to="2" className="active">
-										<img alt="" className="img-fluid" src={product && product[productId].groups[0].imagesUrl[0]} />
+										{/* <img alt="" className="img-fluid" src={product && product[productId].groups[0].imagesUrl[0]} /> */}
 									</li>
 								</ol>
 							</div>
 						</div>
 
 						<div className="pr-0 pl-1 col-md-6">
-							<div className="product_title">{product && product[productId].name.en}</div>
-							<div className="price">${product && product[productId].price}</div>
+							<div className="product_title">{/* {product && product[productId].name.en} */}</div>
+							<div className="price">{/* {product && product[productId].price} */}</div>
 							{product[productId] && (
 								<div className="product_size">
 									<span>Choose your size</span>
@@ -162,13 +156,13 @@ class Product extends Component {
 
 								<div className="tab-content">
 									<div className="tab-pane active" id="details" role="tabpanel">
-										{product && product[productId].description.en}
+										{/* {product && product[productId].description.en} */}
 									</div>
 									<div className="tab-pane" id="care" role="tabpanel">
-										{product && product[productId].care.en}
+										{/* {product && product[productId].care.en} */}
 									</div>
 									<div className="tab-pane" id="return" role="tabpanel">
-										{product && product[productId].return.en}
+										{/* {product && product[productId].return.en} */}
 									</div>
 								</div>
 

@@ -18,52 +18,52 @@ export default class Navbar extends Component {
 					<div className="main-menu-content">
 						<ul className="navigation navigation-main">
 							<li className="nav-item active" onClick={this.setActiveNavLink}>
-								<Link to="/user/dashboard">
+								<Link to="/admin/dashboard">
 									<span className="menu-title">eCommerce Dashboard</span>
 								</Link>
 							</li>
 							<li className="nav-item" onClick={this.setActiveNavLink}>
-								<Link to="/user/categories">
+								<Link to="/admin/categories">
 									<span className="menu-title">Categories</span>
 								</Link>
 							</li>
 							<li className="nav-item" onClick={this.setActiveNavLink}>
-								<Link to="/user/products">
+								<Link to="/admin/products">
 									<span className="menu-title">Products</span>
 								</Link>
 							</li>
 							<li className="nav-item" onClick={this.setActiveNavLink}>
-								<Link to="/user/brends">
+								<Link to="/admin/brends">
 									<span className="menu-title">Brends</span>
 								</Link>
 							</li>
 							<li className="nav-item" onClick={this.setActiveNavLink}>
-								<Link to="/user/sizes">
+								<Link to="/admin/sizes">
 									<span className="menu-title">Sizes</span>
 								</Link>
 							</li>
 							<li className="nav-item" onClick={this.setActiveNavLink}>
-								<Link to="/user/orders">
+								<Link to="/admin/orders">
 									<span className="menu-title">Orders</span>
 								</Link>
 							</li>
 							<li className="nav-item" onClick={this.setActiveNavLink}>
-								<Link to="/user/pages">
+								<Link to="/admin/pages">
 									<span className="menu-title">Pages</span>
 								</Link>
 							</li>
 							<li className="nav-item" onClick={this.setActiveNavLink}>
-								<Link to="/user/emails">
+								<Link to="/admin/emails">
 									<span className="menu-title">E-mails</span>
 								</Link>
 							</li>
 							<li className="nav-item" onClick={this.setActiveNavLink}>
-								<Link to="/user/users">
+								<Link to="/admin/users">
 									<span className="menu-title">Users</span>
 								</Link>
 							</li>
 							<li className="nav-item" onClick={this.setActiveNavLink}>
-								<Link to="/user/profile">
+								<Link to="/admin/profile">
 									<span className="menu-title">My Profile</span>
 								</Link>
 							</li>

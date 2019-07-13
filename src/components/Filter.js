@@ -20,6 +20,7 @@ class Filter extends Component {
 		return (
 			<>
 				<div className="price_filter">
+					<h4>Price</h4>
 					<InputRange
 						maxValue={this.props.price.max}
 						minValue={this.props.price.min}
@@ -29,38 +30,34 @@ class Filter extends Component {
 					/>
 				</div>
 				<section className="section_filter">
-					<h3 className="filter_name">
-						{/* <button className="filter_button" aria-expanded="true" data-selected-facet-group-name="brandNameFacet">
-							Gender
-							<span className="filter_span" />
-						</button> */}
-						<span className="filter_icon" />
-					</h3>
+					<h4>Стать</h4>
 					<div className="filter_list" aria-hidden="false" role="group">
 						<ul>
 							<li className="" onClick={() => this.props.updateDataFilter('gender', 'male')}>
-								<span>Male</span>
+								<input type="checkbox" id="fruit1" name="fruit-1" value="Apple" />
+								<label for="fruit1">Male</label>
 							</li>
 							<li className="" onClick={() => this.props.updateDataFilter('gender', 'female')}>
-								<span>Female</span>
+								<input type="checkbox" value="" />
+								<input type="checkbox" id="fruit2" name="fruit-1" value="Apple" />
+								<label for="fruit2">Female</label>
 							</li>
 							<li className="" onClick={() => this.props.updateDataFilter('gender', 'unisex')}>
-								<span>Unisex</span>
+								<input type="checkbox" value="" />
+								<input type="checkbox" id="fruit3" name="fruit-1" value="Apple" />
+								<label for="fruit3">Unisex</label>
 							</li>
 							<li className="" onClick={() => this.props.updateDataFilter('gender', '')}>
-								<span>All</span>
+								<input type="checkbox" value="" />
+								<input type="checkbox" id="fruit4" name="fruit-1" value="Apple" />
+								<label for="fruit4">All</label>
 							</li>
 						</ul>
 					</div>
 				</section>
 				<section className="section_filter">
-					<h3 className="filter_name">
-						<button className="filter_button" aria-expanded="true" data-selected-facet-group-name="brandNameFacet">
-							Color
-						</button>
-						<span className="filter_icon" />
-					</h3>
-					<div className="filter_list" aria-hidden="false" role="group">
+					<h4>Color</h4>
+					<div className="filter_list_row" aria-hidden="false" role="group">
 						<ul>
 							{this.props.colors.length &&
 								this.props.colors.map((color, index) => (
@@ -70,11 +67,7 @@ class Filter extends Component {
 					</div>
 				</section>
 				<section className="section_filter">
-					<h3 className="filter_name">
-						<button className="filter_button" aria-expanded="true" data-selected-facet-group-name="brandNameFacet">
-							Brand
-						</button>
-					</h3>
+					<h4>Brand</h4>
 					<input type="text" name="brandAuto" value={this.state.inputValue} onChange={this.updateInputValue} />
 					<div className="filter_list" aria-hidden="false" role="group">
 						<ul>
@@ -92,11 +85,7 @@ class Filter extends Component {
 					</div>
 				</section>
 				<section className="section_filter">
-					<h3 className="filter_name">
-						<button className="filter_button" aria-expanded="true" data-selected-facet-group-name="brandNameFacet">
-							Size
-						</button>
-					</h3>
+					<h4>Size</h4>
 					<div className="filter_list" aria-hidden="false" role="group">
 						<ul>
 							{this.props.sizes.length &&
@@ -109,12 +98,10 @@ class Filter extends Component {
 					</div>
 				</section>
 
-				<section className="section_filter">
-					<h3 className="filter_name">
-						<button onClick={() => this.props.updateDataFilter('reset')} className="filter_button" aria-expanded="true" data-selected-facet-group-name="brandNameFacet">
-							Reset All
-						</button>
-					</h3>
+				<section className="section_filter_reset">
+					<button onClick={() => this.props.updateDataFilter('reset')} className="filter_button" aria-expanded="true" data-selected-facet-group-name="brandNameFacet">
+						Reset All
+					</button>
 				</section>
 			</>
 		)

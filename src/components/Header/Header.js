@@ -100,7 +100,7 @@ class Header extends Component {
 													{/* {this.props.user.displayName} */}
 												</button>
 												<div aria-labelledby="dropdownMenuButton" className="dropdown-menu" x-placement="bottom-start">
-													<Link className="dropdown-item" to="/user/dashboard">
+													<Link className="dropdown-item" to="/admin/dashboard">
 														Admin Panel
 													</Link>
 													<Link className="dropdown-item" to="/" onClick={this.signOut}>
