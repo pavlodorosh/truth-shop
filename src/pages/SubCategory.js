@@ -49,27 +49,32 @@ class SubCategory extends Component {
 		let array = this.filteredAndReducedCategories()
 
 		return Object.keys(array).map((item, id) => (
-			<div className="p-0 col-md-6 sub" key={id}>
-				<Link to={`/catalog/${this.toLowerCaseString(array[item].parentCategory)}/${this.toLowerCaseString(array[item].name.en)}`}>
-					<img alt="" className="img-fluid" src={array[item].preview} />
+			<div className="col-12 col-md-6 sub_category_single" key={id}>
+				<div className="row">
+					<Link to={`/catalog/${this.toLowerCaseString(array[item].parentCategory)}/${this.toLowerCaseString(array[item].name.en)}`}>
+						<img alt={array[item].name.en} className="img-fluid" src={array[item].preview} />
 
-					<span className="subcategory_name" align="middle">
-						{array[item].name.en}
-					</span>
-				</Link>
+						<span className="sub_category_single_name" align="middle">
+							{array[item].name.en}
+						</span>
+					</Link>
+				</div>
 			</div>
 		))
 	}
 
 	render() {
 		return (
-			<div className="SubCategoty">
-				<div className="container-fluid">
+			<>
+				<div className="container-fluid sub_category">
 					<div className="container">
-						<div className="row no-gutter">{this.renderCategories()}</div>
+						<div className="row sub_category_title">
+							<h1>Sub category name</h1>
+						</div>
+						<div className="row">{this.renderCategories()}</div>
 					</div>
 				</div>
-			</div>
+			</>
 		)
 	}
 }

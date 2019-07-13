@@ -276,7 +276,7 @@ class Catalog extends Component {
 			<div className="container-fluid catalog">
 				<div className="container">
 					<div className="row">
-						<div className="col-lg-3 col-md-3 col-sm-6 col-12">
+						<div className="col-12 col-md-3 filter">
 							<Filter
 								colors={this.state.colors}
 								brands={this.state.brands}
