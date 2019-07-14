@@ -49,14 +49,16 @@ class Brens extends Component {
 		let array = this.filteredAndReducedCategories()
 
 		return Object.keys(array).map((item, id) => (
-			<div className="p-0 col-md-6 sub" key={id}>
-				<Link to={`/catalog/${this.toLowerCaseString(array[item].parentCategory)}/${this.toLowerCaseString(array[item].name.en)}`}>
-					<img alt="" className="img-fluid" src={array[item].preview} />
+			<div className="col-12 col-md-3 brends_single" key={id}>
+				<div className="row">
+					<Link to={`/catalog/${this.toLowerCaseString(array[item].parentCategory)}/${this.toLowerCaseString(array[item].name.en)}`}>
+						<img alt={array[item].name.en} className="img-fluid" src={array[item].preview} />
 
-					<span className="Brens_name" align="middle">
-						{array[item].name.en}
-					</span>
-				</Link>
+						<span className="brends_single_name" align="middle">
+							{array[item].name.en}
+						</span>
+					</Link>
+				</div>
 			</div>
 		))
 	}
