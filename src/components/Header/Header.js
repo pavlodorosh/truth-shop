@@ -8,10 +8,6 @@ import ReactSVG from 'react-svg'
 import AuthModal from './Auth/AuthModal'
 import logo from '../../assets/img/logo.svg'
 
-import bags from '../../assets/img/icons/shoppingbag.svg'
-import heart from '../../assets/img/icons/heart.svg'
-import user from '../../assets/img/icons/user.svg'
-
 class Header extends Component {
 	componentDidMount() {
 		auth.onAuthStateChanged(userSign => {
@@ -76,7 +72,7 @@ class Header extends Component {
 							<div className="row">
 								<div className="searchbar">
 									<input className="search_input" type="text" name="" placeholder="Search..." />
-									<a className="search_icon" href="#">
+									<a className="search_icon" >
 										<span class="lnr lnr-magnifier" />
 									</a>
 								</div>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import { Route } from 'react-router-dom'
 
 import Header from './components/Header/Header'
@@ -31,26 +31,16 @@ import Login from './pages/Login'
 import Reg from './pages/Reg'
 import Forgotten from './pages/Forgotten'
 
-// import './index.css'
+import './index.css'
 
-// import { library } from '@fortawesome/fontawesome-svg-core'
-// import { fas } from '@fortawesome/free-solid-svg-icons'
-// import { far } from '@fortawesome/free-regular-svg-icons'
-// import { fab } from '@fortawesome/free-brands-svg-icons'
-// library.add(fas, far, fab)
+const App = () => {
+	useEffect(()=>{
+		if (window.location.href.indexOf('/admin') > 0) require('./admin.css')
+ 		else require('./index.css')
+	})
 
-class App extends Component {
-	componentDidUpdate() {
-		if (window.location.href.indexOf('/admin') > 0) require('./admin.css')
-		else require('./index.css')
-	}
-	componentDidMount() {
-		if (window.location.href.indexOf('/admin') > 0) require('./admin.css')
-		else require('./index.css')
-	}
-	render() {
-		return (
-			<>
+	return (
+		<>
 				<header>
 					<Route exact path="/" component={Header} />
 					<Route
@@ -98,11 +88,10 @@ class App extends Component {
 					<Route path="/admin" component={FooterAdmin} />
 				</footer>
 				<div className="scroll-to-top">
-					<span class="lnr lnr-chevron-up" />
+					<span className="lnr lnr-chevron-up" />
 				</div>
 			</>
-		)
-	}
+	)
 }
 
 export default App

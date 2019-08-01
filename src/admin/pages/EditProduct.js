@@ -49,7 +49,7 @@ export default class EditProduct extends Component {
 			let prod = ''
 
 			snap.forEach(child => {
-				if (child.val().id == this.props.location.state.product.id) {
+				if (child.val().id === this.props.location.state.product.id) {
 					prod = child.val()
 				}
 			})
@@ -657,7 +657,6 @@ export default class EditProduct extends Component {
 											name="category"
 											optionList={this.state.category_list}
 											onChange={(category, e) => {
-												let categoryName = this.state.category_list[category].name
 												this.setState({
 													select_category: this.state.category_list[category].name,
 													category: this.state.category_list[category].thisName,

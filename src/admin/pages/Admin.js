@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
+import React, {useEffect} from 'react'
 import Navbar from '../components/Navbar/Navbar'
 import { Route } from 'react-router-dom'
+
+import { database } from '../../firebase'
 
 import User from './User'
 import UserList from './UserList'
@@ -17,6 +19,11 @@ import ProductList from './ProductList'
 import EditProduct from './EditProduct'
 import AddProduct from './AddProduct'
 
+
+import AttributesList from './AttributesList'
+import EditAttributes from './EditAttributes'
+import AddAttributes from './AddAttributes'
+
 import BrendsList from './BrendsList'
 import AddBrend from './AddBrend'
 import EditBrend from './EditBrend'
@@ -29,10 +36,6 @@ import SizeList from './SizeList'
 import EditSize from './EditSize'
 import AddSize from './AddSize'
 
-import EmailList from './EmailList'
-import EditEmail from './EditEmail'
-import AddEmail from './AddEmail'
-
 import OrderList from './OrderList'
 import ViewOrder from './ViewOrder'
 
@@ -41,9 +44,54 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faTrashAlt, faEdit, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 library.add(fab, faTrashAlt, faEdit, faPlus)
-export default class Admin extends Component {
-	render() {
-		return (
+
+
+let adminContext = React.createContext({})
+
+let data = {
+	systemAttributes: [
+		{
+			value: 'gender',
+			label: 'Gender'
+		},
+		{
+			value: 'color',
+			label: 'Color'
+		},
+	],
+	newProduct: {
+		active: false,
+		name: {
+			en: '',
+			ru: '',
+			ua: ''
+		},
+		description: {
+			en: '',
+			ru: '',
+			ua: ''
+		},
+		return: {
+			en: '',
+			ru: '',
+			ua: ''
+		},
+		care: {
+			en: '',
+			ru: '',
+			ua: ''
+		},
+		simpleAttributes: []
+	},
+	
+}
+
+const Admin = () => {	
+
+
+
+	return (
+		<adminContext.Provider value={data}>
 			<div className="container-fluid">
 				<div className="row">
 					<Navbar />
@@ -62,6 +110,12 @@ export default class Admin extends Component {
 					<Route path="/admin/edit/product/:id" component={EditProduct} />
 					<Route path="/admin/add/product" component={AddProduct} />
 
+					<Route path="/admin/attributes" component={AttributesList} />
+					<Route path="/admin/edit/attributes/:id" component={EditAttributes} />
+					<Route path="/admin/add/attributes" component={AddAttributes} />
+
+
+
 					<Route path="/admin/categories" component={CategoryList} />
 					<Route path="/admin/add/category" component={AddCategory} />
 					<Route path="/admin/edit/category/:id" component={EditCategory} />
@@ -74,14 +128,13 @@ export default class Admin extends Component {
 					<Route path="/admin/add/size" component={AddSize} />
 					<Route path="/admin/edit/size/:id" component={EditSize} />
 
-					{/* <Route path="/admin/emails" component={EmailList} />
-					<Route path="/admin/add/emails" component={AddEmail} />
-					<Route path="/admin/edit/emails/:id" component={EditEmail} /> */}
-
 					<Route path="/admin/orders" component={OrderList} />
 					<Route path="/admin/view/order/:id" component={ViewOrder} />
 				</div>
 			</div>
-		)
-	}
+		</adminContext.Provider>
+	)
 }
+
+export const adminData = adminContext
+export default Admin

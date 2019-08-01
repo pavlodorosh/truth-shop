@@ -22,14 +22,14 @@ export default class Wishlist extends Component {
 								<div className="wishlist">
 									<span className="lnr lnr-heart" />
 								</div>
-								<a href="/product.php">
+								<a >
 									<img alt="" className="one" src={product_one} />
 									<img alt="" className="two" src={product_two} />
 								</a>
 							</div>
 							<div className="caption">
 								<h4>
-									<a href="#">Товар товар</a>
+									<a >Товар товар</a>
 								</h4>
 								<p className="price">
 									<span className="price-old">7 800,00 руб.</span>
@@ -50,14 +50,14 @@ export default class Wishlist extends Component {
 								<div className="wishlist">
 									<span className="lnr lnr-heart" />
 								</div>
-								<a href="/product.php">
+								<a >
 									<img alt="" className="one" src={product_one} />
 									<img alt="" className="two" src={product_two} />
 								</a>
 							</div>
 							<div className="caption">
 								<h4>
-									<a href="#">Товар товар</a>
+									<a >Товар товар</a>
 								</h4>
 								<p className="price">
 									<span className="price-old">7 800,00 руб.</span>
@@ -78,14 +78,14 @@ export default class Wishlist extends Component {
 								<div className="wishlist">
 									<span className="lnr lnr-heart" />
 								</div>
-								<a href="/product.php">
+								<a >
 									<img alt="" className="one" src={product_one} />
 									<img alt="" className="two" src={product_two} />
 								</a>
 							</div>
 							<div className="caption">
 								<h4>
-									<a href="#">Товар товар</a>
+									<a >Товар товар</a>
 								</h4>
 								<p className="price">
 									<span className="price-old">7 800,00 руб.</span>
@@ -106,14 +106,14 @@ export default class Wishlist extends Component {
 								<div className="wishlist">
 									<span className="lnr lnr-heart" />
 								</div>
-								<a href="/product.php">
+								<a >
 									<img alt="" className="one" src={product_one} />
 									<img alt="" className="two" src={product_two} />
 								</a>
 							</div>
 							<div className="caption">
 								<h4>
-									<a href="#">Товар товар</a>
+									<a >Товар товар</a>
 								</h4>
 								<p className="price">
 									<span className="price-old">7 800,00 руб.</span>
@@ -134,14 +134,14 @@ export default class Wishlist extends Component {
 								<div className="wishlist">
 									<span className="lnr lnr-heart" />
 								</div>
-								<a href="/product.php">
+								<a >
 									<img alt="" className="one" src={product_one} />
 									<img alt="" className="two" src={product_two} />
 								</a>
 							</div>
 							<div className="caption">
 								<h4>
-									<a href="#">Товар товар</a>
+									<a >Товар товар</a>
 								</h4>
 								<p className="price">
 									<span className="price-old">7 800,00 руб.</span>
@@ -162,14 +162,14 @@ export default class Wishlist extends Component {
 								<div className="wishlist">
 									<span className="lnr lnr-heart" />
 								</div>
-								<a href="/product.php">
+								<a >
 									<img alt="" className="one" src={product_one} />
 									<img alt="" className="two" src={product_two} />
 								</a>
 							</div>
 							<div className="caption">
 								<h4>
-									<a href="#">Товар товар</a>
+									<a >Товар товар</a>
 								</h4>
 								<p className="price">
 									<span className="price-old">7 800,00 руб.</span>

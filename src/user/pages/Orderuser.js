@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-import product_one from '../../assets/img/product-one.jpg'
 import product_two from '../../assets/img/product-two.jpg'
 
 export default class Orderuser extends Component {

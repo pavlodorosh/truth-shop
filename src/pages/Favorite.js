@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 
 import product_one from '../assets/img/product-one.jpg'
 import product_two from '../assets/img/product-two.jpg'
@@ -28,14 +27,14 @@ export default class Favorite extends Component {
                                         <div className="wishlist">
                                             <span class="lnr lnr-heart" />
                                         </div>
-                                        <a href="/product.php">
+                                        <a >
                                             <img alt="" className="one" src={product_one} />
                                             <img alt="" className="two" src={product_two} />
                                         </a>
                                     </div>
                                     <div className="caption">
                                         <h4>
-                                            <a href="#">Товар товар</a>
+                                            <a >Товар товар</a>
                                         </h4>
                                         <p className="price">
                                             <span className="price-old">7 800,00 руб.</span>
@@ -56,14 +55,14 @@ export default class Favorite extends Component {
                                         <div className="wishlist">
                                             <span class="lnr lnr-heart" />
                                         </div>
-                                        <a href="/product.php">
+                                        <a >
                                             <img alt="" className="one" src={product_one} />
                                             <img alt="" className="two" src={product_two} />
                                         </a>
                                     </div>
                                     <div className="caption">
                                         <h4>
-                                            <a href="#">Товар товар</a>
+                                            <a >Товар товар</a>
                                         </h4>
                                         <p className="price">
                                             <span className="price-old">7 800,00 руб.</span>
@@ -84,14 +83,14 @@ export default class Favorite extends Component {
                                         <div className="wishlist">
                                             <span class="lnr lnr-heart" />
                                         </div>
-                                        <a href="/product.php">
+                                        <a >
                                             <img alt="" className="one" src={product_one} />
                                             <img alt="" className="two" src={product_two} />
                                         </a>
                                     </div>
                                     <div className="caption">
                                         <h4>
-                                            <a href="#">Товар товар</a>
+                                            <a >Товар товар</a>
                                         </h4>
                                         <p className="price">
                                             <span className="price-old">7 800,00 руб.</span>
@@ -112,14 +111,14 @@ export default class Favorite extends Component {
                                         <div className="wishlist">
                                             <span class="lnr lnr-heart" />
                                         </div>
-                                        <a href="/product.php">
+                                        <a >
                                             <img alt="" className="one" src={product_one} />
                                             <img alt="" className="two" src={product_two} />
                                         </a>
                                     </div>
                                     <div className="caption">
                                         <h4>
-                                            <a href="#">Товар товар</a>
+                                            <a >Товар товар</a>
                                         </h4>
                                         <p className="price">
                                             <span className="price-old">7 800,00 руб.</span>
@@ -140,14 +139,14 @@ export default class Favorite extends Component {
                                         <div className="wishlist">
                                             <span class="lnr lnr-heart" />
                                         </div>
-                                        <a href="/product.php">
+                                        <a >
                                             <img alt="" className="one" src={product_one} />
                                             <img alt="" className="two" src={product_two} />
                                         </a>
                                     </div>
                                     <div className="caption">
                                         <h4>
-                                            <a href="#">Товар товар</a>
+                                            <a >Товар товар</a>
                                         </h4>
                                         <p className="price">
                                             <span className="price-old">7 800,00 руб.</span>
@@ -168,14 +167,14 @@ export default class Favorite extends Component {
                                         <div className="wishlist">
                                             <span class="lnr lnr-heart" />
                                         </div>
-                                        <a href="/product.php">
+                                        <a >
                                             <img alt="" className="one" src={product_one} />
                                             <img alt="" className="two" src={product_two} />
                                         </a>
                                     </div>
                                     <div className="caption">
                                         <h4>
-                                            <a href="#">Товар товар</a>
+                                            <a >Товар товар</a>
                                         </h4>
                                         <p className="price">
                                             <span className="price-old">7 800,00 руб.</span>

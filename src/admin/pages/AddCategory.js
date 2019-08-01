@@ -26,6 +26,14 @@ class AddCategory extends Component {
 			{
 				value: 'Women',
 				label: 'Women'
+			},
+			{
+				value: 'Kids',
+				label: 'Kids'
+			},
+			{
+				value: 'Products',
+				label: 'Products'
 			}
 		],
 		isUploading: false,

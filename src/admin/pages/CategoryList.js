@@ -55,10 +55,7 @@ class CategoryList extends Component {
 						{this.state.categories[id].parentCategory} -> {this.state.categories[id].name.en}
 					</td>
 					<td align="center">
-						{/* <button className="btn btn-default" data-toggle="modal" data-target="#EditCategory">
-							<FontAwesomeIcon icon="edit" />
-						</button> */}
-						<Link style={{ backgroundColor: '#dddddd' }} className="btn btn-default" to={{ pathname: `/user/edit/category/${id}`, state: { category: this.state.categories[id] } }}>
+						<Link style={{ backgroundColor: '#dddddd' }} className="btn btn-default" to={{ pathname: `/admin/edit/category/${id}`, state: { category: this.state.categories[id] } }}>
 							<FontAwesomeIcon icon="edit" />
 						</Link>
 						<button className="btn btn-danger" onClick={() => this.removeCategoryFromDatabase(id, this.state.categories[id].previewName)}>
@@ -83,7 +80,7 @@ class CategoryList extends Component {
 							</div>
 							<div className="col-6 ">
 								<div className="row">
-									<Link type="button" to="/user/add/category">
+									<Link type="button" to="/admin/add/category">
 										<FontAwesomeIcon icon="plus" />
 									</Link>
 								</div>
@@ -94,8 +91,6 @@ class CategoryList extends Component {
 								<thead>
 									<tr>
 										<th>Name</th>
-										{/* <th>price</th> */}
-										{/* <th>quantity</th> */}
 										<th>Edit / Delete</th>
 									</tr>
 								</thead>

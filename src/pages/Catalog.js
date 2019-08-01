@@ -33,7 +33,7 @@ class Catalog extends Component {
 					products: snapshot.val()
 				},
 				() => {
-					if (this.state.products != undefined) {
+					if (this.state.products !== undefined) {
 						this.getAllColors()
 						this.getAllBrands()
 						this.getAllSizes()
@@ -129,7 +129,7 @@ class Catalog extends Component {
 		if (group === 'color') {
 			this.setState(prevState => {
 				let colors = [...prevState.filterColor]
-				if (colors.indexOf(value) == -1) {
+				if (colors.indexOf(value) === -1) {
 					colors.push(value)
 				} else {
 					let index = colors.indexOf(value)
@@ -141,7 +141,7 @@ class Catalog extends Component {
 		if (group === 'size') {
 			this.setState(prevState => {
 				let sizes = [...prevState.filterSize]
-				if (sizes.indexOf(value) == -1) {
+				if (sizes.indexOf(value) === -1) {
 					sizes.push(value)
 				} else {
 					let index = sizes.indexOf(value)
@@ -153,7 +153,7 @@ class Catalog extends Component {
 		if (group === 'brand') {
 			this.setState(prevState => {
 				let brands = [...prevState.filterBrand]
-				if (brands.indexOf(value) == -1) {
+				if (brands.indexOf(value) === -1) {
 					brands.push(value)
 				} else {
 					let index = brands.indexOf(value)
@@ -199,7 +199,7 @@ class Catalog extends Component {
 		}
 
 		if (Math.min(...prices) >= this.state.priceRange.min && Math.max(...prices) <= this.state.priceRange.max) {
-			if (!this.state.filterGender.length || product.gender == this.state.filterGender) {
+			if (!this.state.filterGender.length || product.gender === this.state.filterGender) {
 				if (this.isBrend(product) && this.isColor(colors) && this.isSize(sizes)) {
 					return true
 				}
@@ -213,7 +213,7 @@ class Catalog extends Component {
 			return true
 		} else {
 			for (let k = 0; k < this.state.filterBrand.length; k++) {
-				if (this.state.filterBrand[k] == product.brend) {
+				if (this.state.filterBrand[k] === product.brend) {
 					return true
 				}
 			}
@@ -275,7 +275,7 @@ class Catalog extends Component {
 						</div>
 						<div className="caption">
 							<h4>
-								<a href="#">{item.name.en}</a>
+								<a >{item.name.en}</a>
 							</h4>
 							<p className="price">
 								<span className="price-old">7 800,00 руб.</span>
@@ -312,23 +312,23 @@ class Catalog extends Component {
 									</button>
 									<ul>
 										<li>
-											<a href="">Clothing</a>
+											<a >Clothing</a>
 											<span class="lnr lnr-cross-circle" />
 										</li>
 										<li>
-											<a href="">Clothing</a>
+											<a >Clothing</a>
 											<span class="lnr lnr-cross-circle" />
 										</li>
 										<li>
-											<a href="">Clothing</a>
+											<a >Clothing</a>
 											<span class="lnr lnr-cross-circle" />
 										</li>
 										<li>
-											<a href="">Clothing</a>
+											<a >Clothing</a>
 											<span class="lnr lnr-cross-circle" />
 										</li>
 										<li>
-											<a href="">Clothing</a>
+											<a >Clothing</a>
 											<span class="lnr lnr-cross-circle" />
 										</li>
 									</ul>

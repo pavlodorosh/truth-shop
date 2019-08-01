@@ -56,12 +56,12 @@ export default class Login extends Component {
 								</div>
 								<div className="row">
 									<div className="col-xs-6 col-sm-6 col-md-6 ">
-										<a href="https://www.facebook.com" className="btn facebook" target="_blank">
+										<a href="https://www.facebook.com" className="btn facebook" target="_blank" rel="noopener noreferrer">
 											Войти через Facebook
 										</a>
 									</div>
 									<div className="col-xs-6 col-sm-6 col-md-6 ">
-										<a href="https://myaccount.google.com/intro" className="btn google" target="_blank">
+										<a href="https://myaccount.google.com/intro" className="btn google" target="_blank" rel="noopener noreferrer">
 											Войти через Google
 										</a>
 									</div>

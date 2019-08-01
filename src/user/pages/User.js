@@ -15,7 +15,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faTrashAlt, faEdit, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 library.add(fab, faTrashAlt, faEdit, faPlus)
-export default class Admin extends Component {
+export default class User extends Component {
 	render() {
 		return (
 			<div className="container-fluid user_page">

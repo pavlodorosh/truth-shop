@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import { Line } from 'rc-progress'
 import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton'
 import Select from 'react-select'
-import { Modal } from 'bootstrap-4-react'
 
 export default class EditCategory extends Component {
 	constructor(props) {

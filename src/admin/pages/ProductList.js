@@ -5,8 +5,6 @@ import Switch from 'react-flexible-switch'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import noImage from '../../assets/img/no-image-icon-4.png'
 
-import AddProduct from './AddProduct'
-
 class ProductList extends Component {
 	constructor(props) {
 		super(props)
@@ -110,7 +108,7 @@ class ProductList extends Component {
 							</div>
 							<div className="col-6 ">
 								<div className="row">
-									<Link type="button" to="/user/add/product">
+									<Link type="button" to="/admin/add/product">
 										<FontAwesomeIcon icon="plus" />
 									</Link>
 								</div>

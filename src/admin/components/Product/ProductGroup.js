@@ -130,7 +130,7 @@ export default class ProductGroups extends Component {
 							{groups[index].imagesUrls &&
 								groups[index].imagesUrls.map((item, id) => (
 									<div key={id} style={{ position: 'relative' }}>
-										<img src={item} style={{ width: '100px', height: '100px', marginRight: '10px' }} />
+										<img alt="" src={item} style={{ width: '100px', height: '100px', marginRight: '10px' }} />
 										<p
 											style={{ position: 'absolute', top: '0px', cursor: 'pointer' }}
 											onClick={() => {

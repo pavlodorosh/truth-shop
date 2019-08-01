@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { database } from '../firebase'
 import product_one from '../assets/img/product-one.jpg'
 import product_two from '../assets/img/product-two.jpg'
 
@@ -36,11 +34,11 @@ class Cart extends Component {
 								</div>
 								<div className="form-group col-lg-3 col-md-4 col-sm-4 col-12 ">
 									<div className="product_quantity  ">
-										<a href="#" className="sf_minus" rel="nofollow">
+										<a  className="sf_minus" rel="nofollow">
 											-
 										</a>
 										<input type="text" className="sf_base_quantity" name="quantity" value="1" />
-										<a href="#" className="sf_plus" rel="nofollow">
+										<a  className="sf_plus" rel="nofollow">
 											+
 										</a>
 									</div>
@@ -74,11 +72,11 @@ class Cart extends Component {
 								</div>
 								<div className="form-group col-lg-3 col-md-4 col-sm-4 col-12 ">
 									<div className="product_quantity  ">
-										<a href="#" className="sf_minus" rel="nofollow">
+										<a  className="sf_minus" rel="nofollow">
 											-
 										</a>
 										<input type="text" className="sf_base_quantity" name="quantity" value="1" />
-										<a href="#" className="sf_plus" rel="nofollow">
+										<a  className="sf_plus" rel="nofollow">
 											+
 										</a>
 									</div>
@@ -166,6 +164,7 @@ class Cart extends Component {
 															width="100%"
 															height="383"
 															frameborder="0"
+															title=""
 														/>
 														<ul className="list-unstyled del_list">
 															<li>Адрес: Москва, Автозаводская улица, д.6 тел: +7 985 980 32 02</li>
@@ -239,12 +238,12 @@ class Cart extends Component {
 
 								<ul className="list-unstyled cart_block_content_list">
 									<li>
-										<a href="#">Наличными при получении</a>
+										<a >Наличными при получении</a>
 									</li>
 									<li>
-										<a href="#">
+										<a >
 											Картой на сайте
-											<img src="/img/pay.png" />
+											<img src="/img/pay.png" alt=""/>
 										</a>
 									</li>
 								</ul>
