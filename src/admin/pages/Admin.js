@@ -21,8 +21,9 @@ import AddProduct from './AddProduct'
 
 
 import AttributesList from './AttributesList'
-import EditAttributes from './EditAttributes'
-import AddAttributes from './AddAttributes'
+import AttributesGroupsList from './AttributesGroupsList'
+import EditAttributesGroup from './EditAttributesGroup'
+import AddAttributesGroup from './AddAttributesGroup'
 
 import BrendsList from './BrendsList'
 import AddBrend from './AddBrend'
@@ -49,16 +50,22 @@ library.add(fab, faTrashAlt, faEdit, faPlus)
 let adminContext = React.createContext({})
 
 let data = {
-	systemAttributes: [
+	attributes: [
 		{
-			value: 'gender',
-			label: 'Gender'
+			name: 'gender',
+			label: 'Gender',
+			type: 'system'
 		},
 		{
-			value: 'color',
-			label: 'Color'
+			name: 'color',
+			label: 'Color',
+			type: 'system'
 		},
 	],
+	newAttributeGroup: {
+		name: '',
+		options: []
+	},
 	newProduct: {
 		active: false,
 		name: {
@@ -84,14 +91,24 @@ let data = {
 		simpleAttributes: []
 	},
 	
+	
 }
 
 const Admin = () => {	
 
+	useEffect(()=>{
+		database.ref('/attributes').on('value', snapshot => {
+			snapshot.val() &&
+				Object.keys(snapshot.val()).map((item) => {
+					console.log(snapshot.val()[item])
+					data.attributes = [...data.attributes, snapshot.val()[item]]
+				})		
+		})
+	})
+
 
 
 	return (
-		<adminContext.Provider value={data}>
 			<div className="container-fluid">
 				<div className="row">
 					<Navbar />
@@ -111,10 +128,9 @@ const Admin = () => {
 					<Route path="/admin/add/product" component={AddProduct} />
 
 					<Route path="/admin/attributes" component={AttributesList} />
-					<Route path="/admin/edit/attributes/:id" component={EditAttributes} />
-					<Route path="/admin/add/attributes" component={AddAttributes} />
-
-
+					<Route path="/admin/groups" component={AttributesGroupsList} />
+					<Route path="/admin/edit/group/:id" component={EditAttributesGroup} />
+					<Route path="/admin/add/group" component={AddAttributesGroup} />
 
 					<Route path="/admin/categories" component={CategoryList} />
 					<Route path="/admin/add/category" component={AddCategory} />
@@ -132,7 +148,6 @@ const Admin = () => {
 					<Route path="/admin/view/order/:id" component={ViewOrder} />
 				</div>
 			</div>
-		</adminContext.Provider>
 	)
 }
 

@@ -39,6 +39,11 @@ const Navbar = () => {
 								</Link>
 							</li>
 							<li className="nav-item" onClick={setActiveNavLink}>
+								<Link to="/admin/groups">
+									<span className="menu-title">Attributes Groups</span>
+								</Link>
+							</li>
+							<li className="nav-item" onClick={setActiveNavLink}>
 								<Link to="/admin/brends">
 									<span className="menu-title">Brends</span>
 								</Link>

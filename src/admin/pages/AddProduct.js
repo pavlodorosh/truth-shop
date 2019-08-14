@@ -40,8 +40,6 @@ const saveToBase = (data) => {
 
 const AddProduct = () => {
 
-	"use strict"
-
 	const data = useContext(adminData)
 	const product = data.newProduct
 
