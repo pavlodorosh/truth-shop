@@ -131,6 +131,17 @@ const AddProduct = () => {
 							className="col-lg-4"
 						/>
 
+						
+						<Select
+							value=""
+							placeholder="Add Group Options"
+							onChange={e => {
+								// create[e.value]()
+							}}
+							options={data.systemAttributes}
+							className="col-lg-4"
+						/>
+
 					</div>
 				</div>
 			</div>

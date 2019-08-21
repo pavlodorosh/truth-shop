@@ -49,7 +49,7 @@ library.add(fab, faTrashAlt, faEdit, faPlus)
 
 let adminContext = React.createContext({})
 
-let data = {
+let data = {	
 	attributes: [
 		{
 			name: 'gender',
@@ -62,10 +62,6 @@ let data = {
 			type: 'system'
 		},
 	],
-	newAttributeGroup: {
-		name: '',
-		options: []
-	},
 	newProduct: {
 		active: false,
 		name: {
@@ -89,26 +85,22 @@ let data = {
 			ua: ''
 		},
 		simpleAttributes: []
-	},
-	
+	},	
 	
 }
 
 const Admin = () => {	
 
-	useEffect(()=>{
-		database.ref('/attributes').on('value', snapshot => {
-			snapshot.val() &&
-				Object.keys(snapshot.val()).map((item) => {
-					console.log(snapshot.val()[item])
-					data.attributes = [...data.attributes, snapshot.val()[item]]
-				})		
-		})
-	})
+	// useEffect(()=>{
+	// 	database.ref('/attributes').on('value', snapshot => {
+	// 			data.attributes = [...data.attributes, snapshot.val()]
+	// 	})
+	// })
 
 
 
 	return (
+		<adminContext.Provider value={data}>
 			<div className="container-fluid">
 				<div className="row">
 					<Navbar />
@@ -148,6 +140,7 @@ const Admin = () => {
 					<Route path="/admin/view/order/:id" component={ViewOrder} />
 				</div>
 			</div>
+		</adminContext.Provider>
 	)
 }
 

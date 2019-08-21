@@ -45,14 +45,16 @@ const Attributes = () => {
 				name: nameOption,
 				type: typeOption,
 				variants: optionsArray,
-				id: nameOption + uuid()
+				id: nameOption + uuid(),
+				label: nameOption
 			}
 		} else {
 			attribute = {
 				name: nameOption,
 				type: typeOption,
 				variants: null,
-				id: nameOption + uuid()
+				id: nameOption + uuid(),
+				label: nameOption
 			}
 		}
 
@@ -73,7 +75,7 @@ const Attributes = () => {
 		}		
 	}
 
-	const removeCategoryFromDatabase = (id) => {
+	const removeAttrFromDatabase = (id) => {
 		database
 			.ref('/attributes')
 			.child(id)
@@ -102,17 +104,28 @@ const Attributes = () => {
 								</thead>
 								<tbody>
 									{
+										data.attributes.map((item)=> {
+											return(
+												<tr>
+													<td>{item.label}</td>
+													<td>{item.type}</td>
+													<td></td>	
+												</tr>
+											)
+										})
+									}
+									{
 										simpleAttributes &&
-											Object.keys(simpleAttributes).map((element, id) => {
-												return (
-													<tr key={id}>
-														<td>{element.name}</td>
-														<td>{element.type}</td>
+											Object.keys(simpleAttributes).map((id)=> {
+												return(
+													<tr>
+														<td>{simpleAttributes[id].name}</td>
+														<td>{simpleAttributes[id].type}</td>
 														<td>
 															{
-																<button onClick={()=>{removeCategoryFromDatabase(element.id)}}>X</button>
+																<button onClick={()=>{removeAttrFromDatabase(id)}}>X</button>
 															}	
-														</td>													
+														</td>	
 													</tr>
 												)
 											})
