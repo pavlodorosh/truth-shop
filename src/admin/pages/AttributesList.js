@@ -99,6 +99,7 @@ const Attributes = () => {
 									<tr>
                                         <th>Name</th>
                                         <th>Type</th>
+                                        <th>Variants</th>
                                         <th></th>
 									</tr>
 								</thead>
@@ -109,6 +110,7 @@ const Attributes = () => {
 												<tr>
 													<td>{item.label}</td>
 													<td>{item.type}</td>
+													<td></td>
 													<td></td>	
 												</tr>
 											)
@@ -122,10 +124,20 @@ const Attributes = () => {
 														<td>{simpleAttributes[id].name}</td>
 														<td>{simpleAttributes[id].type}</td>
 														<td>
+															<ul>
+																{
+																	simpleAttributes[id].variants &&
+																		Object.keys(simpleAttributes[id].variants).map(variant => (
+																			<li>{simpleAttributes[id].variants[variant]}</li>
+																		))
+																}
+															</ul>
+														</td>
+														<td>
 															{
 																<button onClick={()=>{removeAttrFromDatabase(id)}}>X</button>
 															}	
-														</td>	
+														</td>
 													</tr>
 												)
 											})
