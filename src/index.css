@@ -3418,3 +3418,14 @@ li.profile.active a {
     cursor: pointer;
     text-align: center;
 }
+
+.form-group{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.group_new_product{
+    border: 1px solid #000;
+}

@@ -23,20 +23,21 @@ class ProductList extends Component {
 	}
 
 	removeMainProductImageFromStorage = id => {
-		this.state.products[id].groups.map(item => {
-			item.imagesNames.map(image => {
-				storage
-					.ref('images/products/' + id)
-					.child(image)
-					.delete()
-					.then(() => {
-						console.log('images deleted')
-					})
-					.catch(err => {
-						console.log(err)
-					})
+		this.state.products.length &&
+			this.state.products[id].groups.map(item => {
+				item.imagesNames.map(image => {
+					storage
+						.ref('images/products/' + id)
+						.child(image)
+						.delete()
+						.then(() => {
+							console.log('images deleted')
+						})
+						.catch(err => {
+							console.log(err)
+						})
+				})
 			})
-		})
 	}
 
 	getProductsFromDatabase = () => {

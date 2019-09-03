@@ -1,28 +1,17 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import 'react-quill/dist/quill.snow.css'
 import Switch from 'react-flexible-switch'
+import { Textbox, Radiobox, Checkbox } from 'react-inputs-validation'
 import uuid from 'uuid/v4'
 import { adminData } from './Admin';
 import { database } from '../../firebase'
-import Loadable from 'react-loadable'
+import { SwatchesPicker } from 'react-color'
 import Select from 'react-select'
+import addImage from '../../assets/img/add.png'
 
 
 import TopPanes from '../components/Product/TopPanes'
-
-
-
-const LoadColor = Loadable({
-	loader: () => import('../components/Product/Color'),
-	loading: () => null
-})
-
-const LoadGender = Loadable({
-	loader: () => import('../components/Product/Gender'),
-	loading: () => null
-})
-
 
 const saveToBase = (data) => {	
 	return database
@@ -37,42 +26,268 @@ const saveToBase = (data) => {
 		})
 }
 
-
 const AddProduct = () => {
 
 	const data = useContext(adminData)
 	const product = data.newProduct
 
-	const [colorStatus, setColor] = useState(false)
-	const [genderStatus, setGender] = useState(false)
+	const [pickerActive, setPickerActive] = useState(false)
+	const [attributesState, setAttributesState] = useState(data.attributes)
+	const [groupsState, setGroupsState] = useState([])
 
+	useEffect(()=>{
+		database.ref('/attributes').on('value', snapshot => {
+			let dbAttr = snapshot.val()
+			let newArr = Object.keys(dbAttr).map((id) => {
+				let newAttr = {
+					label: dbAttr[id].label,
+					name: dbAttr[id].name,
+					type: dbAttr[id].type,
+					variants: dbAttr[id].variants,
+				}
+				return newAttr
+			})
 
-
-	const create = {
+			setAttributesState([...data.attributes, ...newArr])
+		})	
 		
-		color: () => {
-			product['color'] = ''
-			setColor(true)
-		},
+		database.ref('/groups').on('value', snapshot => {
+			let dbGroup = snapshot.val()
+			let newArr = Object.keys(dbGroup).map((id) => {
+				let newGroup = {
+					label: dbGroup[id].name,
+					name: dbGroup[id].name,
+					attributes: dbGroup[id].attributes,
+				}
+				return newGroup
+			})
 
-		gender: () => {
-			product['gender'] = ''
-			setGender(true)
-		}
+			setGroupsState(newArr)
+		})
+	})
+	const removeOption = (name) => {
+		product.simpleAttributes = product.simpleAttributes.filter((item)=> {
+			return item.name != name
+		})
+		delete product.options[name]
+	}
+	const removeGroup = (name) => {
+		product.groupAttributes = product.groupAttributes.filter((item)=> {
+			return item.name != name
+		})
+		delete product.groupOptions[name]
 	}
 
-	const remove = {
-		color: () => {
-			delete product.color
-			setColor(false)
-		},
-
-		gender: () => {
-			delete product.gender
-			setGender(false)
-		}
+	const handleChangeColorComplete = (color) => {
+		product.options.color = color.hex
+        setPickerActive(false)
 	}
 
+	const handleChangeColorGroupComplete = (group, color) => {
+		product.groupOptions[group].color = color.hex
+	}
+	
+
+	const addSimpleAttribute = {
+		system: (attr, isGroup = false, group = null) => {
+			switch(attr.name){
+				case 'color':
+					if(!isGroup){
+						return (
+							<div className="col-lg-11">
+								<div className="form-group ama_flex">
+									<span className="delete_property col-lg-1" onClick={()=>{removeOption(attr.name)}}>X</span> 
+									<label onClick={()=>setPickerActive(!pickerActive)}>Choose color</label>
+									<span style={{ backgroundColor: product.options.color, width: '30px', height: '30px', display: 'inline-block' }} /> 
+									{pickerActive ? <SwatchesPicker color={product.options.color} onChangeComplete={handleChangeColorComplete} /> : ''}
+								</div>
+							</div>
+						)
+					} else {
+						return (
+							<div className="col-lg-11">
+								<div className="form-group ama_flex">
+									<label>Choose color</label> 
+									<SwatchesPicker color={product.groupOptions[group].color} onChangeComplete={handleChangeColorGroupComplete.bind(this, group)} /> 
+								</div>
+							</div>
+						)
+					}
+					
+				case 'gender':
+					return (
+						<div className="detail col-sm-11">
+							<div className="form-group ama_flex">
+								{ !isGroup && <span className="delete_property col-lg-1" onClick={()=>{removeOption(attr.name)}}>X</span> }
+								<label>Gender</label>
+								<Radiobox
+									tabIndex={0}
+									value={product.gender}
+									customStyleContainer={{
+										display: 'flex',
+										justifyContent: 'flex-start'
+									}}
+									onChange={gender => {
+										isGroup ?  product.groupOptions[group].gender = gender  : product.options.gender = gender
+									}}
+									onBlur={e => {
+										console.log(e)
+									}}
+									optionList={[{ id: 'male', name: 'Male' }, { id: 'female', name: 'Female' },  { id: 'unisex', name: 'Unisex' }]}
+								/>
+							</div>
+						</div>
+					)
+				case 'price':
+					return (
+						<div className="detail col-sm-11">
+							<div className="form-group ama_flex">
+								{ !isGroup && <span className="delete_property col-lg-1" onClick={()=>{removeOption(attr.name)}}>X</span> }
+								<label>Price</label>
+								<Textbox
+									type="text"
+									className="form-control"
+									name="name_en"
+									onChange={(val) => {
+										// addValue.text(attr.name, val)
+										isGroup ? product.groupOptions[group].price = val : product.options.price = val
+
+									}}
+									onBlur={() => {}}
+									classNameInput="ama_input_validate"
+									classNameContainer="ama_input_container"
+									classNameWrapper="ama_input_wrapper"
+									validationOption={{
+										required: true,
+										type: 'number'
+									}}
+								/>
+							</div>
+						</div>
+					)
+				case 'discount':
+					return (
+						<div className="detail col-sm-11">
+							<div className="form-group ama_flex">
+								{ !isGroup && <span className="delete_property col-lg-1" onClick={()=>{removeOption(attr.name)}}>X</span> }
+								<label>Discount</label>
+								<Textbox
+									type="text"
+									className="form-control"
+									name="name_en"
+									onChange={(val) => {
+										// addValue.text(attr.name, val)
+										isGroup ? product.groupOptions[group].discount = val : product.options.discount = val
+
+									}}
+									onBlur={() => {}}
+									classNameInput="ama_input_validate"
+									classNameContainer="ama_input_container"
+									classNameWrapper="ama_input_wrapper"
+									validationOption={{
+										required: true,
+										type: 'number'
+									}}
+								/>
+							</div>
+						</div>
+					)
+			}
+		},
+		text: (attr, isGroup = false, group = null) => {
+			return (
+				<div className="col-lg-11" key={attr.name}>	
+					<div className="form-group ama_flex">
+						{ !isGroup && <span className="delete_property col-lg-1" onClick={()=>{removeOption(attr.name)}}>X</span> }
+						<label>{attr.name}</label>
+						<Textbox
+							type="text"
+							className="form-control"
+							name="name_en"
+							onChange={(val) => {
+								// addValue.text(attr.name, val)
+								isGroup ? product.groupOptions[group][attr.name] = val : product.options[attr.name] = val
+
+							}}
+							onBlur={() => {}}
+							classNameInput="ama_input_validate"
+							classNameContainer="ama_input_container"
+							classNameWrapper="ama_input_wrapper"
+						/>
+					</div>
+				</div>
+			)		
+		},
+		radio: (attr, isGroup = false, group = null) => {
+			let newArray = attr.variants.map((item, index) => {
+				let element = {
+					id: index,
+					name: item
+				}
+				return element
+			})
+			return (
+				<div className="col-lg-11" key={attr.name}>	
+					<div className="form-group ama_flex">
+						{ !isGroup && <span className="delete_property col-lg-1" onClick={()=>{removeOption(attr.name)}}>X</span> }
+						<label>{attr.name}</label>
+						<Radiobox
+							type="text"
+							className="form-control"
+							name="name_en"
+							onChange={(val) => {
+								isGroup ? product.groupOptions[group][attr.name] = newArray[val].name  : product.options[attr.name] = newArray[val].name 
+							}}
+							optionList={newArray}
+							onBlur={() => {}}
+							classNameInput="ama_input_validate"
+							classNameContainer="ama_input_container"
+							classNameWrapper="ama_input_wrapper"
+						/>
+					</div>
+				</div>
+			)		
+		},
+		check: (attr, isGroup = false, group = null) => {
+			return (
+				<div className="col-lg-11" key={attr.name}>	
+					<div className="form-group ama_flex">
+						{ !isGroup && <span className="delete_property col-lg-1" onClick={()=>{removeOption(attr.name)}}>X</span> }
+						<label>{attr.name}</label>
+						<Checkbox
+							type="text"
+							className="form-control"
+							name="name_en"
+							onChange={(val) => {
+								isGroup ? product.groupOptions[group][attr.name] = val : product.options[attr.name] = val
+							}}
+							onBlur={() => {}}
+							classNameInput="ama_input_validate"
+							classNameContainer="ama_input_container"
+							classNameWrapper="ama_input_wrapper"
+						/>
+					</div>
+				</div>
+			)		
+		},
+	}
+
+	const addGroupAttributes = group => {
+		return (
+			<div className="col-lg-11 group_new_product" key={group.name}>
+				<span className="delete_property col-lg-1" onClick={()=>{removeGroup(group.name)}}>X</span>
+				{group.attributes.map((attr) => {
+					let target = null
+					attributesState.forEach((item)=>{
+						if(item.name == attr){
+							target = item
+						}
+					})
+					return addSimpleAttribute[target.type](target, true, group.name)
+				})}
+			</div>
+		)
+	}
 
 	return (
 		<>
@@ -82,8 +297,7 @@ const AddProduct = () => {
 						<div className="panel-heading">
 							<div className="col-12">
 								<div className="row">
-									<h3 className="panel-title">Add product </h3>
-									
+									<h3 className="panel-title">Add product </h3>									
 									<button>
 										<Link to="/admin/products"> Back</Link>
 									</button>
@@ -107,27 +321,26 @@ const AddProduct = () => {
 
 						<TopPanes/>
 
-						
-						{colorStatus && (
-							<>
-								<span className="delete_property col-lg-1" onClick={()=>{remove.color()}}>X</span>
-								<LoadColor isProperty={true}/>
-							</>
-						)}
-						{genderStatus && (
-							<>
-								<span className="delete_property col-lg-1" onClick={()=>{remove.gender()}}>X</span>
-								<LoadGender isProperty={true}/>
-							</>
-						)}
+						{		
+							product.simpleAttributes && 
+								product.simpleAttributes.map((attr) => {
+									return addSimpleAttribute[attr.type](attr)
+								})
+						}
+						{		
+							product.groupAttributes.length > 0 && 
+								product.groupAttributes.map((group) => {
+									return addGroupAttributes(group)
+								})
+						}
 
 						<Select
 							value=""
 							placeholder="Add Option"
 							onChange={e => {
-								create[e.value]()
+								product.simpleAttributes.push(e)
 							}}
-							options={data.systemAttributes}
+							options={attributesState}
 							className="col-lg-4"
 						/>
 
@@ -136,9 +349,10 @@ const AddProduct = () => {
 							value=""
 							placeholder="Add Group Options"
 							onChange={e => {
-								// create[e.value]()
+								product.groupOptions[e.name] = {}
+								product.groupAttributes.push(e)
 							}}
-							options={data.systemAttributes}
+							options={groupsState}
 							className="col-lg-4"
 						/>
 

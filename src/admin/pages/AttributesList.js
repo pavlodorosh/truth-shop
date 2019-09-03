@@ -1,6 +1,4 @@
 import React, {useContext, useState, useEffect}  from 'react'
-import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Textbox } from 'react-inputs-validation'
 import Select from 'react-select'
 import { adminData } from './Admin'
@@ -40,19 +38,19 @@ const Attributes = () => {
 
 	const saveAttributeToBase = () => {
 		let attribute
-		if(typeOption != 'text'){
-			attribute = {
-				name: nameOption,
-				type: typeOption,
-				variants: optionsArray,
-				id: nameOption + uuid(),
-				label: nameOption
-			}
-		} else {
+		if(typeOption != 'radio'){
 			attribute = {
 				name: nameOption,
 				type: typeOption,
 				variants: null,
+				id: nameOption + uuid(),
+				label: nameOption
+			}
+		} else {
+			attribute = {				
+				name: nameOption,
+				type: typeOption,
+				variants: optionsArray,
 				id: nameOption + uuid(),
 				label: nameOption
 			}
@@ -105,9 +103,9 @@ const Attributes = () => {
 								</thead>
 								<tbody>
 									{
-										data.attributes.map((item)=> {
+										data.attributes.map((item, index)=> {
 											return(
-												<tr>
+												<tr key={index.toString()}>
 													<td>{item.label}</td>
 													<td>{item.type}</td>
 													<td></td>
@@ -118,17 +116,17 @@ const Attributes = () => {
 									}
 									{
 										simpleAttributes &&
-											Object.keys(simpleAttributes).map((id)=> {
+											Object.keys(simpleAttributes).map((id, index)=> {
 												return(
-													<tr>
+													<tr key={index.toString()}>
 														<td>{simpleAttributes[id].name}</td>
 														<td>{simpleAttributes[id].type}</td>
 														<td>
 															<ul>
 																{
 																	simpleAttributes[id].variants &&
-																		Object.keys(simpleAttributes[id].variants).map(variant => (
-																			<li>{simpleAttributes[id].variants[variant]}</li>
+																		Object.keys(simpleAttributes[id].variants).map((variant, index) => (
+																			<li key={index.toString()}>{simpleAttributes[id].variants[variant]}</li>
 																		))
 																}
 															</ul>
@@ -167,7 +165,7 @@ const Attributes = () => {
 														options={types} 
 														onChange={e => {
 															setTypeOption(e.value)
-															if(e.value === 'radio' || e.value === 'check'){
+															if(e.value === 'radio'){
 																setVariantsOption(true)
 															} else {
 																setVariantsOption(false)

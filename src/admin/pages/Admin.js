@@ -61,6 +61,21 @@ let data = {
 			label: 'Color',
 			type: 'system'
 		},
+		{
+			name: 'price',
+			label: 'Price',
+			type: 'system'
+		},
+		{
+			name: 'discount',
+			label: 'Discount',
+			type: 'system'
+		},
+		{
+			name: 'image',
+			label: 'Image',
+			type: 'system'
+		},
 	],
 	newProduct: {
 		active: false,
@@ -84,7 +99,10 @@ let data = {
 			ru: '',
 			ua: ''
 		},
-		simpleAttributes: []
+		simpleAttributes: [],
+		groupAttributes: [],
+		options: {},
+		groupOptions: {},
 	},	
 	
 }

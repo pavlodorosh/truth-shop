@@ -47,7 +47,7 @@ const AttributesGroupsList = () => {
 													<td>{groups[id].name}</td>
 													<td>{Object.keys(groups[id].attributes).map((el)=>(
 														<span>{groups[id].attributes[el]}, </span>
-													))}...</td>
+													))}</td>
 													<td>
 														{
 															<button onClick={()=>{removeGroupFromDatabase(id)}}>X</button>
