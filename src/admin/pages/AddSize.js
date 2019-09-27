@@ -17,7 +17,7 @@ class AddSize extends Component {
 				name: this.state.name
 			})
 			.then(() => {
-				window.location.href = '/user/sizes'
+				this.props.history.push('/admin/sizes')
 			})
 			.catch(err => {
 				console.log(err)

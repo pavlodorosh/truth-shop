@@ -103,7 +103,31 @@ let data = {
 		groupAttributes: [],
 		options: {},
 		groupOptions: {},
+		category: {},
+		parentCategory: ''
 	},	
+	parentCategories: [
+		{
+			value: 'Accessories',
+			label: 'Accessories'
+		},
+		{
+			value: 'Men',
+			label: 'Men'
+		},
+		{
+			value: 'Women',
+			label: 'Women'
+		},
+		{
+			value: 'Kids',
+			label: 'Kids'
+		},
+		{
+			value: 'Products',
+			label: 'Products'
+		}
+	],
 	
 }
 

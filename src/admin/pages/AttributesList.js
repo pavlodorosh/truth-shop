@@ -1,5 +1,5 @@
 import React, {useContext, useState, useEffect}  from 'react'
-import { Textbox } from 'react-inputs-validation'
+import { Textbox, Checkbox } from 'react-inputs-validation'
 import Select from 'react-select'
 import { adminData } from './Admin'
 import { database } from '../../firebase'
@@ -13,11 +13,17 @@ const Attributes = () => {
 	const [typeOption, setTypeOption] = useState('')
 	const [variantsOption, setVariantsOption] = useState(false)
 	const [optionsArray, addOrRemoveItem] = useState([''])
+	const [editVariants, setEditVariants] = useState(null)
+	const [idVariants, setIdVariants] = useState('')
 	const [simpleAttributes, getAttributes] = useState(null)
+	const [groupsFromDB, getGroups] = useState(null)
 
 	useEffect(()=>{
 		database.ref('/attributes').on('value', snapshot => {
 			getAttributes(snapshot.val())			
+		})
+		database.ref('/groups').on('value', snapshot => {
+			getGroups(snapshot.val())			
 		})
 	})
 
@@ -73,11 +79,36 @@ const Attributes = () => {
 		}		
 	}
 
-	const removeAttrFromDatabase = (id) => {
-		database
-			.ref('/attributes')
-			.child(id)
-			.remove()
+	const removeAttrFromDatabase = (id, name) => {
+		let countGroups = 0
+		let canRemove = true
+		Object.keys(groupsFromDB).map((group) => {
+			if(groupsFromDB[group].attributes.includes(name)){
+				canRemove = false
+				countGroups++
+			}
+		})	
+
+		if (countGroups > 0){
+			alert("Can't remove. This attribute include in " + countGroups + " groups")
+		}
+
+		if(canRemove){
+			database
+				.ref('/attributes')
+				.child(id)
+				.remove()
+		}		
+	}
+
+	const editAttrFromDatabase = (id) => {
+		setEditVariants(simpleAttributes[id].variants)
+		setIdVariants(id)
+		setTimeout(()=>{
+			var scrollingElement = (document.scrollingElement || document.body)
+			scrollingElement.scrollTop = scrollingElement.scrollHeight
+		}, 100)
+		
 	}
 
     return (
@@ -98,6 +129,7 @@ const Attributes = () => {
                                         <th>Name</th>
                                         <th>Type</th>
                                         <th>Variants</th>
+                                        <th>Filtered</th>
                                         <th></th>
 									</tr>
 								</thead>
@@ -108,6 +140,7 @@ const Attributes = () => {
 												<tr key={index.toString()}>
 													<td>{item.label}</td>
 													<td>{item.type}</td>
+													<td></td>
 													<td></td>
 													<td></td>	
 												</tr>
@@ -132,9 +165,28 @@ const Attributes = () => {
 															</ul>
 														</td>
 														<td>
+															<Checkbox
+																checked={simpleAttributes[id].filtered ? simpleAttributes[id].filtered : false} 
+																onChange={(isAgreementChecked, e) => {
+																	database.ref('/attributes/' + id).child('filtered').set(isAgreementChecked)
+																}} 
+																labelHtml={
+																	<div style={{ color: '#4a4a4a', marginTop: '2px' }}>
+																		Check if filtered
+																	</div>
+																} 
+																validationOption={{
+																	required: false
+																}}
+															/>
+														</td>
+														<td>
+															<button onClick={()=>{removeAttrFromDatabase(id, simpleAttributes[id].name)}}>X</button>
+															
 															{
-																<button onClick={()=>{removeAttrFromDatabase(id)}}>X</button>
-															}	
+																simpleAttributes[id].type == 'radio' &&
+																	<button onClick={()=>{editAttrFromDatabase(id)}}>Edit Variants</button>
+															}
 														</td>
 													</tr>
 												)
@@ -191,7 +243,6 @@ const Attributes = () => {
 											optionsArray.map(function(item, index){
 												return (
 													<tr key={index.toString()}>
-														{console.log(index)}
 														<td>Enter variants --></td>
 														<td>
 															{
@@ -238,6 +289,79 @@ const Attributes = () => {
 													</tr>
 												)
 											})
+									}
+									{ 
+										editVariants != null && 												
+											(
+												<div>
+													{
+														editVariants.map(function(item, index){
+															return (
+																<tr key={index.toString()}>
+																	<td>Your variant --></td>
+																	<td>															
+																		<Textbox 
+																			type="text"
+																			className="form-control"
+																			name="name_new"
+																			onChange={(val, e) => {	
+																				setEditVariants(prevOptionsArray => {
+																					prevOptionsArray[index] = val
+																					return prevOptionsArray
+																				})		
+																			}}
+																			onBlur={() => {}}
+																			classNameInput="ama_input_validate"
+																			classNameContainer="ama_input_container"
+																			classNameWrapper="ama_input_wrapper"
+																			value={item}
+																			placeholder="Enter variant"
+																		/>
+																	</td>
+																	<td>
+																		{
+																			<button onClick={()=>{
+																				setEditVariants(prevOptionsArray => {
+																					prevOptionsArray.splice(index, 1)
+																					return prevOptionsArray
+																				})
+																			}}>-</button>																	
+																		}
+																	</td>															
+																</tr>
+															)
+														})
+													}
+													<div>
+														<button onClick={()=>{
+															setEditVariants(prevOptionsArray => {
+																prevOptionsArray.push('')
+																return prevOptionsArray
+															})
+														}}>
+															+
+														</button>
+
+														<button onClick={()=>{
+															database
+																.ref('/attributes/' + idVariants)
+																.child('variants')
+																.set(editVariants)
+																.then(()=>{
+																	setEditVariants(null)
+																})
+														}}>
+															Save Changes
+														</button>
+
+														<button onClick={()=>{
+															setEditVariants(null)
+														}}>
+															Cancel
+														</button>
+													</div>
+												</div>
+											)
 									}
 								</tbody>
 							</table>

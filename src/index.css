@@ -3429,3 +3429,14 @@ li.profile.active a {
 .group_new_product{
     border: 1px solid #000;
 }
+
+.image-upload-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image-upload{
+    width: 70px;
+    margin-right: 10px;
+    height: 70px;
+}

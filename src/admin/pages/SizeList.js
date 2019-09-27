@@ -38,7 +38,7 @@ class BrendsList extends Component {
 					<td>{this.state.sizes[id].name}</td>
 
 					<td align="center">
-						<Link style={{ backgroundColor: '#dddddd' }} className="btn btn-default" to={{ pathname: `/user/edit/brend/${id}`, state: { size: this.state.sizes[id] } }}>
+						<Link style={{ backgroundColor: '#dddddd' }} className="btn btn-default" to={{ pathname: `/admin/edit/size/${id}`, state: { size: this.state.sizes[id] } }}>
 							<FontAwesomeIcon icon="edit" />
 						</Link>
 						<button className="btn btn-danger" onClick={() => this.removeSizeFromDatabase(id)}>
@@ -63,7 +63,7 @@ class BrendsList extends Component {
 							</div>
 							<div className="col-6 ">
 								<div className="row">
-									<Link type="button" to="/user/add/size">
+									<Link type="button" to="/admin/add/size">
 										<FontAwesomeIcon icon="plus" />
 									</Link>
 								</div>

@@ -53,7 +53,6 @@ class SubCategory extends Component {
 				<div className="row">
 					<Link to={`/catalog/${this.toLowerCaseString(array[item].parentCategory)}/${this.toLowerCaseString(array[item].name.en)}`}>
 						<img alt={array[item].name.en} className="img-fluid" src={array[item].preview} />
-
 						<span className="sub_category_single_name" align="middle">
 							{array[item].name.en}
 						</span>

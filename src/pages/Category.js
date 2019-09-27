@@ -4,6 +4,7 @@ import { Container, Row, Col, BSpan, Media, BImg } from 'bootstrap-4-react'
 import women from '../assets/img/shop_1.jpg'
 import accessories from '../assets/img/shop_2.jpg'
 import men from '../assets/img/shop_3.jpg'
+
 export default class Category extends Component {
 	render() {
 		return (

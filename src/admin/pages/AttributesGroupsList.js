@@ -50,7 +50,10 @@ const AttributesGroupsList = () => {
 													))}</td>
 													<td>
 														{
-															<button onClick={()=>{removeGroupFromDatabase(id)}}>X</button>
+															<>
+																<button onClick={()=>{removeGroupFromDatabase(id)}}>X</button>
+																{/* <button onClick={()=>{removeGroupFromDatabase(id)}}>Edit</button> */}
+															</>
 														}	
 													</td>
 												</tr>

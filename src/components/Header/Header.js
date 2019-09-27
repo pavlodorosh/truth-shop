@@ -51,7 +51,7 @@ class Header extends Component {
 												<Link to="/women">Women </Link>
 											</li>
 											<li className="nav-item">
-												<Link to="/women">Kids </Link>
+												<Link to="/kids">Kids </Link>
 											</li>
 											<li className="nav-item">
 												<Link to="/products">Products</Link>

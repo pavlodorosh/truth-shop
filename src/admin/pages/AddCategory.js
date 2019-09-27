@@ -88,7 +88,7 @@ class AddCategory extends Component {
 				previewName: this.state.imagePreview
 			})
 			.then(() => {
-				window.location.href = '/user/categories'
+				window.location.href = '/admin/categories'
 			})
 			.catch(err => {
 				console.log(err)

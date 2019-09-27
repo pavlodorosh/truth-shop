@@ -5,35 +5,29 @@ import Switch from 'react-flexible-switch'
 import { Textbox, Radiobox, Checkbox } from 'react-inputs-validation'
 import uuid from 'uuid/v4'
 import { adminData } from './Admin';
-import { database } from '../../firebase'
+import { database, storage } from '../../firebase'
 import { SwatchesPicker } from 'react-color'
 import Select from 'react-select'
+import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton'
 import addImage from '../../assets/img/add.png'
 
 
 import TopPanes from '../components/Product/TopPanes'
 
-const saveToBase = (data) => {	
-	return database
-		.ref('/products')
-		.child(uuid())
-		.set(data)
-		.then(() => {
-			window.location.href = '/admin/products'
-		})
-		.catch(err => {
-			console.log(err)
-		})
-}
+
 
 const AddProduct = () => {
 
 	const data = useContext(adminData)
 	const product = data.newProduct
 
+	const [id, setId] = useState(uuid())
 	const [pickerActive, setPickerActive] = useState(false)
 	const [attributesState, setAttributesState] = useState(data.attributes)
 	const [groupsState, setGroupsState] = useState([])
+	const [categoriesOptions, setCategoriesOptions] = useState([])
+	const [photos, setPhotos] = useState([])
+	const [isUploading, setIsUploading] = useState(false)
 
 	useEffect(()=>{
 		database.ref('/attributes').on('value', snapshot => {
@@ -64,7 +58,35 @@ const AddProduct = () => {
 
 			setGroupsState(newArr)
 		})
+
+		database.ref('/categories').on('value', snapshot => {
+			let dbCategories = snapshot.val()
+			let catArr= Object.keys(dbCategories).map((id)=>{
+				let newCat = {
+					label: dbCategories[id].parentCategory + ' --> ' + dbCategories[id].name.en,
+					name: dbCategories[id].name, 
+					parentCategory: dbCategories[id].parentCategory
+				}
+				return newCat
+			})
+			setCategoriesOptions(catArr)
+		})
 	})
+
+	const saveToBase = (data) => {	
+		return database
+			.ref('/products')
+			.child(id)
+			.set(data)
+			.then(() => {
+				window.location.href = '/admin/products'
+			})
+			.catch(err => {
+				console.log(err)
+			})
+	}
+
+
 	const removeOption = (name) => {
 		product.simpleAttributes = product.simpleAttributes.filter((item)=> {
 			return item.name != name
@@ -86,11 +108,80 @@ const AddProduct = () => {
 	const handleChangeColorGroupComplete = (group, color) => {
 		product.groupOptions[group].color = color.hex
 	}
-	
+
+	const handleUploadSuccess = (group, filename) => {
+		console.log(group)
+		setIsUploading(false)
+		storage
+			.ref('images/products/' + id)
+			.child(filename)
+			.getDownloadURL()
+			.then(url => {
+				let newPhoto = {
+					name: filename,
+					url: url
+				}
+				if(!group){					
+					let prevPhotos = photos
+					prevPhotos.push(newPhoto)
+					setPhotos(prevPhotos)
+					product.options.images = photos
+				} else {
+					if(product.groupOptions[group].images) {
+						let oldImages = product.groupOptions[group].images
+						oldImages.push(newPhoto)
+					} else {
+						product.groupOptions[group].images = []
+						let oldImages = product.groupOptions[group].images
+						oldImages.push(newPhoto)
+					}
+				}				
+			})
+	  }
 
 	const addSimpleAttribute = {
 		system: (attr, isGroup = false, group = null) => {
 			switch(attr.name){
+				case 'image':
+					return (
+						<div className="detail col-sm-11">
+							<div className="form-group ama_flex">
+								{ !isGroup && <span className="delete_property col-lg-1" onClick={()=>{removeOption(attr.name)}}>X</span> }
+								<label>Images</label>
+								<div className="image-upload-wrapper">
+									<CustomUploadButton
+										accept="image/*"
+										storageRef={storage.ref('images/products/' + id)}
+										onUploadStart={() => setIsUploading(true)}
+										onUploadError={() => setIsUploading(false)}
+										onUploadSuccess={handleUploadSuccess.bind(this, group)}
+										// onProgress={handleProgress}
+										style={{width: 'auto', }}
+									>
+										<img className="image-upload" src={addImage}/>
+									</CustomUploadButton>
+									{
+										!isGroup && 
+											product.options.images &&
+												product.options.images.map((image) => {
+													return (
+														<img className="image-upload" src={image.url}/>
+													)
+												})
+									}
+									{
+										isGroup && 
+											product.groupOptions[group].images &&
+												product.groupOptions[group].images.map((image) => {
+													return (
+														<img className="image-upload" src={image.url}/>
+													)
+												})
+									}
+								</div>
+							</div>
+						</div>
+					)
 				case 'color':
 					if(!isGroup){
 						return (
@@ -319,7 +410,19 @@ const AddProduct = () => {
 							}}
 						/>
 
+						<Select 
+							placeholder="Choose Category"
+							onChange={e => {
+								product.category = e.name
+								product.parentCategory = e.parentCategory
+							}}
+							options={categoriesOptions}
+							className="col-lg-4"
+						/>
+
 						<TopPanes/>
+
+						
 
 						{		
 							product.simpleAttributes && 
@@ -349,7 +452,9 @@ const AddProduct = () => {
 							value=""
 							placeholder="Add Group Options"
 							onChange={e => {
-								product.groupOptions[e.name] = {}
+								let newName = e.name + uuid()
+								product.groupOptions[newName] = {}
+								e.name = newName
 								product.groupAttributes.push(e)
 							}}
 							options={groupsState}
