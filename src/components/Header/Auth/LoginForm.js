@@ -50,20 +50,18 @@ class LoginForm extends Component {
 			<div className="form_log">
 				<div>
 					<Form onSubmit={this.handleSubmit}>
+						<Button primary type="button" className="closed_ath" onClick={this.props.openAuthModal}>
+							X
+						</Button>
 						<Form.Group>
-							<label>Email address</label>
-							<Form.Input type="email" name="email" placeholder="Enter email" onChange={this.handleChange} value={email} />
+							<Form.Input type="email" name="email" placeholder="Email" className="input_ath" onChange={this.handleChange} value={email} />
 						</Form.Group>
 						<Form.Group>
-							<label>Password</label>
-							<Form.Input type="password" name="password" placeholder="Password" onChange={this.handleChange} value={password} />
+							<Form.Input type="password" name="password" placeholder="Пароль" className="input_ath" onChange={this.handleChange} value={password} />
 						</Form.Group>
 
-						<Button primary type="button" onClick={this.handleSubmit}>
-							Sign in
-						</Button>
-						<Button primary type="button" onClick={this.props.openAuthModal}>
-							Close
+						<Button primary type="button" className="login_btn" onClick={this.handleSubmit}>
+							Вхід
 						</Button>
 					</Form>
 					{this.state.errors.length > 0 && (
@@ -72,9 +70,11 @@ class LoginForm extends Component {
 							{this.displayErrors(this.state.errors)}
 						</div>
 					)}
-					<p>
-						Haven't account? <span onClick={this.props.changeAuthForm}>Register</span>
-					</p>
+					<div className="login_reg_block">
+						<span className="login_reg" onClick={this.props.changeAuthForm}>
+							Реєстрація
+						</span>
+					</div>
 				</div>
 			</div>
 		)

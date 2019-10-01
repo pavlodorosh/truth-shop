@@ -19,11 +19,11 @@ class RegisterForm extends Component {
 		let error
 
 		if (this.isFormEmpty(this.state)) {
-			error = { message: 'Fill in all fields' }
+			error = { message: 'заповніть всі поля' }
 			this.setState({ errors: errors.concat(error) })
 			return false
 		} else if (!this.isPasswordValid(this.state)) {
-			error = { message: 'Password is invalid' }
+			error = { message: 'паролі не співпадають' }
 			this.setState({ errors: errors.concat(error) })
 			return false
 		} else {
@@ -106,38 +106,36 @@ class RegisterForm extends Component {
 			<div className="form_reg">
 				<div>
 					<Form onSubmit={this.handleSubmit}>
-						<Form.Group>
-							<label>Username</label>
-							<Form.Input type="text" name="username" placeholder="Username" onChange={this.handleChange} value={username} />
-						</Form.Group>
-						<Form.Group>
-							<label>Email address</label>
-							<Form.Input type="email" name="email" placeholder="Enter email" onChange={this.handleChange} value={email} />
-						</Form.Group>
-						<Form.Group>
-							<label>Password</label>
-							<Form.Input type="password" name="password" placeholder="Password" onChange={this.handleChange} value={password} />
-						</Form.Group>
-						<Form.Group>
-							<label>Password Confirmation</label>
-							<Form.Input type="password" name="passwordConfirmation" placeholder="Password Confirmation" onChange={this.handleChange} value={passwordConfirmation} />
-						</Form.Group>
-						<Button primary type="submit">
-							Sign up
+						<Button primary type="button" className="closed_ath" onClick={this.props.openAuthModal}>
+							X
 						</Button>
-						<Button primary type="button" onClick={this.props.openAuthModal}>
-							Close
+						<Form.Group>
+							<Form.Input type="text" name="username" placeholder="Логін" className="input_ath" onChange={this.handleChange} value={username} />
+						</Form.Group>
+						<Form.Group>
+							<Form.Input type="email" name="email" placeholder="Еmail" className="input_ath" onChange={this.handleChange} value={email} />
+						</Form.Group>
+						<Form.Group>
+							<Form.Input type="password" name="password" placeholder="Пароль" className="input_ath" onChange={this.handleChange} value={password} />
+						</Form.Group>
+						<Form.Group>
+							<Form.Input type="password" name="passwordConfirmation" className="input_ath" placeholder="Повторити пароль" onChange={this.handleChange} value={passwordConfirmation} />
+						</Form.Group>
+						<Button primary type="submit" className="login_btn">
+							Реєстрація
 						</Button>
 					</Form>
 					{errors.length > 0 && (
 						<div>
-							<h3>Error</h3>
+							<h3>Помилка</h3>
 							{this.displayErrors(errors)}
 						</div>
 					)}
-					<p>
-						Already user? <span onClick={this.props.changeAuthForm}>Login</span>
-					</p>
+					<div className="login_reg_block">
+						<span className="login_reg" onClick={this.props.changeAuthForm}>
+							Вхід
+						</span>
+					</div>
 				</div>
 			</div>
 		)

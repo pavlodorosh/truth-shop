@@ -11,7 +11,7 @@ class Footer extends Component {
 					<div className="row">
 						<div className="col-12 order-1  col-sm-6  order-md-4 col-md-3  order-md-4  info-block">
 							<ul className=" list-unstyled  m-0 align-self-center">
-								<li>© 2018 TRUTH TRAINING</li>
+								<li>Â© 2018 TRUTH TRAINING</li>
 								<li>Ukraine. Kyiv 04060</li>
 								<li>Schuseva st.27 4 office 11</li>
 								<li>
@@ -26,19 +26,19 @@ class Footer extends Component {
 						<div className="col-6 order-2  col-sm-6  order-md-4 col-md-2  order-md-4  footer-link">
 							<Nav>
 								<Nav.ItemLink href="/men" className="p-0">
-									Men
+									Чоловіки
 								</Nav.ItemLink>
 								<Nav.ItemLink href="/women" className="p-0">
-									Women
+									Жінки
 								</Nav.ItemLink>
 								<Nav.ItemLink href="/products" className="p-0">
-									Products
+									Товари
 								</Nav.ItemLink>
 								<Nav.ItemLink href="/accessories" className="p-0">
-									Accessories
+									Аксесуари
 								</Nav.ItemLink>
 								<Nav.ItemLink href="/brends" className="p-0">
-									Brends
+									Бренди
 								</Nav.ItemLink>
 							</Nav>
 						</div>
@@ -46,10 +46,10 @@ class Footer extends Component {
 						<div className="col-6 order-3  col-sm-6  order-md-4 col-md-2  order-md-4  footer-link">
 							<Nav>
 								<Nav.ItemLink href="/about" className="p-0">
-									About us
+									Про нас
 								</Nav.ItemLink>
 								<Nav.ItemLink href="/delivery" className="p-0">
-									Delivery
+									Доставка
 								</Nav.ItemLink>
 								<Nav.ItemLink href="/privacypolicy" className="p-0">
 									Privacy Policy
@@ -58,14 +58,14 @@ class Footer extends Component {
 									Cookies
 								</Nav.ItemLink>
 								<Nav.ItemLink href="/Turms and conditions" className="p-0">
-									Turms and conditions
+									Умови використання
 								</Nav.ItemLink>
 							</Nav>
 						</div>
 
 						<div className="col-12 order-4  col-sm-6  order-md-4 col-md-2  order-md-4 social-block">
 							<div className="d-flex flex-column">
-								<span className="column-title text-center"> SOCIAL MEDIA</span>
+								<span className="column-title text-center"> Соціальні мережі</span>
 								<ul>
 									<li className="facebook">
 										<Link className="d-sm-block " to="/">
@@ -88,9 +88,9 @@ class Footer extends Component {
 
 						<div className="col-12 order-5  col-sm-6  order-md-4 col-md-3  order-md-4 subscribe-block">
 							<div className="d-flex flex-column">
-								<span className="column-title text-center"> BE IN TOUCH WITH US</span>
+								<span className="column-title text-center"> Слудкуйте за нами</span>
 								<button className="subscribe" as="button" href="#">
-									SUBSCRIBE NOW
+									ПІДПИСАТИСЬ ВЖЕ
 								</button>
 							</div>
 						</div>

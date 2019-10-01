@@ -45,22 +45,22 @@ class Header extends Component {
 									<div className="collapse navbar-collapse" id="navbar1">
 										<ul className="navbar-nav ">
 											<li className="nav-item">
-												<Link to="/men">Men </Link>
+												<Link to="/men">Чоловікам</Link>
 											</li>
 											<li className="nav-item">
-												<Link to="/women">Women </Link>
+												<Link to="/women">Жінкам</Link>
 											</li>
 											<li className="nav-item">
-												<Link to="/kids">Kids </Link>
+												<Link to="/kids">Діти</Link>
 											</li>
 											<li className="nav-item">
-												<Link to="/products">Products</Link>
+												<Link to="/products">Товари</Link>
 											</li>
 											<li className="nav-item">
-												<Link to="/accessories">Accessories</Link>
+												<Link to="/accessories">Аксесуари</Link>
 											</li>
 											<li className="nav-item">
-												<Link to="/brends">Brends</Link>
+												<Link to="/brends">Бренди</Link>
 											</li>
 										</ul>
 									</div>
@@ -71,8 +71,8 @@ class Header extends Component {
 						<div className="col-12 order-3 col-sm-4  order-sm-2 col-md-4  order-md-2 col-lg-3 order-lg-3  col-xl-2  search ">
 							<div className="row">
 								<div className="searchbar">
-									<input className="search_input" type="text" name="" placeholder="Search..." />
-									<a className="search_icon" >
+									<input className="search_input" type="text" name="" placeholder="Пошук..." />
+									<a className="search_icon">
 										<span class="lnr lnr-magnifier" />
 									</a>
 								</div>
@@ -81,7 +81,7 @@ class Header extends Component {
 
 						<div className="col-8  order-1 col-sm-5  order-sm-3 col-md-5  order-md-3 col-lg-3 order-lg-4  col-xl-3  lang-top-links ">
 							<ul className="lang">
-								<li>en</li>
+								{/* <li>en</li> */}
 								<li className="active">ru</li>
 								<li>ua</li>
 							</ul>
@@ -97,10 +97,10 @@ class Header extends Component {
 												</button>
 												<div aria-labelledby="dropdownMenuButton" className="dropdown-menu" x-placement="bottom-start">
 													<Link className="dropdown-item" to="/admin/dashboard">
-														Admin Panel
+														Admin
 													</Link>
 													<Link className="dropdown-item" to="/" onClick={this.signOut}>
-														Sign Out
+														Вихід
 													</Link>
 												</div>
 											</div>

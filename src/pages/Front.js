@@ -71,11 +71,11 @@ class Front extends Component {
 								<div class="slider-sigle slider-left">
 									<div class="slider-content__inner">
 										<h1 class="heading__primary mb--2r5 mb-xs--1r5">
-											<span class="heading__primary--main">COMFORTABLE &amp; ADJUSTABLE</span>
-											<span class="heading__primary--sub">Yoga and Gym wear </span>
+											<span class="heading__primary--main">Зручно&amp; зажди </span>
+											<span class="heading__primary--sub">Одяг для йоги і спортзалу </span>
 										</h1>
 										<a href="#" class="btn" tabindex="0">
-											Shop Now
+											Купить
 										</a>
 									</div>
 								</div>
@@ -87,11 +87,11 @@ class Front extends Component {
 								<div class="slider-sigle slider-left">
 									<div class="slider-content__inner">
 										<h1 class="heading__primary mb--2r5 mb-xs--1r5">
-											<span class="heading__primary--main">COMFORTABLE &amp; ADJUSTABLE</span>
-											<span class="heading__primary--sub">Yoga and Gym wear </span>
+											<span class="heading__primary--main">Зручно&amp; зажди </span>
+											<span class="heading__primary--sub">Одяг для йоги і спортзалу </span>
 										</h1>
 										<a href="#" class="btn" tabindex="0">
-											Shop Now
+											Купить
 										</a>
 									</div>
 								</div>
@@ -110,10 +110,10 @@ class Front extends Component {
 									</Link>
 
 									<span className="category_name ">
-										<Link to="/women">WOMEN</Link>
+										<Link to="/women">Женщины</Link>
 									</span>
 									<span className="catygory_link ">
-										<Link to="/women">SHOP NOW</Link>
+										<Link to="/women">Купить </Link>
 									</span>
 								</div>
 								<div className="front_block col-lg-4 col-md-4">
@@ -122,10 +122,10 @@ class Front extends Component {
 									</Link>
 
 									<span className="category_name">
-										<Link to="/accessories">ACCESSORIES</Link>
+										<Link to="/accessories">Аксесуари</Link>
 									</span>
 									<span className="catygory_link ">
-										<Link to="/accessories">SHOP NOW</Link>
+										<Link to="/accessories">Купить </Link>
 									</span>
 								</div>
 								<div className="front_block col-lg-4 col-md-4">
@@ -134,10 +134,10 @@ class Front extends Component {
 									</Link>
 
 									<span className="category_name ">
-										<Link to="/men">MEN</Link>
+										<Link to="/men">Мужчины</Link>
 									</span>
 									<span className="catygory_link ">
-										<Link to="/men">SHOP NOW</Link>
+										<Link to="/men">Купить </Link>
 									</span>
 								</div>
 							</div>
@@ -150,9 +150,9 @@ class Front extends Component {
 						<div className="container links">
 							<h2>НОВИНКИ</h2>
 							<ul className="list-product">
-								<li className="active">Новая</li>
-								<li>Пальто</li>
-								<li>Аксессуары</li>
+								<li className="active">Пусери</li>
+								<li>Шорти</li>
+								<li>Аксесуари</li>
 							</ul>
 						</div>
 					</div>
@@ -178,11 +178,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>
@@ -205,11 +205,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>
@@ -232,11 +232,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>
@@ -259,11 +259,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>
@@ -286,11 +286,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>
@@ -314,11 +314,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>
@@ -341,11 +341,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>
@@ -368,11 +368,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>
@@ -395,11 +395,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>
@@ -422,11 +422,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>
@@ -450,11 +450,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>
@@ -477,11 +477,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>
@@ -504,11 +504,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>
@@ -531,11 +531,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>
@@ -558,11 +558,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>
@@ -586,11 +586,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>
@@ -613,11 +613,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>
@@ -640,11 +640,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>
@@ -667,11 +667,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>
@@ -694,11 +694,11 @@ class Front extends Component {
 											</div>
 											<div className="caption">
 												<h4>
-													<a href="#">Товар товар</a>
+													<a href="#">Назва товар</a>
 												</h4>
 												<p className="price">
-													<span className="price-old">7 800,00 руб.</span>
-													<span className="price-new">5 800,00 руб.</span>
+													<span className="price-old">7 800,00 грн.</span>
+													<span className="price-new">5 800,00 грн.</span>
 												</p>
 											</div>
 										</div>

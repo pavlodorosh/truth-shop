@@ -1,7 +1,7 @@
 /***admintest***/
 
 body {
-    padding-top: 5rem;
+    /*padding-top: 5rem;*/
     background-color: #F4F5FA;
 }
 
@@ -9,7 +9,8 @@ label {
     width: 140px;
 }
 
-.form-group input.ama_input_validate, .form-group .ama_input_select{
+.form-group input.ama_input_validate,
+.form-group .ama_input_select {
     width: 100%;
     padding: 5px 10px;
     font-size: 14px;
@@ -21,23 +22,23 @@ label {
     background: #fff;
 }
 
-.form-group input{
+.form-group input {
     -webkit-transition: border .3s;
     transition: border .3s;
 }
 
-.form-group input:focus{
+.form-group input:focus {
     outline: none;
     border-color: #2c303b;
     -webkit-transition: border .3s;
     transition: border .3s;
 }
 
-.ama_input_container{
+.ama_input_container {
     padding: 0;
 }
 
-.ama_input_wrapper{
+.ama_input_wrapper {
     width: 100%;
 }
 
@@ -83,11 +84,11 @@ label {
 }
 
 .navbar-collapse {
-    display: -webkit-box!important;
-    display: -webkit-flex!important;
-    display: -moz-box!important;
-    display: -ms-flexbox!important;
-    display: flex!important;
+    display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: -moz-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
     -webkit-flex-basis: auto;
     -ms-flex-preferred-size: auto;
     flex-basis: auto;
@@ -258,19 +259,21 @@ footer {
 /***admintest***/
 
 /* ProductGroup */
-.image_item{
+.image_item {
     width: 80px;
     height: 80px;
 }
 
-.image_preview_list{
+.image_preview_list {
     display: flex;
     flex-wrap: wrap;
 }
-.image_item.add_new{
+
+.image_item.add_new {
     cursor: pointer;
 }
-.product_attributes_add{
+
+.product_attributes_add {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
