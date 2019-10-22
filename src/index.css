@@ -178,6 +178,7 @@ header {
     /* background-color: #f7f7f7; */
     overflow: hidden;
     border-bottom: 1px solid #efefe7;
+    height: 80px;
 }
 
 @media (max-width: 767px) and (min-width: 200px) {

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import uuid from 'uuid/v1'
 import { Textbox } from 'react-inputs-validation'
 import 'react-inputs-validation/lib/react-inputs-validation.min.css'
+import Images from '../components/Images'
 
 class AddCategory extends Component {
 	state = {
@@ -45,7 +46,8 @@ class AddCategory extends Component {
 		error_name_en: true,
 		error_name_ru: true,
 		error_name_ua: true,
-		error_link: true
+		error_link: true,
+		modalHide: false
 	}
 
 	handleUploadStart = () => {
@@ -273,6 +275,8 @@ class AddCategory extends Component {
 									}}>
 									Save
 								</button>
+
+								<Images />
 							</div>
 						</div>
 					</div>
