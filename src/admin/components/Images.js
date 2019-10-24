@@ -8,7 +8,7 @@ export default function Images() {
 					<button type="button" className="close" data-dismiss="modal" aria-hidden="true">
 						×
 					</button>
-					<h4 className="modal-title">Менеджер изображений</h4>
+					<h4 className="modal-title">Менеджер изображений q</h4>
 				</div>
 				<div className="modal-body">
 					<div className="row">
